@@ -2,20 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'Gyahegi'; /* Name of the font */
+  src: url('./fonts/Gyahegi.ttf') format('truetype');
+  font-weight: normal; /* Optional: Specify font weight */
+  font-style: normal; /* Optional: Specify font style */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'swiss'; /* Name of the font */
+  src: url('./fonts/swiss.ttf') format('truetype');
+  font-weight: normal; /* Optional: Specify font weight */
+  font-style: normal; /* Optional: Specify font style */
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
+h1,h2,h3{
+  font-family: 'Gyahegi', 'sans serif';
+}
+
+body,p{
+  font-family: 'swiss', 'sans serif';
 }
