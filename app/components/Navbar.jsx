@@ -1,10 +1,10 @@
-'use client'
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   // State to handle the visibility of social media links and the icon
@@ -18,50 +18,78 @@ export default function Navbar() {
   return (
     <nav className="w-[90%] mx-20 hidden fixed xl:flex items-center justify-between py-8 border-b border-black z-50">
       {/* Logo */}
-      <Link href={'/'} className="text-xl">
-        <Image width={150} height={100} src='/logoLight.svg' alt="logo" />
+      <Link href={"/"} className="text-xl">
+        <Image width={150} height={100} src="/logoLight.svg" alt="logo" />
       </Link>
 
       {/* Navigation Links */}
       <div className="flex items-center gap-6">
         {/* Left Section */}
-        <ul className="flex items-center gap-6 text-sm font-medium text-gray-600 ">
-          <li>
-            <Link href="/about-us" className="hover:text-black transition-all duration-200 ease-in-out">
+        <ul className="flex items-center gap-6 text-sm font-medium text-gray-600">
+          <li className="relative group">
+            <Link
+              href="/about-us"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               About
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
-          <li>
-            <Link href="/team" className="hover:text-black transition-all duration-200 ease-in-out">
+          <li className="relative group">
+            <Link
+              href="/team"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               Team
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
-          <li>
-            <Link href="/career" className="hover:text-black transition-all duration-200 ease-in-out">
+          <li className="relative group">
+            <Link
+              href="/career"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               Career
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
           {/* Separator Line */}
           <div className="w-[0.5px] h-10 bg-black"></div>
-          <li>
-            <Link href="/our-services" className="hover:text-black transition-all duration-200 ease-in-out">
+          <li className="relative group">
+            <Link
+              href="/our-services"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               Services
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
-          <li>
-            <Link href="/our-work" className="hover:text-black transition-all duration-200 ease-in-out">
+          <li className="relative group">
+            <Link
+              href="/our-work"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               Projects
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
-          <li>
-            <Link href="/blogs" className="hover:text-black transition-all duration-200 ease-in-out">
+          <li className="relative group">
+            <Link
+              href="/blogs"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               Media
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
-          <li>
-            <Link href="/contact" className="hover:text-black transition-all duration-200 ease-in-out">
+          <li className="relative group">
+            <Link
+              href="/contact"
+              className="hover:text-black transition-all duration-200 ease-in-out"
+            >
               Contact
             </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
         </ul>
       </div>
@@ -69,11 +97,23 @@ export default function Navbar() {
       {/* Right Section */}
       <div className="flex items-center gap-6 text-amber-900">
         {/* Email */}
-        <Link href="mailto:hello@capitalassociation.com" className="text-sm font-medium hover:text-black transition-all duration-200 ease-in-out">hello@capitalassociation.com</Link>
+        <Link
+          href="mailto:hello@capitalassociation.com"
+          className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
+        >
+          hello@capitalassociation.com
+          <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+        </Link>
         {/* Small Border */}
         <div className="w-[0.5] h-4 bg-black"></div>
         {/* Phone Number */}
-        <Link href="tel:+971521211520" className="text-sm font-medium hover:text-black transition-all duration-200 ease-in-out">+971 52 121 1520</Link>
+        <Link
+          href="tel:+971521211520"
+          className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
+        >
+          +971 52 121 1520
+          <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+        </Link>
         {/* Small Border */}
         <div className="w-[0.5px] h-10 bg-black"></div>
 
@@ -86,13 +126,16 @@ export default function Navbar() {
             onClick={toggleSocialLinks}
             className="flex items-center justify-center w-5 h-5 border border-amber-900 rounded-full transition-all duration-200 ease-in-out hover:bg-amber-900 hover:text-white"
           >
-            {showSocialLinks ? '-' : '+'} {/* Change from + to - when clicked */}
+            {showSocialLinks ? "-" : "+"}{" "}
+            {/* Change from + to - when clicked */}
           </button>
 
           {/* Social Media Links */}
           <div
             className={`flex gap-4 transition-all duration-300 ease-in-out transform ${
-              showSocialLinks ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+              showSocialLinks
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-4"
             }`}
           >
             <Link
