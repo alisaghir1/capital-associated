@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
-import { VscGitPullRequestClosed } from "react-icons/vsc";
+import { RiCloseFill } from "react-icons/ri";
 import { RiMenuFoldFill } from "react-icons/ri";
 import Image from "next/image";
 import Link from "next/link";
@@ -42,9 +42,9 @@ export default function NavMobile() {
       {/* Button to open the sidebar */}
       <button
         onClick={toggleNavbar}
-        className="fixed text-4xl text-center mt-4 top-8 right-4 z-50 p-2 hover:text-gray-600 text-black transition-colors duration-300 ease-in-out rounded-full xl:hidden"
+        className="fixed text-4xl text-center mt-4 top-8 right-4 z-50 p-2 hover:scale-110 text-black transition-all duration-300 ease-in-out rounded-full xl:hidden"
       >
-        {isNavbarOpen ? <VscGitPullRequestClosed /> : <RiMenuFoldFill />} {/* Toggle between '☰' and 'Close' */}
+        {isNavbarOpen ? <RiCloseFill /> : <RiMenuFoldFill />} {/* Toggle between '☰' and 'Close' */}
       </button>
 
       {/* Mobile Navbar */}
