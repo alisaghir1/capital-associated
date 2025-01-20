@@ -4,9 +4,9 @@ import Link from "next/link";
 const About = () => {
   return (
     <>
-    <div className="flex flex-col xl:flex-row w-full justify-center items-center xl:w-[90%] px-5 xl:mx-20 mt-20 relative">
+    <div className="flex bg-slate-100 flex-col xl:flex-row w-full justify-center items-center xl:w-full px-5 xl:px-20 pt-20 relative">
       {/* Left Side */}
-      <div className="xl:w-2/3 xl:p-5 rounded-lg">
+      <div className="xl:w-2/3 xl:p-5 rounded-lg ">
         <h1 className="mb-4 lg:text-3xl text-2xl xl:text-4xl font-bold border-b border-b-black pb-10 text-black">
           About Us
         </h1>
@@ -39,7 +39,7 @@ const About = () => {
 
         {/* Second Row */}
         <div className="col-span-1  border hidden border-black xl:flex items-center justify-center rounded-lg "></div>
-        <div className="col-span-1  hover:opacity-100 hover:bg-[url('/about1.jpg')] bg-cover bg-center transition-all duration-300 ease-out text-xl bg-black text-white flex items-center justify-center rounded-lg ">
+        <div className="col-span-1  hover:bg-[url('/about1.jpg')] bg-cover bg-center transition-all duration-300 ease-out text-xl bg-black text-white flex items-center justify-center rounded-lg ">
           {" "}
           VISION
         </div>
@@ -59,8 +59,8 @@ const About = () => {
       </div>
       {/* Read More Button */}
     </div>
-      <div className="flex justify-center align-center mb-20">
-        <Link className="px-4 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-gray-600 hover:text-black border-b border-b-black" href={"/about-us"}>
+      <div className="flex justify-center align-center mb-20 bg-slate-100">
+        <Link className="px-4 mb-5 mt-[-50] z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-gray-600 hover:text-black border-b border-b-black" href={"/about-us"}>
             Read More...
         </Link>
       </div>
