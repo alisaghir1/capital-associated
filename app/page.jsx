@@ -2,6 +2,7 @@ import Image from "next/image";
 import About from "./components/About";
 import OurProjects from "./components/OurProjects";
 import OurServices from "./components/OurServices";
+import OurTeam from "./components/OurTeam";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
     <About />
     <OurProjects />
     <OurServices />
+    <OurTeam />
     </>
   );
 }
