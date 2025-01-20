@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-[90%] mx-20 hidden fixed xl:flex items-center justify-between py-8 border-b border-black z-50">
+    <nav className="w-[90%] mx-20 hidden absolute xl:flex items-center justify-between py-8 border-b border-black z-50">
       {/* Logo */}
       <Link href={"/"} className="text-xl">
         <Image width={150} height={100} src="/logoLight.svg" alt="logo" />
