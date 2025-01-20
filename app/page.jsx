@@ -1,7 +1,10 @@
 import Image from "next/image";
+import About from "./components/About";
+import OurProjects from "./components/OurProjects";
 
 export default function Home() {
   return (
+    <>
     <div className="relative w-full h-screen">
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -16,8 +19,11 @@ export default function Home() {
       {/* Content on top of the image */}
       <div className="relative z-10  flex flex-col justify-center items-center w-full h-full">
         <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">Building Dubai’s skyline</h1>
-        <p className="xl:text-4xl text-gray-800 md:text-2xl lg:text-3xl text-xl mt-5">one exceptional project at a time</p>
+        <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">one exceptional project at a time</p>
       </div>
     </div>
+    <About />
+    <OurProjects />
+    </>
   );
 }

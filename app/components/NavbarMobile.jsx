@@ -23,7 +23,7 @@ export default function NavMobile() {
   return (
     <div className="xl:hidden">
       {/* Logo always visible */}
-      <div className="fixed bg-amber-900 text-gray-300 flex justify-between items-center px-5 py-2 top-0 left-0 right-0 z-50">
+      <div className="absolute bg-amber-900 text-gray-300 flex justify-between items-center px-5 py-2 top-0 left-0 right-0 z-50">
   {/* Email with mailto link */}
   <Link href="mailto:hello@capitalassociation.com" className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white">
     hello@capitalassociation.com
@@ -34,7 +34,7 @@ export default function NavMobile() {
     +971 52 121 1520
   </Link>
 </div>
-      <div className=" fixed top-8 left-4 z-50 p-2">
+      <div className=" absolute top-8 left-4 z-50 p-2">
         <Image width={130} height={100} src='/logoLight.svg' alt="logo"/>
       </div>
       
@@ -42,7 +42,7 @@ export default function NavMobile() {
       {/* Button to open the sidebar */}
       <button
         onClick={toggleNavbar}
-        className="fixed text-4xl text-center mt-4 top-8 right-4 z-50 p-2 hover:scale-110 text-black transition-all duration-300 ease-in-out rounded-full xl:hidden"
+        className="absolute text-4xl text-center mt-4 top-8 right-4 z-50 p-2 hover:scale-110 text-black transition-all duration-300 ease-in-out rounded-full xl:hidden"
       >
         {isNavbarOpen ? <RiCloseFill /> : <RiMenuFoldFill />} {/* Toggle between '☰' and 'Close' */}
       </button>
