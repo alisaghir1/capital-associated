@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -17,34 +17,40 @@ export default function NavMobile() {
   };
 
   const handleClick = () => {
-    setIsNavbarOpen(false)
-  }
+    setIsNavbarOpen(false);
+  };
 
   return (
     <div className="xl:hidden">
       {/* Logo always visible */}
       <div className="absolute bg-amber-900 text-gray-300 flex justify-between items-center px-5 py-2 top-0 left-0 right-0 z-50">
-  {/* Email with mailto link */}
-  <Link href="mailto:hello@capitalassociation.com" className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white">
-    hello@capitalassociation.com
-  </Link>
-  
-  {/* Phone number with tel link */}
-  <Link href="tel:+971521211520" className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white">
-    +971 52 121 1520
-  </Link>
-</div>
-      <div className=" absolute top-8 left-4 z-50 p-2">
-        <Image width={130} height={100} src='/logoLight.svg' alt="logo"/>
+        {/* Email with mailto link */}
+        <Link
+          href="mailto:hello@capitalassociation.com"
+          className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
+        >
+          hello@capitalassociation.com
+        </Link>
+
+        {/* Phone number with tel link */}
+        <Link
+          href="tel:+971521211520"
+          className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
+        >
+          +971 52 121 1520
+        </Link>
       </div>
-      
+      <div className=" absolute top-8 left-4 z-50 p-2">
+        <Image width={130} height={100} src="/logoLight.svg" alt="logo" />
+      </div>
 
       {/* Button to open the sidebar */}
       <button
         onClick={toggleNavbar}
         className="absolute text-4xl text-center mt-4 top-8 right-4 z-50 p-2 hover:scale-110 text-black transition-all duration-300 ease-in-out rounded-full xl:hidden"
       >
-        {isNavbarOpen ? <RiCloseFill /> : <RiMenuFoldFill />} {/* Toggle between '☰' and 'Close' */}
+        {isNavbarOpen ? <RiCloseFill /> : <RiMenuFoldFill />}{" "}
+        {/* Toggle between '☰' and 'Close' */}
       </button>
 
       {/* Mobile Navbar */}
@@ -55,87 +61,102 @@ export default function NavMobile() {
       >
         {/* Navigation Links */}
         <ul className="flex flex-col gap-8 text-lg text-gray-600 font-medium mt-24">
-        <li className="relative group">
-  <Link 
-    onClick={handleClick} 
-    href="/about-us" 
-    className="hover:text-black transition-colors duration-300 ease-in-out"
-  >
-    About
-  </Link>
-  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-</li>
-<li className="relative group">
-    <Link 
-      onClick={handleClick} 
-      href="/team" 
-      className="hover:text-black transition-colors duration-300 ease-in-out"
-    >
-      Team
-    </Link>
-    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-  </li>
-  <li className="relative group">
-    <Link 
-      onClick={handleClick} 
-      href="/our-services" 
-      className="hover:text-black transition-colors duration-300 ease-in-out"
-    >
-      Services
-    </Link>
-    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-  </li>
-  <li className="relative group">
-    <Link 
-      onClick={handleClick} 
-      href="/career" 
-      className="hover:text-black transition-colors duration-300 ease-in-out"
-    >
-      Career
-    </Link>
-    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-  </li>
-  <li className="relative group">
-    <Link 
-      onClick={handleClick} 
-      href="/our-work" 
-      className="hover:text-black transition-colors duration-300 ease-in-out"
-    >
-      Projects
-    </Link>
-    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-  </li>
-  <li className="relative group">
-    <Link 
-      onClick={handleClick} 
-      href="/blogs" 
-      className="hover:text-black transition-colors duration-300 ease-in-out"
-    >
-      Media
-    </Link>
-    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-  </li>
-  <li className="relative group">
-    <Link 
-      onClick={handleClick} 
-      href="/contact" 
-      className="hover:text-black transition-colors duration-300 ease-in-out"
-    >
-      Contact
-    </Link>
-    <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-  </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/about-us"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              About
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/team"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              Team
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/our-services"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              Services
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/career"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              Career
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/our-work"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              Projects
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/blogs"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              Media
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link
+              onClick={handleClick}
+              href="/contact"
+              className="hover:text-black transition-colors duration-300 ease-in-out"
+            >
+              Contact
+            </Link>
+            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </li>
         </ul>
 
         {/* Social Media Links */}
         <div className="flex gap-4 mt-8 text-gray-600">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-black">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl hover:text-black"
+          >
             <FaInstagram />
           </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-black">
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl hover:text-black"
+          >
             <FaFacebook />
           </a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-black">
+          <a
+            href="https://x.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl hover:text-black"
+          >
             <RiTwitterXLine />
           </a>
         </div>
