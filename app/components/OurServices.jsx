@@ -10,7 +10,7 @@ const OurServices = () => {
         </p>
       </section>
 
-      <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 px-10 pb-10 border-b border-b-black">
+      <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black">
         {/* First Row */}
         <div className="relative group h-[20rem] w-full gap-1">
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1 ">
@@ -129,7 +129,7 @@ const OurServices = () => {
           </div>
         </div>
       </section>
-      <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 px-10 py-10 border-b border-b-black">
+      <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black">
         {/* second Row */}
         <div className="relative group h-[20rem] w-full gap-1">
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
@@ -248,7 +248,7 @@ const OurServices = () => {
           </div>
         </div>
       </section>
-      <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 px-10 py-10 border-b border-b-black">
+      <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black">
         {/* second Row */}
         <div className="relative group h-[20rem] w-full gap-1">
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
