@@ -3,6 +3,9 @@ import About from "./components/About";
 import OurProjects from "./components/OurProjects";
 import OurServices from "./components/OurServices";
 import OurTeam from "./components/OurTeam";
+import Blogs from "./components/Blogs";
+import Consultation from './components/Consultation'
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -28,6 +31,9 @@ export default function Home() {
     <OurProjects />
     <OurServices />
     <OurTeam />
+    <Blogs />
+    <Consultation />
+    <Footer />
     </>
   );
 }
