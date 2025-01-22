@@ -32,8 +32,6 @@ export default function Home() {
     <OurServices />
     <OurTeam />
     <Blogs />
-    <Consultation />
-    <Footer />
     </>
   );
 }
