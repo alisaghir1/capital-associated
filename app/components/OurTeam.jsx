@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import Image from "next/image";
 import t1 from "../../public/team/t1.jpg";
@@ -7,6 +6,7 @@ import t3 from "../../public/team/t3.jpg";
 import t4 from "../../public/team/t4.jpg";
 import t5 from "../../public/team/t5.jpg";
 import t6 from "../../public/team/t6.jpg";
+import VidioComponent from "./VidioComponent";
 
 const teamMembers = [
   { image: t1, name: "Mohsen Ziad Bin Wael", position: "CEO" },
@@ -62,20 +62,7 @@ const OurTeam = () => {
           part of our success at Capital Associated Contracting.
         </p>
       </section>
-      <div className="mt-10"
-       onContextMenu={(e) => e.preventDefault()}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/vidio.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-x-0 bottom-0 h-1/3  bg-gradient-to-b from-transparent via-transparent to-black-heavy" />
-      </div>
+<VidioComponent />
     </div>
   );
 };

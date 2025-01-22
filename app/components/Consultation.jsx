@@ -11,7 +11,7 @@ const Consultation = () => {
     Partner with Us Today to Build the Future. Let&apos;s Create Something Extraordinary Together!
     </p>
     <Link href='/contact'>
-    <button className="bg-black hover:bg-white hover:border border-black hover:text-black transition-all duration-200 ease-in-out text-white py-5 px-20 text-center lg:text-2xl text-xl xl:text-3xl">
+    <button className="bg-black hover:bg-white border border-black hover:text-black transition-all duration-200 ease-in-out text-white py-5 px-20 text-center lg:text-2xl text-xl xl:text-3xl">
     GET FREE CONSULTATION
     </button>
     </Link>
