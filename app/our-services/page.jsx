@@ -5,7 +5,7 @@ import VidioComponent from "../components/VidioComponent";
 
 const OurServices = () => {
   return (
-    <div className="h-full w-full">
+    <div>
       {" "}
       <div className="relative z-0 w-full h-screen">
         {/* Background Image */}
@@ -31,7 +31,8 @@ const OurServices = () => {
           </p>
         </div>
       </div>
-      <section className="container z-[100] mt-20 mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black">
+
+      <section className="container z-50 mt-20 mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black">
         {/* First Row */}
         <div className="relative z-50 group h-[20rem] w-full gap-1">
           <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
