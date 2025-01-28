@@ -78,7 +78,7 @@ export default function Navbar() {
               href="/blogs"
               className="hover:text-black transition-all duration-200 ease-in-out"
             >
-              Media
+              Blogs
             </Link>
             <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
