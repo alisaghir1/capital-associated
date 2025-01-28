@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div>
       <div className="bg-white">
-        <div className="relative w-full h-screen">
+        <div className="relative h-[30rem] w-full">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -33,14 +33,13 @@ const page = () => {
           </div>
         </div>
         <div className="container mx-auto flex flex-col gap-5 text-center px-4">
-          <div className="mt-5">
+          <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/about/about2.jpg"
+              src="/services/interiorFit/s1.jpg"
               alt="Full Width Image"
-              layout="responsive"
-              width={1920}
-              height={1080}
-              className="xl:rounded-b-[300px] rounded-b-[100px]"
+              layout="fill"
+              objectFit="cover"
+              className="xl:rounded-b-[300px] rounded-b-[100px] "
             />
           </div>
           <p className="mt-4">
@@ -64,13 +63,12 @@ const page = () => {
             dedicated to creating remarkable environments that align with your
             unique vision and functional requirements.
           </p>
-          <div className="mt-5">
+          <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/about/about2.jpg"
+              src="/services/interiorFit/s2.jpg"
               alt="Full Width Image"
-              layout="responsive"
-              width={1920}
-              height={1080}
+              layout="fill"
+              objectFit="cover"
               className="xl:rounded-t-[300px] rounded-t-[100px]"
             />
           </div>
@@ -90,23 +88,25 @@ const page = () => {
               sustainability.
             </p>
             <div className="flex gap-5">
-              <div className="mt-5 w-1/2">
+              <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                {" "}
+                {/* Add 'relative' to the parent */}
                 <Image
-                  src="/about/about2.jpg"
+                  src="/services/interiorFit/s3.jpg"
                   alt="Full Width Image"
-                  layout="responsive"
-                  width={1920}
-                  height={1080}
+                  layout="fill" // Ensures the image fills the container
+                  objectFit="cover" // Ensures the image scales properly within the container
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
-              <div className="mt-5 w-1/2">
+              <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                {" "}
+                {/* Add 'relative' to the parent */}
                 <Image
-                  src="/about/about2.jpg"
+                  src="/services/interiorFit/s4.jpg"
                   alt="Full Width Image"
-                  layout="responsive"
-                  width={1920}
-                  height={1080}
+                  layout="fill" // Ensures the image fills the container
+                  objectFit="cover" // Ensures the image scales properly within the container
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
@@ -124,23 +124,25 @@ const page = () => {
                 a cohesive and inviting atmosphere.
               </p>
               <div className="flex gap-5">
-                <div className="mt-5 w-1/2">
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
                   <Image
-                    src="/about/about2.jpg"
+                    src="/services/interiorFit/s5.jpg"
                     alt="Full Width Image"
-                    layout="responsive"
-                    width={1920}
-                    height={1080}
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
-                <div className="mt-5 w-1/2">
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
                   <Image
-                    src="/about/about2.jpg"
+                    src="/services/interiorFit/s6.jpg"
                     alt="Full Width Image"
-                    layout="responsive"
-                    width={1920}
-                    height={1080}
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
@@ -159,23 +161,25 @@ const page = () => {
                 decisions that align with your taste and budget.
               </p>
               <div className="flex gap-5">
-                <div className="mt-5 w-1/2">
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
                   <Image
-                    src="/about/about2.jpg"
+                    src="/services/interiorFit/s7.jpg"
                     alt="Full Width Image"
-                    layout="responsive"
-                    width={1920}
-                    height={1080}
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
-                <div className="mt-5 w-1/2">
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
                   <Image
-                    src="/about/about2.jpg"
+                    src="/services/interiorFit/s8.jpg"
                     alt="Full Width Image"
-                    layout="responsive"
-                    width={1920}
-                    height={1080}
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
@@ -193,13 +197,14 @@ const page = () => {
                 agreed-upon budget. Our team works diligently while minimizing
                 disruptions to your daily operations or living arrangements.
               </p>
-              <div className="mt-5 ">
+              <div className="relative mt-5  h-64 xl:h-[30rem]">
+                {" "}
+                {/* Add 'relative' to the parent */}
                 <Image
-                  src="/about/about2.jpg"
+                  src="/services/interiorFit/s9.jpg"
                   alt="Full Width Image"
-                  layout="responsive"
-                  width={1920}
-                  height={1080}
+                  layout="fill" // Ensures the image fills the container
+                  objectFit="cover" // Ensures the image scales properly within the container
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
@@ -216,13 +221,14 @@ const page = () => {
                 detail, we install and integrate these custom features
                 seamlessly into your interior environment.
               </p>
-              <div className="mt-5">
+              <div className="relative mt-5  h-64 xl:h-[30rem]">
+                {" "}
+                {/* Add 'relative' to the parent */}
                 <Image
-                  src="/about/about2.jpg"
+                  src="/services/interiorFit/s10.jpg"
                   alt="Full Width Image"
-                  layout="responsive"
-                  width={1920}
-                  height={1080}
+                  layout="fill" // Ensures the image fills the container
+                  objectFit="cover" // Ensures the image scales properly within the container
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
@@ -239,13 +245,14 @@ const page = () => {
                 of the space. Our goal is to create an inviting atmosphere that
                 captivates and inspires all who experience it.
               </p>
-              <div className="mt-5 mb-20">
+              <div className="relative mt-5  h-64 xl:h-[30rem] mb-20">
+                {" "}
+                {/* Add 'relative' to the parent */}
                 <Image
-                  src="/about/about2.jpg"
+                  src="/services/interiorFit/s11.jpg"
                   alt="Full Width Image"
-                  layout="responsive"
-                  width={1920}
-                  height={1080}
+                  layout="fill" // Ensures the image fills the container
+                  objectFit="cover" // Ensures the image scales properly within the container
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
@@ -254,37 +261,38 @@ const page = () => {
         </div>
       </div>
       <div className="bg-slate-100">
-
-      <div className="container mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
-        <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-        Contact Us for Your Interior Fit-Out Needs
-        </h1>
-        <p className="mb-4">
-          Ready to transform your space with our exceptional interior fit-out
-          services?
-        </p>
-        <p className="mb-4">
-          We invite you to get in touch with us today to discuss your project
-          requirements and explore how Capital Associated Building Contracting
-          can bring your vision to life.
-        </p>
-        <p className="mb-4">
-          Our friendly and knowledgeable team is here to answer any questions
-          you may have and provide you with personalized solutions tailored to
-          your needs. We are committed to delivering outstanding results,
-          exceeding your expectations, and ensuring your complete satisfaction.
-        </p>
-        <p className="mb-4">
-          Contact us now to schedule a consultation and let us guide you through
-          the journey of creating a remarkable interior space that reflects your
-          style, enhances functionality, and leaves a lasting impression.
-        </p>
-        <p className="mb-4">
-          Together, we will create an environment that inspires and captivates.
-        </p>
+        <div className="container mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
+          <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
+            Contact Us for Your Interior Fit-Out Needs
+          </h1>
+          <p className="mb-4">
+            Ready to transform your space with our exceptional interior fit-out
+            services?
+          </p>
+          <p className="mb-4">
+            We invite you to get in touch with us today to discuss your project
+            requirements and explore how Capital Associated Building Contracting
+            can bring your vision to life.
+          </p>
+          <p className="mb-4">
+            Our friendly and knowledgeable team is here to answer any questions
+            you may have and provide you with personalized solutions tailored to
+            your needs. We are committed to delivering outstanding results,
+            exceeding your expectations, and ensuring your complete
+            satisfaction.
+          </p>
+          <p className="mb-4">
+            Contact us now to schedule a consultation and let us guide you
+            through the journey of creating a remarkable interior space that
+            reflects your style, enhances functionality, and leaves a lasting
+            impression.
+          </p>
+          <p className="mb-4">
+            Together, we will create an environment that inspires and
+            captivates.
+          </p>
+        </div>
       </div>
-      </div>
-
     </div>
   );
 };
