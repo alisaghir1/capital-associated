@@ -117,7 +117,7 @@ export default function NavMobile() {
               href="/blogs"
               className="hover:text-black transition-colors duration-300 ease-in-out"
             >
-              Media
+              Blogs
             </Link>
             <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
           </li>
