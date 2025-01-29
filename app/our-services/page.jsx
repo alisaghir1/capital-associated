@@ -31,365 +31,383 @@ const OurServices = () => {
           </p>
         </div>
       </div>
-
       <section className="container z-50 mt-20 mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black">
         {/* First Row */}
-        <div className="relative z-50 group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-transparent transition-all duration-300 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            >
-              General Contracting
+        <Link href={"/our-services/generalContracting"}>
+          <div className="relative z-50 group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-transparent transition-all duration-300 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              >
+                General Contracting
+              </div>
+              {/* Top-right part */}
+              <div
+                className="bg-black border transition-all duration-300 ease-in-out group-hover:opacity-100 bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-black rounded-es-full transition-all duration-300 ease-in-out bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              ></div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-black rounded-ee-full transition-all duration-300 ease-in-out bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              ></div>
             </div>
-            {/* Top-right part */}
-            <div
-              className="bg-black border transition-all duration-300 ease-in-out group-hover:opacity-100 bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-black rounded-es-full transition-all duration-300 ease-in-out bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            ></div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-black rounded-ee-full transition-all duration-300 ease-in-out bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            ></div>
           </div>
-        </div>
+        </Link>
 
         {/* Second Row */}
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-transparent transition-all duration-300 ease-in-out flex justify-center text-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            >
-              Construction Management
+        <Link href={"/our-services/constructionManagement"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-transparent transition-all duration-300 ease-in-out flex justify-center text-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              >
+                Construction Management
+              </div>
+              {/* Top-right part */}
+              <div
+                className="bg-black transition-all duration-300 ease-in-out bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-black rounded-es-full transition-all duration-300 ease-in-out bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              ></div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-black rounded-ee-full transition-all duration-300 ease-in-out bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              ></div>
             </div>
-            {/* Top-right part */}
-            <div
-              className="bg-black transition-all duration-300 ease-in-out bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-black rounded-es-full transition-all duration-300 ease-in-out bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            ></div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-black rounded-ee-full transition-all duration-300 ease-in-out bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            ></div>
           </div>
-        </div>
+        </Link>
 
         {/* Third Row */}
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-transparent transition-all duration-300 ease-in-out flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            >
-              Design Build
+        <Link href={"/our-services/designBuild"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-transparent transition-all duration-300 ease-in-out flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              >
+                Design Build
+              </div>
+              {/* Top-right part */}
+              <div
+                className="bg-black transition-all duration-300 ease-in-out bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-black rounded-es-full transition-all duration-300 ease-in-out bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              ></div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-black rounded-ee-full transition-all duration-300 ease-in-out bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              ></div>
             </div>
-            {/* Top-right part */}
-            <div
-              className="bg-black transition-all duration-300 ease-in-out bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-black rounded-es-full transition-all duration-300 ease-in-out bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            ></div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-black rounded-ee-full transition-all duration-300 ease-in-out bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            ></div>
           </div>
-        </div>
+        </Link>
       </section>
       <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black">
         {/* Second Row */}
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            ></div>
-            {/* Top-right part */}
-            <div
-              className="bg-black rounded-se-full bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            >
-              Renovation & Remodeling
-            </div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-black bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            ></div>
-          </div>
-        </div>
 
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            ></div>
-            {/* Top-right part */}
-            <div
-              className="bg-black rounded-se-full bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            >
-              Pre-Construction Services
+        <Link href={"/our-services/renovationAndRemodeling"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              ></div>
+              {/* Top-right part */}
+              <div
+                className="bg-black rounded-se-full bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              >
+                Renovation & Remodeling
+              </div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-black bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              ></div>
             </div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-black bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            ></div>
           </div>
-        </div>
+        </Link>
 
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            ></div>
-            {/* Top-right part */}
-            <div
-              className="bg-black rounded-se-full bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            >
-              Value Engineering
+        <Link href={"/our-services/valueEngineering"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              ></div>
+              {/* Top-right part */}
+              <div
+                className="bg-black rounded-se-full bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              >
+                Pre-Construction Services
+              </div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-black bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              ></div>
             </div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-black bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            ></div>
           </div>
-        </div>
+        </Link>
+
+        <Link href={"/our-services/valueEngineering"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              ></div>
+              {/* Top-right part */}
+              <div
+                className="bg-black rounded-se-full bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              >
+                Value Engineering
+              </div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-black bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              ></div>
+            </div>
+          </div>
+        </Link>
       </section>
       <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black">
         {/* Second Row */}
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            ></div>
-            {/* Top-right part */}
-            <div
-              className="bg-black rounded-se-full bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-black bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            ></div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            >
-              Green Building Solutions
+        <Link href={"/our-services/greenBuildingSolutions"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              ></div>
+              {/* Top-right part */}
+              <div
+                className="bg-black rounded-se-full bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-black bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              ></div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              >
+                Green Building Solutions
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            ></div>
-            {/* Top-right part */}
-            <div
-              className="bg-black rounded-se-full bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-black bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            ></div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            >
-              Specialty Construction
+        <Link href={"/our-services/specialtyConstruction"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              ></div>
+              {/* Top-right part */}
+              <div
+                className="bg-black rounded-se-full bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-black bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              ></div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              >
+                Specialty Construction
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="relative group h-[20rem] w-full gap-1">
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-            {/* Top-left part */}
-            <div
-              className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 0%",
-              }}
-            ></div>
-            {/* Top-right part */}
-            <div
-              className="bg-black rounded-se-full bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 0%",
-              }}
-            ></div>
-            {/* Bottom-left part */}
-            <div
-              className="bg-black bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "0% 100%",
-              }}
-            ></div>
-            {/* Bottom-right part */}
-            <div
-              className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
-              style={{
-                backgroundSize: "200% 200%",
-                backgroundPosition: "100% 100%",
-              }}
-            >
-              Interior Fit-Out
+        <Link href={"/our-services/interiorFitOut"}>
+          <div className="relative group h-[20rem] w-full gap-1">
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+              {/* Top-left part */}
+              <div
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 0%",
+                }}
+              ></div>
+              {/* Top-right part */}
+              <div
+                className="bg-black rounded-se-full bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 0%",
+                }}
+              ></div>
+              {/* Bottom-left part */}
+              <div
+                className="bg-black bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "0% 100%",
+                }}
+              ></div>
+              {/* Bottom-right part */}
+              <div
+                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                style={{
+                  backgroundSize: "200% 200%",
+                  backgroundPosition: "100% 100%",
+                }}
+              >
+                Interior Fit-Out
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       </section>
       <section className="container mx-auto px-10 py-10 text-center">
         <p className="mb-5">
