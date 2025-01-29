@@ -85,7 +85,9 @@ const OurProjects = () => {
               <h2 className="xl:text-lg text-md mb-2 font-semibold">
                 Warehouse
               </h2>
-              <p className="xl:text-sm text-xs">Al Qouz, United Arab Emirates</p>
+              <p className="xl:text-sm text-xs">
+                Al Qouz, United Arab Emirates
+              </p>
             </div>
           </div>
         </Link>
@@ -109,7 +111,9 @@ const OurProjects = () => {
           <div className="relative hover:bg-[url(/projects/factory.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
             <div className="text-white xl:p-3 rounded-lg w-full text-start">
               <h2 className="xl:text-lg text-md mb-2 font-semibold">Factory</h2>
-              <p className="xl:text-sm text-xs">Al Qouz, United Arab Emirates</p>
+              <p className="xl:text-sm text-xs">
+                Al Qouz, United Arab Emirates
+              </p>
             </div>
           </div>
         </Link>
