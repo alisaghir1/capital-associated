@@ -116,7 +116,7 @@ const OurProjects = () => {
 
         {/* Residental Building 2 */}
         <Link href="/our-work/residentalBuildingSharjah2" className="block">
-          <div className="relative hover:bg-[url(/projects/residentalBuilding2.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
+          <div className="relative hover:bg-[url(/projects/residentalbuildingg.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
             <div className="text-white xl:p-3 rounded-lg w-full text-start">
               <h2 className="xl:text-lg text-md mb-2 font-semibold">
                 Residental Building
