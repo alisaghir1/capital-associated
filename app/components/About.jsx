@@ -1,12 +1,21 @@
+"use client";
 import React from "react";
 import Link from "next/link";
+import { fadeIn } from "@/variants";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
     <>
       <div className="flex bg-slate-100 flex-col xl:flex-row w-full justify-center items-center xl:w-full px-5 xl:px-20 pt-20 relative">
         {/* Left Side */}
-        <div className="xl:w-2/3 xl:p-5 rounded-lg ">
+        <motion.div
+          variants={fadeIn("left", 0.8)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
+          className="xl:w-2/3 xl:p-5 rounded-lg "
+        >
           <h1 className="mb-4 lg:text-3xl text-2xl xl:text-4xl font-bold border-b border-b-black pb-10 text-black">
             About Us
           </h1>
@@ -28,10 +37,16 @@ const About = () => {
             including commercial complexes, residential towers, industrial
             facilities, and infrastructure developments.
           </p>
-        </div>
+        </motion.div>
 
         {/* Right Side */}
-        <div className="xl:w-2/4 w-full grid h-[70rem] xl:h-[36rem] xl:grid-cols-3 gap-5 xl:gap-2 xl:p-5 mt-[-100] xl:mt-0">
+        <motion.div
+          variants={fadeIn("right", 0.8)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
+          className="xl:w-2/4 w-full grid h-[70rem] xl:h-[36rem] xl:grid-cols-3 gap-5 xl:gap-2 xl:p-5 mt-[-100] xl:mt-0"
+        >
           {/* First Row */}
           <div className="xl:col-span-1"></div>
           <div className="col-span-1  border  hidden border-black  xl:flex items-center justify-center xl:rounded-ss-full "></div>
@@ -56,7 +71,7 @@ const About = () => {
             <p>MESSAGE</p>
           </div>
           <div className="col-span-1"></div>
-        </div>
+        </motion.div>
         {/* Read More Button */}
       </div>
       <div className="flex justify-center align-center mb-20 bg-slate-100">

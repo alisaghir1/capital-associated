@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { fadeIn } from "@/variants";
+import { motion } from "framer-motion";
 
 const Blogs = () => {
   const blogPosts = [
@@ -51,20 +53,39 @@ const Blogs = () => {
   return (
     <div className="py-20 xl:px-20 px-0 bg-slate-100 pt-10">
       <section className="flex flex-col justify-center items-center gap-5 my-20 mx-5">
-        <h1 className="lg:text-3xl text-2xl xl:text-4xl">Our Blog</h1>
-        <p className="lg:text-2xl text-xl xl:text-3xl mt-10">
+        <motion.h1
+                  variants={fadeIn("down", 0.8)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.4 }}
+                   className="lg:text-3xl text-2xl xl:text-4xl">Our Blog</motion.h1>
+        <motion.p
+                  variants={fadeIn("up", 1)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: false, amount: 0.4 }}
+         className="lg:text-2xl text-xl xl:text-3xl mt-10">
           Words have the power to inspire, educate, and transform.
-        </p>
-        <p className="lg:text-xl text-lg xl:text-2xl mt-10">
+        </motion.p>
+        <motion.p
+                      variants={fadeIn("up", 1.2)}
+                      initial="hidden"
+                      whileInView={"show"}
+                      viewport={{ once: false, amount: 0.4 }} 
+        className="lg:text-xl text-lg xl:text-2xl mt-10">
           Words have the power to inspire, educate, and transform. Our blog page is a space where ideas come to life, where we share our
           passion for creativity, innovation, and growth. We believe that through our words, we can make a positive impact on the world and
           create a better future for generations to come. Join us on this journey of discovery, learning, and inspiration, and let’s explore the
           endless possibilities of the human mind and spirit.
-        </p>
+        </motion.p>
       </section>
       <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
         {blogPosts.map((post) => (
-          <div
+          <motion.div
+          variants={fadeIn("left", 1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
             key={post.id}
             className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg"
           >
@@ -87,7 +108,7 @@ const Blogs = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </section>
       <div className="flex justify-center align-center pt-20">

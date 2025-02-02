@@ -7,6 +7,8 @@ import t4 from "../../public/team/t4.jpg";
 import t5 from "../../public/team/t5.jpg";
 import t6 from "../../public/team/t6.jpg";
 import VidioComponent from "./VidioComponent";
+import { fadeIn } from "@/variants";
+import { motion } from "framer-motion";
 
 const teamMembers = [
   { image: t1, name: "Mohsen Ziad Bin Wael", position: "CEO" },
@@ -21,14 +23,36 @@ const OurTeam = () => {
   return (
     <div className="">
       <section className="flex flex-col justify-center items-center gap-5 py-20">
-        <h1 className="lg:text-3xl text-2xl xl:text-4xl">Our Team</h1>
-        <p className="lg:text-2xl text-xl xl:text-3xl">
+        <motion.h1
+          variants={fadeIn("down", 0.8)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
+          className="lg:text-3xl text-2xl xl:text-4xl"
+        >
+          Our Team
+        </motion.h1>
+        <motion.p
+          variants={fadeIn("up", 1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
+          className="lg:text-2xl text-xl xl:text-3xl"
+        >
           Driven by Expertise, United for Excellence
-        </p>
+        </motion.p>
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10 w-full mx-auto container px-10 xl:px-0">
+        <div
+
+          className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10 w-full mx-auto container px-10 xl:px-0"
+        >
           {teamMembers.map((member, index) => (
-            <div key={index}>
+            <motion.div
+            variants={fadeIn("right", 1)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.4 }}
+             key={index}>
               <div className=" w-full h-96 border border-black mb-4 ">
                 <Image
                   src={member.image}
@@ -40,11 +64,17 @@ const OurTeam = () => {
                 <p className="font-semibold">{member.name}</p>
                 <p className="text-gray-600">{member.position}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
-      <section className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0">
+      <motion.section
+        variants={fadeIn("up", 1)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.4 }}
+        className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0"
+      >
         <p className="lg:text-2xl text-bold text-xl xl:text-3xl">
           WE HAVE GREAT CREATIVE TEAM.
         </p>
@@ -61,8 +91,8 @@ const OurTeam = () => {
           unwavering commitment to excellence, our engineers are an integral
           part of our success at Capital Associated Contracting.
         </p>
-      </section>
-<VidioComponent />
+      </motion.section>
+      <VidioComponent />
     </div>
   );
 };
