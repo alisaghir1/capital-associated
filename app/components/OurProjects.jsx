@@ -1,17 +1,39 @@
 import React from "react";
 import Link from "next/link";
+import { fadeIn } from "@/variants";
+import { motion } from "framer-motion";
 
 const OurProjects = () => {
   return (
     <div>
       <section className="flex flex-col justify-center items-center gap-5 my-20">
-        <h1 className="lg:text-3xl text-2xl xl:text-4xl">Our Projects</h1>
-        <p className="lg:text-2xl text-xl xl:text-3xl">
+        <motion.h1
+          variants={fadeIn("down", 0.8)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
+          className="lg:text-3xl text-2xl xl:text-4xl"
+        >
+          Our Projects
+        </motion.h1>
+        <motion.p
+          variants={fadeIn("up", 1)}
+          initial="hidden"
+          whileInView={"show"}
+          viewport={{ once: false, amount: 0.4 }}
+          className="lg:text-2xl text-xl xl:text-3xl"
+        >
           Building Dreams, Crafting Futures.
-        </p>
+        </motion.p>
       </section>
 
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20">
+      <motion.section
+        variants={fadeIn("down", 1)}
+        initial="hidden"
+        whileInView={"show"}
+        viewport={{ once: false, amount: 0.4 }}
+        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20"
+      >
         {/* Residental Tower */}
         <Link href="/our-work/residentalTowerDubai" className="block">
           <div className="relative hover:bg-[url(/projects/residentalTower.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
@@ -117,7 +139,7 @@ const OurProjects = () => {
             </div>
           </div>
         </Link>
-      </section>
+      </motion.section>
 
       <div className="flex justify-center align-center mb-20">
         <Link
