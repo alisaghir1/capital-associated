@@ -9,7 +9,7 @@ const page = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/Mainhome.jpg"
+              src="/main.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen

@@ -25,7 +25,7 @@ const Team = () => {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                   <Image
-                    src="/Mainhome.jpg"
+                    src="/main.jpg"
                     alt="Background Image"
                     layout="fill"
                     objectFit="cover"
