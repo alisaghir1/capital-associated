@@ -35,7 +35,7 @@ const page = () => {
         <div className="container mx-auto flex flex-col gap-5 text-center px-4">
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/interiorFit/s1.jpg"
+              src="/services/s7.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
@@ -43,29 +43,27 @@ const page = () => {
             />
           </div>
           <p className="mt-4">
-            Green Buidling Solutions refers to the process of enhancing the interior
-            spaces of a building by optimizing the design, functionality, and
-            aesthetics. It involves a comprehensive approach that encompasses
-            various elements such as space planning, layout optimization,
-            material selection, construction, customization, and finishing
-            touches.
+            Our green building solutions service is meticulously crafted to
+            revolutionize the construction industry through the promotion of
+            sustainable and environmentally friendly building practices.
           </p>
           <p className="mt-4">
-            The goal of an Green Buidling Solutions is to create a harmonious and
-            captivating environment that reflects the purpose and personality of
-            the space while meeting the practical needs of its occupants.
+            At Capital Associated, we hold a steadfast belief in the paramount
+            importance of responsible building, as it lays the foundation for a
+            brighter future for our planet and generations to come.
           </p>
           <p className="mt-4">
-            At Capital Associated Building Contracting, we specialize in
-            providing transformative Green Buidling Solutions services that breathe new
-            life into your spaces. Whether it’s a commercial establishment,
-            residential property, or hospitality venue, our team of experts is
-            dedicated to creating remarkable environments that align with your
-            unique vision and functional requirements.
+            In today’s world, it is imperative to prioritize sustainability and
+            reduce our carbon footprint. Green building practices offer a
+            plethora of advantages, encompassing energy efficiency, cost
+            savings, improved indoor air quality, and enhanced occupant comfort.
+            By embracing our green building solutions, you can showcase your
+            commitment to environmental stewardship while reaping a multitude of
+            benefits.
           </p>
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/interiorFit/s2.jpg"
+              src="/services/interiorFit/s7.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
@@ -73,32 +71,21 @@ const page = () => {
             />
           </div>
           <h1 className="xl:text-3xl text-2xl border-b border-b-black w-full pb-10">
-            Our Green Buidling Solutions Services
+            Why Choose Green Building Solutions?
           </h1>
           <div className="flex flex-col text-start justify-center mt-10">
             <p className="xl:text-xl text-lg font-bold mb-4">
-              1- Concept Development
+              1- Environmental Benefits
             </p>
             <p className="mb-4">
-              We begin by understanding your requirements, preferences, and
-              goals. Our team of experienced professionals works closely with
-              you to develop a comprehensive concept that reflects your unique
-              style and meets your functional needs. We focus on creating a
-              harmonious balance between aesthetics, functionality, and
-              sustainability.
+              Our green buildings minimize their impact on the environment by
+              conserving natural resources, reducing greenhouse gas emissions,
+              and promoting biodiversity. We strive to achieve optimal energy
+              efficiency, utilize renewable materials, and employ water
+              conservation strategies, all with the aim of creating a healthier
+              and greener planet.
             </p>
             <div className="flex gap-5">
-              <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                {" "}
-                {/* Add 'relative' to the parent */}
-                <Image
-                  src="/services/interiorFit/s3.jpg"
-                  alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
-                  className="xl:rounded-b-[150px] rounded-b-[50px]"
-                />
-              </div>
               <div className="relative mt-5 w-1/2 h-56 xl:h-96">
                 {" "}
                 {/* Add 'relative' to the parent */}
@@ -110,98 +97,11 @@ const page = () => {
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
-            </div>
-            <div className="flex flex-col text-start justify-center mt-10">
-              <p className="xl:text-xl text-lg font-bold mb-4">
-                2- Space Planning and Design
-              </p>
-              <p className="mb-4">
-                Our talented designers leverage their expertise to optimize your
-                space and create efficient layouts. We analyze traffic flow,
-                spatial utilization, and ergonomic considerations to maximize
-                the potential of your interior environment. With a keen eye for
-                detail, we ensure that every aspect of the design contributes to
-                a cohesive and inviting atmosphere.
-              </p>
-              <div className="flex gap-5">
-                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
-                  <Image
-                    src="/services/interiorFit/s5.jpg"
-                    alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
-                    className="xl:rounded-b-[150px] rounded-b-[50px]"
-                  />
-                </div>
-                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
-                  <Image
-                    src="/services/interiorFit/s6.jpg"
-                    alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
-                    className="xl:rounded-b-[150px] rounded-b-[50px]"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col text-start justify-center mt-10">
-              <p className="xl:text-xl text-lg font-bold mb-4">
-                3- Material Selection and Sourcing
-              </p>
-              <p className="mb-4">
-                We believe in using only the highest quality materials for our
-                projects. Our team collaborates with trusted suppliers to source
-                premium materials, fixtures, and finishes that enhance the
-                aesthetic appeal and durability of your space. We provide you
-                with a wide range of options and guide you in making informed
-                decisions that align with your taste and budget.
-              </p>
-              <div className="flex gap-5">
-                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
-                  <Image
-                    src="/services/interiorFit/s7.jpg"
-                    alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
-                    className="xl:rounded-b-[150px] rounded-b-[50px]"
-                  />
-                </div>
-                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
-                  <Image
-                    src="/services/interiorFit/s8.jpg"
-                    alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
-                    className="xl:rounded-b-[150px] rounded-b-[50px]"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col text-start justify-center mt-10">
-              <p className="xl:text-xl text-lg font-bold mb-4">
-                4- Construction and Execution
-              </p>
-              <p className="mb-4">
-                Once the design and material selection are finalized, our
-                skilled craftsmen and technicians bring the project to life. We
-                adhere to strict quality standards and employ efficient project
-                management techniques to ensure timely completion within the
-                agreed-upon budget. Our team works diligently while minimizing
-                disruptions to your daily operations or living arrangements.
-              </p>
-              <div className="relative mt-5  h-64 xl:h-[30rem]">
+              <div className="relative mt-5 w-1/2 h-56 xl:h-96">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/interiorFit/s9.jpg"
+                  src="/services/interiorFit/s2.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -211,21 +111,95 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                5- Customization and Installation
+                2- Energy Efficiency
               </p>
               <p className="mb-4">
-                We understand the importance of personalized touches in creating
-                a truly unique space. Our craftsmen specialize in custom
-                cabinetry, furniture, and millwork, crafting bespoke elements
-                that reflect your individuality. With precise attention to
-                detail, we install and integrate these custom features
-                seamlessly into your interior environment.
+                Recognizing the significance of reducing energy consumption, we
+                analyze your project meticulously and implement innovative
+                techniques. These include energy-efficient insulation, advanced
+                lighting systems, and smart automation, all designed to minimize
+                energy wastage and lower utility costs.
+              </p>
+              <div className="flex gap-5">
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
+                  <Image
+                    src="/services/s5.jpg"
+                    alt="Full Width Image"
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
+                    className="xl:rounded-b-[150px] rounded-b-[50px]"
+                  />
+                </div>
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
+                  <Image
+                    src="/services/s6.jpg"
+                    alt="Full Width Image"
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
+                    className="xl:rounded-b-[150px] rounded-b-[50px]"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                3- Cost Savings
+              </p>
+              <p className="mb-4">
+                Green building solutions offer long-term financial advantages.
+                By incorporating energy-efficient technologies, sustainable
+                materials, and optimized designs, our solutions help decrease
+                operational costs, resulting in substantial savings throughout
+                the building’s lifespan. Additionally, numerous governments and
+                organizations provide incentives and tax benefits for green
+                building initiatives, further enhancing the financial appeal.
+              </p>
+              <div className="flex gap-5">
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
+                  <Image
+                    src="/services/s7.jpg"
+                    alt="Full Width Image"
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
+                    className="xl:rounded-b-[150px] rounded-b-[50px]"
+                  />
+                </div>
+                <div className="relative mt-5 w-1/2 h-56 xl:h-96">
+                  {" "}
+                  {/* Add 'relative' to the parent */}
+                  <Image
+                    src="/services/s1.jpg"
+                    alt="Full Width Image"
+                    layout="fill" // Ensures the image fills the container
+                    objectFit="cover" // Ensures the image scales properly within the container
+                    className="xl:rounded-b-[150px] rounded-b-[50px]"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                4- Enhanced Indoor Air Quality
+              </p>
+              <p className="mb-4">
+                We understand the critical role of indoor air quality in
+                occupant health and well-being. Our green building solutions
+                prioritize the use of low-emission materials, efficient
+                ventilation systems, and indoor pollutant control measures. By
+                improving air quality, we create spaces that promote
+                productivity, comfort, and overall well-being.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/interiorFit/s10.jpg"
+                  src="/services/s9.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -235,21 +209,20 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                6- Finishing Touches
+                5- Sustainable Reputation
               </p>
               <p className="mb-4">
-                The final step of our Green Buidling Solutions service involves adding
-                the finishing touches that elevate the overall ambiance. We
-                carefully select lighting fixtures, window treatments, artwork,
-                and accessories that complement the design and enhance the mood
-                of the space. Our goal is to create an inviting atmosphere that
-                captivates and inspires all who experience it.
+                Adopting green building practices elevates your organization’s
+                reputation as an environmentally responsible entity. It
+                showcases your commitment to sustainable development and
+                positions you as a leader in the industry, attracting
+                environmentally conscious clients and partners.
               </p>
-              <div className="relative mt-5  h-64 xl:h-[30rem] mb-20">
+              <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/interiorFit/s11.jpg"
+                  src="/services/s2.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -266,8 +239,8 @@ const page = () => {
             Contact Us for Your Green Buidling Solutions Needs
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Green Buidling Solutions
-            services?
+            Ready to transform your space with our exceptional Green Buidling
+            Solutions services?
           </p>
           <p className="mb-4">
             We invite you to get in touch with us today to discuss your project

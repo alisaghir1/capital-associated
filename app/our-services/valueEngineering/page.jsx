@@ -43,25 +43,22 @@ const page = () => {
             />
           </div>
           <p className="mt-4">
-            Value Engineering refers to the process of enhancing the interior
-            spaces of a building by optimizing the design, functionality, and
-            aesthetics. It involves a comprehensive approach that encompasses
-            various elements such as space planning, layout optimization,
-            material selection, construction, customization, and finishing
-            touches.
+            Capital Associated Building Contracting recognizes the significance
+            of maximizing the value of your construction endeavors. This is
+            precisely why we provide all-encompassing value engineering
+            solutions, assisting you in attaining an ideal equilibrium between
+            cost, quality, and functionality.
           </p>
           <p className="mt-4">
-            The goal of an Value Engineering is to create a harmonious and
-            captivating environment that reflects the purpose and personality of
-            the space while meeting the practical needs of its occupants.
+            Our extensive knowledge and dedication to excellence guarantee that
+            your project not only meets your unique needs but also delivers the
+            utmost value.
           </p>
           <p className="mt-4">
-            At Capital Associated Building Contracting, we specialize in
-            providing transformative Value Engineering services that breathe new
-            life into your spaces. Whether it’s a commercial establishment,
-            residential property, or hospitality venue, our team of experts is
-            dedicated to creating remarkable environments that align with your
-            unique vision and functional requirements.
+            Value engineering is a systematic and collaborative approach that
+            focuses on optimizing the value of a project by analyzing its
+            functions and identifying opportunities to improve performance,
+            reduce costs, and enhance quality.
           </p>
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
@@ -73,19 +70,18 @@ const page = () => {
             />
           </div>
           <h1 className="xl:text-3xl text-2xl border-b border-b-black w-full pb-10">
-            Our Value Engineering Services
+            Our Value Engineering Process
           </h1>
           <div className="flex flex-col text-start justify-center mt-10">
             <p className="xl:text-xl text-lg font-bold mb-4">
-              1- Concept Development
+              1- Evaluation and Analysis
             </p>
             <p className="mb-4">
-              We begin by understanding your requirements, preferences, and
-              goals. Our team of experienced professionals works closely with
-              you to develop a comprehensive concept that reflects your unique
-              style and meets your functional needs. We focus on creating a
-              harmonious balance between aesthetics, functionality, and
-              sustainability.
+              Our experienced team of professionals conducts a thorough
+              evaluation and analysis of your project to understand its goals,
+              objectives, and constraints. We examine the design, materials,
+              systems, and processes to identify areas where value can be
+              enhanced.
             </p>
             <div className="flex gap-5">
               <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -113,15 +109,14 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                2- Space Planning and Design
+                2- Idea Generation
               </p>
               <p className="mb-4">
-                Our talented designers leverage their expertise to optimize your
-                space and create efficient layouts. We analyze traffic flow,
-                spatial utilization, and ergonomic considerations to maximize
-                the potential of your interior environment. With a keen eye for
-                detail, we ensure that every aspect of the design contributes to
-                a cohesive and inviting atmosphere.
+                Through brainstorming sessions and collaborative workshops, we
+                generate a wide range of ideas and alternatives that have the
+                potential to improve the project’s value. We encourage input
+                from all stakeholders to ensure a holistic approach and diverse
+                perspectives.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -150,15 +145,13 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                3- Material Selection and Sourcing
+                3- Feasibility Assessment
               </p>
               <p className="mb-4">
-                We believe in using only the highest quality materials for our
-                projects. Our team collaborates with trusted suppliers to source
-                premium materials, fixtures, and finishes that enhance the
-                aesthetic appeal and durability of your space. We provide you
-                with a wide range of options and guide you in making informed
-                decisions that align with your taste and budget.
+                We carefully evaluate the feasibility of each idea generated
+                during the brainstorming sessions. Our experts assess the
+                technical, operational, and economic viability of the proposed
+                alternatives to determine their potential impact on the project.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -187,15 +180,14 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                4- Construction and Execution
+                4- Cost-Benefit Analysis
               </p>
               <p className="mb-4">
-                Once the design and material selection are finalized, our
-                skilled craftsmen and technicians bring the project to life. We
-                adhere to strict quality standards and employ efficient project
-                management techniques to ensure timely completion within the
-                agreed-upon budget. Our team works diligently while minimizing
-                disruptions to your daily operations or living arrangements.
+                Using advanced cost estimation techniques, we conduct a
+                comprehensive cost-benefit analysis for each alternative. This
+                analysis helps us understand the potential cost savings and
+                benefits that can be achieved without compromising the project’s
+                performance or quality.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
@@ -211,15 +203,14 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                5- Customization and Installation
+                5- Implementation and Monitoring
               </p>
               <p className="mb-4">
-                We understand the importance of personalized touches in creating
-                a truly unique space. Our craftsmen specialize in custom
-                cabinetry, furniture, and millwork, crafting bespoke elements
-                that reflect your individuality. With precise attention to
-                detail, we install and integrate these custom features
-                seamlessly into your interior environment.
+                Once the most viable alternatives are identified, we work
+                closely with our clients to implement the approved
+                recommendations. We ensure effective project management and
+                ongoing monitoring to guarantee that the value enhancements are
+                successfully integrated into the construction process.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
@@ -256,6 +247,68 @@ const page = () => {
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
+            </div>
+            <h1 className="xl:text-3xl text-2xl pb-10">
+              Benefits of Value Engineering
+            </h1>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                1- Cost Savings
+              </p>
+              <p className="mb-4">
+                By identifying cost-effective alternatives and eliminating
+                unnecessary expenses, value engineering helps you achieve
+                significant cost savings without sacrificing quality or
+                functionality. It allows you to optimize your project’s budget
+                and resources effectively.
+              </p>
+            </div>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                2- Enhanced Performance
+              </p>
+              <p className="mb-4">
+                Through the systematic evaluation and analysis of your project,
+                we identify opportunities to enhance its performance. This
+                includes improving efficiency, functionality, durability, and
+                sustainability aspects, ensuring that your project performs at
+                its best.
+              </p>
+            </div>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                3- Innovative Solutions
+              </p>
+              <p className="mb-4">
+                Value engineering encourages out-of-the-box thinking and
+                promotes innovative solutions. Our team of experts leverages
+                their extensive knowledge and experience to propose creative
+                ideas that can transform your project and add value.
+              </p>
+            </div>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                4- Risk Mitigation
+              </p>
+              <p className="mb-4">
+                Value engineering helps identify and mitigate potential risks
+                early in the project lifecycle. By addressing design flaws,
+                constructability issues, and operational challenges, we reduce
+                the likelihood of costly delays, rework, and future maintenance
+                problems.
+              </p>
+            </div>
+            <div className="flex flex-col text-start justify-center mt-10">
+              <p className="xl:text-xl text-lg font-bold mb-4">
+                5- Stakeholder Collaboration
+              </p>
+              <p className="mb-4">
+                Our value engineering process fosters collaboration and
+                engagement among all project stakeholders. We value your input
+                and actively involve you in the decision-making process,
+                ensuring that your vision and goals are incorporated into the
+                final solution.
+              </p>
             </div>
           </div>
         </div>

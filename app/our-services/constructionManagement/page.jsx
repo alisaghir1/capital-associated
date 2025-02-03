@@ -19,7 +19,7 @@ const page = () => {
           {/* Content on top of the image */}
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
             <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-              Construction Management
+              General Contracting
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
               Transforming Spaces, Elevating Experiences
@@ -27,7 +27,7 @@ const page = () => {
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
               <span className="text-black">
-                / Our Services / Construction Management
+                / Our Services / General Contracting
               </span>
             </p>
           </div>
@@ -43,22 +43,24 @@ const page = () => {
             />
           </div>
           <p className="mt-4">
-            Construction Management refers to the process of enhancing the interior
-            spaces of a building by optimizing the design, functionality, and
-            aesthetics. It involves a comprehensive approach that encompasses
-            various elements such as space planning, layout optimization,
-            material selection, construction, customization, and finishing
-            touches.
+            Capital Associated Building Contracting is your premier destination
+            to deliver outstanding construction management services to our
+            esteemed clients. With a wealth of experience and a team of highly
+            skilled professionals, we have solidified our position as a leading
+            provider of top-notch construction management solutions within the
+            industry in Dubai, UAE.
           </p>
           <p className="mt-4">
-            The goal of an Construction Management is to create a harmonious and
-            captivating environment that reflects the purpose and personality of
-            the space while meeting the practical needs of its occupants.
+            Recognizing that successful construction projects hinge on effective
+            planning, coordination, and execution, our approach to construction
+            management is founded on meticulous attention to detail, proactive
+            communication, and an unwavering commitment to completing projects
+            on schedule and within budgetary constraints.
           </p>
           <p className="mt-4">
             At Capital Associated Building Contracting, we specialize in
-            providing transformative Construction Management services that breathe new
-            life into your spaces. Whether it’s a commercial establishment,
+            providing transformative General Contracting services that breathe
+            new life into your spaces. Whether it’s a commercial establishment,
             residential property, or hospitality venue, our team of experts is
             dedicated to creating remarkable environments that align with your
             unique vision and functional requirements.
@@ -73,19 +75,20 @@ const page = () => {
             />
           </div>
           <h1 className="xl:text-3xl text-2xl border-b border-b-black w-full pb-10">
-            Our Construction Management Services
+            Our General Contracting Services
           </h1>
           <div className="flex flex-col text-start justify-center mt-10">
             <p className="xl:text-xl text-lg font-bold mb-4">
-              1- Concept Development
+              1- Comprehensive Project Planning
             </p>
             <p className="mb-4">
-              We begin by understanding your requirements, preferences, and
-              goals. Our team of experienced professionals works closely with
-              you to develop a comprehensive concept that reflects your unique
-              style and meets your functional needs. We focus on creating a
-              harmonious balance between aesthetics, functionality, and
-              sustainability.
+              Prior to commencing construction, we dedicate substantial time and
+              effort to comprehensive project planning. Our seasoned project
+              managers work closely alongside clients, architects, and engineers
+              to gain a thorough understanding of project objectives, scope, and
+              specific requirements. By meticulously analyzing all project
+              facets, we develop a detailed plan that ensures flawless execution
+              from inception to completion.
             </p>
             <div className="flex gap-5">
               <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -113,15 +116,17 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                2- Space Planning and Design
+                2- Efficient Resource Allocation
               </p>
               <p className="mb-4">
-                Our talented designers leverage their expertise to optimize your
-                space and create efficient layouts. We analyze traffic flow,
-                spatial utilization, and ergonomic considerations to maximize
-                the potential of your interior environment. With a keen eye for
-                detail, we ensure that every aspect of the design contributes to
-                a cohesive and inviting atmosphere.
+                The efficient allocation of resources stands as a crucial factor
+                in project success. Our construction management team excels in
+                the identification and acquisition of essential resources, such
+                as materials, equipment, and skilled labor, while optimizing
+                both cost-effectiveness and quality. Through meticulous planning
+                and strategic partnerships with reputable suppliers and
+                subcontractors, we guarantee the timely availability of
+                resources precisely where they are needed.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -150,15 +155,17 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                3- Material Selection and Sourcing
+                3- Risk Management and Quality Assurance
               </p>
               <p className="mb-4">
-                We believe in using only the highest quality materials for our
-                projects. Our team collaborates with trusted suppliers to source
-                premium materials, fixtures, and finishes that enhance the
-                aesthetic appeal and durability of your space. We provide you
-                with a wide range of options and guide you in making informed
-                decisions that align with your taste and budget.
+                Capital Associated Building Contracting acknowledges that
+                construction projects inherently entail risks. Our construction
+                management experts possess the expertise to assess and mitigate
+                potential risks, minimizing disruptions and maintaining a safe
+                working environment. Emphasizing the utmost commitment to
+                quality assurance, we implement rigorous measures to ensure the
+                highest standards are upheld throughout the entire construction
+                process.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -187,15 +194,16 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                4- Construction and Execution
+                4- Effective Communication and Collaboration
               </p>
               <p className="mb-4">
-                Once the design and material selection are finalized, our
-                skilled craftsmen and technicians bring the project to life. We
-                adhere to strict quality standards and employ efficient project
-                management techniques to ensure timely completion within the
-                agreed-upon budget. Our team works diligently while minimizing
-                disruptions to your daily operations or living arrangements.
+                Clear and open communication stands as a cornerstone of
+                successful construction management. Our team actively cultivates
+                strong relationships with all stakeholders, facilitating
+                transparent and timely channels of communication. We maintain
+                clients fully informed regarding project progress, promptly
+                address any concerns that arise, and provide regular updates to
+                ensure everyone remains well-informed and aligned.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
@@ -211,15 +219,16 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                5- Customization and Installation
+                5- Adherence to Deadlines and Budgetary Constraints
               </p>
               <p className="mb-4">
-                We understand the importance of personalized touches in creating
-                a truly unique space. Our craftsmen specialize in custom
-                cabinetry, furniture, and millwork, crafting bespoke elements
-                that reflect your individuality. With precise attention to
-                detail, we install and integrate these custom features
-                seamlessly into your interior environment.
+                We recognize the paramount importance of meeting project
+                deadlines and adhering to allocated budgets. Our construction
+                management professionals employ proven methodologies and project
+                management techniques to streamline operations and meticulously
+                maintain project schedules. By closely monitoring costs and
+                implementing stringent cost-control measures, we ensure projects
+                remain well within the agreed-upon budget.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
@@ -235,15 +244,16 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                6- Finishing Touches
+                6- Client Satisfaction and Long-Term Partnerships
               </p>
               <p className="mb-4">
-                The final step of our Construction Management service involves adding
-                the finishing touches that elevate the overall ambiance. We
-                carefully select lighting fixtures, window treatments, artwork,
-                and accessories that complement the design and enhance the mood
-                of the space. Our goal is to create an inviting atmosphere that
-                captivates and inspires all who experience it.
+                Client satisfaction lies at the heart of our construction
+                management services. Our unwavering dedication to exceeding
+                expectations drives us to deliver exceptional results that align
+                seamlessly with our clients’ vision and goals. We highly value
+                the establishment of long-term partnerships, aiming to become
+                the preferred construction management partner for all our
+                clients’ future projects.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem] mb-20">
                 {" "}
@@ -263,11 +273,11 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your Construction Management Needs
+            Contact Us for Your General Contracting Needs
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Construction Management
-            services?
+            Ready to transform your space with our exceptional General
+            Contracting services?
           </p>
           <p className="mb-4">
             We invite you to get in touch with us today to discuss your project
