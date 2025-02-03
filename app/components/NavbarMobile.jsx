@@ -40,9 +40,11 @@ export default function NavMobile() {
           +971 52 121 1520
         </Link>
       </div>
+      <Link href={'/'}>
       <div className=" absolute top-8 left-4 z-50 p-2">
         <Image width={130} height={100} src="/logoLight.svg" alt="logo" />
       </div>
+      </Link>
 
       {/* Button to open the sidebar */}
       <button

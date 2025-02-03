@@ -261,7 +261,7 @@ const page = () => {
         </div>
       </div>
       <div className="bg-slate-100">
-        <div className="container mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
+        <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
             Contact Us for Your Pre-Construction Services Needs
           </h1>
