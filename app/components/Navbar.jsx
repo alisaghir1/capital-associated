@@ -139,7 +139,7 @@ export default function Navbar() {
             }`}
           >
             <Link
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/capital.associated/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition-all duration-200 ease-in-out border-l pl-2 border-l-black"

@@ -138,7 +138,7 @@ export default function NavMobile() {
         {/* Social Media Links */}
         <div className="flex gap-4 mt-8 text-gray-600">
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/capital.associated/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-black"

@@ -51,7 +51,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Follow Us</h3>
             <ul className="space-y-2">
               <li><Link href="https://www.facebook.com" className="hover:text-gray-300">Facebook</Link></li>
-              <li><Link href="https://www.instagram.com" className="hover:text-gray-300">Instagram</Link></li>
+              <li><Link href="https://www.instagram.com/capital.associated/" className="hover:text-gray-300">Instagram</Link></li>
               <li><Link href="https://www.youtube.com" className="hover:text-gray-300">YouTube</Link></li>
               <li><Link href="https://www.twitter.com" className="hover:text-gray-300">X</Link></li>
             </ul>
