@@ -76,7 +76,7 @@ export default function NavMobile() {
           <li className="relative group">
             <Link
               onClick={handleClick}
-              href="/team"
+              href="/our-team"
               className="hover:text-black transition-colors duration-300 ease-in-out"
             >
               Team
@@ -86,7 +86,7 @@ export default function NavMobile() {
           <li className="relative group">
             <Link
               onClick={handleClick}
-              href="/our-services"
+              href="/services"
               className="hover:text-black transition-colors duration-300 ease-in-out"
             >
               Services
@@ -116,7 +116,7 @@ export default function NavMobile() {
           <li className="relative group">
             <Link
               onClick={handleClick}
-              href="/blogs"
+              href="/blog"
               className="hover:text-black transition-colors duration-300 ease-in-out"
             >
               Blogs
@@ -126,7 +126,7 @@ export default function NavMobile() {
           <li className="relative group">
             <Link
               onClick={handleClick}
-              href="/contact"
+              href="/contact-us"
               className="hover:text-black transition-colors duration-300 ease-in-out"
             >
               Contact

@@ -12,10 +12,10 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link href="/" className="hover:text-gray-300">Home</Link></li>
               <li><Link href="/about-us" className="hover:text-gray-300">About us</Link></li>
-              <li><Link href="/our-services" className="hover:text-gray-300">Our Services</Link></li>
+              <li><Link href="/services" className="hover:text-gray-300">Our Services</Link></li>
               <li><Link href="/our-work" className="hover:text-gray-300">Our Work</Link></li>
-              <li><Link href="/blogs" className="hover:text-gray-300">Blog</Link></li>
-              <li><Link href="/contact" className="hover:text-gray-300">Contact Us</Link></li>
+              <li><Link href="/blog" className="hover:text-gray-300">Blog</Link></li>
+              <li><Link href="/contact-us" className="hover:text-gray-300">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -23,15 +23,15 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/our-services/generalContracting" className="hover:text-gray-300">General Contracting</Link></li>
-              <li><Link href="/our-services/constructionManagement" className="hover:text-gray-300">Construction Management</Link></li>
-              <li><Link href="/our-services/designBuild" className="hover:text-gray-300">Design - Build</Link></li>
-              <li><Link href="/our-services/renovationAndRemodeling" className="hover:text-gray-300">Renovation & Remodeling</Link></li>
-              <li><Link href="/our-services/pre-ConstructionServices" className="hover:text-gray-300">Pre-Construction Services</Link></li>
-              <li><Link href="/our-services/valueEngineering" className="hover:text-gray-300">Value Engineering</Link></li>
-              <li><Link href="/our-services/greenBuildingSolutions" className="hover:text-gray-300">Green Building Solutions</Link></li>
-              <li><Link href="/our-services/specialtyConstruction" className="hover:text-gray-300">Specialty Construction</Link></li>
-              <li><Link href="/our-services/interiorFitOut" className="hover:text-gray-300">Interior Fit-Out</Link></li>
+              <li><Link href="/services/general-contracting" className="hover:text-gray-300">General Contracting</Link></li>
+              <li><Link href="/services/construction-management" className="hover:text-gray-300">Construction Management</Link></li>
+              <li><Link href="/services/design-build" className="hover:text-gray-300">Design - Build</Link></li>
+              <li><Link href="/services/renovation-and-remodeling" className="hover:text-gray-300">Renovation & Remodeling</Link></li>
+              <li><Link href="/services/pre-construction-services" className="hover:text-gray-300">Pre-Construction Services</Link></li>
+              <li><Link href="/services/value-engineering" className="hover:text-gray-300">Value Engineering</Link></li>
+              <li><Link href="/services/green-building-solutions" className="hover:text-gray-300">Green Building Solutions</Link></li>
+              <li><Link href="/services/specialty-construction" className="hover:text-gray-300">Specialty Construction</Link></li>
+              <li><Link href="/services/interior-fit-out" className="hover:text-gray-300">Interior Fit-Out</Link></li>
             </ul>
           </div>
 

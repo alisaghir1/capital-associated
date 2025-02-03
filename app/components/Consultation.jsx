@@ -9,7 +9,7 @@ const Consultation = () => {
   const pathname = usePathname(); // Get the current path using usePathname
 
   // Check if the current URL is "/contact"
-  if (pathname === '/contact') {
+  if (pathname === '/contact-us') {
     return null; // Do not render the component if the user is on the /contact page
   }
 
@@ -26,7 +26,7 @@ const Consultation = () => {
       <p className="lg:text-2xl text-xl xl:text-3xl">
         Partner with Us Today to Build the Future. Let&apos;s Create Something Extraordinary Together!
       </p>
-      <Link href='/contact'>
+      <Link href='/contact-us'>
         <button className="bg-black hover:bg-white border border-black hover:text-black transition-all duration-200 ease-in-out text-white py-5 px-20 text-center lg:text-2xl text-xl xl:text-3xl">
           GET FREE CONSULTATION
         </button>

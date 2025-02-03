@@ -33,7 +33,7 @@ const OurServices = () => {
       </div>
       <section className="container z-50 mt-20 mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black">
         {/* First Row */}
-        <Link href={"/our-services/generalContracting"}>
+        <Link href={"/services/general-contracting"}>
           <div className="relative z-50 group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -75,7 +75,7 @@ const OurServices = () => {
         </Link>
 
         {/* Second Row */}
-        <Link href={"/our-services/constructionManagement"}>
+        <Link href={"/services/construction-management"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -117,7 +117,7 @@ const OurServices = () => {
         </Link>
 
         {/* Third Row */}
-        <Link href={"/our-services/designBuild"}>
+        <Link href={"/services/design-build"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -161,7 +161,7 @@ const OurServices = () => {
       <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black">
         {/* Second Row */}
 
-        <Link href={"/our-services/renovationAndRemodeling"}>
+        <Link href={"/services/renovation-and-remodeling"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -202,7 +202,7 @@ const OurServices = () => {
           </div>
         </Link>
 
-        <Link href={"/our-services/pre-ConstructionServices"}>
+        <Link href={"/services/pre-construction-services"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -243,7 +243,7 @@ const OurServices = () => {
           </div>
         </Link>
 
-        <Link href={"/our-services/valueEngineering"}>
+        <Link href={"/services/value-engineering"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -286,7 +286,7 @@ const OurServices = () => {
       </section>
       <section className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black">
         {/* Second Row */}
-        <Link href={"/our-services/greenBuildingSolutions"}>
+        <Link href={"/services/green-building-solutions"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -327,7 +327,7 @@ const OurServices = () => {
           </div>
         </Link>
 
-        <Link href={"/our-services/specialtyConstruction"}>
+        <Link href={"/services/specialty-construction"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -368,7 +368,7 @@ const OurServices = () => {
           </div>
         </Link>
 
-        <Link href={"/our-services/interiorFitOut"}>
+        <Link href={"/services/interior-fit-out"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}

@@ -37,7 +37,7 @@ export default function Navbar() {
           </li>
           <li className="relative group">
             <Link
-              href="/team"
+              href="/our-team"
               className="hover:text-black transition-all duration-200 ease-in-out"
             >
               Team
@@ -57,7 +57,7 @@ export default function Navbar() {
           <div className="w-[0.5px] h-10 bg-black"></div>
           <li className="relative group">
             <Link
-              href="/our-services"
+              href="/services"
               className="hover:text-black transition-all duration-200 ease-in-out"
             >
               Services
@@ -75,7 +75,7 @@ export default function Navbar() {
           </li>
           <li className="relative group">
             <Link
-              href="/blogs"
+              href="/blog"
               className="hover:text-black transition-all duration-200 ease-in-out"
             >
               Blogs
@@ -84,7 +84,7 @@ export default function Navbar() {
           </li>
           <li className="relative group">
             <Link
-              href="/contact"
+              href="/contact-us"
               className="hover:text-black transition-all duration-200 ease-in-out"
             >
               Contact
