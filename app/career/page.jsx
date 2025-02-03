@@ -1,23 +1,63 @@
+import React from 'react'
+import CareerLayout from './CareerLayout'
 
-export default function CareerPage() {
-  return (
-    <div className="flex h-screen items-center justify-center bg-slate-100">
-      <div className="text-center p-8 mt-20  rounded-2xl  max-w-lg">
-        <h1 className="text-4xl font-bold text-black mb-10">
-          Stay Tuned!
-        </h1>
-        <p className="text-gray-600 text-lg mb-4">
-          We’re growing and expanding our horizons! While we’re not hiring at the moment, 
-          exciting opportunities are just around the corner.
-        </p>
-        <p className="text-gray-600 text-lg mb-6">
-          Our team is at the heart of our success, and we’re always looking for passionate, 
-          talented individuals to join us on our journey. Keep an eye on this page for updates!
-        </p>
-        <p className="text-gray-600 text-lg">
-          Thank you for your interest in being part of our story. We can't wait to share more soon!
-        </p>
-      </div>
-    </div>
-  );
+export async function generateMetadata() {
+  return {
+    title: "Career - Capital Accociated Building Contracting",
+    description:
+      "Join Capital Associated Building Contracting and be part of a dynamic team shaping the future of construction in Dubai and the UAE. We are committed to excellence, innovation, and sustainability in every project we undertake. Whether you're an experienced professional or a passionate newcomer, we offer exciting career opportunities in engineering, project management, site supervision, design, and more. Explore our job openings, grow your skills, and build a rewarding career with us in the ever-evolving world of construction and contracting.",
+      icons: {
+        icon: "/logoLight.svg", // Adjust if using a different format
+      },
+      keywords: [
+        "Construction Company Dubai",
+        "Building Contracting UAE",
+        "General Contracting",
+        "Fit-Out Company Dubai",
+        "Infrastructure Development UAE",
+        "Residential Construction Dubai",
+        "Commercial Construction UAE",
+        "Industrial Contracting Dubai",
+        "Turnkey Construction Solutions",
+        "Civil Engineering Dubai",
+        "MEP Contracting UAE",
+        "Renovation Services Dubai",
+        "Luxury Villa Construction UAE",
+        "Project Management Dubai",
+        "Interior Fit-Out Solutions",
+        "Structural Engineering UAE",
+        "Sustainable Construction Dubai",
+        "Road & Infrastructure Contracting",
+        "High-Rise Building Contractors UAE",
+        "Custom Home Builders Dubai",
+        "Building Maintenance Services UAE",
+        "Steel Structure Contractors Dubai",
+        "Concrete Works UAE",
+        "Exterior & Facade Works Dubai",
+        "Landscaping & Hardscaping UAE"
+      ],
+    openGraph: {
+      title: "Career - Capital Accociated Building Contracting",
+      description:
+        "Join Capital Associated Building Contracting and be part of a dynamic team shaping the future of construction in Dubai and the UAE. We are committed to excellence, innovation, and sustainability in every project we undertake. Whether you're an experienced professional or a passionate newcomer, we offer exciting career opportunities in engineering, project management, site supervision, design, and more. Explore our job openings, grow your skills, and build a rewarding career with us in the ever-evolving world of construction and contracting.",
+      url: "https://capitalassociated.com/career",
+      type: "website",
+      images: [
+        {
+          url: "/about/about3.jpg",
+          width: 1200,
+          height: 600,
+          alt: "Capital Associated Building Contracting",
+        },
+      ],
+    },
+  };
 }
+
+const Career = () => {
+  return (
+    <CareerLayout />
+  )
+}
+
+export default Career
