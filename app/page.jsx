@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 export default function Home() {
   return (
     <>
-      <div className="relative w-full h-screen">
+      <div className="relative w-full h-screen overflow-x-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
