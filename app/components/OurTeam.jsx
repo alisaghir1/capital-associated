@@ -9,14 +9,45 @@ import t6 from "../../public/team/t6.jpg";
 import VidioComponent from "./VidioComponent";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const teamMembers = [
-  { image: t1, name: "Mohsen Ziad Bin Wael", position: "CEO" },
-  { image: t2, name: "Carlos Smaha", position: "Head of engineers" },
-  { image: t3, name: "Loubna Lahoud", position: "Co-Founder" },
-  { image: t4, name: "Co-Founder", position: "Super Junior" },
-  { image: t5, name: "Shokri Al Saeed", position: "CFO" },
-  { image: t6, name: "Sofia Ghazi", position: "Head of Department" },
+  {
+    image: t1,
+    name: "Mohsen Ziad Bin Wael",
+    position: "CEO",
+    path: "/our-team/mohsen-ziad-bin-wael",
+  },
+  {
+    image: t2,
+    name: "Carlos Smaha",
+    position: "Head of engineers",
+    path: "/our-team/carlos-smaha",
+  },
+  {
+    image: t3,
+    name: "Loubna Lahoud",
+    position: "Co-Founder",
+    path: "/our-team/loubna-lahoud",
+  },
+  {
+    image: t4,
+    name: "Sameer Ghanem",
+    position: "Super Junior",
+    path: "/our-team/sameer-ghanem",
+  },
+  {
+    image: t5,
+    name: "Shokri Al Saeed",
+    position: "CFO",
+    path: "/our-team/shokri-al-saeed",
+  },
+  {
+    image: t6,
+    name: "Sofia Ghazi",
+    position: "Head of Department",
+    path: "/our-team/sofia-ghazi",
+  },
 ];
 
 const OurTeam = () => {
@@ -27,7 +58,7 @@ const OurTeam = () => {
           variants={fadeIn("down", 0.8)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="lg:text-3xl text-2xl xl:text-4xl"
         >
           Our Team
@@ -36,35 +67,34 @@ const OurTeam = () => {
           variants={fadeIn("up", 1)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="lg:text-2xl text-xl xl:text-3xl"
         >
           Driven by Expertise, United for Excellence
         </motion.p>
 
-        <div
-
-          className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10 w-full mx-auto container px-10 xl:px-0"
-        >
+        <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10 w-full mx-auto container px-10 xl:px-0">
           {teamMembers.map((member, index) => (
-            <motion.div
-            variants={fadeIn("right", 1)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.4 }}
-             key={index}>
-              <div className=" w-full h-96 border border-black mb-4 ">
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  className="sm:rounded-full object-cover w-full h-full"
-                />
-              </div>
-              <div className="text-center">
-                <p className="font-semibold">{member.name}</p>
-                <p className="text-gray-600">{member.position}</p>
-              </div>
-            </motion.div>
+            <Link key={index} href={member.path}>
+              <motion.div
+                variants={fadeIn("right", 1)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0.4 }}
+              >
+                <div className=" w-full h-96 border border-black mb-4 ">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    className="sm:rounded-full object-cover w-full h-full"
+                  />
+                </div>
+                <div className="text-center">
+                  <p className="font-semibold">{member.name}</p>
+                  <p className="text-gray-600">{member.position}</p>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </section>
@@ -72,7 +102,7 @@ const OurTeam = () => {
         variants={fadeIn("up", 1)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0"
       >
         <p className="lg:text-2xl text-bold text-xl xl:text-3xl">

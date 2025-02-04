@@ -11,7 +11,7 @@ const OurServices = () => {
           variants={fadeIn("down", 0.8)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="lg:text-3xl text-2xl xl:text-4xl"
         >
           Our Services
@@ -20,7 +20,7 @@ const OurServices = () => {
           variants={fadeIn("up", 1)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="lg:text-2xl text-xl xl:text-3xl"
         >
           Building Dreams, Crafting Futures.
@@ -31,7 +31,7 @@ const OurServices = () => {
         variants={fadeIn("up", 1)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black"
       >
         {/* First Row */}
@@ -165,7 +165,7 @@ const OurServices = () => {
         variants={fadeIn("up", 1.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black"
       >
         {/* Second Row */}
@@ -296,7 +296,7 @@ const OurServices = () => {
         variants={fadeIn("up", 1.2)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black"
       >
         {/* Second Row */}

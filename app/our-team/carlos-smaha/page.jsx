@@ -1,0 +1,67 @@
+import React from "react";
+import Image from "next/image";
+
+const Page = () => {
+  return (
+    <div className="flex flex-col  items-center justify-center border-b border-b-black pb-20">
+      <div className="relative w-full h-[30rem] ">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/main.jpg"
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </div>
+
+        {/* Content on top of the image */}
+        <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
+          <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
+            Carlos Smaha
+          </h1>
+          <p className="absolute bottom-10 left-10 text-white">
+            Home <span className="text-black">/ Our Team / Carlos Smaha</span>
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-col xl:flex-row gap-10 items-center rounded-2xl mt-10">
+        <div className="relative ml-10 mt-10 h-[30rem] xl:w-[60rem] px-5 w-full">
+          <Image
+            src="/team/t2.jpg"
+            alt="Carlos smaha"
+            layout="fill"
+            objectFit="cover"
+            className="xl:rounded-xl"
+          />
+        </div>
+        <div className="container mx-auto px-5">
+          <h1 className="text-3xl font-bold">Carlos Smaha</h1>
+          <p className="mt-2">Head Of Engineers</p>
+          <p className="mt-4">
+            Carlos Smaha leads our engineering team with unmatched expertise and
+            a passion for innovation. With a background in complex system
+            architecture and development, he ensures our technology
+            infrastructure remains cutting-edge and efficient.
+          </p>
+          <p className="mt-4">
+            Throughout his career, Carlos has played a pivotal role in designing
+            and implementing high-performance engineering solutions. His
+            problem-solving skills and deep technical knowledge help drive the
+            company's success and scalability.
+          </p>
+          <p className="mt-4">
+            Beyond his technical expertise, Carlos is a mentor and leader,
+            fostering a collaborative environment that empowers engineers to
+            excel. His commitment to continuous learning and improvement ensures
+            that our engineering team stays ahead in a rapidly evolving
+            industry.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Page;

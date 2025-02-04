@@ -13,7 +13,7 @@ const About = () => {
           variants={fadeIn("left", 0.8)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="xl:w-2/3 xl:p-5 rounded-lg "
         >
           <h1 className="mb-4 lg:text-3xl text-2xl xl:text-4xl font-bold border-b border-b-black pb-10 text-black">
@@ -44,7 +44,7 @@ const About = () => {
           variants={fadeIn("right", 0.8)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="xl:w-2/4 w-full grid h-[70rem] xl:h-[36rem] xl:grid-cols-3 gap-5 xl:gap-2 xl:p-5 mt-[-100] xl:mt-0"
         >
           {/* First Row */}

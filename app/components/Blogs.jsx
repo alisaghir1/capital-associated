@@ -57,13 +57,13 @@ const Blogs = () => {
                   variants={fadeIn("down", 0.8)}
                   initial="hidden"
                   whileInView={"show"}
-                  viewport={{ once: false, amount: 0.4 }}
+                  viewport={{ once: true, amount: 0.4 }}
                    className="lg:text-3xl text-2xl xl:text-4xl">Our Blog</motion.h1>
         <motion.p
                   variants={fadeIn("up", 1)}
                   initial="hidden"
                   whileInView={"show"}
-                  viewport={{ once: false, amount: 0.4 }}
+                  viewport={{ once: true, amount: 0.4 }}
          className="lg:text-2xl text-xl xl:text-3xl mt-10">
           Words have the power to inspire, educate, and transform.
         </motion.p>
@@ -71,7 +71,7 @@ const Blogs = () => {
                       variants={fadeIn("up", 1.2)}
                       initial="hidden"
                       whileInView={"show"}
-                      viewport={{ once: false, amount: 0.4 }} 
+                      viewport={{ once: true, amount: 0.4 }} 
         className="lg:text-xl text-lg xl:text-2xl mt-10">
           Words have the power to inspire, educate, and transform. Our blog page is a space where ideas come to life, where we share our
           passion for creativity, innovation, and growth. We believe that through our words, we can make a positive impact on the world and
@@ -85,7 +85,7 @@ const Blogs = () => {
           variants={fadeIn("left", 1)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
             key={post.id}
             className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg"
           >

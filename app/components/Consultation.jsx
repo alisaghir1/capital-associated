@@ -18,7 +18,7 @@ const Consultation = () => {
     variants={fadeIn("up", 1)}
     initial="hidden"
     whileInView={"show"}
-    viewport={{ once: false, amount: 0.4 }}
+    viewport={{ once: true, amount: 0.4 }}
      className="bg-white flex flex-col gap-10 py-20 xl:px-20 px-5 text-center w-[100%] justify-center items-center">
       <h1 className="lg:text-3xl text-2xl xl:text-4xl">
         Have something in mind

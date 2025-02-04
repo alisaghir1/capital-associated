@@ -28,7 +28,7 @@ export default function Home() {
             variants={fadeIn("down", 0.8)}
             initial="hidden"
             whileInView={"show"}
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once:true, amount: 0.4 }}
             className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold"
           >
             Building Dubai’s skyline
@@ -37,7 +37,7 @@ export default function Home() {
             variants={fadeIn("up", 0.8)}
             initial="hidden"
             whileInView={"show"}
-            viewport={{ once: false, amount: 0.4 }}
+            viewport={{ once:true, amount: 0.4 }}
             className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5"
           >
             one exceptional project at a time

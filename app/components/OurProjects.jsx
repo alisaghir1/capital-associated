@@ -11,7 +11,7 @@ const OurProjects = () => {
           variants={fadeIn("down", 0.8)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="lg:text-3xl text-2xl xl:text-4xl"
         >
           Our Projects
@@ -20,7 +20,7 @@ const OurProjects = () => {
           variants={fadeIn("up", 1)}
           initial="hidden"
           whileInView={"show"}
-          viewport={{ once: false, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.4 }}
           className="lg:text-2xl text-xl xl:text-3xl"
         >
           Building Dreams, Crafting Futures.
@@ -31,7 +31,7 @@ const OurProjects = () => {
         variants={fadeIn("down", 1)}
         initial="hidden"
         whileInView={"show"}
-        viewport={{ once: false, amount: 0.4 }}
+        viewport={{ once: true, amount: 0.4 }}
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20"
       >
         {/* Residental Tower */}
