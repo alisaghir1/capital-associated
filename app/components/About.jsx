@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const About = () => {
   return (
     <>
-      <div className="flex bg-slate-100 flex-col xl:flex-row w-full justify-center items-center xl:w-full px-5 xl:px-20 pt-20 relative">
+      <div className="flex overflow-x-hidden bg-slate-100 flex-col xl:flex-row w-full justify-center items-center xl:w-full px-5 xl:px-20 pt-20 relative">
         {/* Left Side */}
         <motion.div
           variants={fadeIn("left", 0.8)}
