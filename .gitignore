@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+#appwrite config
+utils
+
 # testing
 /coverage
 

@@ -35,45 +35,49 @@ const page = () => {
         <section className=" container mx-auto flex flex-col gap-5 px-5">
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
             <Image
-              src="/about1.jpg"
+              src="/projects/residentalbuildingg.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
               className="xl:rounded-t-[300px] rounded-t-[100px]"
             />
           </div>
-          <div className="w-full mb-20 xl:rounded-b-[300px] rounded-b-[100px]  flex flex-col items-center text-center bg-slate-200 xl:px-40 px-5 py-20">
+          <div className="w-full mb-20 xl:rounded-b-[300px] rounded-b-[100px] flex flex-col items-center text-center bg-slate-200 xl:px-40 px-5 py-20">
             <h1 className="xl:text-3xl text-black md:text-xl text-lg">
-              Where luxury meets the skyline.
+              Where Comfort Meets Elegance.
             </h1>
             <p className="xl:text-xl mt-4 text-black md:text-lg text-md">
-              Live the Dubai Marina dream.
+              Experience the charm of Sharjah living.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              An iconic residential tower in the heart of Dubai Marina is a
-              stunning landmark, standing proudly at 48 floors. This
-              architectural masterpiece is a symbol of modern luxury and urban
-              sophistication. It offers breathtaking views of the marina, the
-              glistening waters of the Arabian Gulf, and the dynamic skyline of
-              Dubai.
+              Nestled in the heart of Sharjah, this stunning residential
+              building stands as a beacon of modern elegance and comfort.
+              Combining contemporary architecture with traditional Arabian
+              charm, it offers an exceptional living experience in one of the
+              UAE’s most culturally rich cities.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              The tower's design combines sleek, contemporary lines with
-              innovative use of glass and steel, creating a sense of openness
-              and light. Its high-rise structure is designed to maximize natural
-              light, offering floor-to-ceiling windows in each of its luxurious
-              apartments. Residents enjoy unparalleled views of both the
-              cityscape and the waterfront, providing a living experience that
-              perfectly merges modern convenience with nature’s beauty.
+              The building’s design embraces sleek lines and expansive glass
+              facades, ensuring an abundance of natural light while offering
+              breathtaking views of the city’s skyline and lush landscapes.
+              Thoughtfully designed interiors blend functionality with
+              sophistication, creating a perfect balance between urban
+              convenience and homely warmth.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              Inside, the tower boasts an array of world-class amenities,
-              including a state-of-the-art fitness center, a swimming pool, and
-              spa facilities. The residential units range from elegant
-              one-bedroom apartments to expansive penthouses, all featuring
-              high-end finishes, open layouts, and smart home technology. The
-              tower is also designed with sustainability in mind, incorporating
-              energy-efficient features and environmentally friendly materials.
+              Inside, residents enjoy a range of premium amenities, including a
+              fully equipped fitness center, a temperature-controlled swimming
+              pool, and serene communal spaces. Apartments feature spacious
+              layouts, high-end finishes, and smart home technology, catering to
+              a modern lifestyle with unmatched comfort.
+            </p>
+            <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
+              Designed with sustainability in mind, the building incorporates
+              energy-efficient solutions and eco-friendly materials, ensuring a
+              greener future without compromising luxury. With its prime
+              location, residents have easy access to shopping centers, cultural
+              landmarks, and key transportation hubs, making it an ideal address
+              for families and professionals alike.
             </p>
           </div>
         </section>
@@ -86,19 +90,20 @@ const page = () => {
               Tower
             </h1>
             <p className="xl:text-lg mt-2 font-bold text-black md:text-md text-sm">
-              Dubai Marina. United Arab Emirates
+              Sharjah, United Arab Emirates
             </p>
             <p className="xl:text-xl mt-4 text-black md:text-lg text-md">
-              Prime Location: Heart of Dubai Marina with stunning waterfront
-              views. Iconic Design: 48-story modern luxury tower. Luxurious
-              Living: High-end apartments with smart home features. Top
-              Amenities: Fitness center, pool, spa, and more. Sustainable:
-              Energy-efficient and eco-friendly design.
+              Prime Location: Situated in the heart of Sharjah with beautiful
+              city views. Iconic Design: A contemporary 30-story luxury tower.
+              Luxurious Living: Spacious apartments with modern amenities. Top
+              Amenities: State-of-the-art gym, rooftop pool, spa, and
+              recreational areas. Sustainable: Environmentally-conscious design
+              with energy-saving features.
             </p>
           </div>
-          <div className="relative object-center w-full xl:h-[30rem] h-[25rem] mt-10 mb-5">
+          <div className="relative object-center w-full hidden xl:block xl:h-[30rem] h-[25rem] mt-10 mb-5">
             <Image
-              src="/projects/commercialBuilding.jpg"
+              src="/projects/residentalbuildingg.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="center" // Ensures the image maintains its aspect ratio while filling the screen
@@ -110,7 +115,7 @@ const page = () => {
           <div className="flex flex-col xl:flex-row gap-5">
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/p1.jpg"
+                src="/services/interiorFit/s3.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -119,7 +124,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/p2.jpg"
+                src="/services/interiorFit/s4.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -128,7 +133,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/p1.jpg"
+                src="/services/interiorFit/s3.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -139,7 +144,7 @@ const page = () => {
         </section>
       </div>
       <section className="container mx-auto px-5 mt-5">
-        <div className="w-full  xl:rounded-b-[300px] rounded-b-[100px]  flex flex-col items-center text-center bg-slate-100 xl:px-40 px-5 py-20">
+        <div className="w-full xl:rounded-b-[300px] rounded-b-[100px] flex flex-col items-center text-center bg-slate-100 xl:px-40 px-5 py-20">
           <h1 className="xl:text-3xl text-black md:text-xl text-lg">
             Sustainability
           </h1>
@@ -147,33 +152,31 @@ const page = () => {
             Where luxury meets responsibility. Living sustainably, with style
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-            Located in the vibrant Dubai Marina district, the tower is
-            surrounded by a plethora of dining, shopping, and entertainment
-            options, as well as easy access to major transport links. Its prime
-            location means residents can enjoy a lifestyle of convenience, with
-            everything from world-class restaurants to luxurious shopping malls
-            just moments away.
+            Located in the vibrant Sharjah city, the tower is surrounded by a
+            rich blend of cultural, dining, shopping, and entertainment options,
+            with easy access to major transport links. Its central location
+            offers residents a convenient lifestyle with everything from local
+            markets to upscale shopping centers just minutes away.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-            Whether you're looking for a dynamic urban lifestyle or a tranquil
-            retreat by the water, this iconic residential tower offers the best
-            of both worlds, making it a sought-after address in one of the most
-            prestigious areas of Dubai.
+            Whether you're seeking a dynamic urban lifestyle or a peaceful
+            retreat, this iconic residential tower provides the best of both,
+            offering a perfect blend of serenity and vibrancy in one of
+            Sharjah's most desirable areas.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-            The tower is an architectural gem nestled in the vibrant Dubai
-            Marina, one of the city&apos;s most prestigious and sought-after
-            neighborhoods. Standing at 48 stories tall, the tower offers a blend
-            of sophisticated design and cutting-edge technology, making it a
-            true symbol of modern urban living.
+            The tower stands as a beacon of modern design, rising above the
+            Sharjah skyline. This impressive 30-story building brings together
+            high-end finishes and the latest technology, symbolizing urban
+            sophistication.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-            Design & Architecture: The building boasts a sleek and contemporary
-            design, characterized by smooth glass facades and sharp, geometric
-            lines. Its striking silhouette complements the surrounding skyline,
-            while its expansive windows ensure panoramic views of the marina,
-            the Arabian Gulf, and the city. The tower’s exterior reflects a
-            perfect balance of elegance and innovation.
+            Design & Architecture: The tower features a sleek and contemporary
+            aesthetic with expansive glass facades and striking geometric lines.
+            Its elegant silhouette enhances the cityscape, offering panoramic
+            views of the city, nearby parks, and the Arabian Gulf. The design
+            marries beauty and innovation, creating a modern living space for
+            residents.
           </p>
         </div>
       </section>

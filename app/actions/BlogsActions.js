@@ -1,22 +1,30 @@
 import { databases } from "../utils/appwrite";
 
-export async function getReservations() {
+export const getAllBlogs = async () => {
   try {
     const response = await databases.listDocuments(
-      "6763f543000ea7b568f0", // Database ID
-      "6763f578000ee46e6506"  // Collection ID
+      "YOUR_DATABASE_ID",
+      "YOUR_COLLECTION_ID"
     );
-
-    // Map documents to the Reservation interface
-    const Blogs = response.documents.map((doc) => ({
-      $id: doc.$id,
-      $createdAt: doc.$createdAt,
-      time: doc.time,
-      date: doc.date,
-    }));
-    return Blogs;
+    console.log("All blogs:", response.documents);
+    return response.documents; // Returns an array of blog posts
   } catch (error) {
-    console.error("Error fetching Blogs:", error);
-    return []; // Return an empty array in case of an error
+    console.error("Error fetching blogs:", error);
+    return [];
   }
-}
+};
+
+export const getBlogById = async (blogId) => {
+  try {
+    const response = await databases.getDocument(
+      "YOUR_DATABASE_ID",
+      "YOUR_COLLECTION_ID",
+      blogId
+    );
+    console.log("Blog post:", response);
+    return response; // Returns the specific blog post object
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    return null;
+  }
+};

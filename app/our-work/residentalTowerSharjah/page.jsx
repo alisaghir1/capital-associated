@@ -35,7 +35,7 @@ const page = () => {
         <section className=" container mx-auto flex flex-col gap-5 px-5">
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
             <Image
-              src="/about1.jpg"
+              src="/projects/residentalbuildinggg.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -96,9 +96,9 @@ const page = () => {
               Energy-efficient and eco-friendly design.
             </p>
           </div>
-          <div className="relative object-center w-full xl:h-[30rem] h-[25rem] mt-10 mb-5">
+          <div className="relative object-center w-full hidden xl:block xl:h-[30rem] h-[25rem] mt-10 mb-5">
             <Image
-              src="/projects/commercialBuilding.jpg"
+              src="/projects/residentalbuildinggg.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="center" // Ensures the image maintains its aspect ratio while filling the screen
