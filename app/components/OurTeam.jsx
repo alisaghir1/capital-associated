@@ -91,7 +91,7 @@ const OurTeam = () => {
                 </div>
                 <div className="text-center">
                   <p className="font-semibold">{member.name}</p>
-                  <p className="text-gray-600">{member.position}</p>
+                  <p className="text-black">{member.position}</p>
                 </div>
               </motion.div>
             </Link>

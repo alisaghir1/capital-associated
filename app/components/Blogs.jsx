@@ -166,7 +166,7 @@ const Blogs = () => {
       </section>
       <div className="flex justify-center align-center pt-20">
         <Link
-          className="px-4 mb-5 z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-gray-600 hover:text-black "
+          className="px-4 mb-5 z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-black hover:text-black "
           href={"/blog"}
         >
           Visit Blog Page

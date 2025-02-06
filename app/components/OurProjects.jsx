@@ -143,7 +143,7 @@ const OurProjects = () => {
 
       <div className="flex justify-center align-center mb-20">
         <Link
-          className="px-4 mb-5 z-20 xl:mt-0 text-center py-2 text-3xl transition-colors duration-300 ease-in-out text-gray-600 hover:text-black border-b border-b-black"
+          className="px-4 mb-5 z-20 xl:mt-0 text-center py-2 text-3xl transition-colors duration-300 ease-in-out text-black hover:text-black border-b border-b-black"
           href="/our-work"
         >
           Visit Projects Page

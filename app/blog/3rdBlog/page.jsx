@@ -3,12 +3,12 @@ import Image from "next/image";
 
 const BlogPost3 = () => {
   return (
-    <div className="conatainer mx-auto px-5 pt-40">
+    <div className="container mx-auto px-5 pt-40">
       <header className="mb-8 text-center">
         <h1 className="text-3xl font-bold  pb-5">
           How to Plan for Future Expansions in Building Design
         </h1>
-        <p className="text-gray-600 text-sm mb-20">
+        <p className="text-black text-sm mb-20">
           December 13, 2024 | Posted by admin
         </p>
         <div className="relative h-[40rem] w-full">
@@ -27,14 +27,14 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Future Expansions in Building Design
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Future-proofing a building requires strategic planning from the very
             beginning. Anticipating future needs allows structures to adapt to
             changing demands without significant overhauls. Forward-thinking
             designs can save time, reduce costs, and improve efficiency in the
             long run.
           </p>
-          <p className="text-gray-800">
+          <p className="text-black">
             Here are practical steps to consider when planning for future
             expansions in building design.
           </p>
@@ -44,7 +44,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Assess Long-Term Needs
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Understanding the purpose of the building is key. Begin by analyzing
             potential growth scenarios over the next 10, 20, or even 50 years.
             Include projections for population growth, technological
@@ -57,7 +57,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Incorporate Flexible Spaces
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Adaptable layouts provide versatility for future requirements.
             Modular rooms, movable partitions, and open floor plans allow
             seamless changes to interiors. Design spaces that can accommodate
@@ -69,7 +69,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Plan for Vertical Growth
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Urban areas often experience limited horizontal expansion
             opportunities. Structural reinforcements at the outset enable
             additional floors in the future. Ensure the foundation and
@@ -81,7 +81,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Ensure Scalable Infrastructure
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Install systems that can handle increased demands over time. For
             example, wiring should support additional electrical loads, and
             plumbing should allow for extended capacity. Centralized HVAC
@@ -93,7 +93,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Design Efficient Utility Systems
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Energy systems play a significant role in long-term sustainability.
             Using renewable energy sources and integrating smart technologies
             can future-proof utility infrastructure. Solar panels, energy
@@ -106,7 +106,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Consider Sustainable Materials
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Durable and eco-friendly materials ensure longevity while minimizing
             environmental impact. Choose materials that can adapt to different
             functions or be repurposed if needed. Sustainable choices also
@@ -118,7 +118,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Modernizing for Safety and Accessibility
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Safety standards have evolved significantly over the years.
             Retrofitting should include upgrading fire safety systems, ensuring
             structural integrity, and improving accessibility. Adding ramps,
@@ -132,7 +132,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Think About Accessibility
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Demographics and regulations evolve over time. Ensure spaces comply
             with current accessibility standards and can adapt to future
             guidelines. Wider corridors, ramps, and elevators make buildings
@@ -144,7 +144,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Integrate Smart Technologies
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Advancements in technology demand adaptable systems. Include
             provisions for smart sensors, IoT devices, and automated controls.
             These systems enhance building management and can adapt to future
@@ -156,7 +156,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Focus on Future Transport Needs
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Urbanization influences transportation demands. Include plans for
             expanded parking, charging stations for electric vehicles, and
             access to public transit hubs. These features align buildings with
@@ -168,7 +168,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Optimize Space Utilization
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Maximizing available space allows room for growth. Include multi-use
             areas that can serve different purposes over time. Efficient layouts
             eliminate wasted space and offer flexibility.
@@ -176,7 +176,7 @@ const BlogPost3 = () => {
         </section>
         <section className="">
           <h2 className="text-2xl font-semibold mb-5">Include Open Areas</h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Green spaces and recreational zones enhance usability. These areas
             can serve as expansion zones if needed. Open areas also improve
             overall environmental quality and user experience.
@@ -186,7 +186,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Conduct Regular Reviews
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Plans should remain dynamic. Regular assessments of building
             performance and emerging needs ensure the design stays relevant.
             Schedule periodic reviews to update strategies as circumstances
@@ -197,7 +197,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Plan Financially for Expansion
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Budgeting for future growth eliminates financial constraints later.
             Set aside funds during the initial stages for anticipated
             expansions. Clear financial planning ensures projects remain
@@ -208,7 +208,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Engage Stakeholders Early
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Consulting with architects, engineers, and end-users during the
             design phase fosters comprehensive planning. Diverse perspectives
             lead to practical solutions for future growth.
@@ -218,7 +218,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Focus on Safety Standards
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Ensure compliance with safety codes from the start. Reinforced
             safety measures reduce risks associated with future expansions. Fire
             escapes, emergency exits, and alarms should meet updated
@@ -229,7 +229,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Create Clear Documentation
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Detailed records of design plans and infrastructure layouts simplify
             future modifications. Accurate documentation eliminates guesswork
             for architects and contractors handling expansions.
@@ -239,7 +239,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Endless Possibilities Start with Smart Design
           </h2>
-          <p className="text-gray-800 mb-5">
+          <p className="text-black mb-5">
             Every great building begins with thoughtful planning. Preparing for
             growth ensures structures serve their purpose for decades. Whether
             you’re constructing a commercial hub or a residential haven,
@@ -250,7 +250,7 @@ const BlogPost3 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Leverage Data Analytics
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Modern tools can predict trends and space utilization patterns. Use
             data-driven insights to forecast needs accurately. This approach
             leads to informed decision-making during the design process.

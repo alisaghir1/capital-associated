@@ -25,7 +25,7 @@ export default function Navbar() {
       {/* Navigation Links */}
       <div className="flex items-center gap-6">
         {/* Left Section */}
-        <ul className="flex items-center gap-6 text-sm font-medium text-gray-600">
+        <ul className="flex items-center gap-6 text-sm font-medium text-black">
           <li className="relative group">
             <Link
               href="/about-us"

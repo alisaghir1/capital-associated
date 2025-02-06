@@ -62,7 +62,7 @@ export default function NavMobile() {
         }`}
       >
         {/* Navigation Links */}
-        <ul className="flex flex-col gap-8 text-lg text-gray-600 font-medium mt-24">
+        <ul className="flex flex-col gap-8 text-lg text-black font-medium mt-24">
           <li className="relative group">
             <Link
               onClick={handleClick}
@@ -136,7 +136,7 @@ export default function NavMobile() {
         </ul>
 
         {/* Social Media Links */}
-        <div className="flex gap-4 mt-8 text-gray-600">
+        <div className="flex gap-4 mt-8 text-black">
           <a
             href="https://www.instagram.com/capital.associated/"
             target="_blank"

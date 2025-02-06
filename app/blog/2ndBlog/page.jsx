@@ -3,12 +3,12 @@ import Image from "next/image";
 
 const BlogPost2 = () => {
   return (
-    <div className="conatainer mx-auto px-5 pt-40">
+    <div className="container mx-auto px-5 pt-40">
       <header className="mb-8 text-center">
         <h1 className="text-3xl font-bold  pb-5">
           A Guide to Retrofitting Old Buildings
         </h1>
-        <p className="text-gray-600 text-sm mb-20">
+        <p className="text-black text-sm mb-20">
           January 2, 2025 | Posted by admin
         </p>
         <div className="relative h-[40rem] w-full">
@@ -27,7 +27,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Understanding the Building’s History
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Every old building has a story. Understanding its origins,
             materials, and design is crucial before starting any upgrades.
             Detailed research can uncover important historical and structural
@@ -36,7 +36,7 @@ const BlogPost2 = () => {
             aspects that must remain untouched to maintain the building’s
             essence.
           </p>
-          <p className="text-gray-800">
+          <p className="text-black">
             Retrofitting old buildings has become a popular way to blend history
             with modern needs. Aging structures often hold immense character,
             but their functionality can lag behind today’s standards. Breathing
@@ -50,7 +50,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Unique Aesthetic Appeal
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Reclaimed wood and each plank carries a history that adds depth to
             its appearance. Marks, knots, and grains make it an excellent choice
             for creating a rustic charm. Its weathered surface introduces warmth
@@ -64,7 +64,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Understanding the Building’s History
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Every old building has a story. Understanding its origins,
             materials, and design is crucial before starting any upgrades.
             Detailed research can uncover important historical and structural
@@ -79,14 +79,14 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Conducting a Thorough Assessment
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Older structures often come with hidden issues. A professional
             inspection can reveal problems like deteriorating foundations,
             outdated electrical systems, or inefficient insulation. Engineers
             and architects specializing in retrofits can provide a clear picture
             of what needs attention.
           </p>
-          <p className="text-gray-800">
+          <p className="text-black">
             An assessment helps avoid surprises during the renovation process,
             saving time and money.
           </p>
@@ -94,13 +94,13 @@ const BlogPost2 = () => {
 
         <section>
           <h2 className="text-2xl font-semibold mb-5">Versatility in Design</h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Reclaimed wood suits various design styles. Its adaptability allows
             it to complement modern, industrial, or traditional aesthetics.
             Homeowners can incorporate it into ceilings, walls, and flooring, or
             use it to create furniture and décor.
           </p>
-          <p className="text-gray-800">
+          <p className="text-black">
             No two pieces of reclaimed wood are the same. This uniqueness
             inspires creativity in design. Builders and designers can experiment
             with patterns, textures, and finishes to achieve distinctive
@@ -112,7 +112,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Prioritizing Energy Efficiency
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Modern energy standards can be integrated without compromising the
             building’s character. Adding insulation, upgrading windows, and
             installing efficient HVAC systems can reduce energy consumption.
@@ -126,7 +126,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Respecting the Building’s Original Features
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Preserving original features adds to the charm of old buildings.
             Elements like wooden beams, brick walls, and vintage tiles can be
             restored to maintain authenticity. Retaining these features also
@@ -139,7 +139,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Modernizing for Safety and Accessibility
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Safety standards have evolved significantly over the years.
             Retrofitting should include upgrading fire safety systems, ensuring
             structural integrity, and improving accessibility. Adding ramps,
@@ -153,7 +153,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Choosing Sustainable Materials
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Sustainability plays a key role in modern renovations. Reclaimed
             wood, recycled metals, and eco-friendly paints are excellent choices
             for retrofits. Using sustainable materials not only benefits the
@@ -167,7 +167,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Integrating Smart Technology
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Smart technology can make old buildings more efficient and
             convenient. Automated lighting, climate control, and security
             systems can be seamlessly incorporated. These technologies not only
@@ -181,7 +181,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Planning for Long-Term Maintenance
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Retrofitting doesn’t end once the renovations are complete. Ongoing
             maintenance ensures the building remains in top condition. Regular
             inspections can identify wear and tear before it becomes a major
@@ -192,7 +192,7 @@ const BlogPost2 = () => {
 
         <section className="">
           <h2 className="text-2xl font-semibold mb-5">Budgeting Effectively</h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Costs can quickly add up when retrofitting old buildings. Planning a
             realistic budget is essential. Prioritize critical upgrades first,
             then allocate resources for aesthetic improvements. Seeking grants
@@ -205,7 +205,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Collaborating with Experts
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Successful retrofitting requires input from a range of
             professionals. Architects, engineers, contractors, and historians
             bring valuable expertise to the table. Choosing a team experienced
@@ -218,7 +218,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Maintaining the Building’s Charm
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Old buildings often possess a unique character that sets them apart.
             Retrofitting should aim to preserve this charm while meeting modern
             needs. Thoughtful design choices help highlight the building’s best
@@ -230,7 +230,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Ensuring Compliance with Regulations
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Renovating old buildings often involves navigating complex
             regulations. Building codes, zoning laws, and historic preservation
             guidelines must all be considered. Consulting legal experts ensures
@@ -240,7 +240,7 @@ const BlogPost2 = () => {
         </section>
         <section className="">
           <h2 className="text-2xl font-semibold mb-5">Building a Timeline</h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Renovations can be time-consuming, especially with older structures.
             Creating a detailed timeline helps keep the project on track.
             Setting realistic milestones ensures each phase is completed
@@ -252,7 +252,7 @@ const BlogPost2 = () => {
           <h2 className="text-2xl font-semibold mb-5">
             Final Touches for a Seamless Blend
           </h2>
-          <p className="text-gray-800">
+          <p className="text-black">
             Small details can make a big difference in retrofits. Choosing
             appropriate fixtures, colors, and finishes helps the old and new
             elements harmonize. Thoughtful landscaping or outdoor lighting can

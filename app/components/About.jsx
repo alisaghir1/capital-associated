@@ -76,7 +76,7 @@ const About = () => {
       </div>
       <div className="flex justify-center align-center mb-20 bg-slate-100">
         <Link
-          className="px-4 mb-5 mt-[-50] z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-gray-600 hover:text-black border-b border-b-black"
+          className="px-4 mb-5 mt-[-50] z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-black hover:text-black border-b border-b-black"
           href={"/about-us"}
         >
           Read More...

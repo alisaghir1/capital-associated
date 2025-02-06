@@ -6,9 +6,11 @@ const VidioComponent = () => {
     <div className="mt-10"
     onContextMenu={(e) => e.preventDefault()}>
      <video
+       muted
        autoPlay
        loop
        playsInline
+       controls
        className="w-full h-[40rem] object-cover"
      >
        <source src="/vidio.mp4" type="video/mp4" />
