@@ -1,50 +1,32 @@
 import React from "react";
 import Image from "next/image";
 import VidioComponent from "../components/VidioComponent";
-import t1 from "../../public/team/t1.jpg";
-import t2 from "../../public/team/t2.jpg";
-import t3 from "../../public/team/t3.jpg";
-import t4 from "../../public/team/t4.jpg";
-import t5 from "../../public/team/t5.jpg";
-import t6 from "../../public/team/t6.jpg";
 import Link from "next/link";
 
 const teamMembers = [
   {
-    image: t1,
+    image: "/team/t1.JPG",
     name: "Mohsen Ziad Bin Wael",
     position: "CEO",
     path: "/our-team/mohsen-ziad-bin-wael",
   },
   {
-    image: t2,
+    image: "/team/t2.JPG",
     name: "Carlos Smaha",
     position: "Head of engineers",
     path: "/our-team/carlos-smaha",
   },
   {
-    image: t3,
+    image: "/team/t3.JPG",
     name: "Loubna Lahoud",
     position: "Co-Founder",
     path: "/our-team/loubna-lahoud",
   },
   {
-    image: t4,
+    image: "/team/t4.JPG",
     name: "Sameer Ghanem",
     position: "Super Junior",
     path: "/our-team/sameer-ghanem",
-  },
-  {
-    image: t5,
-    name: "Shokri Al Saeed",
-    position: "CFO",
-    path: "/our-team/shokri-al-saeed",
-  },
-  {
-    image: t6,
-    name: "Sofia Ghazi",
-    position: "Head of Department",
-    path: "/our-team/sofia-ghazi",
   },
 ];
 
@@ -86,11 +68,13 @@ const OurTeamLayout = () => {
             {teamMembers.map((member, index) => (
               <Link key={index} href={member.path}>
                 <div>
-                  <div className=" w-full h-96 border border-black mb-4 ">
+                  <div className=" w-full h-[34rem] border border-black mb-4 ">
                     <Image
                       src={member.image}
                       alt={member.name}
                       className="sm:rounded-full object-cover w-full h-full"
+                      width={1000}
+                      height={1000}
                     />
                   </div>
                   <div className="text-center">

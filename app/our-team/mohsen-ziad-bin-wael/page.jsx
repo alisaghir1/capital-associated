@@ -32,7 +32,7 @@ const Page = () => {
       <div className="flex flex-col xl:flex-row gap-10 items-center rounded-2xl mt-10">
         <div className="relative xl:ml-10 mt-10 h-[30rem] xl:w-[60rem] px-5 w-full">
           <Image
-            src="/team/t1.jpg"
+            src="/team/t1.JPG"
             alt="Mohsen Ziad Bin Wael"
             layout="fill"
             objectFit="cover"

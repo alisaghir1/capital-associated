@@ -9,7 +9,7 @@ const Blogs = () => {
     {
       id: 1,
       title: "The Benefits of Using Reclaimed Wood in Construction",
-      image: "/about1.jpg",
+      image: "/about1.JPG",
       path: "/blog/1stBlog",
       date: "08 Jan",
     },

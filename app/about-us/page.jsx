@@ -44,7 +44,7 @@ export async function generateMetadata() {
       type: "website",
       images: [
         {
-          url: "/about/about1.jpg",
+          url: "/about/about1.JPG",
           width: 1200,
           height: 600,
           alt: "Capital Associated Building Contracting",

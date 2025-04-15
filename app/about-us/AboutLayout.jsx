@@ -66,7 +66,7 @@ const AboutLayout = () => {
             {/* Right Image */}
             <div className="lg:w-1/2 flex justify-center items-center">
               <Image
-                src="/about/about1.jpg"
+                src="/about/about1.JPG"
                 alt="About Us Image"
                 width={1200}
                 height={600}
