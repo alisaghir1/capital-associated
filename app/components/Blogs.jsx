@@ -37,7 +37,7 @@ const Blogs = () => {
     {
       id: 5,
       title: "The Role of a General Contractor in Complex Projects",
-      image: "/projects/factory.jpg",
+      image: "/projects/meatmoot.jpg",
       path: "/blog/5thBlog",
       date: "04 Dec",
     },

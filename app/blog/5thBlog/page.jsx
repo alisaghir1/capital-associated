@@ -13,7 +13,7 @@ const BlogPost5 = () => {
         </p>
         <div className="relative h-[40rem] w-full">
           <Image
-            src="/projects/factory.jpg"
+            src="/projects/meatmoot.jpg"
             alt="first blog image"
             layout="fill"
             objectFit="cover"

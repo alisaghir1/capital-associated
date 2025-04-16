@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Image from "next/image";
 
@@ -34,13 +35,19 @@ const page = () => {
         </div>
         <section className=" container mx-auto flex flex-col gap-5 px-5">
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
-            <Image
-              src="/projects/commercialBuilding.jpg"
-              alt="Background Image"
-              layout="fill" // This will make the image cover the entire screen
-              objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
-              className="xl:rounded-t-[300px] rounded-t-[100px]"
-            />
+          <div onContextMenu={(e) => e.preventDefault()}>
+              <video
+                muted
+                autoPlay
+                loop
+                playsInline
+                controls
+                className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
+              >
+                <source src="/projects/meatmoot.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
           <div className="w-full mb-20 xl:rounded-b-[300px] rounded-b-[100px]  flex flex-col items-center text-center bg-slate-200 xl:px-40 px-5 py-20">
             <h1 className="xl:text-3xl text-black md:text-xl text-lg">
