@@ -19,43 +19,45 @@ const Page = () => {
         {/* Content on top of the image */}
         <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
           <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-            Sameer Ghanem
+            RAMAZ IZZA
           </h1>
           <p className="absolute bottom-10 left-10 text-white">
-            Home <span className="text-black">/ Our Team / Sameer Ghanem</span>
+            Home <span className="text-black">/ Our Team / RAMAZ IZZA</span>
           </p>
         </div>
       </div>
       <div className="flex flex-col xl:flex-row gap-10 items-center rounded-2xl mt-10">
-        <div className="relative xl:ml-10 mt-10 h-[30rem] xl:w-[60rem] px-5 w-full">
+        <div className="relative xl:ml-10 mt-10 h-[60rem] xl:w-[60rem] px-5 w-full object-center">
           <Image
             src="/team/t4.jpg"
-            alt="Sameer ghanem"
+            alt="RAMAZ IZZA"
             layout="fill"
             objectFit="cover"
             className="xl:rounded-xl"
           />
         </div>
         <div className="container mx-auto px-5">
-          <h1 className="text-3xl font-bold">Sameer Ghanem</h1>
-          <p className="mt-2">Super Junior</p>
+          <h1 className="text-3xl font-bold">RAMAZ IZZA</h1>
+          <p className="mt-2">Managing Director</p>
           <p className="mt-4">
-            Sameer Ghanem is a talented and dedicated Super Junior Engineer,
-            known for his problem-solving skills and eagerness to learn. His
-            ability to quickly grasp new technologies and adapt to changing
-            requirements makes him an invaluable asset to our engineering team.
+            RAMAZ IZZA is a visionary and results-driven Managing Director with
+            a strong background in engineering and strategic leadership. His
+            exceptional problem-solving abilities and commitment to excellence
+            have positioned him as a key driver of innovation and operational
+            success.
           </p>
           <p className="mt-4">
-            Sameer plays a crucial role in supporting the development of
-            innovative solutions. His attention to detail and strong technical
-            foundation allow him to contribute effectively to complex projects
-            while continuously improving his skills under the guidance of senior
-            engineers.
+            As Managing Director, Ramaz leads with clarity and purpose, guiding
+            cross-functional teams toward the execution of high-impact projects.
+            His deep technical understanding, combined with a sharp business
+            acumen, ensures the organization stays ahead in a competitive
+            landscape.
           </p>
           <p className="mt-4">
-            Passionate about coding and technology, Sameer is committed to
-            growing as a professional. His enthusiasm, teamwork, and dedication
-            help drive the success of our engineering initiatives.
+            Ramaz is passionate about fostering a culture of growth,
+            collaboration, and continuous improvement. His leadership style
+            empowers teams, encourages innovation, and drives long-term value
+            for stakeholders.
           </p>
         </div>
       </div>

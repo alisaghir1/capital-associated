@@ -19,44 +19,44 @@ const Page = () => {
         {/* Content on top of the image */}
         <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
           <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-            Carlos Smaha
+            MICHAEL REYES
           </h1>
           <p className="absolute bottom-10 left-10 text-white">
-            Home <span className="text-black">/ Our Team / Carlos Smaha</span>
+            Home <span className="text-black">/ Our Team / MICHAEL REYES</span>
           </p>
         </div>
       </div>
       <div className="flex flex-col xl:flex-row gap-10 items-center rounded-2xl mt-10">
-        <div className="relative xl:ml-10 mt-10 h-[30rem] xl:w-[60rem] px-5 w-full">
+        <div className="relative xl:ml-10 mt-10 h-[60rem] xl:w-[60rem] px-5 w-full">
           <Image
-            src="/team/t2.jpg"
-            alt="Carlos smaha"
+            src="/team/t1.JPG"
+            alt="MICHAEL REYES"
             layout="fill"
             objectFit="cover"
             className="xl:rounded-xl"
           />
         </div>
         <div className="container mx-auto px-5">
-          <h1 className="text-3xl font-bold">Carlos Smaha</h1>
-          <p className="mt-2">Head Of Engineers</p>
+          <h1 className="text-3xl font-bold">MICHAEL REYES</h1>
+          <p className="mt-2">Document Control</p>
           <p className="mt-4">
-            Carlos Smaha leads our engineering team with unmatched expertise and
-            a passion for innovation. With a background in complex system
-            architecture and development, he ensures our technology
-            infrastructure remains cutting-edge and efficient.
+            MICHAEL REYES is a key member of our team, known for his meticulous
+            attention to detail and leadership in document control processes.
+            His structured approach ensures that all project documentation is
+            managed efficiently and accurately.
           </p>
           <p className="mt-4">
-            Throughout his career, Carlos has played a pivotal role in designing
-            and implementing high-performance engineering solutions. His
-            problem-solving skills and deep technical knowledge help drive the
-            company's success and scalability.
+            With years of experience in document management and quality control,
+            Michael plays a critical role in maintaining compliance, supporting
+            project workflows, and ensuring seamless communication across
+            departments.
           </p>
           <p className="mt-4">
-            Beyond his technical expertise, Carlos is a mentor and leader,
-            fostering a collaborative environment that empowers engineers to
-            excel. His commitment to continuous learning and improvement ensures
-            that our engineering team stays ahead in a rapidly evolving
-            industry.
+            Beyond his expertise in document control, Michael brings a
+            forward-thinking mindset that promotes innovation, collaboration,
+            and continuous improvement. His ability to lead by example and
+            support team growth makes him a respected and valued contributor to
+            our organization.
           </p>
         </div>
       </div>

@@ -6,27 +6,27 @@ import Link from "next/link";
 const teamMembers = [
   {
     image: "/team/t1.JPG",
-    name: "Mohsen Ziad Bin Wael",
-    position: "CEO",
-    path: "/our-team/mohsen-ziad-bin-wael",
+    name: "MICHAEL REYES",
+    position: "Document Control",
+    path: "/our-team/michael-reyes",
   },
   {
     image: "/team/t2.JPG",
-    name: "Carlos Smaha",
-    position: "Head of engineers",
-    path: "/our-team/carlos-smaha",
+    name: "LAKSHMI MOHAN",
+    position: "Estimation Engineer",
+    path: "/our-team/lakshmi-mohan",
   },
   {
     image: "/team/t3.JPG",
-    name: "Loubna Lahoud",
-    position: "Co-Founder",
-    path: "/our-team/loubna-lahoud",
+    name: "HUSSAM AL RUSTOM",
+    position: "Site Engineer",
+    path: "/our-team/hussam-al-rustom",
   },
   {
     image: "/team/t4.JPG",
-    name: "Sameer Ghanem",
-    position: "Super Junior",
-    path: "/our-team/sameer-ghanem",
+    name: "RAMAZ IZZA",
+    position: "Managing Director",
+    path: "/our-team/ramaz-izza",
   },
 ];
 

@@ -67,7 +67,7 @@ const About = () => {
             QUALITY
           </div>
           <div className="col-span-1 hover:bg-[url('/about4.jpg')] bg-cover bg-center transition-all duration-300 ease-out text-xl  bg-black  text-white  flex flex-col items-center justify-center rounded-lg xl:rounded-ee-full ">
-            <p>CEO</p>
+            <p>Document Control</p>
             <p>MESSAGE</p>
           </div>
           <div className="col-span-1"></div>
