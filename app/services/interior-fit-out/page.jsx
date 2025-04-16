@@ -35,7 +35,7 @@ const page = () => {
         <div className="container mx-auto flex flex-col gap-5 text-center px-4">
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/interiorFit/s1.jpg"
+              src="/services/s9.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"

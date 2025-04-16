@@ -44,7 +44,7 @@ const page = () => {
                 controls
                 className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
               >
-                <source src="/projects/meatmoot.mp4" type="video/mp4" />
+                <source src="/projects/commercialBuilding.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -106,7 +106,7 @@ const page = () => {
           </div>
           <div className="relative object-center w-full hidden xl:block xl:h-[30rem] h-[25rem] mt-10 mb-5">
             <Image
-              src="/about1.JPG"
+              src="/projects/commercialBuilding.JPG"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="center" // Ensures the image maintains its aspect ratio while filling the screen
@@ -118,7 +118,7 @@ const page = () => {
           <div className="flex flex-col xl:flex-row gap-5">
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/p1.jpg"
+                src="/projects/commercialInt.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -127,7 +127,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/p2.jpg"
+                src="/projects/commercialInt2.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -136,7 +136,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/p1.jpg"
+                src="/projects/commercialInt.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen

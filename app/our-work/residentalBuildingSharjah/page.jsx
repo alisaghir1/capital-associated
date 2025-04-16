@@ -44,7 +44,7 @@ const page = () => {
                 controls
                 className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
               >
-                <source src="/projects/meatmoot.mp4" type="video/mp4" />
+                <source src="/projects/residentalBuilding3.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

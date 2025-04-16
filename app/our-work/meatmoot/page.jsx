@@ -118,7 +118,7 @@ const page = () => {
           <div className="flex flex-col xl:flex-row gap-5">
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/services/meatmoot1.jpg"
+                src="/projects/meatmoot1.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -127,7 +127,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/services/meatmoot2.jpg"
+                src="/projects/meatmoot2.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -136,7 +136,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/services/meatmoot1.jpg"
+                src="/projects/meatmoot1.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen

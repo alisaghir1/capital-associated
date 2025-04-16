@@ -34,17 +34,15 @@ const page = () => {
         <section className=" container mx-auto flex flex-col gap-5 px-5">
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
           <div onContextMenu={(e) => e.preventDefault()}>
-              <video
-                muted
-                autoPlay
-                loop
-                playsInline
-                controls
-                className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
-              >
-                <source src="/projects/meatmoot.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+        <div onContextMenu={(e) => e.preventDefault()}>
+          <Image
+              src="/projects/wareHouseMain.jpg"
+              alt="Background Image"
+              layout="fill" // This will make the image cover the entire screen
+              objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
+              className="w-full mb-20 xl:rounded-t-[300px] rounded-t-[100px] flex flex-col items-center"
+            />
+            </div>
             </div>
           </div>
           <div className="w-full mb-20 xl:rounded-b-[300px] rounded-b-[100px] flex flex-col items-center text-center bg-slate-200 xl:px-40 px-5 py-20">
@@ -121,7 +119,7 @@ const page = () => {
           <div className="flex flex-col xl:flex-row gap-5">
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/warehouse.jpg"
+                src="/projects/warehouse2.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -130,7 +128,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/about4.jpg"
+                src="/projects/warehouse3.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -139,7 +137,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:w-2/3 xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/projects/warehouse.jpg"
+                src="/projects/warehouse2.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen

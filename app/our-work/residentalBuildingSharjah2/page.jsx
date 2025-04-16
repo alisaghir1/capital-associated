@@ -44,7 +44,7 @@ const page = () => {
                 controls
                 className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
               >
-                <source src="/projects/meatmoot.mp4" type="video/mp4" />
+                <source src="/projects/residentalBuilding3.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -131,7 +131,7 @@ const page = () => {
             </div>
             <div className="relative w-full xl:h-[30rem] h-[15rem]  ">
               <Image
-                src="/services/interiorFit/s4.jpg"
+                src="/services/interiorFit/s7.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen

@@ -78,7 +78,7 @@ const OurServices = () => {
         </Link>
 
         {/* Second Row */}
-        <Link href={"/services/constructionManagement"}>
+        <Link href={"/services/construction-management"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
@@ -251,7 +251,7 @@ const OurServices = () => {
           </div>
         </Link>
 
-        <Link href={"/services/value Engineering"}>
+        <Link href={"/services/value-engineering"}>
           <div className="relative group h-[20rem] w-full gap-1">
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
