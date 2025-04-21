@@ -31,7 +31,7 @@ export default function Home() {
             viewport={{ once:true, amount: 0.4 }}
             className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold"
           >
-            From Vision to Skyline: Leading Developers in Dubai
+            From Vision to Skyline
           </motion.h1>
           <motion.p
             variants={fadeIn("up", 0.8)}
@@ -40,7 +40,7 @@ export default function Home() {
             viewport={{ once:true, amount: 0.4 }}
             className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5"
           >
-            one exceptional project at a time
+            Leading Developers in Dubai
           </motion.p>
         </div>
       </div>
