@@ -3,7 +3,7 @@ import ServicesLayout from './ServicesLayout'
 
 export async function generateMetadata() {
   return {
-    title: "Services - Capital Accociated Building Contracting",
+    title: "Services - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "At Capital Associated Building Contracting, we offer a comprehensive range of construction services tailored to meet the unique needs of each project. Our services include residential, commercial, and industrial construction, fit-out solutions, civil engineering, and infrastructure development. We are committed to delivering high-quality, sustainable, and innovative solutions that exceed client expectations. With a focus on precision, efficiency, and safety, our expert team ensures that every project is completed to the highest standards, on time, and within budget. Explore how we can bring your vision to life through our specialized services.",
       icons: {
@@ -37,7 +37,7 @@ export async function generateMetadata() {
         "Landscaping & Hardscaping UAE"
       ],
     openGraph: {
-      title: "Services - Capital Accociated Building Contracting",
+      title: "Services - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
       description:
         "At Capital Associated Building Contracting, we offer a comprehensive range of construction services tailored to meet the unique needs of each project. Our services include residential, commercial, and industrial construction, fit-out solutions, civil engineering, and infrastructure development. We are committed to delivering high-quality, sustainable, and innovative solutions that exceed client expectations. With a focus on precision, efficiency, and safety, our expert team ensures that every project is completed to the highest standards, on time, and within budget. Explore how we can bring your vision to life through our specialized services.",
       url: "https://capitalassociated.com/Services",

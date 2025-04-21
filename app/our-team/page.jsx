@@ -3,7 +3,7 @@ import OurTeamLayout from './OurTeamLayout'
 
 export async function generateMetadata() {
   return {
-    title: "Our Team - Capital Accociated Building Contracting",
+    title: "Our Team - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Meet the team behind Capital Associated Building Contracting—dedicated professionals driving excellence in the construction industry. Our diverse team includes engineers, architects, project managers, and specialists who are passionate about building lasting structures that stand the test of time. Together, we create innovative solutions that reflect our commitment to quality, sustainability, and client satisfaction. Learn more about the people who make our vision a reality and the expertise they bring to every project.",
       icons: {
@@ -37,7 +37,7 @@ export async function generateMetadata() {
         "Landscaping & Hardscaping UAE"
       ],
     openGraph: {
-      title: "Our Team - Capital Accociated Building Contracting",
+      title: "Our Team - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
       description:
         "Meet the team behind Capital Associated Building Contracting—dedicated professionals driving excellence in the construction industry. Our diverse team includes engineers, architects, project managers, and specialists who are passionate about building lasting structures that stand the test of time. Together, we create innovative solutions that reflect our commitment to quality, sustainability, and client satisfaction. Learn more about the people who make our vision a reality and the expertise they bring to every project.",
       url: "https://capitalassociated.com/our-team",

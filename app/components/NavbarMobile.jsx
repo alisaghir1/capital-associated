@@ -26,10 +26,10 @@ export default function NavMobile() {
       <div className="absolute bg-amber-900 text-gray-300 flex justify-between items-center px-5 py-2 top-0 left-0 right-0 z-50">
         {/* Email with mailto link */}
         <Link
-          href="mailto:hello@capitalassociation.com"
+          href="mailto:hello@capitalassociated.com"
           className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
         >
-          hello@capitalassociation.com
+          hello@capitalassociated.com
         </Link>
 
         {/* Phone number with tel link */}

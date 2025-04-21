@@ -46,7 +46,7 @@ const About = () => {
 
           {/* Second Row */}
           <div className="col-span-1  border hidden border-black xl:flex items-center justify-center rounded-lg "></div>
-          <div className="col-span-1  hover:bg-[url('/about1.JPG')] bg-cover bg-center transition-all duration-300 ease-out text-xl bg-black text-white flex items-center justify-center rounded-lg ">
+          <div className="col-span-1  hover:bg-[url('/about1.jpg')] bg-cover bg-center transition-all duration-300 ease-out text-xl bg-black text-white flex items-center justify-center rounded-lg ">
             {" "}
             VISION
           </div>

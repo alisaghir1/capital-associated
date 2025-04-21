@@ -3,7 +3,7 @@ import BlogLayout from './BlogLayout'
 
 export async function generateMetadata() {
   return {
-    title: "Blog - Capital Accociated Building Contracting",
+    title: "Blog - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Welcome to the official blog of Capital Associated Building Contracting LLC, your trusted partner in construction and fit-out solutions in Dubai, UAE. Stay updated with industry insights, project highlights, expert tips, and the latest trends in construction, engineering, and sustainable building practices. Whether you're an investor, developer, or homeowner, our blog provides valuable knowledge to help you make informed decisions and stay ahead in the ever-evolving world of construction.",
       icons: {
@@ -37,7 +37,7 @@ export async function generateMetadata() {
         "Landscaping & Hardscaping UAE"
       ],
     openGraph: {
-      title: "Blog - Capital Accociated Building Contracting",
+      title: "Blog - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
       description:
         "Welcome to the official blog of Capital Associated Building Contracting LLC, your trusted partner in construction and fit-out solutions in Dubai, UAE. Stay updated with industry insights, project highlights, expert tips, and the latest trends in construction, engineering, and sustainable building practices. Whether you're an investor, developer, or homeowner, our blog provides valuable knowledge to help you make informed decisions and stay ahead in the ever-evolving world of construction.",
       url: "https://capitalassociated.com/blog",

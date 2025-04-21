@@ -98,10 +98,10 @@ export default function Navbar() {
       <div className="flex items-center gap-6 text-amber-900">
         {/* Email */}
         <Link
-          href="mailto:hello@capitalassociation.com"
+          href="mailto:hello@capitalassociated.com"
           className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
         >
-          hello@capitalassociation.com
+          hello@capitalassociated.com
           <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
         </Link>
         {/* Small Border */}

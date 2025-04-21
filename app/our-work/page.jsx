@@ -3,7 +3,7 @@ import OurWorkLayout from './OurWorkLayout'
 
 export async function generateMetadata() {
   return {
-    title: "Our Work - Capital Accociated Building Contracting",
+    title: "Our Work - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Discover the remarkable projects completed by Capital Associated Building Contracting. From residential buildings to large-scale commercial developments, our work showcases our expertise, attention to detail, and commitment to quality. Explore a diverse range of projects where we have brought innovative construction solutions to life, creating sustainable and functional spaces that meet our clients’ unique needs. With every project, we aim to exceed expectations, delivering superior results on time and within budget.",
       icons: {
@@ -37,7 +37,7 @@ export async function generateMetadata() {
         "Landscaping & Hardscaping UAE"
       ],
     openGraph: {
-      title: "Our Work - Capital Accociated Building Contracting",
+      title: "Our Work - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
       description:
         "Discover the remarkable projects completed by Capital Associated Building Contracting. From residential buildings to large-scale commercial developments, our work showcases our expertise, attention to detail, and commitment to quality. Explore a diverse range of projects where we have brought innovative construction solutions to life, creating sustainable and functional spaces that meet our clients’ unique needs. With every project, we aim to exceed expectations, delivering superior results on time and within budget.",
       url: "https://capitalassociated.com/our-work",

@@ -3,7 +3,7 @@ import ContacUsLayout from './ContactUsLayout'
 
 export async function generateMetadata() {
   return {
-    title: "Contact Us - Capital Accociated Building Contracting",
+    title: "Contact Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Join Capital Associated Building Contracting and be part of a dynamic team shaping the future of construction in Dubai and the UAE. We are committed to excellence, innovation, and sustainability in every project we undertake. Whether you're an experienced professional or a passionate newcomer, we offer exciting career opportunities in engineering, project management, site supervision, design, and more. Explore our job openings, grow your skills, and build a rewarding career with us in the ever-evolving world of construction and contracting.",
       icons: {
@@ -37,7 +37,7 @@ export async function generateMetadata() {
         "Landscaping & Hardscaping UAE"
       ],
     openGraph: {
-      title: "Contact Us - Capital Accociated Building Contracting",
+      title: "Contact Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
       description:
         "Join Capital Associated Building Contracting and be part of a dynamic team shaping the future of construction in Dubai and the UAE. We are committed to excellence, innovation, and sustainability in every project we undertake. Whether you're an experienced professional or a passionate newcomer, we offer exciting career opportunities in engineering, project management, site supervision, design, and more. Explore our job openings, grow your skills, and build a rewarding career with us in the ever-evolving world of construction and contracting.",
       url: "https://capitalassociated.com/contact-us",

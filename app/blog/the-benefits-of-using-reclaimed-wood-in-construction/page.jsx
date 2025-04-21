@@ -8,7 +8,7 @@ const BlogPost1 = () => {
         <h1 className="text-3xl font-bold  pb-5">The Benefits of Using Reclaimed Wood in Construction</h1>
         <p className="text-black text-sm mb-20">January 10, 2025 | Posted by admin</p>
         <div className='relative h-[40rem] w-full'>
-        <Image src='/about1.JPG' alt='first blog image'
+        <Image src='/about1.jpg' alt='first blog image'
         layout='fill'
         objectFit='cover'
         className='rounded-xl'

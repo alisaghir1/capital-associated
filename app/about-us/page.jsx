@@ -3,7 +3,7 @@ import AboutLayout from './AboutLayout';
 
 export async function generateMetadata() {
   return {
-    title: "About Us - Capital Accociated Building Contracting",
+    title: "About Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Capital Associated Building Contracting LLC is a leading construction company in Dubai, UAE, dedicated to building your vision and crafting tomorrow.",
       icons: {
@@ -37,14 +37,14 @@ export async function generateMetadata() {
         "Landscaping & Hardscaping UAE"
       ],
     openGraph: {
-      title: "About Us - Capital Accociated Building Contracting",
+      title: "About Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
       description:
         "Capital Associated Building Contracting LLC is a leading construction company in Dubai, UAE, dedicated to building your vision and crafting tomorrow.",
       url: "https://capitalassociated.com/about-us",
       type: "website",
       images: [
         {
-          url: "/about/about1.JPG",
+          url: "/about/about1.jpg",
           width: 1200,
           height: 600,
           alt: "Capital Associated Building Contracting",

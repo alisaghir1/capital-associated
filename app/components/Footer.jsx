@@ -61,7 +61,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="text-black p-10 bg-white border-gray-700 flex justify-center items-center">
           <p className="text-sm text-center">
-            Capital Associated Building Contracting © 2024. All Rights Reserved
+            Capital Associated Building Contracting © 2025. All Rights Reserved
           </p>
         </div>
       </div>
