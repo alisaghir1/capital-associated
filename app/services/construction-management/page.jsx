@@ -75,7 +75,7 @@ const page = () => {
             />
           </div>
           <h1 className="xl:text-3xl text-2xl border-b border-b-black w-full pb-10">
-            Our General Contracting Services
+            Our Construction Management Services
           </h1>
           <div className="flex flex-col text-start justify-center mt-10">
             <p className="xl:text-xl text-lg font-bold mb-4">
