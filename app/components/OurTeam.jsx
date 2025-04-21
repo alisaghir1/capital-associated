@@ -91,20 +91,10 @@ const OurTeam = () => {
         className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0"
       >
         <p className="lg:text-2xl text-bold text-xl xl:text-3xl">
-          WE HAVE GREAT CREATIVE TEAM.
+        Elite Team of Engineers, Architects & Designers in Dubai
         </p>
         <p className="lg:text-1xl text-gray-500 mt-10 text-lg xl:text-2xl">
-          At Capital Associated Contracting, we take pride in having a team of
-          highly skilled and experienced professional engineers who are
-          dedicated to delivering top-notch contracting and fit-out services.
-          Our engineers possess a wealth of knowledge and expertise in their
-          respective fields, and are committed to providing innovative and
-          practical solutions to meet our clients&apos; needs. From design and
-          planning to execution and delivery, our engineers work closely with
-          our clients to ensure that every project is completed to the highest
-          standards of quality and excellence. With their vast experience and
-          unwavering commitment to excellence, our engineers are an integral
-          part of our success at Capital Associated Contracting.
+        At Capital Associated Contracting, we are recognized as an elite construction company in Dubai, with a highly skilled team of engineers, architects, interior designers, and project developers. Our multidisciplinary team brings extensive experience across commercial, residential, and high-end fit-out projects throughout the UAE. Each expert is dedicated to delivering creative, efficient, and unique solutions custom to meet our client&apos;s vision. From architectural design and engineering consultation to project execution and turnkey delivery, we uphold the great standards of quality, precision, and professionalism. As one of the trusted construction companies in Dubai, our team&apos;s collaborative approach provides seamless project delivery with a focus on original, soid, and long-term value for our clients in UAE, Dubai.
         </p>
       </motion.section>
       <VidioComponent />

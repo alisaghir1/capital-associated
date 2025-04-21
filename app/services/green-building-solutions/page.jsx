@@ -19,15 +19,15 @@ const page = () => {
           {/* Content on top of the image */}
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
             <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-              Green Buidling Solutions
+            Green Building Solutions
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+            Efficient. Responsible. Future-Ready.
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
               <span className="text-black">
-                / Our Services / Green Buidling Solutions
+                / Our Services / Green Building Solutions
               </span>
             </p>
           </div>
@@ -236,33 +236,18 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your Green Buidling Solutions Needs
+          Contact Us for Green Building Solutions in Dubai
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Green Buidling
-            Solutions services?
+          Interested in building smarter, more sustainable spaces? Our expert green building solutions in Dubai are designed to reduce environmental impact, increase energy efficiency, and create healthier living and working environments.
+
           </p>
           <p className="mb-4">
-            We invite you to get in touch with us today to discuss your project
-            requirements and explore how Capital Associated Building Contracting
-            can bring your vision to life.
+          At Capital Associated Building Contracting, we integrate eco-conscious materials, sustainable design strategies, and energy-efficient systems into every phase of development. Whether you're seeking LEED-compliant construction, improved insulation, or sustainable interior design, our team delivers solutions that meet with both your values and your vision.
+
           </p>
           <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
-          </p>
-          <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+          Reach out today to schedule a consultation and discover how our sustainable construction practices can add long-term value to your project—while supporting a greener future for the UAE
           </p>
         </div>
       </div>

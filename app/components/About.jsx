@@ -21,21 +21,13 @@ const About = () => {
           </h1>
           <p className="mb-4 lg:text-3xl text-2xl xl:text-4xl font-bold pt-10 text-black">
             {" "}
-            CABC is a prominent construction company based in Dubai, United Arab
-            Emirates.
+            Capital Associated Building Contracting is a construction company in Dubai, UAE.
           </p>
           <p className="text-base leading-relaxed mt-20">
-            With a rich legacy of excellence in the construction industry, we
-            have been at the forefront of shaping Dubai&apos;s skyline and
-            contributing to its rapid development.
+          Our extensive experience in the construction industry has established us as an essential partner in shaping Dubai&apos;s spectacular skyline and contributing to its rapid growth.
           </p>
           <p className="text-base leading-relaxed mt-5">
-            At CABC, we are driven by a strong commitment to delivering
-            exceptional construction solutions that meet the highest standards
-            of quality, innovation, and sustainability. With our extensive
-            experience and expertise, we undertake a diverse range of projects,
-            including commercial complexes, residential towers, industrial
-            facilities, and infrastructure developments.
+          Capital Associated Building Contracting in Dubai focuses on providing exceptional construction solutions while maintaining the highest levels of customer service and creativity. Our diverse portfolio comprises commercial buildings, residential towers, industrial facilities, and infrastructure projects. Each project demonstrates our knowledge and experience as an elite construction company in Dubai.
           </p>
         </motion.div>
 

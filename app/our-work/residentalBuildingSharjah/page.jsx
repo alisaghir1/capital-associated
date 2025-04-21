@@ -23,7 +23,8 @@ const page = () => {
               Our Projects
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Building Dreams, Crafting Futures.
+            Designing Landmarks. Defining Skylines
+
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}

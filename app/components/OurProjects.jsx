@@ -23,7 +23,8 @@ const OurProjects = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="lg:text-2xl text-xl xl:text-3xl"
         >
-          Building Dreams, Crafting Futures.
+           Designing Landmarks. Defining Skylines
+
         </motion.p>
       </section>
 

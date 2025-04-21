@@ -10,84 +10,84 @@ const Blogs = () => {
       id: 1,
       title: "The Benefits of Using Reclaimed Wood in Construction",
       image: "/about1.JPG",
-      path: "/blog/1stBlog",
+      path: "/blog/the-benefits-of-using-reclaimed-wood-in-construction",
       date: "08 Jan",
     },
     {
       id: 2,
       title: "A Guide to Retrofitting Old Buildings",
       image: "/about2.jpg",
-      path: "/blog/2ndBlog",
+      path: "/blog/a-guide-to-retrofitting-old-buildings",
       date: "02 Jan",
     },
     {
       id: 3,
       title: "How to Plan for Future Expansions in Building Design",
       image: "/about3.jpg",
-      path: "/blog/3rdBlog",
+      path: "/blog/how-to-plan-for-future-expansions-in-building-design",
       date: "13 Dec",
     },
     {
       id: 4,
       title: "What is Value Engineering in Construction?",
       image: "/about4.jpg",
-      path: "/blog/4thBlog",
+      path: "/blog/what-is-value-engineering-in-construction",
       date: "27 Dec",
     },
     {
       id: 5,
       title: "The Role of a General Contractor in Complex Projects",
       image: "/projects/meatmoot.jpg",
-      path: "/blog/5thBlog",
+      path: "/blog/the-role-of-a-general-contractor-in-complex-projects",
       date: "04 Dec",
     },
     {
       id: 6,
       title: "The Importance of Geotechnical Studies in Construction",
       image: "/projects/villa.jpg",
-      path: "/blog/6thBlog",
+      path: "/blog/the-importance-of-geotechnical-studies-in-construction",
       date: "09 Dec",
     },
     {
       id: 7,
       title: "Understanding the Lifecycle of a Construction Project",
       image: "/projects/warehouse.jpg",
-      path: "/blog/7thBlog",
+      path: "/blog/understanding-the-lifecycle-of-a-construction-project",
       date: "20 Nov",
     },
     {
       id: 8,
       title: "The Role of Climate Adaptation in Modern Building Design",
       image: "/projects/residentalTower.jpg",
-      path: "/blog/8thBlog",
+      path: "/blog/the-role-of-climate-adaptation-in-modern-building-design",
       date: "14 Nov",
     },
     {
       id: 9,
       title: "An Overview of Acoustics in Building Design",
       image: "/projects/residentalBuilding.jpg",
-      path: "/blog/9thBlog",
+      path: "/blog/an-overview-of-acoustics-in-building-design",
       date: "26 Nov",
     },
     {
       id: 10,
       title: "Top Pre-Construction Services That Guarantee Project Success",
       image: "/projects/residentalbuildingg.jpg",
-      path: "/blog/10thBlog",
+      path: "/blog/top-pre-construction-services-that-guarantee-project-success",
       date: "21 Nov",
     },
     {
       id: 11,
       title: "The Importance of Community Engagement in Construction Projects",
       image: "/projects/residentalbuildinggg.jpg",
-      path: "/blog/11thBlog",
+      path: "/blog/the-importance-of-community-engagement-in-construction-projects",
       date: "06 Oct",
     },
     {
       id: 12,
       title: "How to Design Flexible Workspaces",
       image: "/projects/p1.jpg",
-      path: "/blog/12thBlog",
+      path: "/blog/how-to-design-flexible-workspaces",
       date: "10 Nov",
     },
   ];
@@ -102,7 +102,7 @@ const Blogs = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="lg:text-3xl text-2xl xl:text-4xl"
         >
-          Our Blog
+          Blog
         </motion.h1>
         <motion.p
           variants={fadeIn("up", 1)}
@@ -111,7 +111,7 @@ const Blogs = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="lg:text-2xl text-xl xl:text-3xl mt-10"
         >
-          Words have the power to inspire, educate, and transform.
+          Industry Insights & Innovations
         </motion.p>
         <motion.p
           variants={fadeIn("up", 1.2)}
@@ -120,13 +120,7 @@ const Blogs = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="lg:text-xl text-lg xl:text-2xl mt-10"
         >
-          Words have the power to inspire, educate, and transform. Our blog page
-          is a space where ideas come to life, where we share our passion for
-          creativity, innovation, and growth. We believe that through our words,
-          we can make a positive impact on the world and create a better future
-          for generations to come. Join us on this journey of discovery,
-          learning, and inspiration, and let’s explore the endless possibilities
-          of the human mind and spirit.
+          The blog explores the latest in construction, architecture, engineering, and interior design in Dubai and across the UAE. As one of the leading construction companies in Dubai, we share expert knowledge from our team of engineers, architects, interior designers, and property developers, offering valuable content that informs, educates, and inspires. Whether you&apos;re a client, investor, or design enthusiast, our blog explores the future of urban development, cutting-edge construction solutions, and the artistry behind building iconic structures. Stay connected with the region&apos;s top voices in elite construction and design — and discover how innovation continues to shape Dubai&apos;s skyline.
         </motion.p>
       </section>
       <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">

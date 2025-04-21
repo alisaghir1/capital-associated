@@ -23,7 +23,7 @@ const OurServices = () => {
           viewport={{ once: true, amount: 0.4 }}
           className="lg:text-2xl text-xl xl:text-3xl"
         >
-          Building Dreams, Crafting Futures.
+          Leading Dubai&apos;s Property Evolution
         </motion.p>
       </section>
 

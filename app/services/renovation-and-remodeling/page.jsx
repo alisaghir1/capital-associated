@@ -22,7 +22,7 @@ const page = () => {
               Renovation & Remodeling
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+              Precision Remodeling. Elevated Design
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
@@ -270,33 +270,25 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your Renovation & Remodeling Needs
+            Contact Us for Renovation & Remodeling Services in Dubai
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Renovation &
-            Remodeling services?
+            Thinking of upgrading your space? Our expert renovation and
+            remodeling services in Dubai are designed to enhance functionality,
+            elevate aesthetics, and breathe new life into your property.
           </p>
           <p className="mb-4">
-            We invite you to get in touch with us today to discuss your project
-            requirements and explore how Capital Associated Building Contracting
-            can bring your vision to life.
+            At Capital Associated Building Contracting, we specialize in
+            transforming residential, commercial, and hospitality interiors
+            through thoughtful design and high-quality execution. Whether it’s a
+            full-scale renovation or a targeted interior makeover, our team of
+            experienced architects, engineers, and fit-out specialists delivers
+            unique solutions that match with your vision and exceed
+            expectations.
           </p>
           <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
-          </p>
-          <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+            Reach out today to schedule a consultation and discover how we can
+            revitalize your space with precision, creativity, and lasting value.
           </p>
         </div>
       </div>

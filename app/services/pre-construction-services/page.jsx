@@ -22,7 +22,7 @@ const page = () => {
               Pre-Construction Services
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+              Smart Preparation for Superior Projects
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
@@ -263,33 +263,25 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your Pre-Construction Services Needs
+            Contact Us for Pre-Construction Services in Dubai
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Pre-Construction
-            Services services?
+            Strategic planning is the cornerstone of every successful project.
+            Our pre-construction services in Dubai are designed to provide
+            clarity, control, and confidence before the first brick is laid.
           </p>
           <p className="mb-4">
-            We invite you to get in touch with us today to discuss your project
-            requirements and explore how Capital Associated Building Contracting
-            can bring your vision to life.
+            At Capital Associated Building Contracting, we collaborate with
+            clients during the earliest stages—offering expertise in project
+            feasibility, cost estimation, design coordination, and scheduling.
+            Our experienced team ensures that every detail fits with your
+            vision, budget, and timeline, setting the foundation for seamless
+            execution.
           </p>
           <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
-          </p>
-          <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+            Connect with us today to schedule a consultation and learn how our
+            pre-construction expertise can shape smarter decisions and stronger
+            outcomes—before construction even begins.
           </p>
         </div>
       </div>

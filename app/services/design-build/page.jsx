@@ -19,14 +19,14 @@ const page = () => {
           {/* Content on top of the image */}
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
             <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-              Desgin Build
+              Design Build
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+              Planning. Coordination. Precision. Delivery.
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
-              <span className="text-black">/ Our Services / Desgin Build</span>
+              <span className="text-black">/ Our Services / Design Build</span>
             </p>
           </div>
         </div>
@@ -258,11 +258,14 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your Desgin Build Needs
+            Contact Us for Your Design Build Needs
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Desgin Build
-            services?
+            Looking for a seamless design-build solution in Dubai that brings
+            your vision to life with precision and creativity? At Capital
+            Associated Building Contracting, we offer fully integrated design
+            and construction services, combining architectural innovation with
+            expert execution under one streamlined process.
           </p>
           <p className="mb-4">
             We invite you to get in touch with us today to discuss your project
@@ -270,21 +273,17 @@ const page = () => {
             can bring your vision to life.
           </p>
           <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
+            Our experienced team of designers, architects, and engineers
+            collaborates from concept to completion, ensuring clarity,
+            efficiency, and superior results throughout every phase. Whether
+            it's a residential, commercial, or bespoke project, we deliver
+            custom design-build solutions that meet your goals while enhancing
+            space, functionality, and value.
           </p>
           <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+            Contact us today to schedule a consultation and discover how our
+            turnkey design-build services can transform your project—on time, on
+            budget, and beyond expectations.
           </p>
         </div>
       </div>

@@ -22,7 +22,7 @@ const page = () => {
               General Contracting
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+            Engineering Quality, From Start to Finish
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
@@ -268,7 +268,7 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your General Contracting Needs
+            Contact Us for Expert General Contracting in Dubai, UAE
           </h1>
           <p className="mb-4">
             Ready to transform your space with our exceptional General

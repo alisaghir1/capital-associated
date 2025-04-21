@@ -273,33 +273,21 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your General Contracting Needs
+            Contact Us for Expert General Contracting in Dubai, UAE
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional General
-            Contracting services?
+            Looking to bring your project to life with the elite general
+            contracting company in Dubai? At Capital Associated Building
+            Contracting, we specialize in delivering high-quality construction
+            solutions to your vision. Whether you're planning a residential,
+            commercial, or fit-out project, our experienced team of engineers,
+            architects, and interior specialists is here to provide strategic
+            guidance and flawless execution.
           </p>
           <p className="mb-4">
-            We invite you to get in touch with us today to discuss your project
-            requirements and explore how Capital Associated Building Contracting
-            can bring your vision to life.
-          </p>
-          <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
-          </p>
-          <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+            Reach out today to discuss your project goals. We’ll provide
+            personalized, efficient, and detail-driven solutions designed to
+            exceed expectations and elevate every space we build.
           </p>
         </div>
       </div>

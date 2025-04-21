@@ -411,20 +411,12 @@ const ServicesLayout = () => {
       </section>
       <section className="container mx-auto px-10 py-10 text-center">
         <p className="mb-5">
-          Our building contracting company is dedicated to delivering top-tier
-          construction services, offering a comprehensive range of solutions to
-          meet the diverse needs of our clients. With years of experience in the
-          industry, we specialize in residential, commercial, and industrial
-          projects, ensuring that every venture is completed with the highest
-          standards of quality and professionalism.
+        At Capital Associated Building Contracting, we deliver high-quality construction solutions in Dubai and across the UAE, offering a comprehensive range of services tailored to residential, commercial, and industrial developments. With years of industry expertise, we bring precision, innovation, and professionalism to every project—regardless of scale or complexity
         </p>
         <h3 className="my-5">Our Services Include:</h3>
         <p className="mb-5">
-          Design and Build: From concept to completion, we handle every aspect
-          of the project, ensuring a seamless experience for our clients.
-          Construction Management: We oversee every phase of construction, from
-          budgeting and scheduling to quality control, ensuring that projects
-          are completed on time and within budget.
+        <strong>Design & Build</strong> We offer end-to-end design-build solutions, managing every stage from concept to completion to provide a seamless, efficient building process.
+
         </p>
         <p className="mb-5">
           Renovations and Fit-Outs: Our team is skilled in transforming existing
@@ -432,30 +424,18 @@ const ServicesLayout = () => {
           needs of our clients.
         </p>
         <p className="mb-5">
-          Project Consultancy: We offer expert advice and solutions to optimize
-          design, materials, and timelines, helping clients achieve their goals
-          with minimal risk. Sustainability Solutions: We integrate eco-friendly
-          and energy-efficient practices into all our projects, ensuring a
-          positive environmental impact while maintaining exceptional quality.
+        <strong>Construction Management</strong> Our team oversees every phase—from budgeting and scheduling to quality control—ensuring your project stays on track, on time, and within budget.
+
         </p>
         <p className="mb-5">
-          Why Choose Us: At our core, we are a team of highly skilled
-          professionals who are passionate about delivering excellence. Our
-          reputation for quality, integrity, and reliability sets us apart in
-          the industry. We pride ourselves on clear communication, collaboration
-          with clients, and a commitment to exceeding expectations.
+        <strong>Renovation & Fit-Out</strong> We specialize in modernizing existing spaces through expert renovation and interior fit-out services, adding value while enhancing form and function.
+
         </p>
         <p className="mb-5">
-          We understand that each project is unique, and we tailor our approach
-          to meet the specific needs and goals of our clients. Our team is
-          committed to using the latest construction techniques, materials, and
-          technologies, ensuring that every project is executed with precision
-          and attention to detail.
+        <strong>Project Consultancy</strong> Our consultants provide strategic guidance on design optimization, material selection, risk management, and timeline planning—ensuring informed decisions at every step.
         </p>
         <p className="mb-5">
-          From initial planning to the final handover, we ensure professionalism
-          at every step, making us your trusted partner in building exceptional
-          spaces.
+       <strong> Sustainability Solutions</strong> We integrate green building practices and energy-efficient technologies to reduce environmental impact while maintaining superior construction quality.
         </p>
       </section>
       <VidioComponent />

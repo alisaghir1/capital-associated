@@ -21,10 +21,10 @@ const Consultation = () => {
     viewport={{ once: true, amount: 0.4 }}
      className="bg-white flex flex-col gap-10 py-20 xl:px-20 px-5 text-center w-[100%] justify-center items-center">
       <h1 className="lg:text-3xl text-2xl xl:text-4xl">
-        Have something in mind
+      Have a Vision in Mind?
       </h1>
       <p className="lg:text-2xl text-xl xl:text-3xl">
-        Partner with Us Today to Build the Future. Let&apos;s Create Something Extraordinary Together!
+      Partner with one of the leading construction and development companies in Dubai. Let&apos;s Build the Future — Together.
       </p>
       <Link href='/contact-us'>
         <button className="bg-black hover:bg-white border border-black hover:text-black transition-all duration-200 ease-in-out text-white py-5 px-20 text-center lg:text-2xl text-xl xl:text-3xl">

@@ -22,7 +22,7 @@ const page = () => {
               Value Engineering
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+              Maximizing Efficiency Without Compromise
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
@@ -316,33 +316,26 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Your Value Engineering Needs
+            Contact Us for Value Engineering Services in Dubai
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional Value Engineering
-            services?
+            Looking to optimize your project without compromising on quality?
+            Our expert value engineering services in Dubai are designed to
+            maximize performance, reduce costs, and enhance long-term value at
+            every stage of development.
           </p>
           <p className="mb-4">
-            We invite you to get in touch with us today to discuss your project
-            requirements and explore how Capital Associated Building Contracting
-            can bring your vision to life.
+            At Capital Associated Building Contracting, we collaborate with
+            clients, designers, and engineers to identify cost-effective
+            alternatives, improve material efficiency, and streamline
+            construction methods—without sacrificing aesthetics or
+            functionality. Our strategic approach ensures smarter
+            decision-making and stronger project outcomes.
           </p>
           <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
-          </p>
-          <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+            Get in touch today to schedule a consultation and explore how our
+            value-driven solutions can bring efficiency, innovation, and
+            sustainability to your next project.
           </p>
         </div>
       </div>
