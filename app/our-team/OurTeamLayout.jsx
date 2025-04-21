@@ -5,25 +5,25 @@ import Link from "next/link";
 
 const teamMembers = [
   {
-    image: "/team/t1.JPG",
+    image: "/team/t1.jpg",
     name: "MICHAEL REYES",
     position: "Document Control",
     path: "/our-team/michael-reyes",
   },
   {
-    image: "/team/t2.JPG",
+    image: "/team/t2.jpg",
     name: "LAKSHMI MOHAN",
     position: "Estimation Engineer",
     path: "/our-team/lakshmi-mohan",
   },
   {
-    image: "/team/t3.JPG",
+    image: "/team/t3.jpg",
     name: "HUSSAM AL RUSTOM",
     position: "Site Engineer",
     path: "/our-team/hussam-al-rustom",
   },
   {
-    image: "/team/t4.JPG",
+    image: "/team/t4.jpg",
     name: "RAMAZ IZZA",
     position: "Managing Director",
     path: "/our-team/ramaz-izza",
