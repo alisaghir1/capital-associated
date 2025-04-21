@@ -19,15 +19,15 @@ const page = () => {
           {/* Content on top of the image */}
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
             <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-              General Contracting
+              Construction Management
             </h1>
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
-              Transforming Spaces, Elevating Experiences
+              Structured Process. Superior Outcomes.
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
               <span className="text-black">
-                / Our Services / General Contracting
+                / Our Services / Construction Management
               </span>
             </p>
           </div>
@@ -273,21 +273,27 @@ const page = () => {
       <div className="bg-slate-100">
         <div className="container px-5 mx-auto flex flex-col items-center justify-center text-center gap-5 pt-20 pb-20">
           <h1 className="xl:text-3xl text-2xl text-center border-b border-b-black w-full pb-10">
-            Contact Us for Expert General Contracting in Dubai, UAE
+            Contact Us for Expert Construction Management in Dubai, UAE
           </h1>
           <p className="mb-4">
-            Looking to bring your project to life with the elite general
-            contracting company in Dubai? At Capital Associated Building
-            Contracting, we specialize in delivering high-quality construction
-            solutions to your vision. Whether you're planning a residential,
-            commercial, or fit-out project, our experienced team of engineers,
-            architects, and interior specialists is here to provide strategic
-            guidance and flawless execution.
+            Looking for professional construction management services in Dubai
+            that make sure your project is delivered on time, within budget, and
+            to the highest standards? At Capital Associated Contracting, we
+            provide end-to-end construction oversight—from planning and
+            procurement to execution and handover.
           </p>
           <p className="mb-4">
-            Reach out today to discuss your project goals. We’ll provide
-            personalized, efficient, and detail-driven solutions designed to
-            exceed expectations and elevate every space we build.
+            Our team of experienced project managers, engineers, and consultants
+            work closely with clients, contractors, and stakeholders to
+            streamline workflows, minimize risk, and maintain full transparency
+            throughout every phase. Whether you're developing a residential
+            tower, commercial space, or mixed-use project, we deliver solutions
+            that combine technical precision with real-world efficiency.
+          </p>
+          <p className="mb-4">
+            Get in touch today to discuss your project goals and discover how
+            our construction management expertise can provide success from the
+            ground up.
           </p>
         </div>
       </div>

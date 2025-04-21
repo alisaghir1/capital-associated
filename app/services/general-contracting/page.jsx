@@ -35,7 +35,7 @@ const page = () => {
         <div className="container mx-auto flex flex-col gap-5 text-center px-4">
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/s1.jpg"
+              src="/services/s2.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
@@ -43,32 +43,17 @@ const page = () => {
             />
           </div>
           <p className="mt-4">
-            Capital Associated Building Contracting stands as a distinguished
-            provider of general contracting services, committed to delivering
-            extraordinary construction projects across diverse sectors. Our
-            expertise in project management and meticulous attention to detail
-            drives us to exceed client expectations, fostering enduring
-            relationships founded on trust and excellence.
+          Capital Associated Building Contracting stands as a distinguished provider of general contracting services, committed to delivering extraordinary construction projects across diverse sectors. Our expertise in project management and meticulous attention to detail drives us to exceed client expectations, fostering enduring relationships founded on trust and excellence.
           </p>
           <p className="mt-4">
-            At Capital Associated Building Contracting, we adopt a comprehensive
-            approach to general contracting, offering a wide array of services
-            tailored to meet the unique demands of each project and client.
-            Throughout the entire process, our seasoned team works closely with
-            clients, architects, engineers, and subcontractors, ensuring
-            seamless coordination and achieving successful project outcomes.
+          At Capital Associated Building Contracting, we adopt a comprehensive approach to general contracting, offering a wide array of services tailored to meet the unique demands of each project and client. Throughout the entire process, our seasoned team works closely with clients, architects, engineers, and subcontractors, ensuring seamless coordination and achieving successful project outcomes.
           </p>
           <p className="mt-4">
-            Our general contracting services encompass every facet of the
-            construction process, including project management, budgeting,
-            scheduling, procurement, and quality control. Drawing upon our
-            proven track record of delivering projects punctually and within
-            budget, we prioritize the utmost standards of craftsmanship and
-            safety.
+          Our general contracting services encompass every facet of the construction process, including project management, budgeting, scheduling, procurement, and quality control. Drawing upon our proven track record of delivering projects punctually and within budget, we prioritize the utmost standards of craftsmanship and safety.
           </p>
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/s2.jpg"
+              src="/services/interiorFit/s2.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
@@ -83,20 +68,14 @@ const page = () => {
               1- Concept Development
             </p>
             <p className="mb-4">
-              Our team of highly skilled professionals constitutes one of our
-              greatest assets. With extensive industry experience, our dedicated
-              project managers oversee all aspects of construction, guaranteeing
-              efficient task completion to the highest standards. We foster
-              close collaboration with clients to fully comprehend their vision,
-              goals, and budgetary constraints, maintaining transparent
-              communication throughout the entirety of the process.
+            Our team of highly skilled professionals constitutes one of our greatest assets. With extensive industry experience, our dedicated project managers oversee all aspects of construction, guaranteeing efficient task completion to the highest standards. We foster close collaboration with clients to fully comprehend their vision, goals, and budgetary constraints, maintaining transparent communication throughout the entirety of the process.
             </p>
             <div className="flex gap-5">
               <div className="relative mt-5 w-1/2 h-56 xl:h-96">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/s3.jpg"
+                  src="/services/interiorFit/s3.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -107,7 +86,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/s4.jpg"
+                  src="/services/interiorFit/s4.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -120,13 +99,7 @@ const page = () => {
                 2- Space Planning and Design
               </p>
               <p className="mb-4">
-                Capital Associated Building Contracting firmly believes that
-                prosperous general contracting is built upon robust
-                relationships. We cultivate a spirit of teamwork and open
-                communication with architects, engineers, and subcontractors.
-                Leveraging our extensive network of reliable subcontractors and
-                suppliers, we meticulously assemble the optimal team for each
-                project, ensuring optimal results.
+              Capital Associated Building Contracting firmly believes that prosperous general contracting is built upon robust relationships. We cultivate a spirit of teamwork and open communication with architects, engineers, and subcontractors. Leveraging our extensive network of reliable subcontractors and suppliers, we meticulously assemble the optimal team for each project, ensuring optimal results.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -144,7 +117,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/interiorFit/s1.jpg"
+                    src="/services/interiorFit/s6.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -158,19 +131,14 @@ const page = () => {
                 3- Material Selection and Sourcing
               </p>
               <p className="mb-4">
-                Uncompromising quality remains our paramount focus. We adhere to
-                rigorous quality control procedures, encompassing meticulous
-                material selection and superior workmanship. Our skilled
-                craftsmen take immense pride in their work, consistently
-                delivering projects that not only meet but surpass the highest
-                industry standards, exceeding client expectations.
+              Uncompromising quality remains our paramount focus. We adhere to rigorous quality control procedures, encompassing meticulous material selection and superior workmanship. Our skilled craftsmen take immense pride in their work, consistently delivering projects that not only meet but surpass the highest industry standards, exceeding client expectations.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/interiorFit/s2.jpg"
+                    src="/services/interiorFit/s7.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -181,7 +149,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/interiorFit/s3.jpg"
+                    src="/services/interiorFit/s8.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -195,18 +163,13 @@ const page = () => {
                 4- Construction and Execution
               </p>
               <p className="mb-4">
-                Effective budget and schedule management constitute vital
-                considerations in our approach. Through accurate project
-                budgeting, accomplished through cost estimation and value
-                engineering, we optimize construction costs without sacrificing
-                quality. Detailed schedules and ongoing progress monitoring
-                guarantee timely project completion.
+              Effective budget and schedule management constitute vital considerations in our approach. Through accurate project budgeting, accomplished through cost estimation and value engineering, we optimize construction costs without sacrificing quality. Detailed schedules and ongoing progress monitoring guarantee timely project completion.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/interiorFit/s8.jpg"
+                  src="/services/interiorFit/s9.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -219,18 +182,13 @@ const page = () => {
                 5- Customization and Installation
               </p>
               <p className="mb-4">
-                Safety takes precedence on all our construction sites. We
-                strictly adhere to safety protocols and regulations, cultivating
-                a secure working environment for our team, subcontractors, and
-                visitors. By conducting continuous training programs and regular
-                inspections, we minimize risks and foster a culture of safety
-                awareness.
+              Safety takes precedence on all our construction sites. We strictly adhere to safety protocols and regulations, cultivating a secure working environment for our team, subcontractors, and visitors. By conducting continuous training programs and regular inspections, we minimize risks and foster a culture of safety awareness.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/s9.jpg"
+                  src="/services/interiorFit/s10.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -240,21 +198,16 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                6- Finishing Touches
+                6-  Finishing Touches
               </p>
               <p className="mb-4">
-                Capital Associated Building Contracting stands as your
-                trustworthy partner for extraordinary general contracting
-                services. Whether your aspirations involve commercial,
-                residential, or institutional construction projects, we
-                encourage you to contact us today to discuss your requirements
-                and allow us to bring your vision to life!
+              Capital Associated Building Contracting stands as your trustworthy partner for extraordinary general contracting services. Whether your aspirations involve commercial, residential, or institutional construction projects, we encourage you to contact us today to discuss your requirements and allow us to bring your vision to life!
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem] mb-20">
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/s7.jpg"
+                  src="/services/interiorFit/s11.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -271,30 +224,18 @@ const page = () => {
             Contact Us for Expert General Contracting in Dubai, UAE
           </h1>
           <p className="mb-4">
-            Ready to transform your space with our exceptional General
-            Contracting services?
+            Looking to bring your project to life with the elite general
+            contracting company in Dubai? At Capital Associated Building
+            Contracting, we specialize in delivering high-quality construction
+            solutions to your vision. Whether you're planning a residential,
+            commercial, or fit-out project, our experienced team of engineers,
+            architects, and interior specialists is here to provide strategic
+            guidance and flawless execution.
           </p>
           <p className="mb-4">
-            We invite you to get in touch with us today to discuss your project
-            requirements and explore how Capital Associated Building Contracting
-            can bring your vision to life.
-          </p>
-          <p className="mb-4">
-            Our friendly and knowledgeable team is here to answer any questions
-            you may have and provide you with personalized solutions tailored to
-            your needs. We are committed to delivering outstanding results,
-            exceeding your expectations, and ensuring your complete
-            satisfaction.
-          </p>
-          <p className="mb-4">
-            Contact us now to schedule a consultation and let us guide you
-            through the journey of creating a remarkable interior space that
-            reflects your style, enhances functionality, and leaves a lasting
-            impression.
-          </p>
-          <p className="mb-4">
-            Together, we will create an environment that inspires and
-            captivates.
+            Reach out today to discuss your project goals. We’ll provide
+            personalized, efficient, and detail-driven solutions designed to
+            exceed expectations and elevate every space we build.
           </p>
         </div>
       </div>
