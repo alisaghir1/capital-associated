@@ -13,7 +13,7 @@ const BlogPost11 = () => {
         </p>
         <div className="relative h-[40rem] w-full">
           <Image
-            src="/projects/residentalBuildinggg.jpg"
+            src="/projects/mkhm.jpg"
             alt="Community Engagement in Construction"
             layout="fill"
             objectFit="cover"

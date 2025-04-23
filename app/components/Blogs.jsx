@@ -79,7 +79,7 @@ const Blogs = () => {
     {
       id: 11,
       title: "The Importance of Community Engagement in Construction Projects",
-      image: "/projects/residentalbuildinggg.jpg",
+      image: "/projects/mkhm.jpg",
       path: "/blog/the-importance-of-community-engagement-in-construction-projects",
       date: "06 Oct",
     },

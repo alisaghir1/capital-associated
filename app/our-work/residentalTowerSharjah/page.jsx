@@ -87,7 +87,7 @@ const page = () => {
 
           <div className="relative object-center w-full hidden xl:block xl:h-[30rem] h-[25rem] mt-10 mb-5">
             <Image
-              src="/projects/commercialBuilding.jpg"
+              src="/projects/jbrm.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="center" // Ensures the image maintains its aspect ratio while filling the screen
