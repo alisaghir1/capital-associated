@@ -47,7 +47,7 @@ const BlogPost1 = () => {
         <section>
           <h2 className="text-2xl font-semibold mb-5">Cost-Effective Solution</h2>
           <p className="text-black">
-            Using reclaimed wood can save money. Purchasing salvaged materials is often more affordable than buying brand-new timber. Additionally, it’s widely available through salvage yards, demolition sites, and specialized suppliers.
+            Using reclaimed wood can save money. Purchasing salvaged materials is often more affordable than buying brand-new timber. Additionally, it&apos;s widely available through salvage yards, demolition sites, and specialized suppliers.
           </p>
           <p className="text-black">
             Repurposing wood reduces overall project costs. Builders often find unique pieces at a fraction of the price of new materials. Savings can be redirected to other aspects of construction, maximizing the budget.
@@ -90,7 +90,7 @@ const BlogPost1 = () => {
             Homes featuring reclaimed wood often stand out in the market. Its distinctive look attracts buyers seeking something unique. Properties with sustainable features also appeal to environmentally aware individuals.
           </p>
           <p className="text-black">
-            Using reclaimed materials adds a premium touch. Buyers appreciate the effort to incorporate quality, eco-friendly components. This distinction can increase a home’s resale value and market appeal.
+            Using reclaimed materials adds a premium touch. Buyers appreciate the effort to incorporate quality, eco-friendly components. This distinction can increase a home&apos;s resale value and market appeal.
           </p>
         </section>
 

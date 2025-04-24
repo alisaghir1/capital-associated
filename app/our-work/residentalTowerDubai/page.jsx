@@ -72,7 +72,7 @@ const page = () => {
               light, offering floor-to-ceiling windows in each of its luxurious
               apartments. Residents enjoy unparalleled views of both the
               cityscape and the waterfront, providing a living experience that
-              perfectly merges modern convenience with nature’s beauty.
+              perfectly merges modern convenience with nature&apos;s beauty.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
               Inside, the tower boasts an array of world-class amenities,
@@ -180,7 +180,7 @@ const page = () => {
             design, characterized by smooth glass facades and sharp, geometric
             lines. Its striking silhouette complements the surrounding skyline,
             while its expansive windows ensure panoramic views of the marina,
-            the Arabian Gulf, and the city. The tower’s exterior reflects a
+            the Arabian Gulf, and the city. The tower&apos;s exterior reflects a
             perfect balance of elegance and innovation.
           </p>
         </div>

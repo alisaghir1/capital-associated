@@ -54,13 +54,13 @@ const page = () => {
               in Dubai, executed with precision and backed by strong
               architectural planning. It reflects the advanced capabilities of a
               construction design company that understands the demands of modern
-              living in the UAE’s most dynamic city. The villa is being built to
+              living in the UAE&apos;s most dynamic city. The villa is being built to
               meet the expectations of high-end buyers who seek both comfort and
               structural strength. Every phase is handled with technical
               efficiency and real-world experience.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              The villa’s design is a seamless fusion of luxury and
+              The villa&apos;s design is a seamless fusion of luxury and
               functionality. Expansive floor-to-ceiling windows fill the space
               with natural light, while spacious open-plan living areas offer a
               perfect blend of comfort and style. High-end finishes and
@@ -90,7 +90,7 @@ const page = () => {
               Dubai, United Arab Emirates
             </p>
             <p className="xl:text-xl mt-4 text-black md:text-lg text-md">
-              Prime Location: Situated in one of Dubai’s most prestigious
+              Prime Location: Situated in one of Dubai&apos;s most prestigious
               neighborhoods, offering breathtaking views of the city skyline and
               lush landscapes. Iconic Design: A modern villa with cutting-edge
               architecture, blending elegance and functionality. Luxurious
@@ -168,7 +168,7 @@ const page = () => {
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
             Whether you have a concept ready or you're just getting started,
             we’re here to make it happen. Our construction design experts handle
-            everything—from excavation to delivery. Let’s talk about your Dubai
+            everything—from excavation to delivery. Let&apos;s talk about your Dubai
             villa project today – Reach out to us now!
           </p>
         </div>

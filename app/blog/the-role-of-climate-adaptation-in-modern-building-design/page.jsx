@@ -45,7 +45,7 @@ const BlogPost8 = () => {
             Conventional materials may not withstand extreme conditions.
             Sustainable, resilient materials are better suited for these
             challenges. Weather-resistant metals, innovative concrete mixes, and
-            locally sourced materials extend a building’s lifespan, reduce
+            locally sourced materials extend a building&apos;s lifespan, reduce
             maintenance costs, and minimize environmental harm.
           </p>
         </section>
@@ -81,7 +81,7 @@ const BlogPost8 = () => {
           </h2>
           <p className="text-black mb-4">
             Solar panels, energy-efficient lighting, and smart energy systems
-            reduce a building’s carbon footprint while enhancing resilience to
+            reduce a building&apos;s carbon footprint while enhancing resilience to
             extreme weather events. These features lower operational costs and
             improve sustainability.
           </p>

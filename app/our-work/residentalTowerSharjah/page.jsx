@@ -139,13 +139,13 @@ const page = () => {
       Located in the heart of Sharjah, the tower is surrounded by a mix of cultural landmarks, shopping, dining, and entertainment options, with easy access to major transport links. Its prime location ensures that residents enjoy a lifestyle of convenience, with everything from traditional markets to modern shopping malls just moments away.
     </p>
     <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-      Whether you're looking for an urban lifestyle or a peaceful escape, this iconic residential tower offers the best of both, making it a highly desirable address in one of Sharjah’s most prestigious districts.
+      Whether you're looking for an urban lifestyle or a peaceful escape, this iconic residential tower offers the best of both, making it a highly desirable address in one of Sharjah&apos;s most prestigious districts.
     </p>
     <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
       The tower is an architectural masterpiece nestled in one of Sharjah's most sought-after neighborhoods. Standing tall with 30 floors, it combines sophisticated design with cutting-edge technology, symbolizing modern luxury and urban living.
     </p>
     <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-      Design & Architecture: The building showcases a sleek, contemporary design, with elegant glass facades and geometric lines. Its striking silhouette enhances the surrounding skyline, while its expansive windows offer panoramic views of the city, parks, and the Arabian Gulf. The tower’s design perfectly blends elegance with innovation.
+      Design & Architecture: The building showcases a sleek, contemporary design, with elegant glass facades and geometric lines. Its striking silhouette enhances the surrounding skyline, while its expansive windows offer panoramic views of the city, parks, and the Arabian Gulf. The tower&apos;s design perfectly blends elegance with innovation.
     </p>
   </div>
 </section>

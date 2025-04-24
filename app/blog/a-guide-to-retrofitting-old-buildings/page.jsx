@@ -25,7 +25,7 @@ const BlogPost2 = () => {
       <article className="flex flex-col text-start items-start justify-start gap-10">
         <section>
           <h2 className="text-2xl font-semibold mb-5">
-            Understanding the Building’s History
+            Understanding the Building&apos;s History
           </h2>
           <p className="text-black">
             Every old building has a story. Understanding its origins,
@@ -33,16 +33,16 @@ const BlogPost2 = () => {
             Detailed research can uncover important historical and structural
             elements. Consulting archival records or experts in architectural
             history can provide valuable insights. This step also helps identify
-            aspects that must remain untouched to maintain the building’s
+            aspects that must remain untouched to maintain the building&apos;s
             essence.
           </p>
           <p className="text-black">
             Retrofitting old buildings has become a popular way to blend history
             with modern needs. Aging structures often hold immense character,
-            but their functionality can lag behind today’s standards. Breathing
+            but their functionality can lag behind today&apos;s standards. Breathing
             new life into these buildings requires careful planning and
-            execution. Here’s a comprehensive guide to ensure a successful
-            retrofit while preserving the building’s charm.
+            execution. Here&apos;s a comprehensive guide to ensure a successful
+            retrofit while preserving the building&apos;s charm.
           </p>
         </section>
 
@@ -62,7 +62,7 @@ const BlogPost2 = () => {
 
         <section>
           <h2 className="text-2xl font-semibold mb-5">
-            Understanding the Building’s History
+            Understanding the Building&apos;s History
           </h2>
           <p className="text-black">
             Every old building has a story. Understanding its origins,
@@ -70,7 +70,7 @@ const BlogPost2 = () => {
             Detailed research can uncover important historical and structural
             elements. Consulting archival records or experts in architectural
             history can provide valuable insights. This step also helps identify
-            aspects that must remain untouched to maintain the building’s
+            aspects that must remain untouched to maintain the building&apos;s
             essence.
           </p>
         </section>
@@ -114,17 +114,17 @@ const BlogPost2 = () => {
           </h2>
           <p className="text-black">
             Modern energy standards can be integrated without compromising the
-            building’s character. Adding insulation, upgrading windows, and
+            building&apos;s character. Adding insulation, upgrading windows, and
             installing efficient HVAC systems can reduce energy consumption.
             Solar panels, when used discreetly, can provide renewable energy
-            without altering the building’s appearance. Simple changes like LED
+            without altering the building&apos;s appearance. Simple changes like LED
             lighting can also make a big difference.
           </p>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold mb-5">
-            Respecting the Building’s Original Features
+            Respecting the Building&apos;s Original Features
           </h2>
           <p className="text-black">
             Preserving original features adds to the charm of old buildings.
@@ -159,7 +159,7 @@ const BlogPost2 = () => {
             for retrofits. Using sustainable materials not only benefits the
             environment but also enhances the longevity of the building. Green
             roofs and rainwater harvesting systems can further improve the
-            building’s ecological footprint.
+            building&apos;s ecological footprint.
           </p>
         </section>
 
@@ -173,7 +173,7 @@ const BlogPost2 = () => {
             systems can be seamlessly incorporated. These technologies not only
             improve comfort but also help monitor and reduce energy usage.
             Careful installation ensures that modern devices do not disrupt the
-            building’s aesthetic.
+            building&apos;s aesthetic.
           </p>
         </section>
 
@@ -210,18 +210,18 @@ const BlogPost2 = () => {
             professionals. Architects, engineers, contractors, and historians
             bring valuable expertise to the table. Choosing a team experienced
             in retrofitting ensures the project runs smoothly. Clear
-            communication with the team helps align everyone’s vision and avoid
+            communication with the team helps align everyone&apos;s vision and avoid
             misunderstandings.
           </p>
         </section>
         <section className="">
           <h2 className="text-2xl font-semibold mb-5">
-            Maintaining the Building’s Charm
+            Maintaining the Building&apos;s Charm
           </h2>
           <p className="text-black">
             Old buildings often possess a unique character that sets them apart.
             Retrofitting should aim to preserve this charm while meeting modern
-            needs. Thoughtful design choices help highlight the building’s best
+            needs. Thoughtful design choices help highlight the building&apos;s best
             features. The goal is to create a space that respects its past while
             embracing the future.
           </p>
@@ -235,7 +235,7 @@ const BlogPost2 = () => {
             regulations. Building codes, zoning laws, and historic preservation
             guidelines must all be considered. Consulting legal experts ensures
             compliance with local requirements. Adhering to regulations prevents
-            legal issues and preserves the building’s historical designation.
+            legal issues and preserves the building&apos;s historical designation.
           </p>
         </section>
         <section className="">
@@ -256,7 +256,7 @@ const BlogPost2 = () => {
             Small details can make a big difference in retrofits. Choosing
             appropriate fixtures, colors, and finishes helps the old and new
             elements harmonize. Thoughtful landscaping or outdoor lighting can
-            further enhance the building’s appearance. These finishing touches
+            further enhance the building&apos;s appearance. These finishing touches
             complete the transformation, creating a cohesive look.
           </p>
         </section>

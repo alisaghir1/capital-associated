@@ -49,7 +49,7 @@ const AboutLayout = () => {
               </h1>
               <p className="mt-4">
                 Our extensive experience in the construction industry has
-                established us as an essential partner in shaping Dubai’s
+                established us as an essential partner in shaping Dubai&apos;s
                 spectacular skyline and contributing to its rapid growth.
               </p>
               <p className="mt-4">

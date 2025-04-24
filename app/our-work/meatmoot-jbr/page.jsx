@@ -59,7 +59,7 @@ const page = () => {
               Building Dubai's Meat Moot JBR branch with passion and precision.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              Our team proudly delivered the construction of Meat Moot’s JBR branch, one of Dubai’s most exciting beachfront dining spots. This project reflects our commitment to quality craftsmanship and meticulous planning.
+              Our team proudly delivered the construction of Meat Moot&apos;s JBR branch, one of Dubai&apos;s most exciting beachfront dining spots. This project reflects our commitment to quality craftsmanship and meticulous planning.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
               The project involved transforming a shell space into a fully functional restaurant – complete with signature interiors, kitchen fit-outs, and atmospheric lighting tailored to the Meat Moot brand experience.
@@ -68,7 +68,7 @@ const page = () => {
               Every element was executed to the highest standards, ensuring the branch aligns with the global expectations of Meat Moot. Our ability to adapt design into build, without losing the essence, is showcased here.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              From concept to completion, the JBR branch is a statement of collaboration, dedication, and flawless delivery in one of Dubai’s most prestigious locations.
+              From concept to completion, the JBR branch is a statement of collaboration, dedication, and flawless delivery in one of Dubai&apos;s most prestigious locations.
             </p>
           </div>
         </section>
@@ -145,10 +145,10 @@ const page = () => {
             Designed to impress. Built to last.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-            Situated at JBR’s buzzing waterfront, this branch is more than a dining spot — it’s an architectural showcase. Our construction approach aligned functionality with Meat Moot’s distinct brand flavor.
+            Situated at JBR&apos;s buzzing waterfront, this branch is more than a dining spot — it&apos;s an architectural showcase. Our construction approach aligned functionality with Meat Moot&apos;s distinct brand flavor.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-            The branch combines luxurious finishes, seamless kitchen-to-dining flow, and a bold façade that speaks to Dubai’s fast-paced style. We didn’t just build a restaurant — we built an experience.
+            The branch combines luxurious finishes, seamless kitchen-to-dining flow, and a bold façade that speaks to Dubai&apos;s fast-paced style. We didn’t just build a restaurant — we built an experience.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
             If you’ve enjoyed a meal at Meat Moot JBR, you’ve experienced our work first-hand — precision, quality, and excellence from the ground up.

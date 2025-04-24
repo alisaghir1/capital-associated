@@ -54,7 +54,7 @@ const Page = () => {
             precise and timely estimates.
           </p>
           <p className="mt-4">
-            Lakshmi’s commitment to accuracy, efficiency, and continuous
+            Lakshmi&apos;s commitment to accuracy, efficiency, and continuous
             improvement helps optimize project budgets and timelines. Her
             collaborative approach and analytical mindset make her an invaluable
             asset to our engineering and project planning teams.

@@ -114,7 +114,7 @@ const page = () => {
               <p className="mb-4">
                 Through brainstorming sessions and collaborative workshops, we
                 generate a wide range of ideas and alternatives that have the
-                potential to improve the project’s value. We encourage input
+                potential to improve the project&apos;s value. We encourage input
                 from all stakeholders to ensure a holistic approach and diverse
                 perspectives.
               </p>
@@ -186,7 +186,7 @@ const page = () => {
                 Using advanced cost estimation techniques, we conduct a
                 comprehensive cost-benefit analysis for each alternative. This
                 analysis helps us understand the potential cost savings and
-                benefits that can be achieved without compromising the project’s
+                benefits that can be achieved without compromising the project&apos;s
                 performance or quality.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
@@ -259,7 +259,7 @@ const page = () => {
                 By identifying cost-effective alternatives and eliminating
                 unnecessary expenses, value engineering helps you achieve
                 significant cost savings without sacrificing quality or
-                functionality. It allows you to optimize your project’s budget
+                functionality. It allows you to optimize your project&apos;s budget
                 and resources effectively.
               </p>
             </div>

@@ -63,7 +63,7 @@ const page = () => {
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
               Our team handled the complete interior fit-out and construction,
-              ensuring every detail aligned with Meat Moot’s international
+              ensuring every detail aligned with Meat Moot&apos;s international
               standards — from the premium materials to the unique architectural
               elements that define the brand.
             </p>
@@ -71,7 +71,7 @@ const page = () => {
               The space was designed with a strong focus on functionality,
               customer flow, and aesthetic appeal. Rich wooden textures, custom
               lighting, and industrial finishes come together to reflect the
-              bold, rustic vibe of Meat Moot’s global identity.
+              bold, rustic vibe of Meat Moot&apos;s global identity.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
               With a focus on precision and quality craftsmanship, we delivered
@@ -170,7 +170,7 @@ const page = () => {
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
             From material selection to layout planning, every decision reflected
             a balance of aesthetic appeal and sustainability — aligning with
-            Dubai’s vision for a greener future in hospitality.
+            Dubai&apos;s vision for a greener future in hospitality.
           </p>
           <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
             Architectural Features: Cozy, welcoming ambiance with functional

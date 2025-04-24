@@ -58,7 +58,7 @@ const page = () => {
           <p className="mt-4">
             At Capital Associated Building Contracting, we specialize in
             providing transformative interior fit-out services that breathe new
-            life into your spaces. Whether it’s a commercial establishment,
+            life into your spaces. Whether it&apos;s a commercial establishment,
             residential property, or hospitality venue, our team of experts is
             dedicated to creating remarkable environments that align with your
             unique vision and functional requirements.

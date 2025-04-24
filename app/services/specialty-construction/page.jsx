@@ -119,13 +119,13 @@ const page = () => {
               <p className="mb-4">
                 Our interior fit-out services involve creating unique and
                 customized spaces that align with our clients’ specific
-                requirements. Whether it’s a retail store, office space, or
+                requirements. Whether it&apos;s a retail store, office space, or
                 hospitality establishment, we possess the expertise to transform
                 interiors into functional, aesthetically pleasing, and inviting
                 environments. We pay meticulous attention to every detail, from
                 spatial planning and material selection to lighting, fixtures,
                 and finishes, ensuring that the final result aligns perfectly
-                with the client’s vision.
+                with the client&apos;s vision.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
@@ -244,7 +244,7 @@ const page = () => {
           </p>
           <p className="mb-4">
             Get in touch today to discuss your unique project requirements.
-            We’ll help you turn your vision into a bespoke space that’s
+            We’ll help you turn your vision into a bespoke space that&apos;s
             functional, efficient, and built to impress.
           </p>
         </div>

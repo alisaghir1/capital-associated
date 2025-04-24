@@ -142,7 +142,7 @@ const page = () => {
               </p>
               <p className="mb-4">
                 Maximize the potential of your living areas with our
-                comprehensive renovation solutions. Whether it’s a cozy family
+                comprehensive renovation solutions. Whether it&apos;s a cozy family
                 room, an inviting dining area, or a stylish entertainment space,
                 we create environments that reflect your lifestyle and foster
                 comfort and togetherness.
@@ -201,7 +201,7 @@ const page = () => {
               </p>
               <p className="mb-4">
                 Expand your living space with seamless room additions that blend
-                harmoniously with your existing structure. Whether it’s an extra
+                harmoniously with your existing structure. Whether it&apos;s an extra
                 bedroom, a home office, or a dedicated entertainment area, we
                 ensure a seamless integration that maintains the architectural
                 integrity of your home.
@@ -246,7 +246,7 @@ const page = () => {
                 7- Exterior Remodeling
               </p>
               <p className="mb-4">
-                Boost your home’s curb appeal and make a lasting impression with
+                Boost your home&apos;s curb appeal and make a lasting impression with
                 our exterior remodeling solutions. From revitalizing your façade
                 to upgrading windows, doors, and roofing, we create a visually
                 captivating exterior that enhances both aesthetics and
@@ -280,7 +280,7 @@ const page = () => {
           <p className="mb-4">
             At Capital Associated Building Contracting, we specialize in
             transforming residential, commercial, and hospitality interiors
-            through thoughtful design and high-quality execution. Whether it’s a
+            through thoughtful design and high-quality execution. Whether it&apos;s a
             full-scale renovation or a targeted interior makeover, our team of
             experienced architects, engineers, and fit-out specialists delivers
             unique solutions that match with your vision and exceed

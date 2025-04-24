@@ -53,7 +53,7 @@ const page = () => {
             brighter future for our planet and generations to come.
           </p>
           <p className="mt-4">
-            In today’s world, it is imperative to prioritize sustainability and
+            In today&apos;s world, it is imperative to prioritize sustainability and
             reduce our carbon footprint. Green building practices offer a
             plethora of advantages, encompassing energy efficiency, cost
             savings, improved indoor air quality, and enhanced occupant comfort.
@@ -154,7 +154,7 @@ const page = () => {
                 By incorporating energy-efficient technologies, sustainable
                 materials, and optimized designs, our solutions help decrease
                 operational costs, resulting in substantial savings throughout
-                the building’s lifespan. Additionally, numerous governments and
+                the building&apos;s lifespan. Additionally, numerous governments and
                 organizations provide incentives and tax benefits for green
                 building initiatives, further enhancing the financial appeal.
               </p>
@@ -212,7 +212,7 @@ const page = () => {
                 5- Sustainable Reputation
               </p>
               <p className="mb-4">
-                Adopting green building practices elevates your organization’s
+                Adopting green building practices elevates your organization&apos;s
                 reputation as an environmentally responsible entity. It
                 showcases your commitment to sustainable development and
                 positions you as a leader in the industry, attracting

@@ -62,12 +62,12 @@ const page = () => {
               building stands as a beacon of modern elegance and comfort.
               Combining contemporary architecture with traditional Arabian
               charm, it offers an exceptional living experience in one of the
-              UAE’s most culturally rich cities.
+              UAE&apos;s most culturally rich cities.
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
-              The building’s design embraces sleek lines and expansive glass
+              The building&apos;s design embraces sleek lines and expansive glass
               facades, ensuring an abundance of natural light while offering
-              breathtaking views of the city’s skyline and lush landscapes.
+              breathtaking views of the city&apos;s skyline and lush landscapes.
               Thoughtfully designed interiors blend functionality with
               sophistication, creating a perfect balance between urban
               convenience and homely warmth.

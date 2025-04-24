@@ -34,7 +34,7 @@ const BlogPost5 = () => {
             industry.
           </p>
           <p className="text-black">
-            Whether it’s a skyscraper or a residential development, the success
+            Whether it&apos;s a skyscraper or a residential development, the success
             of any large-scale construction effort often hinges on the
             capabilities of the general contractor. This article explores their
             responsibilities and the critical functions they perform.
@@ -169,7 +169,7 @@ const BlogPost5 = () => {
             Selection of subcontractors is another important aspect. Experienced
             and reliable professionals are chosen to ensure the best outcomes
             for the project. The general contractor supervises their work,
-            ensuring it aligns with the project’s goals.
+            ensuring it aligns with the project&apos;s goals.
           </p>
         </section>
 

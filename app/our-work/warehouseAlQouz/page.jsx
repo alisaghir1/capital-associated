@@ -76,7 +76,7 @@ const page = () => {
             </p>
             <p className="xl:text-lg mt-4 text-black md:text-md text-sm">
               Located in Al Qouz, the warehouse is perfectly positioned to take
-              advantage of Dubai’s robust transport network, offering easy
+              advantage of Dubai&apos;s robust transport network, offering easy
               access to major highways and ports. This prime location provides
               businesses with a competitive edge, ensuring fast distribution to
               clients across the city and beyond.

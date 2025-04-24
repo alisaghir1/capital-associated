@@ -55,7 +55,7 @@ const page = () => {
           <p className="mt-4">
             At Capital Associated Building Contracting, we specialize in
             providing transformative Pre-Construction Services services that
-            breathe new life into your spaces. Whether it’s a commercial
+            breathe new life into your spaces. Whether it&apos;s a commercial
             establishment, residential property, or hospitality venue, our team
             of experts is dedicated to creating remarkable environments that
             align with your unique vision and functional requirements.
@@ -77,7 +77,7 @@ const page = () => {
               1- Project Evaluation and Feasibility Study
             </p>
             <p className="mb-4">
-              We begin by thoroughly evaluating your project’s scope,
+              We begin by thoroughly evaluating your project&apos;s scope,
               requirements, and objectives. Our experienced team conducts a
               feasibility study to assess the viability of the project, taking
               into account factors such as site location, regulations, budget,
@@ -194,7 +194,7 @@ const page = () => {
                 identify opportunities for cost savings, efficiency
                 improvements, and enhanced value. Our goal is to help you
                 achieve the highest possible return on investment while
-                maintaining the project’s integrity.
+                maintaining the project&apos;s integrity.
               </p>
               <div className="relative mt-5  h-64 xl:h-[30rem]">
                 {" "}
