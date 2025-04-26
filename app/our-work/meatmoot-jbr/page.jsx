@@ -36,19 +36,13 @@ const page = () => {
 
         <section className="container mx-auto flex flex-col gap-5 px-5">
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
-            <div onContextMenu={(e) => e.preventDefault()}>
-              <video
-                muted
-                autoPlay
-                loop
-                playsInline
-                controls
-                className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
-              >
-                <source src="/projects/commercialBuilding.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </div>
+          <div onContextMenu={(e) => e.preventDefault()}>
+    <img
+      src="/projects/jbrm.jpg"
+      alt="Commercial Building"
+      className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
+    />
+  </div>
           </div>
 
           <div className="w-full mb-20 xl:rounded-b-[300px] rounded-b-[100px] flex flex-col items-center text-center bg-slate-200 xl:px-40 px-5 py-20">
