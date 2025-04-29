@@ -14,6 +14,7 @@ const page = () => {
               alt="Background Image"
               layout="fill"
               objectFit="cover"
+              priority
             />
           </div>
 
