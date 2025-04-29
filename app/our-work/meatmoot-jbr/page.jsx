@@ -37,10 +37,11 @@ const page = () => {
         <section className="container mx-auto flex flex-col gap-5 px-5">
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
           <div onContextMenu={(e) => e.preventDefault()}>
-    <img
+    <Image
       src="/projects/jbrm.jpg"
       alt="Commercial Building"
       className="w-full xl:h-[40rem] h-[25rem] object-cover xl:rounded-t-[300px] rounded-t-[100px]"
+      layout="fill"
     />
   </div>
           </div>
