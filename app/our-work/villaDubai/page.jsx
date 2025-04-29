@@ -35,7 +35,7 @@ const page = () => {
           <div className="relative w-full xl:h-[40rem] h-[25rem] mt-10">
             <div onContextMenu={(e) => e.preventDefault()}>
               <Image
-                src="/projects/villaMain.jpg"
+                src="/projects/main-villa.jpg"
                 alt="Background Image"
                 layout="fill" // This will make the image cover the entire screen
                 objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
@@ -105,7 +105,7 @@ const page = () => {
 
           <div className="relative object-center w-full xl:h-[30rem] hidden xl:block h-[25rem] mt-10 mb-5">
             <Image
-              src="/projects/vl1.jpg"
+              src="/projects/villa-first.jpg"
               alt="Background Image"
               layout="fill" // This will make the image cover the entire screen
               objectFit="center" // Ensures the image maintains its aspect ratio while filling the screen
