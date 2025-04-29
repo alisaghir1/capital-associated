@@ -39,7 +39,7 @@ const page = () => {
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
-              className="xl:rounded-b-[300px] rounded-b-[100px] "
+              className="xl:rounded-b-[300px] rounded-b-[100px] object-cover"
             />
           </div>
           <p className="mt-4">
@@ -207,7 +207,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/general-contracting/11.webp"
+                  src="/services/general-contracting/11.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container

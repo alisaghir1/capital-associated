@@ -35,7 +35,7 @@ const page = () => {
         <div className="container mx-auto flex flex-col gap-5 text-center px-4">
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/s8.jpg"
+              src="/services/specialty-construction/1.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
@@ -64,7 +64,7 @@ const page = () => {
           </p>
           <div className="relative mt-5 h-[300px] xl:h-[600px]">
             <Image
-              src="/services/s7.jpg"
+              src="/services/specialty-construction/2.jpg"
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
@@ -93,7 +93,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/s5.jpg"
+                  src="/services/specialty-construction/3.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -104,7 +104,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/interiorFit/s4.jpg"
+                  src="/services/specialty-construction/4.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -132,7 +132,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/interiorFit/s11.jpg"
+                    src="/services/specialty-construction/5.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -171,7 +171,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/interiorFit/s4.jpg"
+                    src="/services/specialty-construction/6.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -182,7 +182,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/interiorFit/s5.jpg"
+                    src="/services/specialty-construction/7.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -209,7 +209,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/s1.jpg"
+                  src="/services/specialty-construction/8.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container

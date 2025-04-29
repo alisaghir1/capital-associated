@@ -85,7 +85,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/designBuild/3.webp"
+                  src="/services/designBuild/3.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -96,7 +96,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/designBuild/4.webp"
+                  src="/services/designBuild/4.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -121,7 +121,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/designBuild/5.webp"
+                    src="/services/designBuild/5.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -159,7 +159,7 @@ const page = () => {
                   {" "}
                   {/* Add 'relative' to the parent */}
                   <Image
-                    src="/services/designBuild/10.webp"
+                    src="/services/designBuild/10.jpg"
                     alt="Full Width Image"
                     layout="fill" // Ensures the image fills the container
                     objectFit="cover" // Ensures the image scales properly within the container
@@ -196,7 +196,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/designBuild/9.png"
+                  src="/services/designBuild/9.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
@@ -219,7 +219,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/designBuild/8.webp"
+                  src="/services/designBuild/8.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
