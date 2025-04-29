@@ -18,7 +18,7 @@ const page = () => {
           </div>
 
           {/* Content on top of the image */}
-          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
+          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
             <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
               Meat Moot – Al Khawaneej Branch
             </h1>
