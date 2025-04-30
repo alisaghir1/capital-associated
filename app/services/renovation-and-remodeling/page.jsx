@@ -257,7 +257,7 @@ const page = () => {
                 {" "}
                 {/* Add 'relative' to the parent */}
                 <Image
-                  src="/services/renovation-and-remodeling/11.jpg"
+                  src="/services/general-contracting/2.jpg"
                   alt="Full Width Image"
                   layout="fill" // Ensures the image fills the container
                   objectFit="cover" // Ensures the image scales properly within the container
