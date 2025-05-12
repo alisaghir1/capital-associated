@@ -1,4 +1,4 @@
 module.exports = {
-    siteUrl: 'https://capital-associated.vercel.app/',
+    siteUrl: 'https://www.capitalassociated.com/',
     generateRobotsTxt: true,
   };
