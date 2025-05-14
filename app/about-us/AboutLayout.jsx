@@ -6,7 +6,7 @@ const AboutLayout = () => {
     <div className="w-full h-full mb-10">
       <div className="bg-slate-100">
         {/* Fullscreen Background Section */}
-        <div className="relative w-full h-screen ">
+        <div className="relative w-full h-screen">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -34,32 +34,21 @@ const AboutLayout = () => {
 
         {/* Container Section */}
         <div className="container mx-auto px-4 py-16">
-          {/* Text and Image Side by Side */}
           <div className="flex flex-col lg:flex-row lg:items-start items-center gap-10">
             {/* Left Text Content */}
             <div className="lg:w-1/2 flex flex-col gap-5">
-              <p className="text-xl">
-                Capital Associated Building Contracting LLC
-              </p>
+              <p className="text-xl">Capital Associated Building Contracting LLC</p>
               <h1 className="text-2xl font-bold">
                 Capital Associated Building Contracting{" "}
                 <span className="font-normal text-xs">
-                  is a construction company in Dubai, UAE.
+                  is a premier contractor and builder based in Dubai, UAE.
                 </span>
               </h1>
               <p className="mt-4">
-                Our extensive experience in the construction industry has
-                established us as an essential partner in shaping Dubai&apos;s
-                spectacular skyline and contributing to its rapid growth.
+                With years of proven experience in the construction industry, we play a vital role in shaping Dubai’s iconic skyline and driving its urban development.
               </p>
               <p className="mt-4">
-                Capital Associated Building Contracting in Dubai focuses on
-                providing exceptional construction solutions while maintaining
-                the highest levels of customer service and creativity. Our
-                diverse portfolio comprises commercial buildings, residential
-                towers, industrial facilities, and infrastructure projects. Each
-                project demonstrates our knowledge and experience as an elite
-                construction company in Dubai.
+                We specialize in delivering high-quality construction solutions with a strong focus on client satisfaction, technical excellence, and innovation. Our portfolio includes commercial complexes, residential towers, industrial facilities, and infrastructure developments, each completed to the highest standards of quality and safety.
               </p>
             </div>
 
@@ -87,124 +76,80 @@ const AboutLayout = () => {
             />
           </div>
         </div>
+
         <div className="w-full container mx-auto flex flex-col gap-5 text-center px-4">
           <p className="mt-4">
-            Our success is built on customer happiness. We value strong and
-            long-lasting relationships with our clients, which are built on
-            confidence, transparency, and effective communication. Throughout
-            the construction process, we try to understand and surpass our
-            clients’ individual requirements and objectives.
+            At the core of our operations is a deep commitment to client satisfaction. We build lasting relationships grounded in trust, transparency, and clear communication—ensuring every client’s vision is fully understood and delivered.
           </p>
           <p className="mt-4">
-            Everyone on our team is a critical component of our success. Our
-            team of highly qualified experts, which includes architects,
-            engineers, project managers, and skilled workers, provides a diverse
-            set of abilities and backgrounds to each project. This diversity
-            ensures the success of all projects.
+            Our success is driven by a dedicated team of architects, engineers, project managers, and skilled workers. Their collective expertise and professionalism guarantee consistent project delivery, no matter the scale or complexity.
           </p>
           <p className="mt-4">
-            Our approach is built around embracing cutting-edge technologies and
-            construction processes. Investing in cutting-edge equipment and
-            creative procedures improves productivity and safety while
-            minimizing environmental effect. Our strategy incorporates
-            responsible practices throughout our operations.
+            We embrace advanced technologies and construction methodologies to improve efficiency, safety, and environmental responsibility. Our continuous investment in state-of-the-art equipment and sustainable practices reflects our dedication to future-ready building solutions.
           </p>
           <p className="mt-4">
-            Quality is important to everything we do. To ensure that projects
-            meet the highest standards, we follow stringent control methods and
-            extensive inspection procedures. When reliable partners and
-            suppliers are associated with, top-tier products and services are
-            produced.
+            Quality is the foundation of every project we undertake. Strict quality control systems and thorough inspection procedures ensure outstanding results. We work only with reputable partners and suppliers to maintain excellence across every phase of construction.
           </p>
 
           <div className="mt-5 flex flex-col xl:flex-row justify-center items-center gap-10 xl:gap-4">
-            {/* Left Image */}
             <div className="xl:w-1/4 w-full px-5 xl:px-0 h-[300px] xl:h-[500px]">
               <Image
                 src="/about/about3.jpg"
-                alt="Left Image"
+                alt="Construction Site"
                 width={1000}
                 height={500}
-                className="h-full w-full object-cover  xl:rounded-se-[300px] xl:rounded-es-[300px]"
+                className="h-full w-full object-cover xl:rounded-se-[300px] xl:rounded-es-[300px]"
               />
             </div>
 
-            {/* Middle Image */}
             <div className="xl:w-1/2 w-full px-5 xl:px-0 h-[300px] xl:h-[500px]">
               <Image
                 src="/about/about4.jpg"
-                alt="Middle Image"
+                alt="Project in Progress"
                 width={1200}
                 height={500}
-                className="h-full w-full object-cover  xl:rounded-ss-[300px] xl:rounded-ee-[300px]"
+                className="h-full w-full object-cover xl:rounded-ss-[300px] xl:rounded-ee-[300px]"
               />
             </div>
 
-            {/* Right Image */}
             <div className="xl:w-1/4 w-full px-5 xl:px-0 h-[300px] xl:h-[500px]">
               <Image
                 src="/about/about5.jpg"
-                alt="Right Image"
+                alt="Project Completion"
                 width={1200}
                 height={500}
-                className="h-full w-full object-cover  xl:rounded-se-[300px] xl:rounded-es-[300px]"
+                className="h-full w-full object-cover xl:rounded-se-[300px] xl:rounded-es-[300px]"
               />
             </div>
           </div>
 
           <div className="mt-10 flex flex-col gap-5 px-4">
             <p className="mt-4">
-              Our construction sites all place a strong emphasis on safety. Most
-              importantly, we care about the health of our employees and the
-              communities in which we operate. To provide a safe workplace, we
-              follow both national and international laws. Our employees have
-              the necessary knowledge and skills thanks to stringent safety
-              requirements and training programs.
+              Safety is our top priority. Our sites strictly adhere to national and international HSE standards, ensuring safe working environments through compliance with NEBOSH, IOSH, and OSHA guidelines. Comprehensive training programs empower our workforce to operate safely and effectively.
             </p>
             <p className="mt-4">
-              As a responsible corporate citizen, Capital Associated Building
-              Contracting in Dubai actively engages in social initiatives,
-              aiming to make a positive impact on the communities we serve. Our
-              efforts focus on promoting education, healthcare, and sustainable
-              development through partnerships and collaborations.
+              As a socially responsible company, we support community growth through initiatives focused on education, health, and sustainable development. We actively contribute to society by forming impactful partnerships and fostering positive change.
             </p>
             <p className="mt-4 mb-20">
-              If you are looking for developers in Dubai, Abu Dhabi, Sharjah, Al
-              Ain or anywhere in UAE or the world, we are here to help as your
-              one-stop construction and fit-out company. Investors, or
-              individuals seeking a reliable construction and complete fit-out
-              company in Dubai, Capital Associated Building Contracting stands
-              ready to fulfill your aspirations.
+              Whether you’re an investor or client seeking a trusted contractor for your construction or fit-out project in Dubai, Abu Dhabi, Sharjah, Al Ain, or beyond—Capital Associated Building Contracting is your partner for excellence in execution and timely delivery.
             </p>
           </div>
         </div>
       </div>
+
       <div className="container mx-auto text-center bg-yellow-950 text-white p-10 xl:rounded-b-[300px] mt-5">
         <p className="mt-4">
-          Explore our website to learn more about our projects, services that
-          cover general contracting, construction management, design-build,
-          renovation & remodeling, pre-construction services, value engineering,
-          green building solutions, specialty construction or interior fit-out,
-          and values!
+          Explore our website to discover more about our services, including general contracting, construction management, design-build, renovation and remodeling, pre-construction planning, value engineering, sustainable building solutions, specialty construction, and complete interior fit-outs.
         </p>
         <p className="mt-4">
-          Let us collaborate for your design-build projects, construction
-          management or general contracting needs for a future of excellence and
-          enduring success, contributing to the ever-evolving landscape of
-          Dubai, Abu Dhabi, Sharjah, Al Ain or wherever you are in UAE or the
-          world!
+          Let’s work together to build a legacy—whether your project is in Dubai, Abu Dhabi, Sharjah, Al Ain, or anywhere in the UAE or abroad. Capital Associated Building Contracting delivers excellence, every time.
         </p>
         <h1 className="my-10 text-2xl">Quality</h1>
         <p className="mt-4">
-          Quality is the cornerstone of our approach at Capital Associated
-          Building Contracting (CABC). We are committed to delivering projects
-          of the highest standards, ensuring meticulous attention to detail and
-          adherence to stringent quality control measures.
+          Quality is the foundation of our commitment at Capital Associated Building Contracting (CABC). We ensure every project is delivered with meticulous attention to detail and compliance with the highest quality standards.
         </p>
         <p className="mt-4 mb-20">
-          From the selection of top-quality materials to the implementation of
-          rigorous inspection processes, we strive for excellence in every
-          aspect of our construction projects.
+          From selecting top-grade materials to implementing thorough inspection protocols, our dedication to excellence is reflected in every phase of construction.
         </p>
       </div>
     </div>

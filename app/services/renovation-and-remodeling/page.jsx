@@ -25,7 +25,7 @@ const page = () => {
             <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
               Precision Remodeling. Elevated Design
             </p>
-            <p className="absolute  bottom-10 left-10 text-white">
+            <p className="absolute bottom-10 left-10 text-white">
               Home{" "}
               <span className="text-black">
                 / Our Services / Renovation & Remodeling
@@ -40,7 +40,7 @@ const page = () => {
               alt="Full Width Image"
               layout="fill"
               objectFit="cover"
-              className="xl:rounded-b-[300px] rounded-b-[100px] "
+              className="xl:rounded-b-[300px] rounded-b-[100px]"
             />
           </div>
           <p className="mt-4">
@@ -69,69 +69,59 @@ const page = () => {
           </h1>
           <div className="flex flex-col text-start justify-center mt-10">
             <p className="xl:text-xl text-lg font-bold mb-4">
-              1- Kitchen Renovation
+              1- Restaurant / Clinic / Retail Renovations
             </p>
             <p className="mb-4">
-              Elevate your culinary experience with a fully customized kitchen
-              that combines functionality, style, and efficiency. From bespoke
-              cabinetry and exquisite countertops to state-of-the-art
-              appliances, we create spaces that inspire creativity and delight
-              the senses.
+              Transform your restaurant, clinic, or retail space into a
+              functional and visually striking environment. We focus on design
+              elements that support your business goals while delivering a unique
+              experience for your clients or customers.
             </p>
             <div className="flex gap-5">
               <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                {" "}
-                {/* Add 'relative' to the parent */}
                 <Image
                   src="/services/renovation-and-remodeling/3.jpg"
                   alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
+                  layout="fill"
+                  objectFit="cover"
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
               <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                {" "}
-                {/* Add 'relative' to the parent */}
                 <Image
                   src="/services/renovation-and-remodeling/4.jpg"
                   alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
+                  layout="fill"
+                  objectFit="cover"
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                2- Bathroom Renovation
+                2- Villa Renovation
               </p>
               <p className="mb-4">
-                Turn your bathroom into a private sanctuary of relaxation and
-                rejuvenation. With meticulous attention to detail, we design and
-                install luxurious fixtures, elegant tilework, and spa-like
-                features, ensuring a serene and indulgent bathing experience.
+                Refresh your villa with a luxurious renovation that elevates both
+                comfort and style. Our team handles everything from design to
+                implementation to ensure your vision becomes a reality.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
                   <Image
                     src="/services/renovation-and-remodeling/5.jpg"
                     alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
+                    layout="fill"
+                    objectFit="cover"
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
                   <Image
                     src="/services/renovation-and-remodeling/6.jpg"
                     alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
+                    layout="fill"
+                    objectFit="cover"
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
@@ -143,31 +133,27 @@ const page = () => {
               </p>
               <p className="mb-4">
                 Maximize the potential of your living areas with our
-                comprehensive renovation solutions. Whether it&apos;s a cozy family
+                comprehensive renovation solutions. Whether it’s a cozy family
                 room, an inviting dining area, or a stylish entertainment space,
                 we create environments that reflect your lifestyle and foster
                 comfort and togetherness.
               </p>
               <div className="flex gap-5">
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
                   <Image
                     src="/services/renovation-and-remodeling/7.jpg"
                     alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
+                    layout="fill"
+                    objectFit="cover"
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
                 <div className="relative mt-5 w-1/2 h-56 xl:h-96">
-                  {" "}
-                  {/* Add 'relative' to the parent */}
                   <Image
                     src="/services/renovation-and-remodeling/8.jpg"
                     alt="Full Width Image"
-                    layout="fill" // Ensures the image fills the container
-                    objectFit="cover" // Ensures the image scales properly within the container
+                    layout="fill"
+                    objectFit="cover"
                     className="xl:rounded-b-[150px] rounded-b-[50px]"
                   />
                 </div>
@@ -175,92 +161,41 @@ const page = () => {
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                4- Flooring and Painting
+                4- Landscaping / Softscaping / Hardscaping
               </p>
               <p className="mb-4">
-                Enhance the aesthetic appeal and functionality of your home with
-                our flooring and painting services. From hardwood flooring to
-                sleek tile designs, and from expert color consultations to
-                flawless painting execution, we help you achieve a cohesive and
-                visually striking interior.
+                Transform your outdoor space with our expert landscaping
+                services. Whether it’s softscaping for lush greenery or hardscaping
+                for a more structured layout, we design your landscape to complement
+                your home’s aesthetic and function.
               </p>
-              <div className="relative mt-5  h-64 xl:h-[30rem]">
-                {" "}
-                {/* Add 'relative' to the parent */}
+              <div className="relative mt-5 h-64 xl:h-[30rem]">
                 <Image
                   src="/services/renovation-and-remodeling/9.jpg"
                   alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
+                  layout="fill"
+                  objectFit="cover"
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
             </div>
             <div className="flex flex-col text-start justify-center mt-10">
               <p className="xl:text-xl text-lg font-bold mb-4">
-                5- Room Additions
+                5- Villa Extension
               </p>
               <p className="mb-4">
-                Expand your living space with seamless room additions that blend
-                harmoniously with your existing structure. Whether it&apos;s an extra
+                Expand your living space with seamless villa extensions that blend
+                harmoniously with your existing structure. Whether it’s an extra
                 bedroom, a home office, or a dedicated entertainment area, we
                 ensure a seamless integration that maintains the architectural
                 integrity of your home.
               </p>
-              <div className="relative mt-5  h-64 xl:h-[30rem]">
-                {" "}
-                {/* Add 'relative' to the parent */}
+              <div className="relative mt-5 h-64 xl:h-[30rem] mb-20">
                 <Image
                   src="/services/renovation-and-remodeling/10.jpg"
                   alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
-                  className="xl:rounded-b-[150px] rounded-b-[50px]"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col text-start justify-center mt-10">
-              <p className="xl:text-xl text-lg font-bold mb-4">
-                6- Basement and Attic Remodeling
-              </p>
-              <p className="mb-4">
-                Unlock the hidden potential of your basement or attic with our
-                transformative remodeling services. From creating a versatile
-                recreational space to constructing a private retreat, our
-                expertise in maximizing the functionality of these areas will
-                breathe new life into your home.
-              </p>
-              <div className="relative mt-5  h-64 xl:h-[30rem] mb-20">
-                {" "}
-                {/* Add 'relative' to the parent */}
-                <Image
-                  src="/services/renovation-and-remodeling/11.jpg"
-                  alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
-                  className="xl:rounded-b-[150px] rounded-b-[50px]"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col text-start justify-center mt-10">
-              <p className="xl:text-xl text-lg font-bold mb-4">
-                7- Exterior Remodeling
-              </p>
-              <p className="mb-4">
-                Boost your home&apos;s curb appeal and make a lasting impression with
-                our exterior remodeling solutions. From revitalizing your façade
-                to upgrading windows, doors, and roofing, we create a visually
-                captivating exterior that enhances both aesthetics and
-                functionality.
-              </p>
-              <div className="relative mt-5  h-64 xl:h-[30rem] mb-20">
-                {" "}
-                {/* Add 'relative' to the parent */}
-                <Image
-                  src="/services/general-contracting/2.jpg"
-                  alt="Full Width Image"
-                  layout="fill" // Ensures the image fills the container
-                  objectFit="cover" // Ensures the image scales properly within the container
+                  layout="fill"
+                  objectFit="cover"
                   className="xl:rounded-b-[150px] rounded-b-[50px]"
                 />
               </div>
@@ -274,22 +209,9 @@ const page = () => {
             Contact Us for Renovation & Remodeling Services in Dubai
           </h1>
           <p className="mb-4">
-            Thinking of upgrading your space? Our expert renovation and
-            remodeling services in Dubai are designed to enhance functionality,
-            elevate aesthetics, and breathe new life into your property.
-          </p>
-          <p className="mb-4">
-            At Capital Associated Building Contracting, we specialize in
-            transforming residential, commercial, and hospitality interiors
-            through thoughtful design and high-quality execution. Whether it&apos;s a
-            full-scale renovation or a targeted interior makeover, our team of
-            experienced architects, engineers, and fit-out specialists delivers
-            unique solutions that match with your vision and exceed
-            expectations.
-          </p>
-          <p className="mb-4">
-            Reach out today to schedule a consultation and discover how we can
-            revitalize your space with precision, creativity, and lasting value.
+            Thinking of upgrading your space? Our expert renovation services can
+            help transform your vision into reality. Contact us today for a
+            consultation and let’s start planning your next project.
           </p>
         </div>
       </div>

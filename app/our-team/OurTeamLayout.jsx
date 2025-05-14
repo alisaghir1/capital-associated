@@ -86,14 +86,24 @@ const OurTeamLayout = () => {
             ))}
           </div>
         </section>
+
         <section className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0">
-          <p className="lg:text-2xl text-bold text-xl xl:text-3xl">
-          Elite Team of Engineers, Architects & Designers in Dubai
+          <p className="lg:text-2xl text-bold text-xl xl:text-3xl text-center">
+            Professional Project Managers, Engineers, Supervisors and Skilled Personnel and Staffs in Dubai
           </p>
-          <p className="lg:text-1xl text-gray-500 mt-10 text-lg xl:text-2xl">
-          At Capital Associated Contracting, we are recognized as an elite construction company in Dubai, with a highly skilled team of engineers, architects, interior designers, and project developers. Our multidisciplinary team brings extensive experience across commercial, residential, and high-end fit-out projects throughout the UAE. Each expert is dedicated to delivering creative, efficient, and unique solutions custom to meet our client&apos;s vision. From architectural design and engineering consultation to project execution and turnkey delivery, we uphold the great standards of quality, precision, and professionalism. As one of the trusted construction companies in Dubai, our team&apos;s collaborative approach provides seamless project delivery with a focus on original, soid, and long-term value for our clients in UAE, Dubai.
+          <p className="lg:text-1xl text-gray-500 mt-10 text-lg xl:text-2xl text-center">
+            At Capital Associated Contracting, we are recognized as a professional building and construction company in Dubai. 
+            Our dedicated team of project managers, engineers, supervisors, and skilled personnel brings decades of combined experience in executing 
+            high-quality construction works. We specialize in residential, commercial, industrial, and fit-out projects across the UAE.
+            <br /><br />
+            Our team focuses on every aspect of construction — from planning, site execution, and quality control to timely project delivery. 
+            We emphasize technical excellence, HSE compliance, and innovative solutions tailored to meet the specific needs of our clients. 
+            Whether it's structural construction, civil engineering, or general contracting, we strive for excellence and durability in everything we build.
+            <br /><br />
+            As a trusted name among building contractors in Dubai, our team-driven approach ensures reliable, cost-effective, and future-ready construction outcomes for every project.
           </p>
         </section>
+
         <VidioComponent />
       </div>
     </div>
