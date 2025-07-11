@@ -7,6 +7,12 @@ import Link from "next/link";
 
 const teamMembers = [
   {
+    image: "/team/t4.jpg",
+    name: "RAMAZ IZZA",
+    position: "Managing Director",
+    path: "/our-team/ramaz-izza",
+  },
+  {
     image: "/team/t1.jpg",
     name: "MICHAEL REYES",
     position: "Document Control",
@@ -17,18 +23,6 @@ const teamMembers = [
     name: "LAKSHMI MOHAN",
     position: "Estimation Engineer",
     path: "/our-team/lakshmi-mohan",
-  },
-  {
-    image: "/team/t3.jpg",
-    name: "HUSSAM AL RUSTOM",
-    position: "Site Engineer",
-    path: "/our-team/hussam-al-rustom",
-  },
-  {
-    image: "/team/t4.jpg",
-    name: "RAMAZ IZZA",
-    position: "Managing Director",
-    path: "/our-team/ramaz-izza",
   },
 ];
 
