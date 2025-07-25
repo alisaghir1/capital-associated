@@ -46,12 +46,12 @@ const OurWorkLayout = () => {
         </Link>
 
         {/* Villa */}
-        <Link href="/our-work/villaDubai" className="block">
+        <Link href="/our-work/Tilal-Al-Ghaf-Harmony" className="block">
           <div className="relative hover:bg-[url(/projects/villa.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-bl-full">
             <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">Villa</h2>
+              <h2 className="xl:text-lg text-md mb-2 font-semibold">Tilal Al Ghaf Harmony</h2>
               <p className="xl:text-sm text-xs">
-                Dubai Hills, United Arab Emirates
+                Dubai, United Arab Emirates
               </p>
             </div>
           </div>
