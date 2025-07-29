@@ -1,10 +1,12 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 
 const Blogs = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const blogsPerPage = 6;
   const blogPosts = [
     {
       id: 1,
@@ -92,6 +94,17 @@ const Blogs = () => {
     },
   ];
 
+  // Calculate pagination
+  const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
+  const startIndex = (currentPage - 1) * blogsPerPage;
+  const endIndex = startIndex + blogsPerPage;
+  const currentBlogs = blogPosts.slice(startIndex, endIndex);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="py-20 xl:px-20 px-0 bg-slate-100 pt-10">
       <section className="flex flex-col justify-center items-center gap-5 my-20 mx-5">
@@ -123,8 +136,16 @@ const Blogs = () => {
           The blog explores the latest in construction, architecture, engineering, and interior design in Dubai and across the UAE. As one of the leading construction companies in Dubai, we share expert knowledge from our team of engineers, architects, interior designers, and property developers, offering valuable content that informs, educates, and inspires. Whether you&apos;re a client, investor, or design enthusiast, our blog explores the future of urban development, cutting-edge construction solutions, and the artistry behind building iconic structures. Stay connected with the region&apos;s top voices in elite construction and design — and discover how innovation continues to shape Dubai&apos;s skyline.
         </motion.p>
       </section>
+      
+      {/* Page indicator */}
+      <div className="flex justify-center items-center mb-8">
+        <p className="text-lg text-gray-600">
+          Page {currentPage} of {totalPages} ({blogPosts.length} total blogs)
+        </p>
+      </div>
+
       <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
-        {blogPosts.map((post) => (
+        {currentBlogs.map((post) => (
           <Link key={post.id} href={post.path}>
             <motion.div
               variants={fadeIn("left", 1)}
@@ -158,6 +179,53 @@ const Blogs = () => {
           </Link>
         ))}
       </section>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center items-center mt-12 space-x-2">
+          {/* Previous Button */}
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
+              currentPage === 1
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-black text-white hover:bg-gray-800'
+            }`}
+          >
+            Previous
+          </button>
+
+          {/* Page Numbers */}
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index + 1}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
+                currentPage === index + 1
+                  ? 'bg-black text-white'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
+
+          {/* Next Button */}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
+              currentPage === totalPages
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                : 'bg-black text-white hover:bg-gray-800'
+            }`}
+          >
+            Next
+          </button>
+        </div>
+      )}
+
       <div className="flex justify-center align-center pt-20">
         <Link
           className="px-4 mb-5 z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-black hover:text-black "
