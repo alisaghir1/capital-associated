@@ -101,19 +101,19 @@ const OurProjects = () => {
             </div>
           </Link>
 
-        {/* Warehouse */}
-        {/* <Link href="/our-work/warehouseAlQouz" className="block">
-          <div className="relative hover:bg-[url(/projects/warehouse.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                Warehouse
-              </h2>
-              <p className="xl:text-sm text-xs">
-                Dubai, United Arab Emirates
-              </p>
+        {/* Elite Villa Construction */}
+          <Link href="/our-work/elite-villa-construction" className="block">
+            <div className="relative hover:bg-[url(/projects/dh1.png)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
+              <div className="text-white xl:p-3 rounded-lg w-full text-start">
+                <h2 className="xl:text-lg text-md mb-2 font-semibold">
+                  Elite Villa Construction
+                </h2>
+                <p className="xl:text-sm text-xs">
+                  Dubai Hills, United Arab Emirates
+                </p>
+              </div>
             </div>
-          </div>
-        </Link> */}
+          </Link>
 
         {/* Residental Building 2 */}
         {/* <Link href="/our-work/residentalBuildingSharjah2" className="block">
