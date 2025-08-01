@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://capital-associated.vercel.app/
+Host: https://www.capitalassociated.com/
 
 # Sitemaps
-Sitemap: https://capital-associated.vercel.app/sitemap.xml
+Sitemap: https://www.capitalassociated.com/sitemap.xml

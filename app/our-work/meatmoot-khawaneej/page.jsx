@@ -46,7 +46,7 @@ const page = () => {
                 controls
                 className="w-full xl:h-[40rem] h-[25rem] object-cover"
               >
-                <source src="/projects/mkhv.mp4" type="video/mp4" />
+                <source src="https://res.cloudinary.com/dqxyczrhq/video/upload/v1754034862/mkhv_tim7be.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

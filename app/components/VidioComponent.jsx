@@ -13,7 +13,7 @@ const VidioComponent = () => {
        controls
        className="w-full h-[40rem] object-cover"
      >
-       <source src="/vidio.mp4" type="video/mp4" />
+       <source src="https://res.cloudinary.com/dqxyczrhq/video/upload/v1754034744/vidio_njgszg.mp4" type="video/mp4" />
        Your browser does not support the video tag.
      </video>
    </div>

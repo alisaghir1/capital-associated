@@ -41,7 +41,7 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-transparent transition-all duration-300 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
+                className="bg-transparent transition-all duration-500 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
@@ -51,26 +51,35 @@ const OurServices = () => {
               </div>
               {/* Top-right part */}
               <div
-                className="bg-black border transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
+                className="bg-black border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s1.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-black rounded-es-full transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
+                className="bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s1.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-right part */}
               <div
-                className="bg-black rounded-ee-full transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s1.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
+                className="bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s1.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
             </div>
@@ -83,7 +92,7 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-transparent transition-all duration-300 ease-in-out flex justify-center text-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
+                className="bg-transparent transition-all duration-500 ease-in-out flex justify-center text-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
@@ -93,26 +102,35 @@ const OurServices = () => {
               </div>
               {/* Top-right part */}
               <div
-                className="bg-black transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s2.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-black rounded-es-full transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
+                className="bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s2.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-right part */}
               <div
-                className="bg-black rounded-ee-full transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s2.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
+                className="bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s2.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
             </div>
@@ -125,7 +143,7 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-transparent transition-all duration-300 ease-in-out flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
+                className="bg-transparent transition-all duration-500 ease-in-out flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
@@ -135,26 +153,35 @@ const OurServices = () => {
               </div>
               {/* Top-right part */}
               <div
-                className="bg-black transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s3.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-black rounded-es-full transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer"
+                className="bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s3.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-right part */}
               <div
-                className="bg-black rounded-ee-full transition-all duration-300 ease-in-out group-hover:bg-[url('/services/s3.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer"
+                className="bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s3.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
             </div>
@@ -174,23 +201,29 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border group-hover:bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s4.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Top-right part */}
               <div
-                className="bg-black rounded-se-full group-hover:bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s4.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
@@ -200,10 +233,13 @@ const OurServices = () => {
               </div>
               {/* Bottom-right part */}
               <div
-                className="bg-black group-hover:bg-[url('/services/s4.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s4.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
             </div>
@@ -215,23 +251,29 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border group-hover:bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s5.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Top-right part */}
               <div
-                className="bg-black rounded-se-full group-hover:bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s5.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
@@ -241,10 +283,13 @@ const OurServices = () => {
               </div>
               {/* Bottom-right part */}
               <div
-                className="bg-black group-hover:bg-[url('/services/s5.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s5.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
             </div>
@@ -256,23 +301,29 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border group-hover:bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s6.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Top-right part */}
               <div
-                className="bg-black rounded-se-full group-hover:bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s6.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
@@ -282,10 +333,13 @@ const OurServices = () => {
               </div>
               {/* Bottom-right part */}
               <div
-                className="bg-black group-hover:bg-[url('/services/s6.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s6.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
             </div>
@@ -305,31 +359,40 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border group-hover:bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s7.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Top-right part */}
               <div
-                className="bg-black rounded-se-full group-hover:bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s7.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-black group-hover:bg-[url('/services/s7.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s7.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-right part */}
               <div
-                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
@@ -346,31 +409,40 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border group-hover:bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s8.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Top-right part */}
               <div
-                className="bg-black rounded-se-full group-hover:bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s8.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-black group-hover:bg-[url('/services/s8.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s8.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-right part */}
               <div
-                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",
@@ -387,31 +459,40 @@ const OurServices = () => {
             <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
               {/* Top-left part */}
               <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border group-hover:bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s9.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Top-right part */}
               <div
-                className="bg-black rounded-se-full group-hover:bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-right-top cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s9.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 0%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-left part */}
               <div
-                className="bg-black group-hover:bg-[url('/services/s9.jpg')] group-hover:bg-no-repeat group-hover:bg-cover group-hover:bg-left-bottom cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
                 style={{
+                  backgroundImage: "url('/services/s9.jpg')",
                   backgroundSize: "200% 200%",
                   backgroundPosition: "0% 100%",
+                  backgroundRepeat: "no-repeat",
+                  transition: "all 0.5s ease-in-out",
                 }}
               ></div>
               {/* Bottom-right part */}
               <div
-                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-300 ease-in-out"
+                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
                 style={{
                   backgroundSize: "200% 200%",
                   backgroundPosition: "100% 100%",

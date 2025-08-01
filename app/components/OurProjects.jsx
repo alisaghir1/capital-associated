@@ -47,11 +47,11 @@ const OurProjects = () => {
           </div>
         </Link>
 
-        {/* Villa */}
-        <Link href="/our-work/Tilal-Al-Ghaf-Harmony" className="block">
-          <div className="relative hover:bg-[url(/projects/villa.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-bl-full">
+        {/* Tilal Al Ghaf Interior */}
+        <Link href="/our-work/Tilal-Al-Ghaf-Interior" className="block">
+          <div className="relative hover:bg-[url(/services/interiorFit/s8.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-bl-full">
             <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">Tilal Al Ghaf Harmony</h2>
+              <h2 className="xl:text-lg text-md mb-2 font-semibold">Tilal Al Ghaf Interior</h2>
               <p className="xl:text-sm text-xs">
                 Dubai, United Arab Emirates
               </p>
@@ -87,19 +87,19 @@ const OurProjects = () => {
           </div>
         </Link>
 
-        {/* Residental Building */}
-        {/* <Link href="/our-work/residentalBuildingSharjah" className="block">
-          <div className="relative hover:bg-[url(/projects/residentalBuilding.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                Residental Building
-              </h2>
-              <p className="xl:text-sm text-xs">
-                Sharjah, United Arab Emirates
-              </p>
+          {/* Tilal-Al-Ghaf-Landscape */}
+          <Link href="/our-work/Tilal-Al-Ghaf-Landscape" className="block">
+            <div className="relative hover:bg-[url(/projects/villa.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
+              <div className="text-white xl:p-3 rounded-lg w-full text-start">
+                <h2 className="xl:text-lg text-md mb-2 font-semibold">
+                  Tilal Al Ghaf Landscape
+                </h2>
+                <p className="xl:text-sm text-xs">
+                  Dubai, United Arab Emirates
+                </p>
+              </div>
             </div>
-          </div>
-        </Link> */}
+          </Link>
 
         {/* Warehouse */}
         {/* <Link href="/our-work/warehouseAlQouz" className="block">
