@@ -29,7 +29,7 @@ const page = () => {
             </p>
             <p className="absolute  bottom-10 left-10 text-white">
               Home{" "}
-              <span className="text-black">/ Our Work / Hindi Villa</span>
+              <span className="text-black">/ Our Work / Landscape and Exterior Construction Dubai</span>
             </p>
           </div>
         </div>
