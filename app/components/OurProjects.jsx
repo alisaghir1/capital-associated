@@ -129,17 +129,19 @@ const OurProjects = () => {
             </div>
           </Link>
 
-        {/* Meat Moot */}
-        {/* <Link href="/our-work/meatmoot" className="block">
-          <div className="relative hover:bg-[url(/projects/meatmoot.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">Meat Moot</h2>
-              <p className="xl:text-sm text-xs">
-                Dubai, United Arab Emirates
-              </p>
+          {/* Hindi villa */}
+          <Link href="/our-work/Hindi-villa" className="block">
+            <div className="relative hover:bg-[url(/projects/hv1.png)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
+              <div className="text-white xl:p-3 rounded-lg w-full text-start">
+                <h2 className="xl:text-lg text-md mb-2 font-semibold">
+                  Hindi-villa
+                </h2>
+                <p className="xl:text-sm text-xs">
+                  Dubai, United Arab Emirates
+                </p>
+              </div>
             </div>
-          </div>
-        </Link> */}
+          </Link>
       </motion.section>
 
       <div className="flex justify-center align-center mb-20">
