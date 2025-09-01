@@ -10,6 +10,20 @@ const BlogLayout = () => {
   const blogsPerPage = 6;
   const blogPosts = [
     {
+      id: 25,
+      title: "The Role of Project Management in Construction Success",
+  image: "/blogs/The-Role-of-Project-Management-in-Construction-Success/1.jpg",
+      path: "/blog/the-role-of-project-management-in-construction-success",
+      date: "01 Sep",
+    },
+    {
+      id: 24,
+      title: "Key Considerations for Planning a Successful Commercial Development",
+  image: "/blogs/Key-Considerations-for-Planning-a-Successful-Commercial-Development/1.jpg",
+      path: "/blog/key-considerations-for-planning-a-successful-commercial-development",
+      date: "01 Sep",
+    },
+    {
       id: 23,
       title: "The Benefits of Design-Build Over Traditional Construction Methods",
       image: "/blogs/The-Benefits-of-Design-Build-Over-Traditional-Construction-Methods/1.jpg",
