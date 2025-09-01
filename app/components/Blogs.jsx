@@ -9,6 +9,41 @@ const Blogs = () => {
   const blogsPerPage = 6;
   const blogPosts = [
     {
+      id: 30,
+      title: "Specialty Construction Trends",
+      image: "/blogs/Specialty-Construction-Trends/1.jpg",
+      path: "/blog/specialty-construction-trends",
+      date: "01 Sep",
+    },
+    {
+      id: 29,
+      title: "How to Select the Right Construction Firm for Your Project",
+      image: "/blogs/How-to-Select-the-Right-Construction-Firm-for-Your-Project/1.jpg",
+      path: "/blog/how-to-select-the-right-construction-firm-for-your-project",
+      date: "01 Sep",
+    },
+    {
+      id: 28,
+      title: "The Role of BIM in Construction",
+      image: "/blogs/The-Role-of-BIM-in-Construction/1.jpg",
+      path: "/blog/the-role-of-bim-in-construction",
+      date: "01 Sep",
+    },
+    {
+      id: 27,
+      title: "The Evolution of the Design-Build Approach in Modern Construction",
+      image: "/blogs/The-Evolution-of-the-Design-Build-Approach-in-Modern-Construction/1.jpg",
+      path: "/blog/the-evolution-of-the-design-build-approach-in-modern-construction",
+      date: "01 Sep",
+    },
+    {
+      id: 26,
+      title: "Trends in Residential Construction: What Homeowners Want",
+      image: "/blogs/Trends-in-Residential-Construction-What-Homeowners-Want/1.jpg",
+      path: "/blog/trends-in-residential-construction-what-homeowners-want",
+      date: "01 Sep",
+    },
+    {
       id: 25,
       title: "The Role of Project Management in Construction Success",
       image: "/blogs/The-Role-of-Project-Management-in-Construction-Success/1.jpg",
