@@ -10,6 +10,13 @@ const BlogLayout = () => {
   const blogsPerPage = 6;
   const blogPosts = [
     {
+      id: 23,
+      title: "The Benefits of Design-Build Over Traditional Construction Methods",
+      image: "/blogs/The-Benefits-of-Design-Build-Over-Traditional-Construction-Methods/1.jpg",
+      path: "/blog/the-benefits-of-design-build-over-traditional-construction-methods",
+  date: "01 Sep",
+    },
+    {
       id: 22,
       title: "Top Trends in Commercial Construction for 2024",
       image: "/blogs/Top-Trends-in-Commercial-Construction-for-2024/1.jpg",
