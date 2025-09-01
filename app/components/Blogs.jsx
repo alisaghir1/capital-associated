@@ -9,6 +9,20 @@ const Blogs = () => {
   const blogsPerPage = 6;
   const blogPosts = [
     {
+      id: 32,
+      title: "Top 10 Unseen Advantages of Hiring a Building Contracting Company in Dubai",
+      image: "/blogs/Top-10-Unseen-Advantages-of-Hiring-a-Building-Contracting-Company-in-Dubai/1.jpg",
+      path: "/blog/top-10-unseen-advantages-of-hiring-a-building-contracting-company-in-dubai",
+      date: "01 Sep",
+    },
+    {
+      id: 31,
+      title: "10 Tips for Interior Fit-Out Projects",
+      image: "/blogs/10-Tips-for-Interior-Fit-Out-Projects/1.jpg",
+      path: "/blog/10-Tips-for-Interior-Fit-Out-Projects",
+      date: "01 Sep",
+    },
+    {
       id: 30,
       title: "Specialty Construction Trends",
       image: "/blogs/Specialty-Construction-Trends/1.jpg",
