@@ -9,6 +9,34 @@ const Blogs = () => {
   const blogsPerPage = 6;
   const blogPosts = [
     {
+      id: 36,
+      title: "Noise Pollution Mitigation in High-Density Residential Fit-Out Projects",
+      image: "/blogs/noise-pollution-mitigation-in-high-density-residential-fit-out-projects/1.jpg",
+      path: "/blog/noise-pollution-mitigation-in-high-density-residential-fit-out-projects",
+      date: "02 Sep",
+    },
+    {
+      id: 35,
+      title: "Advanced Project Management Techniques for High-Profile Construction Projects",
+      image: "/blogs/advanced-project-management-techniques-for-high-profile-construction-projects/1.jpg",
+      path: "/blog/advanced-project-management-techniques-for-high-profile-construction-projects",
+      date: "02 Sep",
+    },
+    {
+      id: 33,
+      title: "Villa Design Ideas for Your Dream Home in the City or Countryside",
+      image: "/blogs/villa-design-ideas-for-your-dream-home-in-the-city-or-countryside/1.jpg",
+      path: "/blog/villa-design-ideas-for-your-dream-home-in-the-city-or-countryside",
+      date: "02 Sep",
+    },
+    {
+      id: 34,
+      title: "The Business Case for Green Building: Why Sustainable Construction is a Smart Investment",
+      image: "/blogs/the-business-case-for-green-building-why-sustainable-construction-is-a-smart-investment/1.jpg",
+      path: "/blog/the-business-case-for-green-building-why-sustainable-construction-is-a-smart-investment",
+      date: "02 Sep",
+    },
+    {
       id: 32,
       title: "Top 10 Unseen Advantages of Hiring a Building Contracting Company in Dubai",
       image: "/blogs/Top-10-Unseen-Advantages-of-Hiring-a-Building-Contracting-Company-in-Dubai/1.jpg",
