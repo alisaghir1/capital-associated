@@ -9,6 +9,34 @@ const Blogs = () => {
   const blogsPerPage = 6;
   const blogPosts = [
     {
+      id: 40,
+      title: "Top Interior Design Hacks for a Spacious Feel",
+      image: "/blogs/top-interior-design-hacks-for-a-spacious-feel/1.jpg",
+      path: "/blog/top-interior-design-hacks-for-a-spacious-feel",
+      date: "02 Sep",
+    },
+    {
+      id: 39,
+      title: "Using Decorative Stonework in Villa Gardens for a Luxurious Touch",
+      image: "/blogs/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch/1.jpg",
+      path: "/blog/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch",
+      date: "02 Sep",
+    },
+    {
+      id: 38,
+      title: "Effective Moisture Control in the Design of Luxury Villas by the Sea",
+      image: "/blogs/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea/1.jpg",
+      path: "/blog/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea",
+      date: "02 Sep",
+    },
+    {
+      id: 37,
+      title: "The Role of Urban Heat Island Effect on Design-Build Practices in City Centers",
+      image: "/blogs/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers/1.jpg",
+      path: "/blog/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers",
+      date: "02 Sep",
+    },
+    {
       id: 36,
       title: "Noise Pollution Mitigation in High-Density Residential Fit-Out Projects",
       image: "/blogs/noise-pollution-mitigation-in-high-density-residential-fit-out-projects/1.jpg",
@@ -221,7 +249,7 @@ const Blogs = () => {
     {
       id: 7,
       title: "Understanding the Lifecycle of a Construction Project",
-      image: "/projects/warehouse.jpg",
+  image: "/blogs/understanding-the-lifecycle-of-a-construction-project/1.jpg",
       path: "/blog/understanding-the-lifecycle-of-a-construction-project",
       date: "20 Nov",
     },
@@ -235,7 +263,7 @@ const Blogs = () => {
     {
       id: 9,
       title: "An Overview of Acoustics in Building Design",
-      image: "/projects/residentalBuilding.jpg",
+  image: "/blogs/an-overview-of-acoustics-in-building-design/1.jpg",
       path: "/blog/an-overview-of-acoustics-in-building-design",
       date: "26 Nov",
     },
