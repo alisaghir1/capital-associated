@@ -7,9 +7,11 @@ import { RiCloseFill } from "react-icons/ri";
 import { RiMenuFoldFill } from "react-icons/ri";
 import Image from "next/image";
 import Link from "next/link";
+import { useSiteSettings } from "../../hooks/useSiteSettings";
 
 export default function NavMobile() {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false); // State to manage navbar visibility
+  const { getSetting, loading } = useSiteSettings();
 
   // Function to toggle the navbar visibility
   const toggleNavbar = () => {
@@ -26,18 +28,18 @@ export default function NavMobile() {
       <div className="absolute bg-amber-900 text-gray-300 flex justify-between items-center px-5 py-2 top-0 left-0 right-0 z-50">
         {/* Email with mailto link */}
         <Link
-          href="mailto:hello@capitalassociated.com"
+          href={`mailto:${getSetting('contact_email', 'hello@capitalassociated.com')}`}
           className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
         >
-          hello@capitalassociated.com
+          {getSetting('contact_email', 'hello@capitalassociated.com')}
         </Link>
 
         {/* Phone number with tel link */}
         <Link
-          href="tel:+971521211520"
+          href={`tel:${getSetting('contact_phone', '+971521211520')}`}
           className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
         >
-          +971 52 121 1520
+          {getSetting('contact_phone', '+971 52 121 1520')}
         </Link>
       </div>
       <Link href={'/'}>
@@ -138,7 +140,7 @@ export default function NavMobile() {
         {/* Social Media Links */}
         <div className="flex gap-4 mt-8 text-black">
           <a
-            href="https://www.instagram.com/capital.associated/"
+            href={getSetting('social_instagram', 'https://www.instagram.com/capital.associated/')}
             target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-black"
@@ -146,7 +148,7 @@ export default function NavMobile() {
             <FaInstagram />
           </a>
           <a
-            href="https://www.facebook.com"
+            href={getSetting('social_facebook', 'https://www.facebook.com')}
             target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-black"
@@ -154,7 +156,7 @@ export default function NavMobile() {
             <FaFacebook />
           </a>
           <a
-            href="https://x.com"
+            href={getSetting('social_twitter', 'https://x.com')}
             target="_blank"
             rel="noopener noreferrer"
             className="text-2xl hover:text-black"

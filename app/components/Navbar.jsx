@@ -5,10 +5,14 @@ import { FaFacebook } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import Image from "next/image";
 import Link from "next/link";
+import { useSiteSettings } from "../../hooks/useSiteSettings";
 
 export default function Navbar() {
   // State to handle the visibility of social media links and the icon
   const [showSocialLinks, setShowSocialLinks] = useState(false);
+  
+  // Get site settings
+  const { getSetting, loading } = useSiteSettings();
 
   // Function to toggle the visibility and the icon
   const toggleSocialLinks = () => {
@@ -98,20 +102,20 @@ export default function Navbar() {
       <div className="flex items-center gap-6 text-amber-900">
         {/* Email */}
         <Link
-          href="mailto:hello@capitalassociated.com"
+          href={`mailto:${getSetting('contact_email', 'hello@capitalassociated.com')}`}
           className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
         >
-          hello@capitalassociated.com
+          {getSetting('contact_email', 'hello@capitalassociated.com')}
           <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
         </Link>
         {/* Small Border */}
         <div className="w-[0.5] h-4 bg-black"></div>
         {/* Phone Number */}
         <Link
-          href="tel:+971521211520"
+          href={`tel:${getSetting('contact_phone', '+971521211520')}`}
           className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
         >
-          +971 52 121 1520
+          {getSetting('contact_phone', '+971521211520')}
           <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
         </Link>
         {/* Small Border */}
@@ -139,7 +143,7 @@ export default function Navbar() {
             }`}
           >
             <Link
-              href="https://www.instagram.com/capital.associated/"
+              href={getSetting('social_instagram', 'https://www.instagram.com/capital.associated/')}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition-all duration-200 ease-in-out border-l pl-2 border-l-black"
@@ -147,7 +151,7 @@ export default function Navbar() {
               <FaInstagram />
             </Link>
             <Link
-              href="https://www.facebook.com"
+              href={getSetting('social_facebook', 'https://www.facebook.com')}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition-all duration-200 ease-in-out"
@@ -155,7 +159,7 @@ export default function Navbar() {
               <FaFacebook />
             </Link>
             <Link
-              href="https://x.com"
+              href={getSetting('social_twitter', 'https://x.com')}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black transition-all duration-200 ease-in-out"

@@ -1,32 +1,84 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import VidioComponent from "./VidioComponent";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import Link from "next/link";
-
-const teamMembers = [
-  {
-    image: "/team/t4.jpg",
-    name: "RAMAZ IZZA",
-    position: "Managing Director",
-    path: "/our-team/ramaz-izza",
-  },
-  {
-    image: "/team/t1.jpg",
-    name: "MICHAEL REYES",
-    position: "Document Control",
-    path: "/our-team/michael-reyes",
-  },
-  {
-    image: "/team/t2.jpg",
-    name: "LAKSHMI MOHAN",
-    position: "Estimation Engineer",
-    path: "/our-team/lakshmi-mohan",
-  },
-];
+import { supabase } from "../../lib/supabase";
 
 const OurTeam = () => {
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fallback static data in case Supabase is not working
+  const staticTeamMembers = [
+    {
+      id: 1,
+      image_url: "/team/t4.jpg",
+      name: "RAMAZ IZZA",
+      position: "Managing Director",
+      slug: "ramaz-izza",
+      published: true,
+      sort_order: 1
+    },
+    {
+      id: 2,
+      image_url: "/team/t1.jpg",
+      name: "MICHAEL REYES",
+      position: "Document Control",
+      slug: "michael-reyes",
+      published: true,
+      sort_order: 2
+    },
+    {
+      id: 3,
+      image_url: "/team/t2.jpg",
+      name: "LAKSHMI MOHAN",
+      position: "Estimation Engineer",
+      slug: "lakshmi-mohan",
+      published: true,
+      sort_order: 3
+    },
+  ];
+
+  useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        console.log('Fetching team members from Supabase...');
+        const { data, error } = await supabase
+          .from('team')
+          .select('*')
+          .eq('published', true)
+          .order('sort_order', { ascending: true });
+
+        if (error) {
+          console.error('Supabase error fetching team members:', error);
+          console.error('Error details:', {
+            message: error.message,
+            details: error.details,
+            hint: error.hint,
+            code: error.code
+          });
+          // Use static data as fallback
+          console.log('Using static team data as fallback');
+          setTeamMembers(staticTeamMembers);
+        } else {
+          console.log('Team data fetched successfully:', data);
+          setTeamMembers(data && data.length > 0 ? data : staticTeamMembers);
+        }
+      } catch (error) {
+        console.error('Catch error:', error);
+        // Use static data as fallback
+        console.log('Using static team data as fallback due to catch error');
+        setTeamMembers(staticTeamMembers);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeamMembers();
+  }, []);
   return (
     <div className="">
       <section className="flex flex-col justify-center items-center gap-5 py-20">
@@ -50,31 +102,41 @@ const OurTeam = () => {
         </motion.p>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10 w-full mx-auto container px-10 xl:px-0">
-          {teamMembers.map((member, index) => (
-            <Link key={index} href={member.path}>
-              <motion.div
-                variants={fadeIn("right", 1)}
-                initial="hidden"
-                whileInView={"show"}
-                viewport={{ once: true, amount: 0.4 }}
-              >
-                <div className=" w-full h-[34rem] border border-black mb-4 ">
-                  <Image
-                    width={500}
-                    height={500}
-                    src={member.image}
-                    alt={member.name}
-                    objectFit="cover"
-                    className="sm:rounded-full object-cover w-full h-full"
-                  />
-                </div>
-                <div className="text-center">
-                  <p className="font-semibold">{member.name}</p>
-                  <p className="text-black">{member.position}</p>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+          {loading ? (
+            <div className="col-span-full text-center py-10">
+              <p>Loading team members...</p>
+            </div>
+          ) : teamMembers.length > 0 ? (
+            teamMembers.map((member, index) => (
+              <Link key={member.id} href={`/our-team/${member.slug}`}>
+                <motion.div
+                  variants={fadeIn("right", 1)}
+                  initial="hidden"
+                  whileInView={"show"}
+                  viewport={{ once: true, amount: 0.4 }}
+                >
+                  <div className=" w-full h-[34rem] border border-black mb-4 ">
+                    <Image
+                      width={500}
+                      height={500}
+                      src={member.image_url}
+                      alt={member.name}
+                      objectFit="cover"
+                      className="sm:rounded-full object-cover w-full h-full"
+                    />
+                  </div>
+                  <div className="text-center">
+                    <p className="font-semibold">{member.name}</p>
+                    <p className="text-black">{member.position}</p>
+                  </div>
+                </motion.div>
+              </Link>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-10">
+              <p>No team members available.</p>
+            </div>
+          )}
         </div>
       </section>
       <motion.section

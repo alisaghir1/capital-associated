@@ -1,14 +1,48 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
+import { supabase } from "../../lib/supabase";
 
 const BlogLayout = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const blogsPerPage = 6;
-  const blogPosts = [
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        // Add timeout protection
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Request timeout')), 10000)
+        );
+
+        // Only select fields needed for the blog listing page
+        const fetchPromise = supabase
+          .from('blogs')
+          .select('id, title, slug, hero_image_url, excerpt, author, created_at, published')
+          .eq('published', true)
+          .order('created_at', { ascending: false });
+
+        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+
+        if (error) throw error;
+        setBlogPosts(data || []);
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+        setBlogPosts([]); // Clear blogs on error
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  const staticBlogPosts = [
     {
       id: 40,
       title: "Top Interior Design Hacks for a Spacious Feel",
@@ -291,11 +325,18 @@ const BlogLayout = () => {
     },
   ];
 
-  // Calculate pagination
+  // Calculate pagination for dynamic data
   const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
   const endIndex = startIndex + blogsPerPage;
   const currentBlogs = blogPosts.slice(startIndex, endIndex);
+
+  // Format date for display
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { day: '2-digit', month: 'short' };
+    return date.toLocaleDateString('en-GB', options);
+  };
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -352,7 +393,7 @@ const BlogLayout = () => {
 
         <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
           {currentBlogs.map((post) => (
-            <Link key={post.id} href={post.path}>
+            <Link key={post.id} href={`/blog/${post.slug}`}>
               <motion.div
                 variants={fadeIn("left", 1)}
                 initial="hidden"
@@ -361,7 +402,7 @@ const BlogLayout = () => {
                 className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg"
               >
                 <img
-                  src={post.image}
+                  src={post.hero_image_url || '/main.jpg'}
                   alt={post.title}
                   className="w-full h-[36rem] object-cover"
                   layout="fill"
@@ -369,7 +410,7 @@ const BlogLayout = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-50">
                   {/* Date at the top-left corner */}
                   <div className="absolute top-2 left-2 bg-white bg-opacity-80 text-black text-sm px-3 py-1 rounded">
-                    {post.date}
+                    {formatDate(post.created_at)}
                   </div>
                   {/* Blog title overlay */}
                   <div className="flex flex-col items-start justify-end transiton-all duration-300 ease-in-out hover:bg-offwhite  hover:bg-opacity-20  gap-5  text-center p-5 h-full">

@@ -1,7 +1,39 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useSiteSettings } from "../../hooks/useSiteSettings";
+import { supabase } from "../../lib/supabase";
 
 const Footer = () => {
+  const { getSetting, loading } = useSiteSettings();
+  const [services, setServices] = useState([]);
+  const [servicesLoading, setServicesLoading] = useState(true);
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+  const fetchServices = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('services')
+        .select('title, slug')
+        .eq('published', true)
+        .order('created_at', { ascending: true })
+        .limit(9); // Limit to 9 services to match the original layout
+
+      if (error) {
+        console.error('Error fetching services for footer:', error);
+      } else {
+        setServices(data || []);
+      }
+    } catch (error) {
+      console.error('Error fetching services:', error);
+    } finally {
+      setServicesLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-slate-100 text-black">
       <div className="mx-auto">
@@ -22,15 +54,33 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/services/general-contracting" className="hover:text-gray-300 transition-all duration-200 ease-in-out">General Contracting</Link></li>
-              <li><Link href="/services/construction-management" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Construction Management</Link></li>
-              <li><Link href="/services/design-build" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Design - Build</Link></li>
-              <li><Link href="/services/renovation-and-remodeling" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Renovation & Remodeling</Link></li>
-              <li><Link href="/services/pre-construction-services" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Pre-Construction Services</Link></li>
-              <li><Link href="/services/value-engineering" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Value Engineering</Link></li>
-              <li><Link href="/services/green-building-solutions" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Green Building Solutions</Link></li>
-              <li><Link href="/services/specialty-construction" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Specialty Construction</Link></li>
-              <li><Link href="/services/interior-fit-out" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Interior Fit-Out</Link></li>
+              {servicesLoading ? (
+                // Loading state - show skeleton or fallback
+                <>
+                  <li className="h-6 bg-gray-200 rounded animate-pulse"></li>
+                  <li className="h-6 bg-gray-200 rounded animate-pulse"></li>
+                  <li className="h-6 bg-gray-200 rounded animate-pulse"></li>
+                </>
+              ) : services.length > 0 ? (
+                // Dynamic services from database
+                services.map((service) => (
+                  <li key={service.slug}>
+                    <Link 
+                      href={`/services/${service.slug}`} 
+                      className="hover:text-gray-300 transition-all duration-200 ease-in-out"
+                    >
+                      {service.title}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                // Fallback if no services found
+                <>
+                  <li><Link href="/services/general-contracting" className="hover:text-gray-300 transition-all duration-200 ease-in-out">General Contracting</Link></li>
+                  <li><Link href="/services/construction-management" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Construction Management</Link></li>
+                  <li><Link href="/services/design-build" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Design - Build</Link></li>
+                </>
+              )}
             </ul>
           </div>
 
@@ -38,10 +88,16 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Contact Us</h3>
             <address className="space-y-2">
-              <p>Dubai. JLT. Cluster Y</p>
-              <p>Office 1501</p>
-              <p>Mobile: <Link href="tel:+971521211520" className="hover:text-gray-300 transition-all duration-200 ease-in-out">+971 52 121 1520</Link></p>
-              <p>Email: <Link href="mailto:hello@capitalassociated.com" className="hover:text-gray-300 transition-all duration-200 ease-in-out">hello@capitalassociated.com</Link></p>
+              {getSetting('contact_address') ? (
+                <div dangerouslySetInnerHTML={{ __html: getSetting('contact_address', 'Dubai. JLT. Cluster Y<br/>Office 1501').replace(/\n/g, '<br/>') }} />
+              ) : (
+                <>
+                  <p>Dubai. JLT. Cluster Y</p>
+                  <p>Office 1501</p>
+                </>
+              )}
+              <p>Mobile: <Link href={`tel:${getSetting('contact_phone', '+971521211520')}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting('contact_phone', '+971 52 121 1520')}</Link></p>
+              <p>Email: <Link href={`mailto:${getSetting('contact_email', 'hello@capitalassociated.com')}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting('contact_email', 'hello@capitalassociated.com')}</Link></p>
             </address>
           </div>
 
@@ -49,10 +105,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Follow Us</h3>
             <ul className="space-y-2">
-              <li><Link href="https://www.facebook.com" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Facebook</Link></li>
-              <li><Link href="https://www.instagram.com/capital.associated/" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Instagram</Link></li>
-              <li><Link href="https://www.youtube.com" className="hover:text-gray-300 transition-all duration-200 ease-in-out">YouTube</Link></li>
-              <li><Link href="https://www.twitter.com" className="hover:text-gray-300 transition-all duration-200 ease-in-out">X</Link></li>
+              {getSetting('social_facebook') && (
+                <li><Link href={getSetting('social_facebook')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">Facebook</Link></li>
+              )}
+              {getSetting('social_instagram') && (
+                <li><Link href={getSetting('social_instagram')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">Instagram</Link></li>
+              )}
+              {getSetting('social_youtube') && (
+                <li><Link href={getSetting('social_youtube')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">YouTube</Link></li>
+              )}
+              {getSetting('social_twitter') && (
+                <li><Link href={getSetting('social_twitter')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">X</Link></li>
+              )}
+              {getSetting('social_linkedin') && (
+                <li><Link href={getSetting('social_linkedin')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">LinkedIn</Link></li>
+              )}
             </ul>
           </div>
         </div>
@@ -60,7 +127,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="text-black p-10 bg-white border-gray-700 flex justify-center items-center">
           <p className="text-sm text-center">
-            Capital Associated Building Contracting © 2025. All Rights Reserved
+            {getSetting('company_name', 'Capital Associated Building Contracting')} © 2025. All Rights Reserved
           </p>
         </div>
       </div>

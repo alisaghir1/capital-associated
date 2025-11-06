@@ -1,10 +1,55 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import VidioComponent from "../components/VidioComponent";
+import { supabase } from "../../lib/supabase";
 
 const OurWorkLayout = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      // Add timeout protection
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Request timeout')), 10000)
+      );
+
+      // Only select fields needed for the projects listing page
+      const fetchPromise = supabase
+        .from('projects')
+        .select('id, title, slug, hero_image_url, short_description, location, client_name, published, sort_order')
+        .eq('published', true)
+        .order('sort_order', { ascending: true }); // Use sort_order for better organization
+
+      const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+
+      if (error) {
+        console.error('Error fetching projects:', error);
+      } else {
+        setProjects(data || []);
+      }
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+      setProjects([]); // Clear projects on error
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-xl">Loading projects...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-full w-full">
       <div className="relative w-full h-screen">
@@ -33,113 +78,55 @@ const OurWorkLayout = () => {
       </div>
       <div>
         <section className="grid grid-cols-2 mt-20 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20">
-         {/* Meat moot City walk */}
-         <Link href="/our-work/meatmoot" className="block">
-          <div className="relative hover:bg-[url(/projects/meatmoot.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                Meat Moot
-              </h2>
-              <p className="xl:text-sm text-xs">City Walk, United Arab Emirates</p>
-            </div>
-          </div>
-        </Link>
+          {projects.map((project, index) => {
+            // Helper function to get layout variation based on index
+            const getLayoutVariation = (index) => {
+              const variations = [
+                { position: 'bottom', alignment: 'items-end', rounded: 'rounded-tl-full' },
+                { position: 'top', alignment: 'items-start', rounded: 'rounded-bl-full' },
+                { position: 'bottom', alignment: 'items-end', rounded: 'rounded-tr-full' },
+                { position: 'bottom', alignment: 'items-end', rounded: 'rounded-tr-full' },
+                { position: 'bottom', alignment: 'items-end', rounded: 'rounded-tl-full' },
+                { position: 'top', alignment: 'items-start', rounded: 'rounded-br-full' },
+                { position: 'bottom', alignment: 'items-end', rounded: 'rounded-tl-full' },
+                { position: 'top', alignment: 'items-start', rounded: 'rounded-br-full' },
+              ];
+              return variations[index % variations.length];
+            };
 
-        {/* Tilal Al Ghaf Interior */}
-        <Link href="/our-work/Tilal-Al-Ghaf-Interior" className="block">
-          <div className="relative hover:bg-[url(/services/interiorFit/s8.jpg)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-bl-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">Tilal Al Ghaf Interior</h2>
-              <p className="xl:text-sm text-xs">
-                Dubai, United Arab Emirates
-              </p>
-            </div>
-          </div>
-        </Link>
-
-        {/* Meat moot Al khawaneej */}
-        <Link href="/our-work/meatmoot-khawaneej" className="block">
-          <div className="relative hover:bg-[url(/projects/mkhm.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tr-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                Meat Moot
-              </h2>
-              <p className="xl:text-sm text-xs">
-                Al Khawaneej, United Arab Emirates
-              </p>
-            </div>
-          </div>
-        </Link>
-
-        {/* meat moot jbr*/}
-        <Link href="/our-work/meatmoot-jbr" className="block">
-          <div className="relative hover:bg-[url(/projects/jbrm.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tr-full">
-            <div className="text-white xl:p-3 rounded-lg w-full text-start">
-              <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                Meat Moot
-              </h2>
-              <p className="xl:text-sm text-xs">
-                Jumeirah Beach Resort, United Arab Emirates
-              </p>
-            </div>
-          </div>
-        </Link>
-
-          {/* Tilal-Al-Ghaf-Landscape */}
-          <Link href="/our-work/Tilal-Al-Ghaf-Landscape" className="block">
-            <div className="relative hover:bg-[url(/projects/villa.jpg)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
-              <div className="text-white xl:p-3 rounded-lg w-full text-start">
-                <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                  Tilal Al Ghaf Landscape
-                </h2>
-                <p className="xl:text-sm text-xs">
-                  Dubai, United Arab Emirates
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Elite Villa Construction */}
-          <Link href="/our-work/elite-villa-construction" className="block">
-            <div className="relative hover:bg-[url(/projects/dh1.png)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
-              <div className="text-white xl:p-3 rounded-lg w-full text-start">
-                <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                  Elite Villa Construction
-                </h2>
-                <p className="xl:text-sm text-xs">
-                  Dubai Hills, United Arab Emirates
-                </p>
-              </div>
-            </div>
-          </Link>
-
-          {/* Jumeirah Villa, Dubai */}
-          <Link href="/our-work/Jumeirah-villa-construction" className="block">
-            <div className="relative hover:bg-[url(/projects/jv1.png)] bg-black flex transition-all duration-300 ease-in-out pb-4 items-end justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-tl-full">
-              <div className="text-white xl:p-3 rounded-lg w-full text-start">
-                <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                  Jumeirah Villa, Dubai
-                </h2>
-                <p className="xl:text-sm text-xs">
-                  Jumeirah , United Arab Emirates
-                </p>
-              </div>
-            </div>
-          </Link>
-
-      {/* Landscape-and-Exterior-Construction-Dubai */}
-          <Link href="/our-work/Landscape-and-Exterior-Construction-Dubai" className="block">
-            <div className="relative hover:bg-[url(/projects/hv1.png)] bg-black flex transition-all duration-300 ease-in-out pt-4 items-start justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 rounded-br-full">
-              <div className="text-white xl:p-3 rounded-lg w-full text-start">
-                <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                  Landscape and Exterior Construction Dubai
-                </h2>
-                <p className="xl:text-sm text-xs">
-                  Dubai, United Arab Emirates
-                </p>
-              </div>
-            </div>
-          </Link>
+            const layout = getLayoutVariation(index);
+            const projectImage = project.hero_image_url || `/projects/default-${index + 1}.jpg`;
+            
+            return (
+              <Link key={project.id} href={`/our-work/${project.slug}`} className="block">
+                <div 
+                  className={`relative bg-black flex transition-all duration-300 ease-in-out ${layout.position === 'top' ? 'pt-4' : 'pb-4'} ${layout.alignment} justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 ${layout.rounded}`}
+                  style={{
+                    backgroundImage: `url('${projectImage}')`,
+                    ':hover': {
+                      backgroundImage: `url('${projectImage}')`,
+                    }
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundImage = `url('${projectImage}')`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundImage = 'none';
+                    e.target.className = e.target.className.replace(' hover:bg-[url(', ' ').replace(')]', '');
+                  }}
+                >
+                  <div className="text-white xl:p-3 rounded-lg w-full text-start">
+                    <h2 className="xl:text-lg text-md mb-2 font-semibold">
+                      {project.title}
+                    </h2>
+                    <p className="xl:text-sm text-xs">
+                      {project.location || 'United Arab Emirates'}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </section>
       </div>
       <VidioComponent />

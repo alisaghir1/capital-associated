@@ -1,9 +1,152 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
+import { supabase } from "../../lib/supabase";
 
 const OurServices = () => {
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fallback static data
+  const staticServices = [
+    { id: 1, title: "General Contracting", slug: "general-contracting", hero_image_url: "/services/s1.jpg", published: true, sort_order: 1 },
+    { id: 2, title: "Construction Management", slug: "construction-management", hero_image_url: "/services/s2.jpg", published: true, sort_order: 2 },
+    { id: 3, title: "Design Build", slug: "design-build", hero_image_url: "/services/s3.jpg", published: true, sort_order: 3 },
+    { id: 4, title: "Renovation & Remodeling", slug: "renovation-and-remodeling", hero_image_url: "/services/s4.jpg", published: true, sort_order: 4 },
+    { id: 5, title: "Pre-Construction Services", slug: "pre-construction-services", hero_image_url: "/services/s5.jpg", published: true, sort_order: 5 },
+    { id: 6, title: "Value Engineering", slug: "value-engineering", hero_image_url: "/services/s6.jpg", published: true, sort_order: 6 },
+    { id: 7, title: "Green Building Solutions", slug: "green-building-solutions", hero_image_url: "/services/s7.jpg", published: true, sort_order: 7 },
+    { id: 8, title: "Specialty Construction", slug: "specialty-construction", hero_image_url: "/services/s8.jpg", published: true, sort_order: 8 },
+    { id: 9, title: "Interior Fit-Out", slug: "interior-fit-out", hero_image_url: "/services/s9.jpg", published: true, sort_order: 9 }
+  ];
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        // Start with fallback data immediately
+        setServices(staticServices);
+        setLoading(false);
+        
+        // Then try to fetch from Supabase with longer timeout
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Request timeout')), 15000) // 15 second timeout
+        );
+
+        const fetchPromise = supabase
+          .from('services')
+          .select('id, title, slug, hero_image_url, published, featured, sort_order') // Include featured field
+          .eq('published', true)
+          .eq('featured', true) // Only show featured services on homepage
+          .order('sort_order', { ascending: true })
+          .limit(9); // Limit to 9 featured services for the 3x3 grid
+
+        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+
+        if (error) {
+          console.warn('Error fetching services:', error);
+          // Keep using static data - no need to update again
+        } else if (data && data.length > 0) {
+          // Only update if we get actual data from Supabase
+          setServices(data);
+        }
+        // If no data but no error, keep using static fallback
+        
+      } catch (error) {
+        console.warn('Services fetch error:', error.message);
+        // Static data already loaded, no need to handle error
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  // ServiceCard component to render dynamic service data
+  const ServiceCard = ({ service, index }) => {
+    const isFirstRow = index < 3;
+    const isSecondRow = index >= 3 && index < 6;
+    const isThirdRow = index >= 6 && index < 9;
+
+    // Different layout configurations based on row
+    let topLeftClass, topRightClass, bottomLeftClass, bottomRightClass;
+    
+    if (isFirstRow) {
+      topLeftClass = "bg-transparent transition-all duration-500 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer";
+      topRightClass = "bg-black border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      bottomLeftClass = "bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      bottomRightClass = "bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+    } else if (isSecondRow) {
+      topLeftClass = "bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      topRightClass = "bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      bottomLeftClass = "bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out";
+      bottomRightClass = "bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+    } else {
+      topLeftClass = "bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      topRightClass = "bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      bottomLeftClass = "bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
+      bottomRightClass = "bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out";
+    }
+
+    return (
+      <Link href={`/services/${service.slug}`}>
+        <div className="relative group h-[20rem] w-full gap-1">
+          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
+            {/* Top-left part */}
+            <div
+              className={topLeftClass}
+              style={{
+                backgroundImage: !isFirstRow && service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
+                backgroundSize: "200% 200%",
+                backgroundPosition: "0% 0%",
+                backgroundRepeat: "no-repeat",
+                transition: "all 0.5s ease-in-out",
+              }}
+            >
+              {isFirstRow && service.title}
+            </div>
+            {/* Top-right part */}
+            <div
+              className={topRightClass}
+              style={{
+                backgroundImage: service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
+                backgroundSize: "200% 200%",
+                backgroundPosition: "100% 0%",
+                backgroundRepeat: "no-repeat",
+                transition: "all 0.5s ease-in-out",
+              }}
+            ></div>
+            {/* Bottom-left part */}
+            <div
+              className={bottomLeftClass}
+              style={{
+                backgroundImage: !isSecondRow && service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
+                backgroundSize: "200% 200%",
+                backgroundPosition: "0% 100%",
+                backgroundRepeat: "no-repeat",
+                transition: "all 0.5s ease-in-out",
+              }}
+            >
+              {isSecondRow && service.title}
+            </div>
+            {/* Bottom-right part */}
+            <div
+              className={bottomRightClass}
+              style={{
+                backgroundImage: !isThirdRow && service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
+                backgroundSize: "200% 200%",
+                backgroundPosition: "100% 100%",
+                backgroundRepeat: "no-repeat",
+                transition: "all 0.5s ease-in-out",
+              }}
+            >
+              {isThirdRow && service.title}
+            </div>
+          </div>
+        </div>
+      </Link>
+    );
+  };
   return (
     <div className="bg-offwhite pb-10">
       <section className="flex flex-col justify-center items-center gap-5 py-20">
@@ -27,483 +170,60 @@ const OurServices = () => {
         </motion.p>
       </section>
 
-      <motion.section
-        variants={fadeIn("up", 1)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: true, amount: 0.4 }}
-        className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black"
-      >
-        {/* First Row */}
+      {loading ? (
+        <div className="container mx-auto text-center py-20">
+          <p>Loading services...</p>
+        </div>
+      ) : services.length === 0 ? (
+        <div className="container mx-auto text-center py-20">
+          <p>No services available.</p>
+        </div>
+      ) : (
+        <>
+          {/* First Row - services 0-2 */}
+          <motion.section
+            variants={fadeIn("up", 1)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.4 }}
+            className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 pb-10 border-b border-b-black"
+          >
+            {services.slice(0, 3).map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
+            ))}
+          </motion.section>
 
-        <Link href={"/services/general-contracting"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-transparent transition-all duration-500 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                }}
-              >
-                General Contracting
-              </div>
-              {/* Top-right part */}
-              <div
-                className="bg-black border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s1.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s1.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s1.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-            </div>
-          </div>
-        </Link>
+          {/* Second Row - services 3-5 */}
+          {services.length > 3 && (
+            <motion.section
+              variants={fadeIn("up", 1.2)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: true, amount: 0.4 }}
+              className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black"
+            >
+              {services.slice(3, 6).map((service, index) => (
+                <ServiceCard key={service.id} service={service} index={index + 3} />
+              ))}
+            </motion.section>
+          )}
 
-        {/* Second Row */}
-        <Link href={"/services/construction-management"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-transparent transition-all duration-500 ease-in-out flex justify-center text-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                }}
-              >
-                Construction Management
-              </div>
-              {/* Top-right part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s2.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s2.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s2.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-            </div>
-          </div>
-        </Link>
-
-        {/* Third Row */}
-        <Link href={"/services/design-build"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-transparent transition-all duration-500 ease-in-out flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                }}
-              >
-                Design Build
-              </div>
-              {/* Top-right part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s3.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s3.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s3.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-            </div>
-          </div>
-        </Link>
-      </motion.section>
-      <motion.section
-        variants={fadeIn("up", 1.2)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: true, amount: 0.4 }}
-        className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black"
-      >
-        {/* Second Row */}
-        <Link href={"/services/renovation-and-remodeling"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s4.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Top-right part */}
-              <div
-                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s4.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                }}
-              >
-                Renovation & Remodeling
-              </div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s4.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-            </div>
-          </div>
-        </Link>
-
-        <Link href={"/services/pre-construction-services"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s5.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Top-right part */}
-              <div
-                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s5.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                }}
-              >
-                Pre-Construction Services
-              </div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s5.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-            </div>
-          </div>
-        </Link>
-
-        <Link href={"/services/value-engineering"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s6.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Top-right part */}
-              <div
-                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s6.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                }}
-              >
-                Value Engineering
-              </div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s6.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-            </div>
-          </div>
-        </Link>
-      </motion.section>
-      <motion.section
-        variants={fadeIn("up", 1.2)}
-        initial="hidden"
-        whileInView={"show"}
-        viewport={{ once: true, amount: 0.4 }}
-        className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black"
-      >
-        {/* Second Row */}
-        <Link href={"/services/green-building-solutions"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s7.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Top-right part */}
-              <div
-                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s7.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s7.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                }}
-              >
-                Green Building Solutions
-              </div>
-            </div>
-          </div>
-        </Link>
-
-        <Link href={"/services/specialty-construction"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s8.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Top-right part */}
-              <div
-                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s8.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s8.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                }}
-              >
-                Specialty Construction
-              </div>
-            </div>
-          </div>
-        </Link>
-
-        <Link href={"/services/interior-fit-out"}>
-          <div className="relative group h-[20rem] w-full gap-1">
-            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-              {/* Top-left part */}
-              <div
-                className="bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s9.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Top-right part */}
-              <div
-                className="bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s9.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 0%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-left part */}
-              <div
-                className="bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer"
-                style={{
-                  backgroundImage: "url('/services/s9.jpg')",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 100%",
-                  backgroundRepeat: "no-repeat",
-                  transition: "all 0.5s ease-in-out",
-                }}
-              ></div>
-              {/* Bottom-right part */}
-              <div
-                className="bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out"
-                style={{
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "100% 100%",
-                }}
-              >
-                Interior Fit-Out
-              </div>
-            </div>
-          </div>
-        </Link>
-      </motion.section>
+          {/* Third Row - services 6-8 */}
+          {services.length > 6 && (
+            <motion.section
+              variants={fadeIn("up", 1.4)}
+              initial="hidden"
+              whileInView={"show"}
+              viewport={{ once: true, amount: 0.4 }}
+              className="container mx-auto gap-20 grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 px-10 py-10 border-b border-b-black"
+            >
+              {services.slice(6, 9).map((service, index) => (
+                <ServiceCard key={service.id} service={service} index={index + 6} />
+              ))}
+            </motion.section>
+          )}
+        </>
+      )}
     </div>
   );
 };

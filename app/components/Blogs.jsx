@@ -1,12 +1,55 @@
+"use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
+import { supabase } from "../../lib/supabase";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const blogsPerPage = 6;
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        // Start with empty array and show loading initially for blogs
+        // (blogs don't have static fallback like projects/services)
+        
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Request timeout')), 15000) // 15 second timeout
+        );
+
+        const fetchPromise = supabase
+          .from('blogs')
+          .select('*')
+          .eq('published', true)
+          .eq('featured', true) // Only show featured blogs on homepage
+          .order('created_at', { ascending: false })
+          .limit(6); // Limit to 6 featured blogs for homepage
+
+        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+
+        if (error) {
+          console.warn('Error fetching blogs:', error);
+          setBlogs([]); // Set empty array if fetch fails
+        } else {
+          setBlogs(data || []);
+        }
+      } catch (error) {
+        console.warn('Blogs fetch error:', error.message);
+        setBlogs([]); // Set empty array if timeout
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  // Keep the old static data as fallback (remove this after migration)
   const blogPosts = [
     {
       id: 40,
@@ -290,11 +333,12 @@ const Blogs = () => {
     },
   ];
 
-  // Calculate pagination
-  const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
+  // Calculate pagination - use dynamic blogs if available, otherwise fallback to static
+  const displayBlogs = blogs.length > 0 ? blogs : blogPosts;
+  const totalPages = Math.ceil(displayBlogs.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
   const endIndex = startIndex + blogsPerPage;
-  const currentBlogs = blogPosts.slice(startIndex, endIndex);
+  const currentBlogs = displayBlogs.slice(startIndex, endIndex);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -336,31 +380,36 @@ const Blogs = () => {
       {/* Page indicator */}
       <div className="flex justify-center items-center mb-8">
         <p className="text-lg text-gray-600">
-          Page {currentPage} of {totalPages} ({blogPosts.length} total blogs)
+          Page {currentPage} of {totalPages} ({displayBlogs.length} total blogs)
         </p>
       </div>
 
       <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
-        {currentBlogs.map((post) => (
-          <Link key={post.id} href={post.path}>
-            <motion.div
-              variants={fadeIn("left", 1)}
-              initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: true, amount: 0.4 }}
-              className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg"
-            >
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-[36rem] object-cover"
-                layout="fill"
-              />
-              <div className="absolute inset-0 bg-black bg-opacity-50">
-                {/* Date at the top-left corner */}
-                <div className="absolute top-2 left-2 bg-white bg-opacity-80 text-black text-sm px-3 py-1 rounded">
-                  {post.date}
-                </div>
+        {loading ? (
+          <div className="col-span-full text-center py-10">
+            <p>Loading blogs...</p>
+          </div>
+        ) : currentBlogs.length > 0 ? (
+          currentBlogs.map((post) => (
+            <Link key={post.id} href={post.path || `/blog/${post.slug}`}>
+              <motion.div
+                variants={fadeIn("left", 1)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: true, amount: 0.4 }}
+                className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg"
+              >
+                <img
+                  src={post.image || post.hero_image_url}
+                  alt={post.title}
+                  className="w-full h-[36rem] object-cover"
+                  layout="fill"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-50">
+                  {/* Date at the top-left corner */}
+                  <div className="absolute top-2 left-2 bg-white bg-opacity-80 text-black text-sm px-3 py-1 rounded">
+                    {post.date || new Date(post.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}
+                  </div>
                 {/* Blog title overlay */}
                 <div className="flex flex-col items-start justify-end transiton-all duration-300 ease-in-out hover:bg-offwhite  hover:bg-opacity-20  gap-5  text-center p-5 h-full">
                   <p className="text-white text-start text-xl  font-bold">
@@ -373,7 +422,12 @@ const Blogs = () => {
               </div>
             </motion.div>
           </Link>
-        ))}
+          ))
+        ) : (
+          <div className="col-span-full text-center py-10">
+            <p>No blogs available.</p>
+          </div>
+        )}
       </section>
 
       {/* Pagination Controls */}
