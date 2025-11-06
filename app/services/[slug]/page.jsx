@@ -302,21 +302,6 @@ const ServicePage = () => {
               Contact our expert team today to discuss how our {service.title.toLowerCase()} services can help bring your construction project to life with unmatched quality and precision.
             </p>
             
-            {/* CTA Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
-                <div className="text-gray-300">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">15+</div>
-                <div className="text-gray-300">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
-                <div className="text-gray-300">Support Available</div>
-              </div>
-            </div>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
