@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
-import { autoCompressImage } from '../../utils/imageCompression';
+import { autoCompressImage } from '../../utils/imageCompression.js';
 
 const SiteMetadata = () => {
   const [loading, setLoading] = useState(true);

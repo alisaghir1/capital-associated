@@ -4,7 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
-import { autoCompressImage } from '../../../../utils/imageCompression';
+import { autoCompressImage } from '../../../../utils/imageCompression.js';
 
 const EditProject = ({ params }) => {
   const router = useRouter();
