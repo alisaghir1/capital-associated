@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../lib/supabase';
-import { autoCompressImage } from '../../../utils/imageCompression.js';
+import { autoCompressImage } from '@/app/utils/imageCompression';
 
 const NewBlog = () => {
   const router = useRouter();
