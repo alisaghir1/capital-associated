@@ -1,5 +1,18 @@
 {
-    "rewrites": [
-        {"source": "/(.*)", "destination": "/"}
-    ]
-  }
+  "functions": {
+    "app/**": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ]
+}
