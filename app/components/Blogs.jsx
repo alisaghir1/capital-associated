@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
-import { supabase } from "../../lib/supabase";
+import { supabase, fetchBlogsOptimized } from "../../lib/supabase-optimized";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,19 +18,7 @@ const Blogs = () => {
         // Start with empty array and show loading initially for blogs
         // (blogs don't have static fallback like projects/services)
         
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 15000) // 15 second timeout
-        );
-
-        const fetchPromise = supabase
-          .from('blogs')
-          .select('*')
-          .eq('published', true)
-          .eq('featured', true) // Only show featured blogs on homepage
-          .order('created_at', { ascending: false })
-          .limit(6); // Limit to 6 featured blogs for homepage
-
-        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+        const { data, error } = await fetchBlogsOptimized();
 
         if (error) {
           console.warn('Error fetching blogs:', error);

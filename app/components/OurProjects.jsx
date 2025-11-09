@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
-import { supabase } from "../../lib/supabase";
+import { supabase, fetchProjectsOptimized } from "../../lib/supabase-optimized";
 
 const OurProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -28,20 +28,8 @@ const OurProjects = () => {
         setProjects(staticProjects);
         setLoading(false);
         
-        // Then try to fetch from Supabase with longer timeout
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 15000) // 15 second timeout
-        );
-
-        const fetchPromise = supabase
-          .from('projects')
-          .select('id, title, slug, location, hero_image_url, featured, published, sort_order') // Only select needed fields
-          .eq('featured', true)
-          .eq('published', true)
-          .order('sort_order', { ascending: true })
-          .limit(8); // Show only 8 featured projects on home page
-
-        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+        // Then try to fetch from Supabase with optimized query
+        const { data, error } = await fetchProjectsOptimized();
 
         if (error) {
           console.warn('Error fetching projects:', error);

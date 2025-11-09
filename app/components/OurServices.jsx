@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
-import { supabase } from "../../lib/supabase";
+import { supabase, fetchServicesOptimized } from "../../lib/supabase-optimized";
 
 const OurServices = () => {
   const [services, setServices] = useState([]);
@@ -29,20 +29,8 @@ const OurServices = () => {
         setServices(staticServices);
         setLoading(false);
         
-        // Then try to fetch from Supabase with longer timeout
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 15000) // 15 second timeout
-        );
-
-        const fetchPromise = supabase
-          .from('services')
-          .select('id, title, slug, hero_image_url, published, featured, sort_order') // Include featured field
-          .eq('published', true)
-          .eq('featured', true) // Only show featured services on homepage
-          .order('sort_order', { ascending: true })
-          .limit(9); // Limit to 9 featured services for the 3x3 grid
-
-        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
+        // Then try to fetch from Supabase with optimized query
+        const { data, error } = await fetchServicesOptimized();
 
         if (error) {
           console.warn('Error fetching services:', error);
