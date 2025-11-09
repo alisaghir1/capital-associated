@@ -4,7 +4,102 @@ import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
-import { autoCompressImage } from '@/app/utils/imageCompression';
+
+// Inline image compression to avoid build issues
+const autoCompressImage = async (input, options = {}) => {
+  // Default options
+  const defaultOptions = {
+    maxWidth: 1920,
+    maxHeight: 1080,
+    quality: 0.8
+  };
+  const config = { ...defaultOptions, ...options };
+
+  // If input is null or undefined, return null
+  if (!input) {
+    console.log('No input provided to autoCompressImage');
+    return null;
+  }
+
+  // If input is already a data URL string, return it as is (no compression needed for data URLs)
+  if (typeof input === 'string' && input.startsWith('data:')) {
+    console.log('Input is already a data URL, returning as is');
+    return input;
+  }
+
+  // Validate that input is a File object
+  if (!(input instanceof File)) {
+    console.error('Invalid file object passed to autoCompressImage:', typeof input, input);
+    return input; // Return original if not a valid file
+  }
+
+  // Check if it's an image file
+  if (!input.type.startsWith('image/')) {
+    console.error('File is not an image:', input.type);
+    return input; // Return original if not an image
+  }
+
+  console.log('Compressing image file:', input.name, input.size, 'bytes');
+
+  return new Promise((resolve, reject) => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+    
+    img.onload = () => {
+      try {
+        let { width, height } = img;
+        
+        // Calculate new dimensions
+        if (width > height) {
+          if (width > config.maxWidth) {
+            height = (height * config.maxWidth) / width;
+            width = config.maxWidth;
+          }
+        } else {
+          if (height > config.maxHeight) {
+            width = (width * config.maxHeight) / height;
+            height = config.maxHeight;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        // Convert to data URL directly instead of blob
+        const dataURL = canvas.toDataURL('image/jpeg', config.quality);
+        console.log('Image compressed successfully, new size:', dataURL.length, 'chars');
+        resolve(dataURL);
+      } catch (error) {
+        console.error('Error during image compression:', error);
+        reject(error);
+      }
+    };
+    
+    img.onerror = (error) => {
+      console.error('Error loading image for compression:', error);
+      reject(new Error('Failed to load image'));
+    };
+    
+    try {
+      const objectURL = URL.createObjectURL(input);
+      img.src = objectURL;
+      
+      // Clean up the object URL after the image loads
+      img.onload = (originalOnLoad => {
+        return function() {
+          URL.revokeObjectURL(objectURL);
+          originalOnLoad.call(this);
+        };
+      })(img.onload);
+      
+    } catch (error) {
+      console.error('Error creating object URL:', error);
+      reject(error);
+    }
+  });
+};
 
 const EditBlog = ({ params }) => {
   const router = useRouter();
@@ -199,9 +294,9 @@ const EditBlog = ({ params }) => {
       // Auto-compress large images to prevent timeouts
       console.log('Compressing images if needed...');
       
-      const compressedFeaturedUrl = formData.featured_image_url ? 
-        await autoCompressImage(formData.featured_image_url, { maxWidth: 1200, maxHeight: 800 }) : 
-        formData.featured_image_url;
+      const compressedHeroUrl = formData.hero_image_url ? 
+        await autoCompressImage(formData.hero_image_url, { maxWidth: 1200, maxHeight: 800 }) : 
+        formData.hero_image_url;
 
       // Compress section images
       const compressedSections = await Promise.all(
@@ -217,7 +312,7 @@ const EditBlog = ({ params }) => {
         .from('blogs')
         .update({
           ...formData,
-          featured_image_url: compressedFeaturedUrl || null,
+          hero_image_url: compressedHeroUrl || null,
           sections: compressedSections.filter(section => section.title.trim() !== '' || section.content.trim() !== ''),
           updated_at: new Date().toISOString()
         })

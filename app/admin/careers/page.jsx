@@ -20,13 +20,15 @@ const Careers = () => {
       // Only select fields needed for the admin listing - much faster!
       const { data, error } = await supabase
         .from('careers')
-        .select('id, title, slug, published, created_at, updated_at, location, job_type')
+        .select('id, job_title, slug, published, created_at, updated_at, location, employment_type')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
       setCareers(data || []);
     } catch (error) {
       console.error('Error fetching careers:', error);
+      // Set empty array and don't throw error to prevent UI crash
+      setCareers([]);
     } finally {
       setLoading(false);
     }
