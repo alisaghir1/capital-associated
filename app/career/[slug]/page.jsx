@@ -99,9 +99,10 @@ export default function CareerDetailPage() {
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-8">
           <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
             <div className="flex-1">
-              <h1 className="text-4xl font-bold text-black mb-3">
-                {career.job_title}
-              </h1>
+              <div 
+                className="text-4xl font-bold text-black mb-3 rich-text-content"
+                dangerouslySetInnerHTML={{ __html: career.job_title }}
+              />
               {career.department && (
                 <div className="inline-block bg-black text-white text-sm px-4 py-2 rounded-full font-medium mb-4">
                   {career.department}
@@ -183,11 +184,10 @@ export default function CareerDetailPage() {
         {career.job_description && (
           <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-8">
             <h2 className="text-2xl font-bold text-black mb-4">Job Description</h2>
-            <div className="prose max-w-none">
-              <p className="text-gray-700 whitespace-pre-line leading-relaxed">
-                {career.job_description}
-              </p>
-            </div>
+            <div 
+              className="rich-text-content prose max-w-none text-gray-700 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: career.job_description }}
+            />
           </div>
         )}
 

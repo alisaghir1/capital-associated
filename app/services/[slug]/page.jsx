@@ -109,9 +109,10 @@ const ServicePage = () => {
 
           {/* Hero Content */}
           <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-              {service.title}
-            </h1>
+            <div 
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight rich-text-content"
+              dangerouslySetInnerHTML={{ __html: service.title }}
+            />
             {service.excerpt && (
               <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl leading-relaxed">
                 {service.excerpt}
@@ -152,15 +153,10 @@ const ServicePage = () => {
                 </h2>
                 {service.content && (
                   <div className="prose prose-xl max-w-none">
-                    <div className="text-gray-600 leading-relaxed space-y-6">
-                      {service.content.split('\n').map((paragraph, index) => (
-                        paragraph.trim() && (
-                          <p key={index} className="text-lg lg:text-xl">
-                            {paragraph}
-                          </p>
-                        )
-                      ))}
-                    </div>
+                    <div 
+                      className="rich-text-content text-gray-600 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: service.content }}
+                    />
                   </div>
                 )}
               </div>
@@ -233,23 +229,17 @@ const ServicePage = () => {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} space-y-6`}>
                       {section.title && (
-                        <h4 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                          {section.title}
-                        </h4>
+                        <div 
+                          className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 rich-text-content"
+                          dangerouslySetInnerHTML={{ __html: section.title }}
+                        />
                       )}
                       
                       {section.content && (
-                        <div className="prose prose-lg max-w-none">
-                          <div className="text-gray-600 leading-relaxed space-y-4">
-                            {section.content.split('\n').map((paragraph, pIndex) => (
-                              paragraph.trim() && (
-                                <p key={pIndex} className="text-lg">
-                                  {paragraph}
-                                </p>
-                              )
-                            ))}
-                          </div>
-                        </div>
+                        <div 
+                          className="rich-text-content prose prose-lg max-w-none text-gray-600 leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: section.content }}
+                        />
                       )}
                     </div>
                     

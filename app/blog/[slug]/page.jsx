@@ -13,11 +13,15 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
+        console.log('Fetching blog with slug:', slug);
         const { data, error } = await supabase
           .from('blogs')
           .select('*')
           .eq('slug', slug)
           .single();
+
+        console.log('Blog data:', data);
+        console.log('Blog error:', error);
 
         if (data) {
           // Parse sections JSON if it exists
@@ -27,10 +31,11 @@ const BlogPage = () => {
               (typeof data.sections === 'string' ? JSON.parse(data.sections) : data.sections) : 
               []
           };
+          console.log('Parsed blog content:', parsedBlog.content);
           setBlog(parsedBlog);
         }
       } catch (err) {
-        console.error(err);
+        console.error('Fetch error:', err);
       } finally {
         setLoading(false);
       }
@@ -92,11 +97,15 @@ const BlogPage = () => {
 
             {/* Blog Header */}
             <header className="mb-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">{blog.title}</h1>
+              <div 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight rich-text-content"
+                dangerouslySetInnerHTML={{ __html: blog.title }}
+              />
               {blog.excerpt && (
-                <p className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed">
-                  {blog.excerpt}
-                </p>
+                <div 
+                  className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed rich-text-content"
+                  dangerouslySetInnerHTML={{ __html: blog.excerpt }}
+                />
               )}
               
               {/* Blog Meta */}
@@ -125,17 +134,14 @@ const BlogPage = () => {
             </header>
 
             {/* Blog Content */}
-            <div className="prose prose-lg prose-gray max-w-none mb-16">
-              {blog.content && (
-                <div className="text-gray-700 leading-relaxed text-lg">
-                  {blog.content.split('\n').map((paragraph, index) => (
-                    paragraph.trim() && (
-                      <p key={index} className="mb-6">
-                        {paragraph}
-                      </p>
-                    )
-                  ))}
-                </div>
+            <div className="max-w-none mb-16">
+              {blog.content ? (
+                <div 
+                  className="rich-text-content text-gray-700 leading-relaxed text-lg"
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+              ) : (
+                <p className="text-gray-500">No content available</p>
               )}
 
               {/* Blog Sections */}
@@ -143,30 +149,30 @@ const BlogPage = () => {
                 <div className="mt-12">
                   {blog.sections.map((section, index) => (
                     <div key={index} className="mb-12">
-                      <h2 className="text-3xl font-bold text-black mb-6">
-                        {section.title}
-                      </h2>
+                      {section.title && (
+                        <div 
+                          className="text-3xl font-bold text-black mb-6 rich-text-content"
+                          dangerouslySetInnerHTML={{ __html: section.title }}
+                        />
+                      )}
                       
                       {/* Section Image */}
                       {section.image && (
                         <div className="mb-8">
                           <img
                             src={section.image}
-                            alt={section.title || `Section ${index + 1} image`}
+                            alt={section.title?.replace(/<[^>]*>/g, '') || `Section ${index + 1} image`}
                             className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                           />
                         </div>
                       )}
                       
-                      <div className="text-gray-700 leading-relaxed text-lg">
-                        {section.content && section.content.split('\n').map((paragraph, pIndex) => (
-                          paragraph.trim() && (
-                            <p key={pIndex} className="mb-6">
-                              {paragraph}
-                            </p>
-                          )
-                        ))}
-                      </div>
+                      {section.content && (
+                        <div 
+                          className="rich-text-content text-gray-700 leading-relaxed text-lg"
+                          dangerouslySetInnerHTML={{ __html: section.content }}
+                        />
+                      )}
                     </div>
                   ))}
                 </div>

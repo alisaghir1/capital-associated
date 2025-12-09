@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../lib/supabase';
+import RichTextEditor from '../../../../components/admin/RichTextEditor';
 
 const NewCareer = () => {
   const router = useRouter();
@@ -208,16 +209,21 @@ const NewCareer = () => {
                 {/* Basic Info */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Job Title * <span className="text-gray-500 font-normal">(The title of the job position)</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="job_title"
+                    <RichTextEditor
+                      label="Job Title *"
+                      description="The title of the job position"
                       value={formData.job_title}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      onChange={(value) => {
+                        const plainText = value.replace(/<[^>]*>/g, '');
+                        setFormData(prev => ({
+                          ...prev,
+                          job_title: value,
+                          slug: plainText.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+                          meta_title: plainText
+                        }));
+                      }}
+                      placeholder="Enter job title..."
+                      minHeight="80px"
                     />
                   </div>
                   <div>
@@ -303,15 +309,14 @@ const NewCareer = () => {
 
                 {/* Job Description */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Job Description *</label>
-                  <textarea
-                    name="job_description"
+                  <RichTextEditor
+                    label="Job Description *"
+                    description="Detailed description of the job position"
                     value={formData.job_description}
-                    onChange={handleInputChange}
-                    required
-                    rows={8}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  ></textarea>
+                    onChange={(value) => setFormData(prev => ({ ...prev, job_description: value }))}
+                    placeholder="Write the job description here..."
+                    minHeight="300px"
+                  />
                 </div>
 
                 {/* Requirements */}

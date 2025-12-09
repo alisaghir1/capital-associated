@@ -66,18 +66,22 @@ const TeamMemberPage = () => {
     return member.sections.map((section, index) => (
       <section key={index} className="mb-8">
         {section.title && (
-          <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
+          <div 
+            className="text-2xl font-semibold mb-4 rich-text-content"
+            dangerouslySetInnerHTML={{ __html: section.title }}
+          />
         )}
         {section.content && (
-          <div className="prose prose-lg max-w-none">
-            <p className="text-gray-700 mb-4">{section.content}</p>
-          </div>
+          <div 
+            className="rich-text-content prose prose-lg max-w-none text-gray-700 mb-4"
+            dangerouslySetInnerHTML={{ __html: section.content }}
+          />
         )}
         {section.image && (
           <div className="relative h-[400px] w-full mb-6">
             <Image
               src={section.image}
-              alt={section.title || "Section image"}
+              alt={section.title?.replace(/<[^>]*>/g, '') || "Section image"}
               layout="fill"
               objectFit="cover"
               className="rounded-lg"
@@ -113,14 +117,15 @@ const TeamMemberPage = () => {
             />
           </div>
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
-            <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
-              {member.name}
-            </h1>
+            <div 
+              className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold rich-text-content"
+              dangerouslySetInnerHTML={{ __html: member.name }}
+            />
             <p className="xl:text-2xl text-black md:text-xl lg:text-2xl text-lg mt-2">
               {member.position}
             </p>
             <p className="absolute bottom-10 left-10 text-white">
-              Home <span className="text-black">/ Our Team / {member.name}</span>
+              Home <span className="text-black">/ Our Team / <span dangerouslySetInnerHTML={{ __html: member.name?.replace(/<[^>]*>/g, '') }} /></span>
             </p>
           </div>
         </div>
@@ -149,9 +154,10 @@ const TeamMemberPage = () => {
             {member.bio && (
               <div className="mt-4">
                 <h3 className="text-xl font-semibold mb-3">About</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  {member.bio}
-                </p>
+                <div 
+                  className="rich-text-content text-gray-700 leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: member.bio }}
+                />
               </div>
             )}
 

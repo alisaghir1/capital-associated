@@ -4,6 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
+import RichTextEditor from '../../../../../components/admin/RichTextEditor';
 
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
@@ -396,17 +397,21 @@ const EditTeamMember = ({ params }) => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name <span className="text-gray-500">(will auto-generate slug and meta title)</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
+                <RichTextEditor
+                  label="Full Name"
+                  description="will auto-generate slug and meta title"
                   value={formData.name}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
+                  onChange={(value) => {
+                    const plainText = value.replace(/<[^>]*>/g, '');
+                    setFormData(prev => ({
+                      ...prev,
+                      name: value,
+                      slug: plainText.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+                      meta_title: plainText
+                    }));
+                  }}
+                  placeholder="Enter team member name..."
+                  minHeight="80px"
                 />
               </div>
 
@@ -456,17 +461,13 @@ const EditTeamMember = ({ params }) => {
             </div>
 
             <div className="mt-6">
-              <label htmlFor="bio" className="block text-sm font-medium text-gray-700 mb-2">
-                Brief Bio <span className="text-gray-500">(short description for card display)</span>
-              </label>
-              <textarea
-                id="bio"
-                name="bio"
+              <RichTextEditor
+                label="Brief Bio"
+                description="short description for card display"
                 value={formData.bio}
-                onChange={handleInputChange}
-                rows={3}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                onChange={(value) => setFormData(prev => ({ ...prev, bio: value }))}
                 placeholder="Brief professional summary..."
+                minHeight="150px"
               />
             </div>
 
@@ -518,30 +519,32 @@ const EditTeamMember = ({ params }) => {
                 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Section Title <span className="text-gray-500">(e.g., "Experience", "Education")</span>
-                    </label>
-                    <input
-                      type="text"
-                      name={`section_title_${index}`}
+                    <RichTextEditor
+                      label="Section Title"
+                      description="e.g., Experience, Education"
                       value={section.title}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Section title..."
+                      onChange={(value) => {
+                        const newSections = [...formData.sections];
+                        newSections[index].title = value;
+                        setFormData(prev => ({ ...prev, sections: newSections }));
+                      }}
+                      placeholder="Enter section title..."
+                      minHeight="80px"
                     />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Content <span className="text-gray-500">(detailed information)</span>
-                    </label>
-                    <textarea
-                      name={`section_content_${index}`}
+                    <RichTextEditor
+                      label="Content"
+                      description="detailed information"
                       value={section.content}
-                      onChange={handleInputChange}
-                      rows={4}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      onChange={(value) => {
+                        const newSections = [...formData.sections];
+                        newSections[index].content = value;
+                        setFormData(prev => ({ ...prev, sections: newSections }));
+                      }}
                       placeholder="Section content..."
+                      minHeight="200px"
                     />
                   </div>
                   

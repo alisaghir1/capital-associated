@@ -4,6 +4,7 @@ import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
+import RichTextEditor from '../../../../../components/admin/RichTextEditor';
 
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
@@ -397,16 +398,20 @@ const EditBlog = ({ params }) => {
                 {/* Basic Info */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Title * <span className="text-gray-500 font-normal">(The main title of your blog post)</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="title"
+                    <RichTextEditor
+                      label="Title *"
+                      description="The main title of your blog post"
                       value={formData.title}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      onChange={(value) => {
+                        setFormData(prev => ({
+                          ...prev,
+                          title: value,
+                          slug: value.replace(/<[^>]*>/g, '').toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+                          meta_title: value.replace(/<[^>]*>/g, '')
+                        }));
+                      }}
+                      placeholder="Enter blog title..."
+                      minHeight="80px"
                     />
                   </div>
                   <div>
@@ -425,17 +430,14 @@ const EditBlog = ({ params }) => {
 
                 {/* Content */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Content * <span className="text-gray-500 font-normal">(Main content of your blog post)</span>
-                  </label>
-                  <textarea
-                    name="content"
+                  <RichTextEditor
+                    label="Content *"
+                    description="Main content of your blog post - use the toolbar to format text, add images, links, etc."
                     value={formData.content}
-                    onChange={handleInputChange}
-                    required
-                    rows={8}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  ></textarea>
+                    onChange={(value) => setFormData(prev => ({ ...prev, content: value }))}
+                    placeholder="Write your blog content here..."
+                    minHeight="300px"
+                  />
                 </div>
 
                 {/* Excerpt */}
@@ -504,29 +506,33 @@ const EditBlog = ({ params }) => {
                         
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Section Title <span className="text-gray-500 font-normal">(Heading for this section)</span>
-                            </label>
-                            <input
-                              type="text"
-                              name={`section_title_${index}`}
+                            <RichTextEditor
+                              label="Section Title"
+                              description="Heading for this section"
                               value={section.title}
-                              onChange={handleInputChange}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              onChange={(value) => {
+                                const newSections = [...formData.sections];
+                                newSections[index].title = value;
+                                setFormData(prev => ({ ...prev, sections: newSections }));
+                              }}
+                              placeholder="Enter section title..."
+                              minHeight="80px"
                             />
                           </div>
                           
                           <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                              Section Content <span className="text-gray-500 font-normal">(Text content for this section)</span>
-                            </label>
-                            <textarea
-                              name={`section_content_${index}`}
+                            <RichTextEditor
+                              label="Section Content"
+                              description="Text content for this section"
                               value={section.content}
-                              onChange={handleInputChange}
-                              rows={4}
-                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            ></textarea>
+                              onChange={(value) => {
+                                const newSections = [...formData.sections];
+                                newSections[index].content = value;
+                                setFormData(prev => ({ ...prev, sections: newSections }));
+                              }}
+                              placeholder="Write section content here..."
+                              minHeight="200px"
+                            />
                           </div>
                           
                           <div>
