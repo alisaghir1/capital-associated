@@ -4,35 +4,34 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { supabase } from '../../../lib/supabase';
+import { supabase, queryWithRetry } from '../../../lib/supabase';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const ProjectPage = () => {
   const { slug } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        // Add timeout protection
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 10000)
+        const { data, error: queryError } = await queryWithRetry(
+          () => supabase
+            .from('projects')
+            .select('*')
+            .eq('slug', slug)
+            .eq('published', true)
+            .single(),
+          { timeoutMs: 15000, retries: 3 }
         );
 
-        // SELECT * is appropriate here since we need all project content for the full page
-        const fetchPromise = supabase
-          .from('projects')
-          .select('*')
-          .eq('slug', slug)
-          .eq('published', true)
-          .single();
-
-        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
-
-        if (error) {
-          console.error('Error fetching project:', error);
-        } else {
-          console.log('Project data loaded:', data); // Debug log
+        if (queryError) {
+          console.warn('Project fetch error:', queryError.message);
+          if (queryError.code !== 'PGRST116') {
+            setError('Unable to load project. Please try again.');
+          }
+        } else if (data) {
           // Parse sections JSON if it exists
           const parsedProject = {
             ...data,
@@ -44,9 +43,7 @@ const ProjectPage = () => {
         }
       } catch (err) {
         console.error('Error:', err);
-        if (err.message === 'Request timeout') {
-          console.log('Project page timed out - please check your connection');
-        }
+        setError('Connection error. Please check your internet.');
       } finally {
         setLoading(false);
       }
@@ -60,17 +57,25 @@ const ProjectPage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-xl">Loading project...</div>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
+          <p className="text-xl">Loading project...</p>
+        </div>
       </div>
     );
   }
 
-  if (!project) {
+  if (error || !project) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Project not found</h2>
-          <Link href="/our-work" className="text-blue-600 hover:underline">
+          <h2 className="text-2xl font-bold mb-4">
+            {error ? 'Unable to Load Project' : 'Project not found'}
+          </h2>
+          <p className="text-gray-600 mb-6">
+            {error || 'The project you are looking for does not exist.'}
+          </p>
+          <Link href="/our-work" className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors">
             Back to Our Work
           </Link>
         </div>
@@ -87,7 +92,7 @@ const ProjectPage = () => {
           <div className="absolute inset-0">
             <Image
               src={project.hero_image_url || "/main.jpg"}
-              alt={project.title}
+              alt={stripHtmlTags(project.title)}
               layout="fill"
               objectFit="cover"
               priority
@@ -105,10 +110,11 @@ const ProjectPage = () => {
                   {project.project_type}
                 </span>
               )}
-              <div 
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2 rich-text-content"
-                dangerouslySetInnerHTML={{ __html: project.title }}
-              />
+              <h1 
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2"
+              >
+                {stripHtmlTags(project.title)}
+              </h1>
               {project.location && (
                 <div className="flex items-center justify-center text-white/90 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
@@ -200,7 +206,7 @@ const ProjectPage = () => {
               ) : (
                 <Image
                   src={project.hero_image_url}
-                  alt={project.title}
+                  alt={stripHtmlTags(project.title)}
                   layout="fill"
                   objectFit="cover"
                 />
@@ -239,10 +245,9 @@ const ProjectPage = () => {
                         <span className="inline-block px-4 py-2 bg-amber-100 text-amber-700 font-semibold text-sm rounded-full mb-4">
                           Section {index + 1}
                         </span>
-                        <div 
-                          className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight rich-text-content"
-                          dangerouslySetInnerHTML={{ __html: section.title }}
-                        />
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                          {stripHtmlTags(section.title)}
+                        </h2>
                       </div>
                     )}
                     {section.content && (
@@ -260,7 +265,7 @@ const ProjectPage = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
                         <Image
                           src={section.image}
-                          alt={section.title || `${project.title} - Section ${index + 1}`}
+                          alt={section.title || `${stripHtmlTags(project.title)} - Section ${index + 1}`}
                           layout="fill"
                           objectFit="cover"
                         />

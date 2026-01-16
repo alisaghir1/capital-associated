@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import { supabase, fetchServicesOptimized } from "../../lib/supabase-optimized";
+import { stripHtmlTags } from "../../utils/richText";
 
 const OurServices = () => {
   const [services, setServices] = useState([]);
@@ -91,7 +92,7 @@ const OurServices = () => {
                 transition: "all 0.5s ease-in-out",
               }}
             >
-              {isFirstRow && service.title}
+              {isFirstRow && stripHtmlTags(service.title)}
             </div>
             {/* Top-right part */}
             <div
@@ -115,7 +116,7 @@ const OurServices = () => {
                 transition: "all 0.5s ease-in-out",
               }}
             >
-              {isSecondRow && service.title}
+              {isSecondRow && stripHtmlTags(service.title)}
             </div>
             {/* Bottom-right part */}
             <div
@@ -128,7 +129,7 @@ const OurServices = () => {
                 transition: "all 0.5s ease-in-out",
               }}
             >
-              {isThirdRow && service.title}
+              {isThirdRow && stripHtmlTags(service.title)}
             </div>
           </div>
         </div>

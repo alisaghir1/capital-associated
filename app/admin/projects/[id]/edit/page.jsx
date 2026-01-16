@@ -430,21 +430,25 @@ const EditProject = ({ params }) => {
                 {/* Basic Info */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div>
-                    <RichTextEditor
-                      label="Title *"
-                      description="The main title of your project"
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Title * <span className="text-gray-500 font-normal">(The main title of your project)</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="title"
                       value={formData.title}
-                      onChange={(value) => {
-                        const plainText = value.replace(/<[^>]*>/g, '');
+                      onChange={(e) => {
+                        const value = e.target.value;
                         setFormData(prev => ({
                           ...prev,
                           title: value,
-                          slug: plainText.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
-                          meta_title: plainText
+                          slug: value.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+                          meta_title: value
                         }));
                       }}
                       placeholder="Enter project title..."
-                      minHeight="80px"
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>
@@ -663,17 +667,19 @@ const EditProject = ({ params }) => {
                         
                         <div className="space-y-4">
                           <div>
-                            <RichTextEditor
-                              label="Section Title"
-                              description="Heading for this section"
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Section Title <span className="text-gray-500 font-normal">(Heading for this section)</span>
+                            </label>
+                            <input
+                              type="text"
                               value={section.title}
-                              onChange={(value) => {
+                              onChange={(e) => {
                                 const newSections = [...formData.sections];
-                                newSections[index].title = value;
+                                newSections[index].title = e.target.value;
                                 setFormData(prev => ({ ...prev, sections: newSections }));
                               }}
                               placeholder="Enter section title..."
-                              minHeight="80px"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
                           </div>
                           

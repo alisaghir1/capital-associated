@@ -3,11 +3,26 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import VidioComponent from "../components/VidioComponent";
-import { supabase } from "../../lib/supabase";
+import { fetchAllServices } from "../../lib/supabase-optimized";
+import { stripHtmlTags } from "../../utils/richText";
+
+// Fallback static data
+const staticServices = [
+  { id: 1, title: "General Contracting", slug: "general-contracting", hero_image_url: "/services/s1.jpg", published: true, sort_order: 1 },
+  { id: 2, title: "Construction Management", slug: "construction-management", hero_image_url: "/services/s2.jpg", published: true, sort_order: 2 },
+  { id: 3, title: "Design Build", slug: "design-build", hero_image_url: "/services/s3.jpg", published: true, sort_order: 3 },
+  { id: 4, title: "Renovation & Remodeling", slug: "renovation-and-remodeling", hero_image_url: "/services/s4.jpg", published: true, sort_order: 4 },
+  { id: 5, title: "Pre-Construction Services", slug: "pre-construction-services", hero_image_url: "/services/s5.jpg", published: true, sort_order: 5 },
+  { id: 6, title: "Value Engineering", slug: "value-engineering", hero_image_url: "/services/s6.jpg", published: true, sort_order: 6 },
+  { id: 7, title: "Green Building Solutions", slug: "green-building-solutions", hero_image_url: "/services/s7.jpg", published: true, sort_order: 7 },
+  { id: 8, title: "Specialty Construction", slug: "specialty-construction", hero_image_url: "/services/s8.jpg", published: true, sort_order: 8 },
+  { id: 9, title: "Interior Fit-Out", slug: "interior-fit-out", hero_image_url: "/services/s9.jpg", published: true, sort_order: 9 }
+];
 
 const ServicesLayout = () => {
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState(staticServices); // Start with fallback
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchServices();
@@ -15,43 +30,42 @@ const ServicesLayout = () => {
 
   const fetchServices = async () => {
     try {
-      // Add timeout protection
-      const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Request timeout')), 10000)
-      );
+      const { data, error: queryError } = await fetchAllServices();
 
-      // Only select fields needed for the services listing page
-      const fetchPromise = supabase
-        .from('services')
-        .select('id, title, slug, hero_image_url, short_description, published, sort_order')
-        .eq('published', true)
-        .order('sort_order', { ascending: true }); // Use sort_order for better organization
-
-      const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
-
-      if (error) {
-        console.error('Error fetching services:', error);
-      } else {
-        setServices(data || []);
+      if (queryError) {
+        console.warn('Error fetching services:', queryError.message);
+        setError('Unable to load latest services. Showing cached data.');
       }
-    } catch (error) {
-      console.error('Error fetching services:', error);
-      setServices([]); // Clear services on error
+      
+      if (data && data.length > 0) {
+        setServices(data);
+      }
+    } catch (err) {
+      console.error('Services fetch error:', err);
+      setError('Connection error. Showing cached data.');
     } finally {
       setLoading(false);
     }
   };
 
-  if (loading) {
+  if (loading && services.length === 0) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-xl">Loading services...</div>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
+          <p className="text-xl">Loading services...</p>
+        </div>
       </div>
     );
   }
 
   return (
     <div>
+      {error && (
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+          <p className="text-yellow-700 text-sm">{error}</p>
+        </div>
+      )}
       {" "}
       <div className="relative z-0 w-full h-screen">
         {/* Background Image */}
@@ -132,7 +146,7 @@ const ServicesLayout = () => {
                   >
                     {layout.titlePosition === 'top-left' && (
                       <span className="text-sm font-semibold px-2 text-center">
-                        {service.title}
+                        {stripHtmlTags(service.title)}
                       </span>
                     )}
                   </div>
@@ -163,7 +177,7 @@ const ServicesLayout = () => {
                   >
                     {layout.titlePosition === 'top-right' && (
                       <span className="text-sm font-semibold px-2 text-center">
-                        {service.title}
+                        {stripHtmlTags(service.title)}
                       </span>
                     )}
                   </div>
@@ -194,7 +208,7 @@ const ServicesLayout = () => {
                   >
                     {layout.titlePosition === 'bottom-left' && (
                       <span className="text-sm font-semibold px-2 text-center">
-                        {service.title}
+                        {stripHtmlTags(service.title)}
                       </span>
                     )}
                   </div>
@@ -225,7 +239,7 @@ const ServicesLayout = () => {
                   >
                     {layout.titlePosition === 'bottom-right' && (
                       <span className="text-sm font-semibold px-2 text-center">
-                        {service.title}
+                        {stripHtmlTags(service.title)}
                       </span>
                     )}
                   </div>

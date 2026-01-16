@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const BlogsAdmin = () => {
   const [blogs, setBlogs] = useState([]);
@@ -266,7 +267,7 @@ const BlogsAdmin = () => {
                               )}
                               <div>
                                 <div className="text-sm font-medium text-gray-900">
-                                  {blog.title}
+                                  {stripHtmlTags(blog.title)}
                                 </div>
                                 <div className="text-sm text-gray-500">
                                   /{blog.slug}

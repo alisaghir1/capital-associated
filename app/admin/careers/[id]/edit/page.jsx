@@ -274,21 +274,25 @@ const EditCareer = ({ params }) => {
                 {/* Basic Info */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <div>
-                    <RichTextEditor
-                      label="Job Title *"
-                      description="The position title or job name"
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Job Title * <span className="text-gray-500 font-normal">(The position title or job name)</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="job_title"
                       value={formData.job_title}
-                      onChange={(value) => {
-                        const plainText = value.replace(/<[^>]*>/g, '');
+                      onChange={(e) => {
+                        const value = e.target.value;
                         setFormData(prev => ({
                           ...prev,
                           job_title: value,
-                          slug: plainText.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
-                          meta_title: plainText
+                          slug: value.toLowerCase().replace(/[^a-z0-9 -]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').trim(),
+                          meta_title: value
                         }));
                       }}
                       placeholder="Enter job title..."
-                      minHeight="80px"
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
                   <div>

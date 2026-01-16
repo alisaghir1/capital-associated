@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -209,11 +210,11 @@ const Projects = () => {
                             <img
                               className="h-10 w-10 rounded-lg object-cover"
                               src={project.hero_image_url || 'https://via.placeholder.com/40x40?text=P'}
-                              alt={project.title}
+                              alt={stripHtmlTags(project.title)}
                             />
                           </div>
                           <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{project.title}</div>
+                            <div className="text-sm font-medium text-gray-900">{stripHtmlTags(project.title)}</div>
                             <div className="text-sm text-gray-500">/{project.slug}</div>
                           </div>
                         </div>

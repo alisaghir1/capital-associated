@@ -5,12 +5,14 @@ import { useParams } from 'next/navigation';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { supabase } from '../../../lib/supabase';
+import { supabase, queryWithRetry } from '../../../lib/supabase';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const ServicePage = () => {
   const { slug } = useParams();
   const [service, setService] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchService = async () => {
@@ -19,34 +21,27 @@ const ServicePage = () => {
       try {
         setLoading(true);
         
-        // Add timeout protection
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 10000)
+        const { data, error: queryError } = await queryWithRetry(
+          () => supabase
+            .from('services')
+            .select('*')
+            .eq('slug', slug)
+            .eq('published', true)
+            .single(),
+          { timeoutMs: 15000, retries: 3 }
         );
 
-        // SELECT * is appropriate here since we need all service content for the full page
-        const fetchPromise = supabase
-          .from('services')
-          .select('*')
-          .eq('slug', slug)
-          .eq('published', true)
-          .single();
-
-        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
-
-        if (error) {
-          console.error('Service fetch error:', error);
-          if (error.code === 'PGRST116') {
-            console.log('No service found with this slug');
+        if (queryError) {
+          console.warn('Service fetch error:', queryError.message);
+          if (queryError.code !== 'PGRST116') {
+            setError('Unable to load service. Please try again.');
           }
         } else if (data) {
           setService(data);
         }
       } catch (err) {
         console.error('Service fetch error:', err);
-        if (err.message === 'Request timeout') {
-          console.log('Service page timed out - please check your connection');
-        }
+        setError('Connection error. Please check your internet.');
       } finally {
         setLoading(false);
       }
@@ -58,15 +53,31 @@ const ServicePage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-xl text-gray-600">Loading...</div>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
+          <p className="text-xl text-gray-600">Loading service...</p>
+        </div>
       </div>
     );
   }
 
-  if (!service) {
+  if (error || !service) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="text-xl text-gray-600">Service not found</div>
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-black mb-4">
+            {error ? 'Unable to Load Service' : 'Service Not Found'}
+          </h1>
+          <p className="text-gray-600 mb-8">
+            {error || 'The service you are looking for does not exist.'}
+          </p>
+          <Link 
+            href="/services" 
+            className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors"
+          >
+            Back to Services
+          </Link>
+        </div>
       </div>
     );
   }
@@ -74,7 +85,7 @@ const ServicePage = () => {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>{service.meta_title || `${service.title} | Capital Associated Contracting`}</title>
+        <title>{service.meta_title || `${stripHtmlTags(service.title)} | Capital Associated Contracting`}</title>
         <meta name="description" content={service.meta_description || service.excerpt} />
         {service.meta_keywords && <meta name="keywords" content={service.meta_keywords} />}
       </Head>
@@ -84,7 +95,7 @@ const ServicePage = () => {
         <div className="absolute inset-0">
           <Image
             src={service.hero_image_url || "/main.jpg"}
-            alt={service.title}
+            alt={stripHtmlTags(service.title)}
             layout="fill"
             objectFit="cover"
             priority
@@ -103,16 +114,17 @@ const ServicePage = () => {
               <span>/</span>
               <Link href="/services" className="hover:text-white transition-colors">Services</Link>
               <span>/</span>
-              <span className="text-white font-medium">{service.title}</span>
+              <span className="text-white font-medium">{stripHtmlTags(service.title)}</span>
             </div>
           </nav>
 
           {/* Hero Content */}
           <div className="max-w-4xl">
-            <div 
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight rich-text-content"
-              dangerouslySetInnerHTML={{ __html: service.title }}
-            />
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight"
+            >
+              {stripHtmlTags(service.title)}
+            </h1>
             {service.excerpt && (
               <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl leading-relaxed">
                 {service.excerpt}
@@ -149,7 +161,7 @@ const ServicePage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                  Professional {service.title}
+                  Professional {stripHtmlTags(service.title)}
                 </h2>
                 {service.content && (
                   <div className="prose prose-xl max-w-none">
@@ -166,7 +178,7 @@ const ServicePage = () => {
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                     <Image
                       src={service.hero_image_url}
-                      alt={service.title}
+                      alt={stripHtmlTags(service.title)}
                       width={800}
                       height={600}
                       className="w-full h-[500px] object-cover transform hover:scale-105 transition-transform duration-700"
@@ -185,7 +197,7 @@ const ServicePage = () => {
             <div className="mb-20">
               <div className="text-center mb-16">
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Why Choose Our {service.title}?
+                  Why Choose Our {stripHtmlTags(service.title)}?
                 </h3>
                 <div className="w-24 h-1 bg-black mx-auto"></div>
               </div>
@@ -229,10 +241,9 @@ const ServicePage = () => {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} space-y-6`}>
                       {section.title && (
-                        <div 
-                          className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 rich-text-content"
-                          dangerouslySetInnerHTML={{ __html: section.title }}
-                        />
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                          {stripHtmlTags(section.title)}
+                        </h2>
                       )}
                       
                       {section.content && (
@@ -248,7 +259,7 @@ const ServicePage = () => {
                         <div className="relative overflow-hidden rounded-2xl shadow-xl">
                           <Image
                             src={section.image}
-                            alt={section.title || `Section ${index + 1}`}
+                            alt={stripHtmlTags(section.title) || `Section ${index + 1}`}
                             width={700}
                             height={500}
                             className="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-700"

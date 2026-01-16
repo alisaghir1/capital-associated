@@ -3,25 +3,31 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Head from 'next/head';
-import { supabase } from '../../../lib/supabase.js';
+import { supabase, queryWithRetry } from '../../../lib/supabase.js';
+import { stripHtmlTags } from '../../../utils/richText.js';
 
 const BlogPage = () => {
   const { slug } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        console.log('Fetching blog with slug:', slug);
-        const { data, error } = await supabase
-          .from('blogs')
-          .select('*')
-          .eq('slug', slug)
-          .single();
+        const { data, error: queryError } = await queryWithRetry(
+          () => supabase
+            .from('blogs')
+            .select('*')
+            .eq('slug', slug)
+            .single(),
+          { timeoutMs: 15000, retries: 3 }
+        );
 
-        console.log('Blog data:', data);
-        console.log('Blog error:', error);
+        if (queryError) {
+          console.warn('Blog fetch error:', queryError.message);
+          setError('Unable to load blog post. Please try again.');
+        }
 
         if (data) {
           // Parse sections JSON if it exists
@@ -31,11 +37,11 @@ const BlogPage = () => {
               (typeof data.sections === 'string' ? JSON.parse(data.sections) : data.sections) : 
               []
           };
-          console.log('Parsed blog content:', parsedBlog.content);
           setBlog(parsedBlog);
         }
       } catch (err) {
         console.error('Fetch error:', err);
+        setError('Connection error. Please check your internet.');
       } finally {
         setLoading(false);
       }
@@ -50,19 +56,23 @@ const BlogPage = () => {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-black mx-auto"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading blog post...</p>
         </div>
       </div>
     );
   }
 
-  if (!blog) {
+  if (error || !blog) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-black mb-4">Blog Post Not Found</h1>
-          <p className="text-gray-600 mb-8">The blog post you are looking for does not exist.</p>
+          <h1 className="text-4xl font-bold text-black mb-4">
+            {error ? 'Unable to Load Blog' : 'Blog Post Not Found'}
+          </h1>
+          <p className="text-gray-600 mb-8">
+            {error || 'The blog post you are looking for does not exist.'}
+          </p>
           <a 
             href="/blog" 
             className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors"
@@ -77,8 +87,8 @@ const BlogPage = () => {
   return (
     <div>
       <Head>
-        <title>{blog.title} | Capital Associated Contracting</title>
-        <meta name="description" content={blog.excerpt || blog.content?.substring(0, 160)} />
+        <title>{stripHtmlTags(blog.title)} | Capital Associated Contracting</title>
+        <meta name="description" content={stripHtmlTags(blog.excerpt) || stripHtmlTags(blog.content)?.substring(0, 160)} />
       </Head>
       
       <div className="min-h-screen bg-white pt-32">
@@ -89,7 +99,7 @@ const BlogPage = () => {
               <div className="mb-12 mt-20"> 
                 <img
                   src={blog.hero_image_url}
-                  alt={blog.title}
+                  alt={stripHtmlTags(blog.title)}
                   className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                 />
               </div>
@@ -97,15 +107,13 @@ const BlogPage = () => {
 
             {/* Blog Header */}
             <header className="mb-12">
-              <div 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight rich-text-content"
-                dangerouslySetInnerHTML={{ __html: blog.title }}
-              />
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+                {stripHtmlTags(blog.title)}
+              </h1>
               {blog.excerpt && (
-                <div 
-                  className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed rich-text-content"
-                  dangerouslySetInnerHTML={{ __html: blog.excerpt }}
-                />
+                <p className="text-xl md:text-2xl text-gray-600 mb-6 leading-relaxed">
+                  {stripHtmlTags(blog.excerpt)}
+                </p>
               )}
               
               {/* Blog Meta */}
@@ -150,10 +158,9 @@ const BlogPage = () => {
                   {blog.sections.map((section, index) => (
                     <div key={index} className="mb-12">
                       {section.title && (
-                        <div 
-                          className="text-3xl font-bold text-black mb-6 rich-text-content"
-                          dangerouslySetInnerHTML={{ __html: section.title }}
-                        />
+                        <h2 className="text-3xl font-bold text-black mb-6">
+                          {stripHtmlTags(section.title)}
+                        </h2>
                       )}
                       
                       {/* Section Image */}
@@ -161,7 +168,7 @@ const BlogPage = () => {
                         <div className="mb-8">
                           <img
                             src={section.image}
-                            alt={section.title?.replace(/<[^>]*>/g, '') || `Section ${index + 1} image`}
+                            alt={stripHtmlTags(section.title) || `Section ${index + 1} image`}
                             className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                           />
                         </div>

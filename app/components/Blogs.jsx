@@ -5,6 +5,7 @@ import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import { supabase, fetchBlogsOptimized } from "../../lib/supabase-optimized";
+import { stripHtmlTags } from "../../utils/richText";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -389,7 +390,7 @@ const Blogs = () => {
               >
                 <img
                   src={post.image || post.hero_image_url}
-                  alt={post.title}
+                  alt={stripHtmlTags(post.title)}
                   className="w-full h-[36rem] object-cover"
                   layout="fill"
                 />
@@ -401,7 +402,7 @@ const Blogs = () => {
                 {/* Blog title overlay */}
                 <div className="flex flex-col items-start justify-end transiton-all duration-300 ease-in-out hover:bg-offwhite  hover:bg-opacity-20  gap-5  text-center p-5 h-full">
                   <p className="text-white text-start text-xl  font-bold">
-                    {post.title}
+                    {stripHtmlTags(post.title)}
                   </p>
                   <p className="text-white transiton-all duration-300 ease-in-out  text-lg group-hover:text-black text-start py-4 font-bold border-t-2 border-b-2 w-full">
                     Continue reading

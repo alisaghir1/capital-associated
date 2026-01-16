@@ -1,12 +1,14 @@
 ﻿'use client';
 
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../../lib/supabase';
+import { supabase, queryWithRetry } from '../../lib/supabase';
 import Link from 'next/link';
+import { stripHtmlTags } from '../../utils/richText';
 
 export default function CareerLayout() {
   const [careers, setCareers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchCareers();
@@ -14,16 +16,24 @@ export default function CareerLayout() {
 
   const fetchCareers = async () => {
     try {
-      const { data, error } = await supabase
-        .from('careers')
-        .select('*')
-        .eq('published', true)
-        .order('created_at', { ascending: false });
+      const { data, error } = await queryWithRetry(
+        () => supabase
+          .from('careers')
+          .select('*')
+          .eq('published', true)
+          .order('created_at', { ascending: false }),
+        { timeoutMs: 15000, retries: 3 }
+      );
 
-      if (error) throw error;
+      if (error) {
+        console.warn('Error fetching careers:', error.message);
+        setError('Unable to load career listings. Please try again later.');
+      }
+      
       setCareers(data || []);
-    } catch (error) {
-      console.error('Error fetching careers:', error);
+    } catch (err) {
+      console.error('Error fetching careers:', err);
+      setError('Connection error. Please check your internet and try again.');
       setCareers([]);
     } finally {
       setLoading(false);
@@ -114,7 +124,7 @@ export default function CareerLayout() {
                 {/* Header */}
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-gray-600 transition-colors">
-                    {career.job_title}
+                    {stripHtmlTags(career.job_title)}
                   </h3>
                   
                   {career.department && (

@@ -2,13 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { supabase } from '../../../lib/supabase';
+import { supabase, queryWithRetry } from '../../../lib/supabase';
 import Link from 'next/link';
+import { stripHtmlTags } from '../../../utils/richText';
 
 export default function CareerDetailPage() {
   const params = useParams();
   const [career, setCareer] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (params.slug) {
@@ -18,18 +20,27 @@ export default function CareerDetailPage() {
 
   const fetchCareer = async () => {
     try {
-      const { data, error } = await supabase
-        .from('careers')
-        .select('*')
-        .eq('slug', params.slug)
-        .eq('published', true)
-        .single();
+      const { data, error: queryError } = await queryWithRetry(
+        () => supabase
+          .from('careers')
+          .select('*')
+          .eq('slug', params.slug)
+          .eq('published', true)
+          .single(),
+        { timeoutMs: 15000, retries: 3 }
+      );
 
-      if (error) throw error;
-      setCareer(data);
-    } catch (error) {
-      console.error('Error fetching career:', error);
-      setCareer(null);
+      if (queryError) {
+        console.warn('Career fetch error:', queryError.message);
+        if (queryError.code !== 'PGRST116') {
+          setError('Unable to load career details. Please try again.');
+        }
+      } else if (data) {
+        setCareer(data);
+      }
+    } catch (err) {
+      console.error('Error fetching career:', err);
+      setError('Connection error. Please check your internet.');
     } finally {
       setLoading(false);
     }
@@ -48,7 +59,7 @@ export default function CareerDetailPage() {
     );
   }
 
-  if (!career) {
+  if (error || !career) {
     return (
       <div className="min-h-screen bg-slate-100 pt-32 pb-12">
         <div className="flex items-center justify-center">
@@ -59,10 +70,10 @@ export default function CareerDetailPage() {
               </svg>
             </div>
             <h1 className="text-3xl font-bold text-black mb-4">
-              Career Not Found
+              {error ? 'Unable to Load Career' : 'Career Not Found'}
             </h1>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              The job posting you're looking for doesn't exist or is no longer available.
+              {error || "The job posting you're looking for doesn't exist or is no longer available."}
             </p>
             <Link
               href="/career"
@@ -99,10 +110,9 @@ export default function CareerDetailPage() {
         <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 mb-8">
           <div className="flex flex-wrap justify-between items-start gap-4 mb-6">
             <div className="flex-1">
-              <div 
-                className="text-4xl font-bold text-black mb-3 rich-text-content"
-                dangerouslySetInnerHTML={{ __html: career.job_title }}
-              />
+              <h1 className="text-4xl font-bold text-black mb-3">
+                {stripHtmlTags(career.job_title)}
+              </h1>
               {career.department && (
                 <div className="inline-block bg-black text-white text-sm px-4 py-2 rounded-full font-medium mb-4">
                   {career.department}
@@ -172,7 +182,7 @@ export default function CareerDetailPage() {
           {/* Apply Button */}
           <div className="text-center">
             <a
-              href={`mailto:careers@capitalassociated.com?subject=Application for ${career.job_title}&body=Dear Hiring Team,%0A%0AI am interested in applying for the ${career.job_title} position.%0A%0APlease find my resume attached.%0A%0AThank you for your consideration.%0A%0ABest regards`}
+              href={`mailto:careers@capitalassociated.com?subject=Application for ${stripHtmlTags(career.job_title)}&body=Dear Hiring Team,%0A%0AI am interested in applying for the ${stripHtmlTags(career.job_title)} position.%0A%0APlease find my resume attached.%0A%0AThank you for your consideration.%0A%0ABest regards`}
               className="inline-block bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl"
             >
               Apply Now
@@ -241,7 +251,7 @@ export default function CareerDetailPage() {
           </p>
           <div className="space-y-4">
             <a
-              href={`mailto:careers@capitalassociated.com?subject=Application for ${career.job_title}&body=Dear Hiring Team,%0A%0AI am interested in applying for the ${career.job_title} position.%0A%0APlease find my resume attached.%0A%0AThank you for your consideration.%0A%0ABest regards`}
+              href={`mailto:careers@capitalassociated.com?subject=Application for ${stripHtmlTags(career.job_title)}&body=Dear Hiring Team,%0A%0AI am interested in applying for the ${stripHtmlTags(career.job_title)} position.%0A%0APlease find my resume attached.%0A%0AThank you for your consideration.%0A%0ABest regards`}
               className="inline-block bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium shadow-lg hover:shadow-xl mr-4"
             >
               Apply Now

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const Careers = () => {
   const [careers, setCareers] = useState([]);
@@ -199,7 +200,7 @@ const Careers = () => {
                     <tr key={career.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{career.job_title}</div>
+                          <div className="text-sm font-medium text-gray-900">{stripHtmlTags(career.job_title)}</div>
                           <div className="text-sm text-gray-500">/{career.slug}</div>
                         </div>
                       </td>

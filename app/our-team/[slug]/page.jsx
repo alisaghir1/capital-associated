@@ -2,39 +2,43 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { supabase } from "../../../lib/supabase";
+import { supabase, queryWithRetry } from "../../../lib/supabase";
 import { notFound } from "next/navigation";
 import Head from "next/head";
+import Link from "next/link";
+import { stripHtmlTags } from "../../../utils/richText";
 
 const TeamMemberPage = () => {
   const params = useParams();
   const slug = params.slug;
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTeamMember = async () => {
       try {
-        console.log('Fetching team member with slug:', slug);
-        const { data, error } = await supabase
-          .from('team')
-          .select('*')
-          .eq('slug', slug)
-          .eq('published', true)
-          .single();
+        const { data, error: queryError } = await queryWithRetry(
+          () => supabase
+            .from('team')
+            .select('*')
+            .eq('slug', slug)
+            .eq('published', true)
+            .single(),
+          { timeoutMs: 15000, retries: 3 }
+        );
 
-        if (error) {
-          console.error('Error fetching team member:', error);
-          if (error.code === 'PGRST116') {
-            // No rows returned
-            notFound();
+        if (queryError) {
+          console.warn('Team member fetch error:', queryError.message);
+          if (queryError.code !== 'PGRST116') {
+            setError('Unable to load team member. Please try again.');
           }
-        } else {
-          console.log('Team member data fetched:', data);
+        } else if (data) {
           setMember(data);
         }
-      } catch (error) {
-        console.error('Error:', error);
+      } catch (err) {
+        console.error('Error:', err);
+        setError('Connection error. Please check your internet.');
       } finally {
         setLoading(false);
       }
@@ -48,13 +52,30 @@ const TeamMemberPage = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-xl">Loading team member...</p>
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
+          <p className="text-xl">Loading team member...</p>
+        </div>
       </div>
     );
   }
 
-  if (!member) {
-    notFound();
+  if (error || !member) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold mb-4">
+            {error ? 'Unable to Load Team Member' : 'Team Member Not Found'}
+          </h2>
+          <p className="text-gray-600 mb-6">
+            {error || 'The team member you are looking for does not exist.'}
+          </p>
+          <Link href="/our-team" className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors">
+            Back to Our Team
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   // Render sections if they exist in JSONB format
@@ -66,10 +87,9 @@ const TeamMemberPage = () => {
     return member.sections.map((section, index) => (
       <section key={index} className="mb-8">
         {section.title && (
-          <div 
-            className="text-2xl font-semibold mb-4 rich-text-content"
-            dangerouslySetInnerHTML={{ __html: section.title }}
-          />
+          <h3 className="text-2xl font-semibold mb-4">
+            {stripHtmlTags(section.title)}
+          </h3>
         )}
         {section.content && (
           <div 
@@ -81,7 +101,7 @@ const TeamMemberPage = () => {
           <div className="relative h-[400px] w-full mb-6">
             <Image
               src={section.image}
-              alt={section.title?.replace(/<[^>]*>/g, '') || "Section image"}
+              alt={stripHtmlTags(section.title) || "Section image"}
               layout="fill"
               objectFit="cover"
               className="rounded-lg"
@@ -95,10 +115,10 @@ const TeamMemberPage = () => {
   return (
     <>
       <Head>
-        <title>{member.meta_title || `${member.name} - ${member.position} | Capital Associated Contracting`}</title>
+        <title>{member.meta_title || `${stripHtmlTags(member.name)} - ${member.position} | Capital Associated Contracting`}</title>
         <meta
           name="description"
-          content={member.meta_description || `${member.name} is ${member.position} at Capital Associated Contracting. ${member.bio || 'Learn more about our team member.'}`}
+          content={member.meta_description || `${stripHtmlTags(member.name)} is ${member.position} at Capital Associated Contracting. ${member.bio || 'Learn more about our team member.'}`}
         />
         {member.meta_keywords && (
           <meta name="keywords" content={member.meta_keywords} />
@@ -117,15 +137,14 @@ const TeamMemberPage = () => {
             />
           </div>
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
-            <div 
-              className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold rich-text-content"
-              dangerouslySetInnerHTML={{ __html: member.name }}
-            />
+            <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
+              {stripHtmlTags(member.name)}
+            </h1>
             <p className="xl:text-2xl text-black md:text-xl lg:text-2xl text-lg mt-2">
               {member.position}
             </p>
             <p className="absolute bottom-10 left-10 text-white">
-              Home <span className="text-black">/ Our Team / <span dangerouslySetInnerHTML={{ __html: member.name?.replace(/<[^>]*>/g, '') }} /></span>
+              Home <span className="text-black">/ Our Team / {stripHtmlTags(member.name)}</span>
             </p>
           </div>
         </div>
@@ -136,7 +155,7 @@ const TeamMemberPage = () => {
           <div className="relative xl:ml-10 mt-10 h-[60rem] xl:w-[60rem] px-5 w-full">
             <Image
               src={member.image_url || "/team/default.jpg"}
-              alt={member.name}
+              alt={stripHtmlTags(member.name)}
               layout="fill"
               objectFit="cover"
               className="xl:rounded-xl rounded-lg"
@@ -146,7 +165,7 @@ const TeamMemberPage = () => {
           {/* Member Information */}
           <div className="flex flex-col gap-5 xl:mr-10 px-5 w-full">
             <div className="flex flex-col gap-2">
-              <h2 className="text-3xl font-bold">{member.name}</h2>
+              <h2 className="text-3xl font-bold">{stripHtmlTags(member.name)}</h2>
               <p className="text-xl text-gray-600">{member.position}</p>
             </div>
 
@@ -170,9 +189,9 @@ const TeamMemberPage = () => {
 
             {/* Contact CTA */}
             <div className="mt-8 p-6 bg-gray-100 border border-black rounded-lg">
-              <h3 className="text-xl font-semibold mb-3">Work With {member.name}</h3>
+              <h3 className="text-xl font-semibold mb-3">Work With {stripHtmlTags(member.name)}</h3>
               <p className="text-gray-700 mb-4">
-                Interested in working with {member.name}? Get in touch to discuss your project needs.
+                Interested in working with {stripHtmlTags(member.name)}? Get in touch to discuss your project needs.
               </p>
               <a
                 href="/contact-us"

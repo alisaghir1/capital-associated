@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const ServicesAdmin = () => {
   const [services, setServices] = useState([]);
@@ -211,7 +212,7 @@ const ServicesAdmin = () => {
                                 <img className="h-10 w-10 rounded-lg object-cover mr-4" src={service.hero_image_url} alt="" />
                               )}
                               <div>
-                                <div className="text-sm font-medium text-gray-900">{service.title}</div>
+                                <div className="text-sm font-medium text-gray-900">{stripHtmlTags(service.title)}</div>
                                 <div className="text-sm text-gray-500">/{service.slug}</div>
                               </div>
                             </div>

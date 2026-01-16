@@ -6,6 +6,7 @@ import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
+import { stripHtmlTags } from "../../utils/richText";
 
 const OurTeam = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -120,13 +121,13 @@ const OurTeam = () => {
                       width={500}
                       height={500}
                       src={member.image_url}
-                      alt={member.name}
+                      alt={stripHtmlTags(member.name)}
                       objectFit="cover"
                       className="sm:rounded-full object-cover w-full h-full"
                     />
                   </div>
                   <div className="text-center">
-                    <p className="font-semibold">{member.name}</p>
+                    <p className="font-semibold">{stripHtmlTags(member.name)}</p>
                     <p className="text-black">{member.position}</p>
                   </div>
                 </motion.div>

@@ -4,36 +4,42 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
-import { supabase } from "../../lib/supabase";
+import { fetchAllBlogs } from "../../lib/supabase-optimized";
+import { stripHtmlTags } from "../../utils/richText";
+
+// Static fallback data
+const staticBlogPosts = [
+  { id: 40, title: "Top Interior Design Hacks for a Spacious Feel", slug: "top-interior-design-hacks-for-a-spacious-feel", hero_image_url: "/blogs/top-interior-design-hacks-for-a-spacious-feel/1.jpg", excerpt: "Discover design tips to make your space feel larger", created_at: "2024-09-02" },
+  { id: 39, title: "Using Decorative Stonework in Villa Gardens", slug: "using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch", hero_image_url: "/blogs/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch/1.jpg", excerpt: "Add a luxurious touch to your villa garden", created_at: "2024-09-02" },
+  { id: 38, title: "Effective Moisture Control in Luxury Villas", slug: "effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea", hero_image_url: "/blogs/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea/1.jpg", excerpt: "Essential tips for seaside villa construction", created_at: "2024-09-02" },
+  { id: 37, title: "Urban Heat Island Effect on Design-Build", slug: "the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers", hero_image_url: "/blogs/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers/1.jpg", excerpt: "Understanding urban heat challenges", created_at: "2024-09-02" },
+  { id: 36, title: "Noise Pollution Mitigation in Residential Projects", slug: "noise-pollution-mitigation-in-high-density-residential-fit-out-projects", hero_image_url: "/blogs/noise-pollution-mitigation-in-high-density-residential-fit-out-projects/1.jpg", excerpt: "Solutions for quieter living spaces", created_at: "2024-09-02" },
+  { id: 35, title: "Advanced Project Management Techniques", slug: "advanced-project-management-techniques-for-high-profile-construction-projects", hero_image_url: "/blogs/advanced-project-management-techniques-for-high-profile-construction-projects/1.jpg", excerpt: "Expert techniques for managing complex projects", created_at: "2024-09-02" },
+];
 
 const BlogLayout = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPosts, setBlogPosts] = useState(staticBlogPosts);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const blogsPerPage = 6;
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        // Add timeout protection
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Request timeout')), 10000)
-        );
+        const { data, error: queryError } = await fetchAllBlogs();
 
-        // Only select fields needed for the blog listing page
-        const fetchPromise = supabase
-          .from('blogs')
-          .select('id, title, slug, hero_image_url, excerpt, author, created_at, published')
-          .eq('published', true)
-          .order('created_at', { ascending: false });
-
-        const { data, error } = await Promise.race([fetchPromise, timeoutPromise]);
-
-        if (error) throw error;
-        setBlogPosts(data || []);
-      } catch (error) {
-        console.error('Error fetching blogs:', error);
-        setBlogPosts([]); // Clear blogs on error
+        if (queryError) {
+          console.warn('Error fetching blogs:', queryError.message);
+          setError('Unable to load latest blogs. Showing cached data.');
+        }
+        
+        if (data && data.length > 0) {
+          setBlogPosts(data);
+        }
+      } catch (err) {
+        console.error('Blogs fetch error:', err);
+        setError('Connection error. Showing cached data.');
       } finally {
         setLoading(false);
       }
@@ -41,289 +47,6 @@ const BlogLayout = () => {
 
     fetchBlogs();
   }, []);
-
-  const staticBlogPosts = [
-    {
-      id: 40,
-      title: "Top Interior Design Hacks for a Spacious Feel",
-      image: "/blogs/top-interior-design-hacks-for-a-spacious-feel/1.jpg",
-      path: "/blog/top-interior-design-hacks-for-a-spacious-feel",
-      date: "02 Sep",
-    },
-    {
-      id: 39,
-      title: "Using Decorative Stonework in Villa Gardens for a Luxurious Touch",
-      image: "/blogs/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch/1.jpg",
-      path: "/blog/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch",
-      date: "02 Sep",
-    },
-    {
-      id: 38,
-      title: "Effective Moisture Control in the Design of Luxury Villas by the Sea",
-      image: "/blogs/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea/1.jpg",
-      path: "/blog/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea",
-      date: "02 Sep",
-    },
-    {
-      id: 37,
-      title: "The Role of Urban Heat Island Effect on Design-Build Practices in City Centers",
-      image: "/blogs/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers/1.jpg",
-      path: "/blog/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers",
-      date: "02 Sep",
-    },
-    {
-      id: 36,
-      title: "Noise Pollution Mitigation in High-Density Residential Fit-Out Projects",
-      image: "/blogs/noise-pollution-mitigation-in-high-density-residential-fit-out-projects/1.jpg",
-      path: "/blog/noise-pollution-mitigation-in-high-density-residential-fit-out-projects",
-      date: "02 Sep",
-    },
-    {
-      id: 35,
-      title: "Advanced Project Management Techniques for High-Profile Construction Projects",
-      image: "/blogs/advanced-project-management-techniques-for-high-profile-construction-projects/1.jpg",
-      path: "/blog/advanced-project-management-techniques-for-high-profile-construction-projects",
-      date: "02 Sep",
-    },
-    {
-      id: 33,
-      title: "Villa Design Ideas for Your Dream Home in the City or Countryside",
-      image: "/blogs/villa-design-ideas-for-your-dream-home-in-the-city-or-countryside/1.jpg",
-      path: "/blog/villa-design-ideas-for-your-dream-home-in-the-city-or-countryside",
-      date: "02 Sep",
-    },
-    {
-      id: 34,
-      title: "The Business Case for Green Building: Why Sustainable Construction is a Smart Investment",
-      image: "/blogs/the-business-case-for-green-building-why-sustainable-construction-is-a-smart-investment/1.jpg",
-      path: "/blog/the-business-case-for-green-building-why-sustainable-construction-is-a-smart-investment",
-      date: "02 Sep",
-    },
-    {
-      id: 32,
-      title: "Top 10 Unseen Advantages of Hiring a Building Contracting Company in Dubai",
-      image: "/blogs/Top-10-Unseen-Advantages-of-Hiring-a-Building-Contracting-Company-in-Dubai/1.jpg",
-      path: "/blog/top-10-unseen-advantages-of-hiring-a-building-contracting-company-in-dubai",
-      date: "01 Sep",
-    },
-    {
-      id: 31,
-      title: "10 Tips for Interior Fit-Out Projects",
-      image: "/blogs/10-Tips-for-Interior-Fit-Out-Projects/1.jpg",
-      path: "/blog/10-Tips-for-Interior-Fit-Out-Projects",
-      date: "01 Sep",
-    },
-    {
-      id: 30,
-      title: "Specialty Construction Trends",
-      image: "/blogs/Specialty-Construction-Trends/1.jpg",
-      path: "/blog/specialty-construction-trends",
-      date: "01 Sep",
-    },
-    {
-      id: 29,
-      title: "How to Select the Right Construction Firm for Your Project",
-      image: "/blogs/How-to-Select-the-Right-Construction-Firm-for-Your-Project/1.jpg",
-      path: "/blog/how-to-select-the-right-construction-firm-for-your-project",
-      date: "01 Sep",
-    },
-    {
-      id: 28,
-      title: "The Role of BIM in Construction",
-      image: "/blogs/The-Role-of-BIM-in-Construction/1.jpg",
-      path: "/blog/the-role-of-bim-in-construction",
-      date: "01 Sep",
-    },
-    {
-      id: 27,
-      title: "The Evolution of the Design-Build Approach in Modern Construction",
-      image: "/blogs/The-Evolution-of-the-Design-Build-Approach-in-Modern-Construction/1.jpg",
-      path: "/blog/the-evolution-of-the-design-build-approach-in-modern-construction",
-      date: "01 Sep",
-    },
-    {
-      id: 26,
-      title: "Trends in Residential Construction: What Homeowners Want",
-      image: "/blogs/Trends-in-Residential-Construction-What-Homeowners-Want/1.jpg",
-      path: "/blog/trends-in-residential-construction-what-homeowners-want",
-      date: "01 Sep",
-    },
-    {
-      id: 25,
-      title: "The Role of Project Management in Construction Success",
-  image: "/blogs/The-Role-of-Project-Management-in-Construction-Success/1.jpg",
-      path: "/blog/the-role-of-project-management-in-construction-success",
-      date: "01 Sep",
-    },
-    {
-      id: 24,
-      title: "Key Considerations for Planning a Successful Commercial Development",
-  image: "/blogs/Key-Considerations-for-Planning-a-Successful-Commercial-Development/1.jpg",
-      path: "/blog/key-considerations-for-planning-a-successful-commercial-development",
-      date: "01 Sep",
-    },
-    {
-      id: 23,
-      title: "The Benefits of Design-Build Over Traditional Construction Methods",
-      image: "/blogs/The-Benefits-of-Design-Build-Over-Traditional-Construction-Methods/1.jpg",
-      path: "/blog/the-benefits-of-design-build-over-traditional-construction-methods",
-  date: "01 Sep",
-    },
-    {
-      id: 22,
-      title: "Top Trends in Commercial Construction for 2024",
-      image: "/blogs/Top-Trends-in-Commercial-Construction-for-2024/1.jpg",
-      path: "/blog/top-trends-in-commercial-construction-for-2024",
-      date: "18 Aug",
-    },
-    {
-      id: 21,
-      title: "The Comprehensive Benefits of the Design-Build Approach in Modern Construction",
-      image: "/blogs/The-Comprehensive-Benefits-of-the-Design-Build-Approach/1.jpg",
-      path: "/blog/the-comprehensive-benefits-of-the-design-build-approach-in-modern-construction",
-      date: "18 Aug",
-    },
-    {
-      id: 20,
-      title: "Maximizing Natural Light in Interior Design Projects",
-      image: "/blogs/Maximizing-Natural-Light-in-Interior-Design-Projects/1.jpg",
-      path: "/blog/maximizing-natural-light-in-interior-design-projects",
-      date: "18 Aug",
-    },
-    {
-      id: 19,
-      title: "Room Design Tips for a Comfortable Hospitality Experience",
-      image: "/blogs/Room-Design-Tips-for-a-Comfortable-Hospitality-Experience/1.jpg",
-      path: "/blog/room-design-tips-for-a-comfortable-hospitality-experience",
-      date: "18 Aug",
-    },
-    {
-      id: 18,
-      title: "Construction Trends and Insights in UAE",
-      image: "/blogs/Construction-Trends-and-Insights-in-UAE/01.jpg",
-      path: "/blog/construction-trends-and-insights-in-uae",
-      date: "18 Aug",
-    },
-    {
-      id: 17,
-      title: "Essential Tips for Successful Home Renovation and Remodeling",
-  image: "/blogs/Essential-Tips-for-Successful-Home-Renovation-and-Remodeling/01.jpg",
-      path: "/blog/essential-tips-for-successful-home-renovation-and-remodeling",
-      date: "18 Aug",
-    },
-    {
-      id: 16,
-      title: "Creating an Inviting Guest Room",
-  image: "/blogs/Creating-an-Inviting-Guest-Room/01.jpg",
-      path: "/blog/creating-an-inviting-guest-room",
-      date: "18 Aug",
-    },
-    {
-      id: 15,
-      title: "Cost-Effective Solutions in Construction and Design",
-      image: "/blogs/Cost-Effective-Solutions-in-Construction-and-Design/01.jpg",
-      path: "/blog/cost-effective-solutions-in-construction-and-design",
-      date: "18 Aug",
-    },
-    {
-      id: 14,
-      title: "Choosing the Right Materials for Your Commercial Fit-Out Project",
-      image: "/blogs/Choosing-the-Right-Materials-for-Your-ommercial-Fit-Out-roject/1.jpg",
-      path: "/blog/choosing-the-right-materials-for-your-commercial-fit-out-project",
-      date: "18 Aug",
-    },
-    {
-      id: 13,
-      title: "Bathroom Renovation Tips for Maximum Impact",
-      image: "/blogs/bathroom-renovation/01.jpg",
-      path: "/blog/bathroom-renovation-tips-for-maximum-impact",
-      date: "18 Aug",
-    },
-    {
-      id: 1,
-      title: "The Benefits of Using Reclaimed Wood in Construction",
-      image: "/about1.jpg",
-      path: "/blog/the-benefits-of-using-reclaimed-wood-in-construction",
-      date: "08 Jan",
-    },
-    {
-      id: 2,
-      title: "A Guide to Retrofitting Old Buildings",
-      image: "/about2.jpg",
-      path: "/blog/a-guide-to-retrofitting-old-buildings",
-      date: "02 Jan",
-    },
-    {
-      id: 3,
-      title: "How to Plan for Future Expansions in Building Design",
-      image: "/about3.jpg",
-      path: "/blog/how-to-plan-for-future-expansions-in-building-design",
-      date: "13 Dec",
-    },
-    {
-      id: 4,
-      title: "What is Value Engineering in Construction?",
-      image: "/about4.jpg",
-      path: "/blog/what-is-value-engineering-in-construction",
-      date: "27 Dec",
-    },
-    {
-      id: 5,
-      title: "The Role of a General Contractor in Complex Projects",
-      image: "/projects/meatmoot.jpg",
-      path: "/blog/the-role-of-a-general-contractor-in-complex-projects",
-      date: "04 Dec",
-    },
-    {
-      id: 6,
-      title: "The Importance of Geotechnical Studies in Construction",
-      image: "/projects/villa.jpg",
-      path: "/blog/the-importance-of-geotechnical-studies-in-construction",
-      date: "09 Dec",
-    },
-    {
-      id: 7,
-      title: "Understanding the Lifecycle of a Construction Project",
-      image: "/blogs/understanding-the-lifecycle-of-a-construction-project/1.jpg",
-      path: "/blog/understanding-the-lifecycle-of-a-construction-project",
-      date: "20 Nov",
-    },
-    {
-      id: 8,
-      title: "The Role of Climate Adaptation in Modern Building Design",
-      image: "/projects/residentalTower.jpg",
-      path: "/blog/the-role-of-climate-adaptation-in-modern-building-design",
-      date: "14 Nov",
-    },
-    {
-      id: 9,
-      title: "An Overview of Acoustics in Building Design",
-  image: "/blogs/an-overview-of-acoustics-in-building-design/1.jpg",
-      path: "/blog/an-overview-of-acoustics-in-building-design",
-      date: "26 Nov",
-    },
-    {
-      id: 10,
-      title: "Top Pre-Construction Services That Guarantee Project Success",
-      image: "/projects/residentalbuildingg.jpg",
-      path: "/blog/top-pre-construction-services-that-guarantee-project-success",
-      date: "21 Nov",
-    },
-    {
-      id: 11,
-      title: "The Importance of Community Engagement in Construction Projects",
-      image: "/projects/mkhm.jpg",
-      path: "/blog/the-importance-of-community-engagement-in-construction-projects",
-      date: "06 Oct",
-    },
-    {
-      id: 12,
-      title: "How to Design Flexible Workspaces",
-      image: "/projects/p1.jpg",
-      path: "/blog/how-to-design-flexible-workspaces",
-      date: "10 Nov",
-    },
-  ];
 
   // Calculate pagination for dynamic data
   const totalPages = Math.ceil(blogPosts.length / blogsPerPage);
@@ -343,8 +66,24 @@ const BlogLayout = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  if (loading && blogPosts.length === 0) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
+          <p className="text-xl">Loading blog posts...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
+      {error && (
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+          <p className="text-yellow-700 text-sm">{error}</p>
+        </div>
+      )}
       <div className="relative w-full h-screen ">
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -403,7 +142,7 @@ const BlogLayout = () => {
               >
                 <img
                   src={post.hero_image_url || '/main.jpg'}
-                  alt={post.title}
+                  alt={stripHtmlTags(post.title)}
                   className="w-full h-[36rem] object-cover"
                   layout="fill"
                 />
@@ -415,7 +154,7 @@ const BlogLayout = () => {
                   {/* Blog title overlay */}
                   <div className="flex flex-col items-start justify-end transiton-all duration-300 ease-in-out hover:bg-offwhite  hover:bg-opacity-20  gap-5  text-center p-5 h-full">
                     <p className="text-white text-start text-xl  font-bold">
-                      {post.title}
+                      {stripHtmlTags(post.title)}
                     </p>
                     <p className="text-white transiton-all duration-300 ease-in-out  text-lg group-hover:text-black text-start py-4 font-bold border-t-2 border-b-2 w-full">
                       Continue reading

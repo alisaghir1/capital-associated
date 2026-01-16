@@ -4,6 +4,7 @@ import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import { supabase, fetchProjectsOptimized } from "../../lib/supabase-optimized";
+import { stripHtmlTags } from "../../utils/richText";
 
 const OurProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -127,7 +128,7 @@ const OurProjects = () => {
               >
                 <div className="text-white xl:p-3 rounded-lg w-full text-start">
                   <h2 className="xl:text-lg text-md mb-2 font-semibold">
-                    {project.title}
+                    {stripHtmlTags(project.title)}
                   </h2>
                   <p className="xl:text-sm text-xs">
                     {project.location}

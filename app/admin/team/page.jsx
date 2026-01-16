@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import AdminProtected from '../../../components/AdminProtected';
 import { logout } from '../../../lib/auth';
+import { stripHtmlTags } from '../../../utils/richText';
 
 const TeamAdmin = () => {
   const [team, setTeam] = useState([]);
@@ -220,7 +221,7 @@ const TeamAdmin = () => {
                                 <img className="h-10 w-10 rounded-full object-cover mr-4" src={member.image_url} alt="" />
                               )}
                               <div>
-                                <div className="text-sm font-medium text-gray-900">{member.name}</div>
+                                <div className="text-sm font-medium text-gray-900">{stripHtmlTags(member.name)}</div>
                                 <div className="text-sm text-gray-500">{member.position}</div>
                                 <div className="text-xs text-gray-400">/{member.slug}</div>
                               </div>
