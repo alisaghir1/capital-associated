@@ -6,7 +6,7 @@ import { supabase, queryWithRetry } from "../../../lib/supabase";
 import { notFound } from "next/navigation";
 import Head from "next/head";
 import Link from "next/link";
-import { stripHtmlTags } from "../../../utils/richText";
+import { stripHtmlTags } from "../../utils/richText";
 
 const TeamMemberPage = () => {
   const params = useParams();

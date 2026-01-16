@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSiteSettings } from "../../hooks/useSiteSettings";
 import { supabase } from "../../lib/supabase";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 const Footer = () => {
   const { getSetting, loading } = useSiteSettings();

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
-import { stripHtmlTags } from '../../../utils/richText';
+import { stripHtmlTags } from '../../utils/richText';
 
 const Careers = () => {
   const [careers, setCareers] = useState([]);

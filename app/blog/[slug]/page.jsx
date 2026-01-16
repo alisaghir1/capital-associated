@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Head from 'next/head';
 import { supabase, queryWithRetry } from '../../../lib/supabase.js';
-import { stripHtmlTags } from '../../../utils/richText.js';
+import { stripHtmlTags } from '../../utils/richText.js';
 
 const BlogPage = () => {
   const { slug } = useParams();

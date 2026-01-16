@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import VidioComponent from "../components/VidioComponent";
 import { fetchAllServices } from "../../lib/supabase-optimized";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 // Fallback static data
 const staticServices = [

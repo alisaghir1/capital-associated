@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import { supabase, fetchServicesOptimized } from "../../lib/supabase-optimized";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 const OurServices = () => {
   const [services, setServices] = useState([]);

@@ -6,7 +6,7 @@ import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 const OurTeam = () => {
   const [teamMembers, setTeamMembers] = useState([]);

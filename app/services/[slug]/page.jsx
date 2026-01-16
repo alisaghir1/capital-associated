@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { supabase, queryWithRetry } from '../../../lib/supabase';
-import { stripHtmlTags } from '../../../utils/richText';
+import { stripHtmlTags } from '../../utils/richText';
 
 const ServicePage = () => {
   const { slug } = useParams();

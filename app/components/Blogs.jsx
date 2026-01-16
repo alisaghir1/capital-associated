@@ -5,7 +5,7 @@ import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import { supabase, fetchBlogsOptimized } from "../../lib/supabase-optimized";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);

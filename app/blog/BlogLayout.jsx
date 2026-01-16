@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
 import { fetchAllBlogs } from "../../lib/supabase-optimized";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 // Static fallback data
 const staticBlogPosts = [

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { supabase, queryWithRetry } from '../../../lib/supabase';
 import Link from 'next/link';
-import { stripHtmlTags } from '../../../utils/richText';
+import { stripHtmlTags } from '../../utils/richText';
 
 export default function CareerDetailPage() {
   const params = useParams();

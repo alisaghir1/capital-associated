@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import AdminProtected from '../../../components/AdminProtected';
 import { logout } from '../../../lib/auth';
-import { stripHtmlTags } from '../../../utils/richText';
+import { stripHtmlTags } from '../../utils/richText';
 
 const TeamAdmin = () => {
   const [team, setTeam] = useState([]);

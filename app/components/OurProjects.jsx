@@ -4,7 +4,7 @@ import Link from "next/link";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 import { supabase, fetchProjectsOptimized } from "../../lib/supabase-optimized";
-import { stripHtmlTags } from "../../utils/richText";
+import { stripHtmlTags } from "../utils/richText";
 
 const OurProjects = () => {
   const [projects, setProjects] = useState([]);
