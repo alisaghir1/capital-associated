@@ -16,9 +16,17 @@
   font-style: normal; /* Optional: Specify font style */
 }
 
+/* Gyahegi without numbers - fallback to swiss for numerals */
+@font-face {
+  font-family: 'Gyahegi-Text';
+  src: url('./fonts/Gyahegi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0100-017F; /* Letters only */
+}
 
 h1,h2,h3{
-  font-family: 'Gyahegi', 'sans serif';
+  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
 }
 
 body,p{
@@ -37,7 +45,7 @@ body,p{
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #111827;
-  font-family: 'Gyahegi', 'sans serif';
+  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
 }
 
 .rich-text-content h2 {
@@ -46,7 +54,7 @@ body,p{
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
   color: #111827;
-  font-family: 'Gyahegi', 'sans serif';
+  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
 }
 
 .rich-text-content h3 {
@@ -55,7 +63,7 @@ body,p{
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   color: #111827;
-  font-family: 'Gyahegi', 'sans serif';
+  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
 }
 
 .rich-text-content h4 {
