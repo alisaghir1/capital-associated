@@ -1,77 +1,55 @@
-'use client';
 
-import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
-import Head from 'next/head';
-import { supabase, queryWithRetry } from '../../../lib/supabase.js';
-import { stripHtmlTags } from '../../utils/richText.js';
+import { supabaseOptimized } from '../../../lib/supabase-optimized';
+import { stripHtmlTags } from '../../utils/richText';
 
-const BlogPage = () => {
-  const { slug } = useParams();
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export async function generateStaticParams() {
+  // Pre-generate all blog slugs for SSG
+  const { data } = await supabaseOptimized
+    .from('blogs')
+    .select('slug')
+    .eq('published', true);
+  return (data || []).map((row) => ({ slug: row.slug }));
+}
 
-  useEffect(() => {
-    const fetchBlog = async () => {
-      try {
-        const { data, error: queryError } = await queryWithRetry(
-          () => supabase
-            .from('blogs')
-            .select('*')
-            .eq('slug', slug)
-            .single(),
-          { timeoutMs: 15000, retries: 3 }
-        );
 
-        if (queryError) {
-          console.warn('Blog fetch error:', queryError.message);
-          setError('Unable to load blog post. Please try again.');
-        }
+export async function generateMetadata(props) {
+  const params = await props.params;
+  const slug = typeof params === 'object' && params.slug ? params.slug : params;
+  const { data: blog } = await supabaseOptimized
+    .from('blogs')
+    .select('*')
+    .eq('slug', slug)
+    .single();
+  return {
+    title: blog?.meta_title || stripHtmlTags(blog?.title) + ' | Capital Associated Contracting',
+    description: blog?.meta_description || stripHtmlTags(blog?.excerpt) || stripHtmlTags(blog?.content)?.substring(0, 160),
+    openGraph: {
+      title: blog?.meta_title || stripHtmlTags(blog?.title),
+      description: blog?.meta_description || stripHtmlTags(blog?.excerpt) || stripHtmlTags(blog?.content)?.substring(0, 160),
+      images: blog?.hero_image_url ? [blog.hero_image_url] : [],
+    },
+  };
+}
 
-        if (data) {
-          // Parse sections JSON if it exists
-          const parsedBlog = {
-            ...data,
-            sections: data.sections ? 
-              (typeof data.sections === 'string' ? JSON.parse(data.sections) : data.sections) : 
-              []
-          };
-          setBlog(parsedBlog);
-        }
-      } catch (err) {
-        console.error('Fetch error:', err);
-        setError('Connection error. Please check your internet.');
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    if (slug) {
-      fetchBlog();
-    }
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading blog post...</p>
-        </div>
-      </div>
-    );
-  }
+export default async function BlogPage(props) {
+  const params = await props.params;
+  const slug = typeof params === 'object' && params.slug ? params.slug : params;
+  const { data: blog, error } = await supabaseOptimized
+    .from('blogs')
+    .select('*')
+    .eq('slug', slug)
+    .single();
 
   if (error || !blog) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-black mb-4">
-            {error ? 'Unable to Load Blog' : 'Blog Post Not Found'}
+            Unable to Load Blog
           </h1>
           <p className="text-gray-600 mb-8">
-            {error || 'The blog post you are looking for does not exist.'}
+            {error?.message || 'The blog post you are looking for does not exist.'}
           </p>
           <a 
             href="/blog" 
@@ -84,13 +62,11 @@ const BlogPage = () => {
     );
   }
 
+  // Parse sections JSON if it exists
+  const sections = blog.sections ? (typeof blog.sections === 'string' ? JSON.parse(blog.sections) : blog.sections) : [];
+
   return (
     <div>
-      <Head>
-        <title>{stripHtmlTags(blog.title)} | Capital Associated Contracting</title>
-        <meta name="description" content={stripHtmlTags(blog.excerpt) || stripHtmlTags(blog.content)?.substring(0, 160)} />
-      </Head>
-      
       <div className="min-h-screen bg-white pt-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <article className="w-full mx-auto">
@@ -115,7 +91,6 @@ const BlogPage = () => {
                   {stripHtmlTags(blog.excerpt)}
                 </p>
               )}
-              
               {/* Blog Meta */}
               <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 border-b border-gray-200 pb-6">
                 {blog.author && (
@@ -153,16 +128,15 @@ const BlogPage = () => {
               )}
 
               {/* Blog Sections */}
-              {blog.sections && blog.sections.length > 0 && (
+              {sections && sections.length > 0 && (
                 <div className="mt-12">
-                  {blog.sections.map((section, index) => (
+                  {sections.map((section, index) => (
                     <div key={index} className="mb-12">
                       {section.title && (
                         <h2 className="text-3xl font-bold text-black mb-6">
                           {stripHtmlTags(section.title)}
                         </h2>
                       )}
-                      
                       {/* Section Image */}
                       {section.image && (
                         <div className="mb-8">
@@ -173,7 +147,6 @@ const BlogPage = () => {
                           />
                         </div>
                       )}
-                      
                       {section.content && (
                         <div 
                           className="rich-text-content text-gray-700 leading-relaxed text-lg"
@@ -221,18 +194,13 @@ const BlogPage = () => {
                   </svg>
                   Back to Blog
                 </a>
-                
                 <div className="text-right">
                   <p className="text-sm font-medium text-gray-900 mb-3">Share this article</p>
                   <div className="flex space-x-4">
                     <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        if (typeof window !== 'undefined') {
-                          window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
-                        }
-                      }}
+                      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent('https://capitalassociated.com/blog/' + blog.slug)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-gray-400 hover:text-blue-500 transition-colors"
                     >
                       <span className="sr-only">Share on Twitter</span>
@@ -241,13 +209,9 @@ const BlogPage = () => {
                       </svg>
                     </a>
                     <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        if (typeof window !== 'undefined') {
-                          window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`, '_blank');
-                        }
-                      }}
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://capitalassociated.com/blog/' + blog.slug)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-gray-400 hover:text-blue-600 transition-colors"
                     >
                       <span className="sr-only">Share on LinkedIn</span>
@@ -264,6 +228,4 @@ const BlogPage = () => {
       </div>
     </div>
   );
-};
-
-export default BlogPage;
+}

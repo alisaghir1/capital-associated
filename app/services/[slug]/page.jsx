@@ -155,7 +155,7 @@ const ServicePage = () => {
       {/* Main Content - Premium layout */}
       <div className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
+          {/* Service Description - Clean and prominent, rendered as HTML under main title */}
           {/* Service Overview */}
           <div className="mb-20">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -163,16 +163,23 @@ const ServicePage = () => {
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
                   Professional {stripHtmlTags(service.title)}
                 </h2>
+                {service.description && (
+                  <div className="prose prose-xl max-w-none mb-8">
+                    <div
+                      className="rich-text-content text-gray-700 leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: service.description }}
+                    />
+                  </div>
+                )}
                 {service.content && (
                   <div className="prose prose-xl max-w-none">
-                    <div 
+                    <div
                       className="rich-text-content text-gray-600 leading-relaxed"
                       dangerouslySetInnerHTML={{ __html: service.content }}
                     />
                   </div>
                 )}
               </div>
-              
               {service.hero_image_url && (
                 <div className="relative">
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl">
