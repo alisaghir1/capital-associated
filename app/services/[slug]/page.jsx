@@ -1,16 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { supabase } from '../../../lib/supabase';
-import { stripHtmlTags } from '../../utils/richText';
+import { getServiceBySlug } from '../../../lib/supabase-ssr';
+
+// Helper to strip HTML tags
+function stripHtmlTags(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').trim();
+}
+
+// Force SSR
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
-  const { data } = await supabase
-    .from('services')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single();
+  const { slug } = await params;
+  const { data } = await getServiceBySlug(slug);
+  
   if (!data) {
     return {
       title: 'Service Not Found | Capital Associated Contracting',
@@ -21,7 +27,7 @@ export async function generateMetadata({ params }) {
   const description = data.meta_description || data.excerpt || stripHtmlTags(data.description)?.substring(0, 160);
   const keywords = data.meta_keywords || '';
   const url = `https://capitalassociated.com/services/${data.slug}`;
-  const image = data.cover_image || '/default-og-image.jpg';
+  const image = data.cover_image || data.hero_image_url || '/default-og-image.jpg';
   return {
     title,
     description,
@@ -34,7 +40,7 @@ export async function generateMetadata({ params }) {
       description,
       url,
       type: 'article',
-      images: [image]
+      images: [{ url: image }]
     },
     twitter: {
       card: 'summary_large_image',
@@ -45,23 +51,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-async function getService(slug) {
-  const { data } = await supabase
-    .from('services')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single();
-  if (!data) return null;
-  return {
-    ...data,
-    sections: data.sections ? (typeof data.sections === 'string' ? JSON.parse(data.sections) : data.sections) : []
-  };
-}
-
 export default async function ServicePage({ params }) {
-  const { slug } = params;
-  const service = await getService(slug);
+  const { slug } = await params;
+  const { data: service } = await getServiceBySlug(slug);
+  
   if (!service) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -73,6 +66,9 @@ export default async function ServicePage({ params }) {
       </div>
     );
   }
+  
+  const sections = service.sections || [];
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Modern full-width design */}
@@ -81,8 +77,8 @@ export default async function ServicePage({ params }) {
           <Image
             src={service.hero_image_url || "/main.jpg"}
             alt={stripHtmlTags(service.title)}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
             priority
             className="brightness-50"
           />

@@ -1,24 +1,39 @@
 
-import { supabase } from '../../../lib/supabase.js';
-import { stripHtmlTags } from '../../utils/richText.js';
+import { getBlogBySlug } from '../../../lib/supabase-ssr';
+
+// Helper to strip HTML tags
+function stripHtmlTags(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').trim();
+}
+
+// Force dynamic server-side rendering so content is in initial HTML
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
-  const { data } = await supabase
-    .from('blogs')
-    .select('*')
-    .eq('slug', slug)
-    .single();
-  if (!data) {
+  const { slug } = (await params);
+  console.log('[SSR] generateMetadata for slug:', slug);
+  
+  const { data: blog, error } = await getBlogBySlug(slug);
+  
+  if (error) {
+    console.error('[SSR] Error fetching blog for metadata:', error);
+  }
+  
+  if (!blog) {
     return {
       title: 'Blog Post Not Found | Capital Associated Contracting',
       description: 'The blog post you are looking for does not exist.'
     };
   }
-  const title = `${stripHtmlTags(data.title)} | Capital Associated Contracting`;
-  const description = stripHtmlTags(data.excerpt) || stripHtmlTags(data.content)?.substring(0, 160);
-  const url = `https://capitalassociated.com/blog/${data.slug}`;
-  const image = data.cover_image || '/default-og-image.jpg';
+  
+  const title = `${stripHtmlTags(blog.title)} | Capital Associated Contracting`;
+  const description = stripHtmlTags(blog.excerpt) || stripHtmlTags(blog.content)?.substring(0, 160) || '';
+  const url = `https://capitalassociated.com/blog/${slug}`;
+  const image = blog.hero_image_url || '/default-og-image.jpg';
+  
   return {
     title,
     description,
@@ -30,7 +45,7 @@ export async function generateMetadata({ params }) {
       description,
       url,
       type: 'article',
-      images: [image]
+      images: [{ url: image }]
     },
     twitter: {
       card: 'summary_large_image',
@@ -41,22 +56,16 @@ export async function generateMetadata({ params }) {
   };
 }
 
-async function getBlog(slug) {
-  const { data } = await supabase
-    .from('blogs')
-    .select('*')
-    .eq('slug', slug)
-    .single();
-  if (!data) return null;
-  return {
-    ...data,
-    sections: data.sections ? (typeof data.sections === 'string' ? JSON.parse(data.sections) : data.sections) : []
-  };
-}
-
 export default async function BlogPage({ params }) {
-  const { slug } = params;
-  const blog = await getBlog(slug);
+  const { slug } = (await params);
+  console.log('[SSR] Rendering BlogPage for slug:', slug);
+  
+  const { data: blog, error } = await getBlogBySlug(slug);
+  
+  if (error) {
+    console.error('[SSR] Error fetching blog:', error);
+  }
+  
   if (!blog) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -68,6 +77,9 @@ export default async function BlogPage({ params }) {
       </div>
     );
   }
+  
+  const sections = blog.sections || [];
+  
   return (
     <div>
       <div className="min-h-screen bg-white pt-32">
@@ -93,12 +105,11 @@ export default async function BlogPage({ params }) {
             <div className="max-w-none mb-16">
               {blog.content ? (<div className="rich-text-content text-gray-700 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: blog.content }} />) : (<p className="text-gray-500">No content available</p>)}
               {/* Blog Sections */}
-              {blog.sections && blog.sections.length > 0 && (
+              {sections.length > 0 && (
                 <div className="mt-12">
-                  {blog.sections.map((section, index) => (
+                  {sections.map((section, index) => (
                     <div key={index} className="mb-12">
                       {section.title && (<h2 className="text-3xl font-bold text-black mb-6">{stripHtmlTags(section.title)}</h2>)}
-                      {/* Section Image */}
                       {section.image && (<div className="mb-8"><img src={section.image} alt={stripHtmlTags(section.title) || `Section ${index + 1} image`} className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg" /></div>)}
                       {section.content && (<div className="rich-text-content text-gray-700 leading-relaxed text-lg" dangerouslySetInnerHTML={{ __html: section.content }} />)}
                     </div>
@@ -122,7 +133,7 @@ export default async function BlogPage({ params }) {
                 <div className="text-right">
                   <p className="text-sm font-medium text-gray-900 mb-3">Share this article</p>
                   <div className="flex space-x-4">
-                    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(`https://capitalassociated.com/blog/${slug}`)}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors"><span className="sr-only">Share on Twitter</span><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                    <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(stripHtmlTags(blog.title))}&url=${encodeURIComponent(`https://capitalassociated.com/blog/${slug}`)}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors"><span className="sr-only">Share on Twitter</span><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
                     <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://capitalassociated.com/blog/${slug}`)}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-600 transition-colors"><span className="sr-only">Share on LinkedIn</span><svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg></a>
                   </div>
                 </div>

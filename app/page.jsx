@@ -5,12 +5,18 @@ import OurProjects from "./components/OurProjects";
 import OurServices from "./components/OurServices";
 import OurTeam from "./components/OurTeam";
 import Blogs from "./components/Blogs";
+import Navbar from "./components/Navbar";
+import NavbarMobile from "./components/NavbarMobile";
+import Consultation from "./components/Consultation";
+import Footer from "./components/Footer";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
 
 export default function Home() {
   return (
     <>
+      <Navbar />
+      <NavbarMobile />
       <div className="relative w-full h-screen overflow-x-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -50,6 +56,8 @@ export default function Home() {
       <OurServices />
       <OurTeam />
       <Blogs />
+      <Consultation />
+      <Footer />
     </>
   );
 }

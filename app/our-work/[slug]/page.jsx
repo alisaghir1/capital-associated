@@ -1,16 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { supabase } from '../../../lib/supabase';
-import { stripHtmlTags } from '../../utils/richText';
+import { getProjectBySlug } from '../../../lib/supabase-ssr';
+
+// Helper to strip HTML tags
+function stripHtmlTags(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').trim();
+}
+
+// Force SSR
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
 
 export async function generateMetadata({ params }) {
-  const { slug } = params;
-  const { data } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single();
+  const { slug } = await params;
+  const { data } = await getProjectBySlug(slug);
+  
   if (!data) {
     return {
       title: 'Project Not Found | Capital Associated Contracting',
@@ -20,7 +26,7 @@ export async function generateMetadata({ params }) {
   const title = `${stripHtmlTags(data.title)} | Capital Associated Contracting`;
   const description = stripHtmlTags(data.short_description) || stripHtmlTags(data.description)?.substring(0, 160);
   const url = `https://capitalassociated.com/our-work/${data.slug}`;
-  const image = data.cover_image || '/default-og-image.jpg';
+  const image = data.hero_image_url || data.cover_image || '/default-og-image.jpg';
   return {
     title,
     description,
@@ -32,7 +38,7 @@ export async function generateMetadata({ params }) {
       description,
       url,
       type: 'article',
-      images: [image]
+      images: [{ url: image }]
     },
     twitter: {
       card: 'summary_large_image',
@@ -43,23 +49,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-async function getProject(slug) {
-  const { data } = await supabase
-    .from('projects')
-    .select('*')
-    .eq('slug', slug)
-    .eq('published', true)
-    .single();
-  if (!data) return null;
-  return {
-    ...data,
-    sections: data.sections ? (typeof data.sections === 'string' ? JSON.parse(data.sections) : data.sections) : []
-  };
-}
-
 export default async function ProjectPage({ params }) {
-  const { slug } = params;
-  const project = await getProject(slug);
+  const { slug } = await params;
+  const { data: project } = await getProjectBySlug(slug);
+  
   if (!project) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -71,6 +64,9 @@ export default async function ProjectPage({ params }) {
       </div>
     );
   }
+  
+  const sections = project.sections || [];
+  
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -78,7 +74,7 @@ export default async function ProjectPage({ params }) {
         <div className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] w-full overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
-            <Image src={project.hero_image_url || "/main.jpg"} alt={stripHtmlTags(project.title)} layout="fill" objectFit="cover" priority />
+            <Image src={project.hero_image_url || "/main.jpg"} alt={stripHtmlTags(project.title)} fill style={{ objectFit: 'cover' }} priority />
           </div>
           {/* Gradient Overlay - Darker at Bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>

@@ -1,6 +1,5 @@
 import "./globals.css";
 import Script from "next/script";
-import LayoutClient from "./LayoutClient";
 import { getServerSideMetadata } from "../lib/server-metadata";
 
 export async function generateMetadata() {
@@ -71,7 +70,7 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className='antialiased'>
-        <LayoutClient>{children}</LayoutClient>
+        {children}
       </body>
     </html>
   );

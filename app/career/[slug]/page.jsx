@@ -1,65 +1,60 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import { supabase, queryWithRetry } from '../../../lib/supabase';
 import Link from 'next/link';
-import { stripHtmlTags } from '../../utils/richText';
+import { getCareerBySlug } from '../../../lib/supabase-ssr';
 
-export default function CareerDetailPage() {
-  const params = useParams();
-  const [career, setCareer] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+// Helper to strip HTML tags
+function stripHtmlTags(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').trim();
+}
 
-  useEffect(() => {
-    if (params.slug) {
-      fetchCareer();
-    }
-  }, [params.slug]);
+// Force SSR
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
 
-  const fetchCareer = async () => {
-    try {
-      const { data, error: queryError } = await queryWithRetry(
-        () => supabase
-          .from('careers')
-          .select('*')
-          .eq('slug', params.slug)
-          .eq('published', true)
-          .single(),
-        { timeoutMs: 15000, retries: 3 }
-      );
-
-      if (queryError) {
-        console.warn('Career fetch error:', queryError.message);
-        if (queryError.code !== 'PGRST116') {
-          setError('Unable to load career details. Please try again.');
-        }
-      } else if (data) {
-        setCareer(data);
-      }
-    } catch (err) {
-      console.error('Error fetching career:', err);
-      setError('Connection error. Please check your internet.');
-    } finally {
-      setLoading(false);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const { data: career } = await getCareerBySlug(slug);
+  
+  if (!career) {
+    return {
+      title: 'Career Not Found | Capital Associated Contracting',
+      description: 'The job posting you are looking for does not exist.'
+    };
+  }
+  
+  const title = career.meta_title || `${stripHtmlTags(career.job_title)} | Careers at Capital Associated Contracting`;
+  const description = career.meta_description || stripHtmlTags(career.job_description)?.substring(0, 160) || `Apply for ${stripHtmlTags(career.job_title)} at Capital Associated Contracting.`;
+  const url = `https://capitalassociated.com/career/${slug}`;
+  
+  return {
+    title,
+    description,
+    keywords: career.meta_keywords || '',
+    alternates: {
+      canonical: url
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      images: [{ url: '/default-og-image.jpg' }]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/default-og-image.jpg']
     }
   };
+}
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-100 pt-32 pb-12">
-        <div className="flex items-center justify-center h-96">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
-            <p className="text-lg text-black font-medium">Loading career details...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !career) {
+export default async function CareerDetailPage({ params }) {
+  const { slug } = await params;
+  const { data: career } = await getCareerBySlug(slug);
+  
+  if (!career) {
     return (
       <div className="min-h-screen bg-slate-100 pt-32 pb-12">
         <div className="flex items-center justify-center">
@@ -69,11 +64,9 @@ export default function CareerDetailPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.291-1.1-5.591-2.709M15 11.5a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
             </div>
-            <h1 className="text-3xl font-bold text-black mb-4">
-              {error ? 'Unable to Load Career' : 'Career Not Found'}
-            </h1>
+            <h1 className="text-3xl font-bold text-black mb-4">Career Not Found</h1>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              {error || "The job posting you're looking for doesn't exist or is no longer available."}
+              The job posting you&apos;re looking for doesn&apos;t exist or is no longer available.
             </p>
             <Link
               href="/career"
