@@ -1,262 +1,358 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import { getServiceBySlug } from '../../../lib/supabase-ssr';
+import Image from 'next/image';
+import Navbar from '../../components/Navbar';
+import NavbarMobile from '../../components/NavbarMobile';
+import Footer from '../../components/Footer';
+import Consultation from '../../components/Consultation';
 
-// Helper to strip HTML tags
-function stripHtmlTags(html) {
-  if (!html) return '';
-  return html.replace(/<[^>]*>/g, '').trim();
-}
-
-// Force SSR
+// Force SSR - content must be in initial HTML for SEO
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 export const fetchCache = 'force-no-store';
 
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+// Fetch service from Supabase REST API
+async function getService(slug) {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/services?slug=eq.${encodeURIComponent(slug)}&select=*`,
+      {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+        },
+        cache: 'no-store',
+      }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data[0] || null;
+  } catch (error) {
+    console.error('Error fetching service:', error);
+    return null;
+  }
+}
+
+// Strip HTML tags
+function stripHtml(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]*>/g, '').trim();
+}
+
+// Generate metadata for SEO
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const { data } = await getServiceBySlug(slug);
-  
-  if (!data) {
+  const service = await getService(slug);
+
+  if (!service) {
     return {
-      title: 'Service Not Found | Capital Associated Contracting',
-      description: 'The service you are looking for does not exist.'
+      title: 'Service Not Found | Capital Associated',
+      description: 'The service you are looking for does not exist.',
     };
   }
-  const title = data.meta_title || `${stripHtmlTags(data.title)} | Capital Associated Contracting`;
-  const description = data.meta_description || data.excerpt || stripHtmlTags(data.description)?.substring(0, 160);
-  const keywords = data.meta_keywords || '';
-  const url = `https://capitalassociated.com/services/${data.slug}`;
-  const image = data.cover_image || data.hero_image_url || '/default-og-image.jpg';
+
+  const title = service.meta_title || `${stripHtml(service.title)} | Capital Associated`;
+  const description = service.meta_description || service.short_description || stripHtml(service.description)?.substring(0, 160) || '';
+  const url = `https://capitalassociated.com/services/${slug}`;
+  const image = service.hero_image_url || service.cover_image || '/default-og-image.jpg';
+
   return {
     title,
     description,
-    keywords,
-    alternates: {
-      canonical: url
-    },
+    keywords: service.meta_keywords || '',
+    alternates: { canonical: url },
     openGraph: {
       title,
       description,
       url,
       type: 'article',
-      images: [{ url: image }]
+      images: [{ url: image }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [image]
-    }
+      images: [image],
+    },
   };
 }
 
-export default async function ServicePage({ params }) {
+// Main page component - Pure SSR
+export default async function ServiceDetailPage({ params }) {
   const { slug } = await params;
-  const { data: service } = await getServiceBySlug(slug);
-  
+  const service = await getService(slug);
+
+  // Not found state
   if (!service) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-black mb-4">Service Not Found</h1>
-          <p className="text-gray-600 mb-8">The service you are looking for does not exist.</p>
-          <Link href="/services" className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors">Back to Services</Link>
-        </div>
-      </div>
+      <>
+        <Navbar />
+        <NavbarMobile />
+        <main className="min-h-screen flex items-center justify-center bg-offwhite pt-32">
+          <div className="text-center px-4">
+            <div className="w-20 h-20 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">Service Not Found</h1>
+            <p className="text-gray-600 mb-8 max-w-md mx-auto">
+              The service you are looking for doesn&apos;t exist or may have been moved.
+            </p>
+            <Link href="/services" className="inline-flex items-center bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors font-semibold">
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Services
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </>
     );
   }
-  
-  const sections = service.sections || [];
-  
+
+  // Parse sections
+  let sections = [];
+  if (service.sections) {
+    try {
+      sections = typeof service.sections === 'string' ? JSON.parse(service.sections) : service.sections;
+    } catch (e) {
+      sections = [];
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section - Modern full-width design */}
-      <div className="relative w-full h-[70vh] min-h-[600px] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src={service.hero_image_url || "/main.jpg"}
-            alt={stripHtmlTags(service.title)}
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-            className="brightness-50"
-          />
-        </div>
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
-        <div className="relative z-10 flex flex-col justify-center items-start w-full h-full max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="mb-8 text-sm">
-            <div className="flex items-center space-x-2 text-white/80">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <span>/</span>
-              <Link href="/services" className="hover:text-white transition-colors">Services</Link>
-              <span>/</span>
-              <span className="text-white font-medium">{stripHtmlTags(service.title)}</span>
-            </div>
-          </nav>
+    <>
+      <Navbar />
+      <NavbarMobile />
+
+      <main className="min-h-screen">
+        {/* Hero Section - Full width with gradient overlay */}
+        <div className="relative w-full h-[60vh] lg:h-[70vh] min-h-[500px] overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src={service.hero_image_url || "/main.jpg"}
+              alt={stripHtml(service.title)}
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+              className="brightness-50"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          
           {/* Hero Content */}
-          <div className="max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-tight">
-              {stripHtmlTags(service.title)}
+          <div className="relative z-10 flex flex-col justify-center items-start w-full h-full max-w-7xl mx-auto px-6 lg:px-8">
+            {/* Breadcrumb */}
+            <nav className="mb-8 text-sm">
+              <div className="flex items-center space-x-2 text-white/80">
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <span>/</span>
+                <Link href="/services" className="hover:text-white transition-colors">Services</Link>
+                <span>/</span>
+                <span className="text-white font-medium">{stripHtml(service.title)}</span>
+              </div>
+            </nav>
+
+            {/* Title */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+              {stripHtml(service.title)}
             </h1>
-            {service.excerpt && (
-              <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl leading-relaxed">
-                {service.excerpt}
+
+            {/* Short Description */}
+            {service.short_description && (
+              <p className="text-lg lg:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
+                {stripHtml(service.short_description)}
               </p>
             )}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact-us" className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-                Get Free Quote
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-              </Link>
-              <Link href="/our-work" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300">
-                View Portfolio
-              </Link>
-            </div>
+
+            {/* CTA Button */}
+            <Link 
+              href="/contact-us" 
+              className="inline-flex items-center bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-offwhite transition-colors"
+            >
+              Get a Quote
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
           </div>
         </div>
-      </div>
-      {/* Main Content - Premium layout */}
-      <div className="py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Service Description - Clean and prominent, rendered as HTML under main title */}
-          <div className="mb-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                  Professional {stripHtmlTags(service.title)}
-                </h2>
-                {service.description && (
-                  <div className="prose prose-xl max-w-none mb-8">
-                    <div className="rich-text-content text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: service.description }} />
-                  </div>
-                )}
-                {service.content && (
-                  <div className="prose prose-xl max-w-none">
-                    <div className="rich-text-content text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: service.content }} />
-                  </div>
-                )}
-              </div>
-              {service.hero_image_url && (
-                <div className="relative">
-                  <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                    <Image
-                      src={service.hero_image_url}
-                      alt={stripHtmlTags(service.title)}
-                      width={800}
-                      height={600}
-                      className="w-full h-[500px] object-cover transform hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  {/* Decorative elements */}
-                  <div className="absolute -top-6 -right-6 w-24 h-24 bg-black/10 rounded-full blur-xl"></div>
-                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-900/10 rounded-full blur-xl"></div>
+
+        {/* Service Description */}
+        <article className="bg-white">
+          <div className="container mx-auto px-4 lg:px-20 py-16 lg:py-24">
+            <div className="max-w-4xl mx-auto">
+              
+              {/* Main Description */}
+              {service.description && (
+                <div className="mb-16">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-black mb-8">About This Service</h2>
+                  <div 
+                    className="rich-text-content prose prose-lg lg:prose-xl max-w-none"
+                    dangerouslySetInnerHTML={{ __html: service.description }}
+                  />
                 </div>
               )}
             </div>
           </div>
-          {/* Features Grid */}
-          {service.features && service.features.length > 0 && (
-            <div className="mb-20">
+        </article>
+
+        {/* Service Sections - Alternating layout like projects */}
+        {sections.length > 0 && (
+          <section className="bg-gradient-to-br from-amber-50 to-orange-50 py-16 lg:py-24">
+            <div className="container mx-auto px-4 sm:px-6">
+              {/* Section Header */}
               <div className="text-center mb-16">
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Why Choose Our {stripHtmlTags(service.title)}?
-                </h3>
-                <div className="w-24 h-1 bg-black mx-auto"></div>
+                <span className="block text-amber-600 font-semibold text-sm uppercase tracking-wider mb-2">
+                  Service Details
+                </span>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                  What We Offer
+                </h2>
+                <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-orange-400 mx-auto rounded-full" />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {service.features.map((feature, index) => (
-                  <div key={index} className="group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200">
-                    <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+
+              <div className="max-w-6xl mx-auto space-y-20">
+                {sections.map((section, index) => (
+                  <div 
+                    key={index} 
+                    className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
+                  >
+                    {/* Section Content */}
+                    <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                      {section.title && (
+                        <div>
+                          <span className="inline-block px-4 py-2 bg-amber-100 text-amber-700 font-semibold text-sm rounded-full mb-4">
+                            {index + 1}
+                          </span>
+                          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">
+                            {stripHtml(section.title)}
+                          </h3>
+                        </div>
+                      )}
+                      {section.content && (
+                        <div 
+                          className="rich-text-content prose prose-lg text-gray-700 leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: section.content }}
+                        />
+                      )}
                     </div>
-                    <p className="text-gray-700 text-lg leading-relaxed">{feature}</p>
+
+                    {/* Section Image */}
+                    {section.image && (
+                      <div className={`relative ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                        <div className="relative h-72 md:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10" />
+                          <Image 
+                            src={section.image} 
+                            alt={section.title || `Section ${index + 1}`} 
+                            fill 
+                            className="object-cover" 
+                          />
+                        </div>
+                        {/* Decorative element */}
+                        <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full opacity-20 -z-10" />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
             </div>
-          )}
-        </div>
-      </div>
-      {/* Service Sections - Enhanced layout */}
-      {service.sections && service.sections.length > 0 && (
-        <div className="py-20 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Detailed Service Information</h3>
-              <div className="w-24 h-1 bg-black mx-auto"></div>
+          </section>
+        )}
+
+        {/* Why Choose Us */}
+        <section className="bg-white py-16 lg:py-24">
+          <div className="container mx-auto px-4 lg:px-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">Why Choose Us</h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                We deliver excellence in every project with our commitment to quality and client satisfaction
+              </p>
             </div>
-            <div className="space-y-24">
-              {service.sections.map((section, index) => (
-                <div key={index} className="relative">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} space-y-6`}>
-                      {section.title && (<h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{stripHtmlTags(section.title)}</h2>)}
-                      {section.content && (<div className="rich-text-content prose prose-lg max-w-none text-gray-600 leading-relaxed" dangerouslySetInnerHTML={{ __html: section.content }} />)}
-                    </div>
-                    {section.image && (
-                      <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} relative`}>
-                        <div className="relative overflow-hidden rounded-2xl shadow-xl">
-                          <Image
-                            src={section.image}
-                            alt={stripHtmlTags(section.title) || `Section ${index + 1}`}
-                            width={700}
-                            height={500}
-                            className="w-full h-[400px] object-cover transform hover:scale-105 transition-transform duration-700"
-                          />
-                        </div>
-                        {/* Decorative elements */}
-                        <div className="absolute -top-4 -right-4 w-20 h-20 bg-black/10 rounded-full blur-lg"></div>
-                        <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-gray-900/10 rounded-full blur-lg"></div>
-                      </div>
-                    )}
-                  </div>
-                  {/* Section divider */}
-                  {index < service.sections.length - 1 && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-12">
-                      <div className="w-px h-24 bg-gradient-to-b from-gray-300 to-transparent"></div>
-                    </div>
-                  )}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="text-center p-8 bg-offwhite rounded-2xl">
+                <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
                 </div>
-              ))}
+                <h3 className="text-xl font-bold text-black mb-3">Quality Assured</h3>
+                <p className="text-gray-600">We maintain the highest standards in materials and workmanship</p>
+              </div>
+              <div className="text-center p-8 bg-offwhite rounded-2xl">
+                <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-black mb-3">On-Time Delivery</h3>
+                <p className="text-gray-600">We complete projects within the agreed timeline and budget</p>
+              </div>
+              <div className="text-center p-8 bg-offwhite rounded-2xl">
+                <div className="w-16 h-16 bg-amber-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-black mb-3">Expert Team</h3>
+                <p className="text-gray-600">Our experienced professionals bring expertise to every project</p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      {/* Call to Action Section - Premium design */}
-      <div className="relative py-20 lg:py-28 bg-gradient-to-br from-gray-900 via-black to-gray-800 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">Ready to Transform Your Vision Into Reality?</h2>
-            <p className="text-lg md:text-xl text-gray-300 mb-12 leading-relaxed">Contact our expert team today to discuss how our {service.title.toLowerCase()} services can help bring your construction project to life with unmatched quality and precision.</p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link href="/contact-us" className="group inline-flex items-center justify-center px-10 py-5 bg-white text-black font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">Get Free Consultation<svg className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></Link>
-              <Link href="/our-work" className="group inline-flex items-center justify-center px-10 py-5 border-2 border-white text-white font-bold text-lg hover:bg-white hover:text-black transition-all duration-300"><svg className="mr-3 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>View Our Portfolio</Link>
+        </section>
+
+        {/* CTA Section */}
+        <section className="bg-black py-16 lg:py-24">
+          <div className="container mx-auto px-4 lg:px-20 text-center">
+            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+              Ready to Get Started?
+            </h3>
+            <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
+              Contact us today to discuss your project requirements and get a free consultation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact-us" 
+                className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-offwhite transition-colors"
+              >
+                Get a Free Quote
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link 
+                href="/services" 
+                className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
+              >
+                View All Services
+              </Link>
             </div>
           </div>
-        </div>
-      </div>
-      {/* Related Services - Modern grid */}
-      <div className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Explore Our Complete Service Portfolio</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">Discover the full range of construction and contracting services we offer to meet all your project needs.</p>
-            <div className="w-24 h-1 bg-black mx-auto"></div>
+        </section>
+
+        {/* Back to Services */}
+        <section className="bg-offwhite py-12">
+          <div className="container mx-auto px-4 lg:px-20">
+            <Link 
+              href="/services" 
+              className="inline-flex items-center text-black hover:text-amber-700 transition-colors font-semibold"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to All Services
+            </Link>
           </div>
-          <div className="text-center">
-            <Link href="/services" className="group inline-flex items-center justify-center px-12 py-6 bg-black text-white font-bold text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl">View All Services<svg className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg></Link>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
+      </main>
+
+      <Consultation />
+      <Footer />
+    </>
   );
 }
