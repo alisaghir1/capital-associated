@@ -6,9 +6,8 @@ import { supabase } from "../../lib/supabase";
 import { stripHtmlTags } from "../utils/richText";
 
 const Footer = () => {
-  const { getSetting, loading } = useSiteSettings();
+  const { getSetting } = useSiteSettings();
   const [services, setServices] = useState([]);
-  const [servicesLoading, setServicesLoading] = useState(true);
 
   useEffect(() => {
     fetchServices();
@@ -30,8 +29,6 @@ const Footer = () => {
       }
     } catch (error) {
       console.error('Error fetching services:', error);
-    } finally {
-      setServicesLoading(false);
     }
   };
 
@@ -55,14 +52,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Services</h3>
             <ul className="space-y-2">
-              {servicesLoading ? (
-                // Loading state - show skeleton or fallback
-                <>
-                  <li className="h-6 bg-gray-200 rounded animate-pulse"></li>
-                  <li className="h-6 bg-gray-200 rounded animate-pulse"></li>
-                  <li className="h-6 bg-gray-200 rounded animate-pulse"></li>
-                </>
-              ) : services.length > 0 ? (
+              {services.length > 0 ? (
                 // Dynamic services from database
                 services.map((service) => (
                   <li key={service.slug}>

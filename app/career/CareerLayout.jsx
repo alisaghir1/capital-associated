@@ -7,7 +7,6 @@ import { stripHtmlTags } from '../utils/richText';
 
 export default function CareerLayout() {
   const [careers, setCareers] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -35,23 +34,8 @@ export default function CareerLayout() {
       console.error('Error fetching careers:', err);
       setError('Connection error. Please check your internet and try again.');
       setCareers([]);
-    } finally {
-      setLoading(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-100 pt-32 pb-12">
-        <div className="flex items-center justify-center h-96">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
-            <p className="text-lg text-black font-medium">Loading career opportunities...</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   if (careers.length === 0) {
     return (

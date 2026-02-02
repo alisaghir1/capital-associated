@@ -10,7 +10,6 @@ import { stripHtmlTags } from "../utils/richText";
 
 const OurTeam = () => {
   const [teamMembers, setTeamMembers] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   // Fallback static data in case Supabase is not working
   const staticTeamMembers = [
@@ -73,8 +72,6 @@ const OurTeam = () => {
         // Use static data as fallback
         console.log('Using static team data as fallback due to catch error');
         setTeamMembers(staticTeamMembers);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -103,11 +100,7 @@ const OurTeam = () => {
         </motion.p>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 sm:grid-cols-2 gap-4 mt-10 w-full mx-auto container px-10 xl:px-0">
-          {loading ? (
-            <div className="col-span-full text-center py-10">
-              <p>Loading team members...</p>
-            </div>
-          ) : teamMembers.length > 0 ? (
+          {teamMembers.length > 0 ? (
             teamMembers.map((member, index) => (
               <Link key={member.id} href={`/our-team/${member.slug}`}>
                 <motion.div

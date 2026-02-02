@@ -10,7 +10,6 @@ import { stripHtmlTags } from "../utils/richText";
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
   const blogsPerPage = 6;
 
   useEffect(() => {
@@ -30,8 +29,6 @@ const Blogs = () => {
       } catch (error) {
         console.warn('Blogs fetch error:', error.message);
         setBlogs([]); // Set empty array if timeout
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -374,11 +371,7 @@ const Blogs = () => {
       </div>
 
       <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
-        {loading ? (
-          <div className="col-span-full text-center py-10">
-            <p>Loading blogs...</p>
-          </div>
-        ) : currentBlogs.length > 0 ? (
+        {currentBlogs.length > 0 ? (
           currentBlogs.map((post) => (
             <Link key={post.id} href={post.path || `/blog/${post.slug}`}>
               <motion.div

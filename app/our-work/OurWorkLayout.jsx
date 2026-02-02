@@ -20,7 +20,6 @@ const staticProjects = [
 
 const OurWorkLayout = () => {
   const [projects, setProjects] = useState(staticProjects); // Start with fallback
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -42,21 +41,8 @@ const OurWorkLayout = () => {
     } catch (err) {
       console.error('Projects fetch error:', err);
       setError('Connection error. Showing cached data.');
-    } finally {
-      setLoading(false);
     }
   };
-
-  if (loading && projects.length === 0) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-gray-200 border-t-black mx-auto mb-4"></div>
-          <p className="text-xl">Loading projects...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="h-full w-full">

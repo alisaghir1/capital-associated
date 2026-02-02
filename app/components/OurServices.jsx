@@ -8,7 +8,6 @@ import { stripHtmlTags } from "../utils/richText";
 
 const OurServices = () => {
   const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   // Fallback static data
   const staticServices = [
@@ -28,7 +27,6 @@ const OurServices = () => {
       try {
         // Start with fallback data immediately
         setServices(staticServices);
-        setLoading(false);
         
         // Then try to fetch from Supabase with optimized query
         const { data, error } = await fetchServicesOptimized();
@@ -159,11 +157,7 @@ const OurServices = () => {
         </motion.p>
       </section>
 
-      {loading ? (
-        <div className="container mx-auto text-center py-20">
-          <p>Loading services...</p>
-        </div>
-      ) : services.length === 0 ? (
+      {services.length === 0 ? (
         <div className="container mx-auto text-center py-20">
           <p>No services available.</p>
         </div>

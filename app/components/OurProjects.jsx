@@ -8,7 +8,6 @@ import { stripHtmlTags } from "../utils/richText";
 
 const OurProjects = () => {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   // Fallback static data
   const staticProjects = [
@@ -27,7 +26,6 @@ const OurProjects = () => {
       try {
         // Start with fallback data immediately
         setProjects(staticProjects);
-        setLoading(false);
         
         // Then try to fetch from Supabase with optimized query
         const { data, error } = await fetchProjectsOptimized();
@@ -110,11 +108,7 @@ const OurProjects = () => {
         viewport={{ once: true, amount: 0.4 }}
         className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20"
       >
-        {loading ? (
-          <div className="col-span-full text-center py-10">
-            <p>Loading projects...</p>
-          </div>
-        ) : projects.length > 0 ? (
+        {projects.length > 0 ? (
           projects.map((project, index) => (
             <Link key={project.id} href={`/our-work/${project.slug}`} className="block">
               <div 
