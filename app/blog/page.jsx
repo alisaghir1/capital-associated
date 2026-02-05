@@ -5,9 +5,8 @@ import NavbarMobile from '../components/NavbarMobile';
 import Footer from '../components/Footer';
 import Consultation from '../components/Consultation';
 
-// Force SSR
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Use ISR with 60 second revalidation for optimal performance
+export const revalidate = 60;
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -22,7 +21,7 @@ async function getBlogs() {
           'apikey': SUPABASE_KEY,
           'Authorization': `Bearer ${SUPABASE_KEY}`,
         },
-        cache: 'no-store',
+        next: { revalidate: 60 },
       }
     );
     if (!res.ok) return [];
@@ -105,10 +104,12 @@ export default async function BlogListPage({ searchParams }) {
           <div className="absolute inset-0">
             <Image
               src="/main.jpg"
-              alt="Blog Background"
+              alt="Capital Associated Construction Blog - Expert Tips, Industry Insights, Project Updates"
               fill
               style={{ objectFit: 'cover' }}
               priority
+              fetchPriority="high"
+              sizes="100vw"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />

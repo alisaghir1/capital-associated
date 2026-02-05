@@ -1,36 +1,50 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useSiteSettings } from "../../hooks/useSiteSettings";
 import { supabase } from "../../lib/supabase";
 import { stripHtmlTags } from "../utils/richText";
 
+// Cache for footer services
+let servicesCache = null;
+let servicesCacheTimestamp = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 const Footer = () => {
   const { getSetting } = useSiteSettings();
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState(servicesCache || []);
 
-  useEffect(() => {
-    fetchServices();
-  }, []);
+  const fetchServices = useCallback(async () => {
+    // Use cache if valid
+    const now = Date.now();
+    if (servicesCache && (now - servicesCacheTimestamp) < CACHE_DURATION) {
+      setServices(servicesCache);
+      return;
+    }
 
-  const fetchServices = async () => {
     try {
       const { data, error } = await supabase
         .from('services')
         .select('title, slug')
         .eq('published', true)
         .order('created_at', { ascending: true })
-        .limit(9); // Limit to 9 services to match the original layout
+        .limit(9);
 
       if (error) {
         console.error('Error fetching services for footer:', error);
       } else {
-        setServices(data || []);
+        servicesCache = data || [];
+        servicesCacheTimestamp = Date.now();
+        setServices(servicesCache);
       }
     } catch (error) {
       console.error('Error fetching services:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchServices();
+  }, [fetchServices]);
 
   return (
     <footer className="bg-slate-100 text-black">

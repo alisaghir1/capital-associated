@@ -5,9 +5,8 @@ import NavbarMobile from '../components/NavbarMobile';
 import Footer from '../components/Footer';
 import Consultation from '../components/Consultation';
 
-// Force SSR
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// Use ISR with 60 second revalidation for optimal performance
+export const revalidate = 60;
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SUPABASE_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -23,7 +22,7 @@ async function getServices() {
         'apikey': SUPABASE_KEY,
         'Authorization': `Bearer ${SUPABASE_KEY}`,
       },
-      cache: 'no-store',
+      next: { revalidate: 60 },
     });
     
     if (!res.ok) {
@@ -155,10 +154,12 @@ export default async function ServicesListPage() {
           <div className="absolute inset-0">
             <Image
               src="/main.jpg"
-              alt="Services Background"
+              alt="Capital Associated Construction Services in Dubai - General Contracting, Interior Fit-Out, Design Build"
               fill
               style={{ objectFit: 'cover' }}
               priority
+              fetchPriority="high"
+              sizes="100vw"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />

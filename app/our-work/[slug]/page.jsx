@@ -71,22 +71,22 @@ export default async function ProjectPage({ params }) {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative">
-        <div className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] w-full overflow-hidden">
+        <div className="relative min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] w-full overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
-            <Image src={project.hero_image_url || "/main.jpg"} alt={stripHtmlTags(project.title)} fill style={{ objectFit: 'cover' }} priority />
+            <Image src={project.hero_image_url || "/main.jpg"} alt={stripHtmlTags(project.title)} fill style={{ objectFit: 'cover' }} priority fetchPriority="high" sizes="100vw" />
           </div>
           {/* Gradient Overlay - Darker at Bottom */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
           {/* Hero Content - Positioned at Bottom */}
-          <div className="relative z-10 flex items-end h-full px-4 sm:px-6 pb-8 sm:pb-12">
+          <div className="relative z-10 flex items-end min-h-[50vh] sm:min-h-[60vh] lg:min-h-[70vh] px-4 sm:px-6 pt-32 lg:pt-40 pb-8 sm:pb-12">
             <div className="w-full max-w-4xl mx-auto text-center">
               {project.project_type && (
                 <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-400 text-black font-semibold text-xs sm:text-sm rounded-full mb-4 sm:mb-6">
                   {project.project_type}
                 </span>
               )}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-loose tracking-wide px-2">
                 {stripHtmlTags(project.title)}
               </h1>
               {project.location && (

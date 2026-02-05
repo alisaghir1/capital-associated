@@ -2,6 +2,10 @@
 
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
+import Navbar from '../components/Navbar';
+import NavbarMobile from '../components/NavbarMobile';
+import Footer from '../components/Footer';
+import Consultation from '../components/Consultation';
 
 const ContacUsLayout = () => {
   const [formData, setFormData] = useState({
@@ -61,7 +65,10 @@ const ContacUsLayout = () => {
   };
 
   return (
-    <div className="px-6 pb-12 pt-24 sm:pb-24 sm:pt-40 lg:px-8">
+    <>
+      <Navbar />
+      <NavbarMobile />
+      <div className="px-6 pb-12 pt-24 sm:pb-24 sm:pt-40 lg:px-8">
       <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-20">
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-orange">Contact Us!</h1>
         <p className="text-lg text-black mt-10">to discuss your requirements, request a quote, or schedule a consultation.</p>
@@ -150,7 +157,10 @@ const ContacUsLayout = () => {
           {alertMessage}
         </div>
       )}
-    </div>
+      </div>
+      <Consultation />
+      <Footer />
+    </>
   );
 };
 

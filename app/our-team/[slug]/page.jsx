@@ -83,6 +83,8 @@ export default async function TeamMemberPage({ params }) {
             fill
             style={{ objectFit: 'cover' }}
             priority
+            fetchPriority="high"
+            sizes="100vw"
           />
         </div>
         <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">

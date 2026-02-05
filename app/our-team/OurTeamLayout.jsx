@@ -2,6 +2,10 @@ import React from "react";
 import Image from "next/image";
 import VidioComponent from "../components/VidioComponent";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
+import Footer from "../components/Footer";
+import Consultation from "../components/Consultation";
 
 const teamMembers = [
   {
@@ -26,16 +30,21 @@ const teamMembers = [
 
 const OurTeamLayout = () => {
   return (
-    <div>
-      <div className="relative w-full h-screen ">
+    <>
+      <Navbar />
+      <NavbarMobile />
+      <div>
+        <div className="relative w-full h-screen ">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
             src="/main.jpg"
-            alt="Background Image"
-            layout="fill"
-            objectFit="cover"
+            alt="Capital Associated Building Contracting Team - Expert Engineers, Architects and Project Managers in Dubai"
+            fill
+            style={{ objectFit: 'cover' }}
             priority
+            fetchPriority="high"
+            sizes="100vw"
           />
         </div>
         {/* Content on top of the image */}
@@ -65,10 +74,11 @@ const OurTeamLayout = () => {
                   <div className=" w-full h-[34rem] border border-black mb-4 ">
                     <Image
                       src={member.image}
-                      alt={member.name}
+                      alt={`${member.name} - ${member.position} at Capital Associated Building Contracting Dubai`}
                       className="sm:rounded-full object-cover w-full h-full"
                       width={1000}
                       height={1000}
+                      fetchPriority="high"
                     />
                   </div>
                   <div className="text-center">
@@ -100,7 +110,10 @@ const OurTeamLayout = () => {
 
         <VidioComponent />
       </div>
-    </div>
+      </div>
+      <Consultation />
+      <Footer />
+    </>
   );
 };
 

@@ -1,9 +1,16 @@
 import React from "react";
 import Image from "next/image";
+import Navbar from "../components/Navbar";
+import NavbarMobile from "../components/NavbarMobile";
+import Footer from "../components/Footer";
+import Consultation from "../components/Consultation";
 
 const AboutLayout = () => {
   return (
-    <div className="w-full h-full mb-10">
+    <>
+      <Navbar />
+      <NavbarMobile />
+      <div className="w-full h-full mb-10">
       <div className="bg-slate-100">
         {/* Fullscreen Background Section */}
         <div className="relative w-full h-screen">
@@ -11,10 +18,12 @@ const AboutLayout = () => {
           <div className="absolute inset-0">
             <Image
               src="/main.jpg"
-              alt="Background Image"
-              layout="fill"
-              objectFit="cover"
+              alt="About Capital Associated Building Contracting - Leading Construction Company in Dubai UAE"
+              fill
+              style={{ objectFit: 'cover' }}
               priority
+              fetchPriority="high"
+              sizes="100vw"
             />
           </div>
 
@@ -56,10 +65,11 @@ const AboutLayout = () => {
             <div className="lg:w-1/2 flex justify-center items-center">
               <Image
                 src="/about/about1.jpg"
-                alt="About Us Image"
+                alt="Capital Associated Building Contracting Dubai Office and Team"
                 width={1200}
                 height={600}
                 className="lg:rounded-es-[300px] lg:rounded-se-[300px] h-[30rem]"
+                fetchPriority="high"
               />
             </div>
           </div>
@@ -153,6 +163,9 @@ const AboutLayout = () => {
         </p>
       </div>
     </div>
+      <Consultation />
+      <Footer />
+    </>
   );
 };
 

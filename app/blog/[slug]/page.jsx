@@ -138,7 +138,7 @@ export default async function BlogDetailPage({ params }) {
 
       <main className="min-h-screen">
         {/* Hero Section */}
-        <div className="relative w-full h-[60vh] lg:h-[70vh] min-h-[450px]">
+        <div className="relative w-full min-h-[60vh] lg:min-h-[70vh]">
           <div className="absolute inset-0">
             <Image
               src={blog.hero_image_url || "/main.jpg"}
@@ -146,12 +146,14 @@ export default async function BlogDetailPage({ params }) {
               fill
               style={{ objectFit: 'cover' }}
               priority
+              fetchPriority="high"
+              sizes="100vw"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
           
           {/* Hero Content */}
-          <div className="relative z-10 flex items-end h-full pb-12 lg:pb-16">
+          <div className="relative z-10 flex items-end min-h-[60vh] lg:min-h-[70vh] pt-32 lg:pt-40 pb-12 lg:pb-16">
             <div className="container mx-auto px-4 lg:px-20">
               {/* Breadcrumb */}
               <nav className="mb-6">
@@ -165,7 +167,7 @@ export default async function BlogDetailPage({ params }) {
               </nav>
 
               {/* Title */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 max-w-4xl leading-loose tracking-wide">
                 {stripHtml(blog.title)}
               </h1>
 

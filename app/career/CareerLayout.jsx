@@ -4,6 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { supabase, queryWithRetry } from '../../lib/supabase';
 import Link from 'next/link';
 import { stripHtmlTags } from '../utils/richText';
+import Navbar from '../components/Navbar';
+import NavbarMobile from '../components/NavbarMobile';
+import Footer from '../components/Footer';
+import Consultation from '../components/Consultation';
 
 export default function CareerLayout() {
   const [careers, setCareers] = useState([]);
@@ -39,74 +43,83 @@ export default function CareerLayout() {
 
   if (careers.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-100 pt-32 pb-12 flex items-center justify-center">
-        <div className="flex items-center justify-center">
-          <div className="text-center p-12 bg-white rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-4">
-            <div className="w-20 h-20 bg-black rounded-full mx-auto mb-8 flex items-center justify-center">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v10a2 2 0 002 2h4a2 2 0 002-2V8" />
-              </svg>
-            </div>
-            <h1 className="text-4xl font-bold text-black mb-6">
-              Exciting Opportunities Ahead!
-            </h1>
-            <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              We're constantly growing and expanding our horizons. While we're not actively hiring at this moment, 
-              amazing career opportunities are just around the corner.
-            </p>
-            <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              Our team is the cornerstone of our success, and we're always on the lookout for passionate, 
-              talented individuals to join us on our remarkable journey.
-            </p>
-            <p className="text-black text-lg font-medium mb-8">
-              Stay connected  we can't wait to share exciting news soon!
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:careers@capitalassociated.com"
-                className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium"
-              >
-                Send Your Resume
-              </a>
-              <Link
-                href="/contact-us"
-                className="inline-flex items-center justify-center border-2 border-black text-black px-8 py-3 rounded-lg hover:bg-black hover:text-white transition-colors duration-200 font-medium"
-              >
-                Contact Us
-              </Link>
+      <>
+        <Navbar />
+        <NavbarMobile />
+        <div className="min-h-screen bg-slate-100 pt-32 pb-12 flex items-center justify-center">
+          <div className="flex items-center justify-center">
+            <div className="text-center p-12 bg-white rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-4">
+              <div className="w-20 h-20 bg-black rounded-full mx-auto mb-8 flex items-center justify-center">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v10a2 2 0 002 2h4a2 2 0 002-2V8" />
+                </svg>
+              </div>
+              <h1 className="text-4xl font-bold text-black mb-6">
+                Exciting Opportunities Ahead!
+              </h1>
+              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                We're constantly growing and expanding our horizons. While we're not actively hiring at this moment, 
+                amazing career opportunities are just around the corner.
+              </p>
+              <p className="text-gray-600 text-lg mb-6 leading-relaxed">
+                Our team is the cornerstone of our success, and we're always on the lookout for passionate, 
+                talented individuals to join us on our remarkable journey.
+              </p>
+              <p className="text-black text-lg font-medium mb-8">
+                Stay connected  we can't wait to share exciting news soon!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="mailto:careers@capitalassociated.com"
+                  className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium"
+                >
+                  Send Your Resume
+                </a>
+                <Link
+                  href="/contact-us"
+                  className="inline-flex items-center justify-center border-2 border-black text-black px-8 py-3 rounded-lg hover:bg-black hover:text-white transition-colors duration-200 font-medium"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <Consultation />
+        <Footer />
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-100 pt-32 pb-16">
-      {/* Hero Section */}
-      <div className="bg-black text-white py-20 mb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Join Our <span className="text-gray-300">Elite Team</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Shape the future of construction in Dubai. Build your career with industry leaders 
-            who value innovation, excellence, and professional growth.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <div className="w-24 h-1 bg-white rounded-full"></div>
+    <>
+      <Navbar />
+      <NavbarMobile />
+      <div className="min-h-screen bg-slate-100 pt-32 pb-16">
+        {/* Hero Section */}
+        <div className="bg-black text-white py-20 mb-16">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              Join Our <span className="text-gray-300">Elite Team</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Shape the future of construction in Dubai. Build your career with industry leaders 
+              who value innovation, excellence, and professional growth.
+            </p>
+            <div className="mt-8 flex justify-center">
+              <div className="w-24 h-1 bg-white rounded-full"></div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Career Cards Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
-          {careers.map((career) => (
-            <div key={career.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 group hover:-translate-y-2">
-              <div className="p-8">
-                {/* Header */}
-                <div className="mb-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Career Cards Grid */}
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
+            {careers.map((career) => (
+              <div key={career.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 group hover:-translate-y-2">
+                <div className="p-8">
+                  {/* Header */}
+                  <div className="mb-6">
                   <h3 className="text-2xl font-bold text-black mb-3 group-hover:text-gray-600 transition-colors">
                     {stripHtmlTags(career.job_title)}
                   </h3>
@@ -237,6 +250,9 @@ export default function CareerLayout() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      <Consultation />
+      <Footer />
+    </>
   );
 }

@@ -131,7 +131,7 @@ export default async function ServiceDetailPage({ params }) {
 
       <main className="min-h-screen">
         {/* Hero Section - Full width with gradient overlay */}
-        <div className="relative w-full h-[60vh] lg:h-[70vh] min-h-[500px] overflow-hidden">
+        <div className="relative w-full min-h-[60vh] lg:min-h-[70vh] overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src={service.hero_image_url || "/main.jpg"}
@@ -139,15 +139,17 @@ export default async function ServiceDetailPage({ params }) {
               fill
               style={{ objectFit: 'cover' }}
               priority
+              fetchPriority="high"
+              sizes="100vw"
               className="brightness-50"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
           
           {/* Hero Content */}
-          <div className="relative z-10 flex flex-col justify-center items-start w-full h-full max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative z-10 flex flex-col justify-end items-start w-full min-h-[60vh] lg:min-h-[70vh] max-w-7xl mx-auto px-6 lg:px-8 pt-32 lg:pt-40 pb-12 lg:pb-16">
             {/* Breadcrumb */}
-            <nav className="mb-8 text-sm">
+            <nav className="mb-6 text-sm">
               <div className="flex items-center space-x-2 text-white/80">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
                 <span>/</span>
@@ -158,13 +160,13 @@ export default async function ServiceDetailPage({ params }) {
             </nav>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 max-w-4xl leading-loose tracking-wide">
               {stripHtml(service.title)}
             </h1>
 
             {/* Short Description */}
             {service.short_description && (
-              <p className="text-lg lg:text-xl text-white/90 max-w-2xl leading-relaxed mb-8">
+              <p className="text-base lg:text-lg text-white/90 max-w-2xl leading-relaxed mb-6">
                 {stripHtml(service.short_description)}
               </p>
             )}
