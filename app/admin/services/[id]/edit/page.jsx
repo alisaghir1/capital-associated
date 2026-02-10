@@ -113,8 +113,10 @@ const EditService = ({ params }) => {
     description: '',
     short_description: '',
     icon_url: '',
+    icon_alt: '',
     hero_image_url: '',
-    sections: [{ title: '', content: '', image: '' }],
+    hero_image_alt: '',
+    sections: [{ title: '', content: '', image: '', image_alt: '' }],
     features: [''],
     published: false,
     featured: false,
@@ -158,11 +160,14 @@ const EditService = ({ params }) => {
             description: data.description || '',
             short_description: data.short_description || '',
             icon_url: data.icon_url || '',
+            icon_alt: data.icon_alt || '',
             hero_image_url: data.hero_image_url || '',
-            sections: (data.sections || [{ title: '', content: '', image: '' }]).map(section => ({
+            hero_image_alt: data.hero_image_alt || '',
+            sections: (data.sections || [{ title: '', content: '', image: '', image_alt: '' }]).map(section => ({
               title: section.title || '',
               content: section.content || '',
-              image: section.image || ''
+              image: section.image || '',
+              image_alt: section.image_alt || ''
             })),
             features: data.features || [''],
             published: data.published || false,
@@ -316,7 +321,7 @@ const EditService = ({ params }) => {
   const addSection = () => {
     setFormData(prev => ({
       ...prev,
-      sections: [...prev.sections, { title: '', content: '', image: '' }]
+      sections: [...prev.sections, { title: '', content: '', image: '', image_alt: '' }]
     }));
   };
 
@@ -590,6 +595,14 @@ const EditService = ({ params }) => {
                         <img src={formData.icon_url} alt="Icon preview" className="w-16 h-16 object-cover rounded" />
                       </div>
                     )}
+                    <input
+                      type="text"
+                      name="icon_alt"
+                      value={formData.icon_alt}
+                      onChange={handleInputChange}
+                      placeholder="Icon alt text (SEO)"
+                      className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Hero Image</label>
@@ -605,6 +618,14 @@ const EditService = ({ params }) => {
                         <img src={formData.hero_image_url} alt="Hero preview" className="w-32 h-20 object-cover rounded" />
                       </div>
                     )}
+                    <input
+                      type="text"
+                      name="hero_image_alt"
+                      value={formData.hero_image_alt}
+                      onChange={handleInputChange}
+                      placeholder="Hero image alt text (SEO)"
+                      className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
                   </div>
                 </div>
 
@@ -688,6 +709,17 @@ const EditService = ({ params }) => {
                                 <img src={section.image} alt={`Section ${index + 1} preview`} className="w-32 h-20 object-cover rounded" />
                               </div>
                             )}
+                            <input
+                              type="text"
+                              value={section.image_alt || ''}
+                              onChange={(e) => {
+                                const newSections = [...formData.sections];
+                                newSections[index].image_alt = e.target.value;
+                                setFormData(prev => ({ ...prev, sections: newSections }));
+                              }}
+                              placeholder="Section image alt text (SEO)"
+                              className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
                           </div>
                         </div>
                       </div>

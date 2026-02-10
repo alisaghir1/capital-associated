@@ -111,7 +111,8 @@ const NewBlog = () => {
     content: '',
     excerpt: '',
     hero_image_url: '',
-    sections: [{ title: '', content: '', image: '' }],
+    hero_image_alt: '',
+    sections: [{ title: '', content: '', image: '', image_alt: '' }],
     author: '',
     published: false,
     featured: false,
@@ -191,7 +192,7 @@ const NewBlog = () => {
   const addSection = () => {
     setFormData(prev => ({
       ...prev,
-      sections: [...prev.sections, { title: '', content: '', image: '' }]
+      sections: [...prev.sections, { title: '', content: '', image: '', image_alt: '' }]
     }));
   };
 
@@ -409,6 +410,21 @@ const NewBlog = () => {
                   )}
                 </div>
 
+                {/* Hero Image Alt Text */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Hero Image Alt Text <span className="text-gray-500 font-normal">(SEO: Describe the image for screen readers)</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="hero_image_alt"
+                    value={formData.hero_image_alt}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Construction workers building a modern office tower"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+
                 {/* Sections */}
                 <div>
                   <div className="flex justify-between items-center mb-3">
@@ -489,6 +505,23 @@ const NewBlog = () => {
                                 <img src={section.image} alt={`Section ${index + 1} preview`} className="w-32 h-20 object-cover rounded" />
                               </div>
                             )}
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                              Section Image Alt Text <span className="text-gray-500 font-normal">(SEO: Describe the section image)</span>
+                            </label>
+                            <input
+                              type="text"
+                              value={section.image_alt || ''}
+                              onChange={(e) => {
+                                const newSections = [...formData.sections];
+                                newSections[index].image_alt = e.target.value;
+                                setFormData(prev => ({ ...prev, sections: newSections }));
+                              }}
+                              placeholder="e.g., Architect reviewing construction blueprints"
+                              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
                           </div>
                         </div>
                       </div>

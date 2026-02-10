@@ -111,7 +111,8 @@ const NewTeamMember = () => {
     position: '',
     bio: '',
     image_url: '',
-    sections: [{ title: '', content: '', image: '' }],
+    image_alt: '',
+    sections: [{ title: '', content: '', image: '', image_alt: '' }],
     published: false,
     featured: false,
     sort_order: 0,
@@ -191,7 +192,7 @@ const NewTeamMember = () => {
   const addSection = () => {
     setFormData(prev => ({
       ...prev,
-      sections: [...prev.sections, { title: '', content: '', image: '' }]
+      sections: [...prev.sections, { title: '', content: '', image: '', image_alt: '' }]
     }));
   };
 
@@ -431,6 +432,14 @@ const NewTeamMember = () => {
                   />
                 </div>
               )}
+              <input
+                type="text"
+                name="image_alt"
+                value={formData.image_alt}
+                onChange={handleInputChange}
+                placeholder="Profile image alt text (SEO)"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
             </div>
           </div>
 
@@ -509,6 +518,17 @@ const NewTeamMember = () => {
                         />
                       </div>
                     )}
+                    <input
+                      type="text"
+                      value={section.image_alt || ''}
+                      onChange={(e) => {
+                        const newSections = [...formData.sections];
+                        newSections[index].image_alt = e.target.value;
+                        setFormData(prev => ({ ...prev, sections: newSections }));
+                      }}
+                      placeholder="Section image alt text (SEO)"
+                      className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
                   </div>
                 </div>
               </div>

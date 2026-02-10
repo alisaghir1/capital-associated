@@ -118,8 +118,9 @@ const EditProject = ({ params }) => {
     completion_date: '',
     project_size: '',
     hero_image_url: '',
+    hero_image_alt: '',
     hero_video_url: '',
-    sections: [{ title: '', content: '', image: '' }],
+    sections: [{ title: '', content: '', image: '', image_alt: '' }],
     published: false,
     featured: false,
     sort_order: 0,
@@ -164,11 +165,13 @@ const EditProject = ({ params }) => {
             project_type: data.project_type || '',
             location: data.location || '',
             hero_image_url: data.hero_image_url || '',
+            hero_image_alt: data.hero_image_alt || '',
             hero_video_url: data.hero_video_url || '',
-            sections: (data.sections || [{ title: '', content: '', image: '' }]).map(section => ({
+            sections: (data.sections || [{ title: '', content: '', image: '', image_alt: '' }]).map(section => ({
               title: section.title || '',
               content: section.content || '',
-              image: section.image || ''
+              image: section.image || '',
+              image_alt: section.image_alt || ''
             })),
             completion_date: data.completion_date || '',
             published: data.published || false,
@@ -286,7 +289,7 @@ const EditProject = ({ params }) => {
   const addSection = () => {
     setFormData(prev => ({
       ...prev,
-      sections: [...prev.sections, { title: '', content: '', image: '' }]
+      sections: [...prev.sections, { title: '', content: '', image: '', image_alt: '' }]
     }));
   };
 
@@ -575,6 +578,14 @@ const EditProject = ({ params }) => {
                       <img src={formData.hero_image_url} alt="Hero preview" className="w-32 h-20 object-cover rounded" />
                     </div>
                   )}
+                  <input
+                    type="text"
+                    name="hero_image_alt"
+                    value={formData.hero_image_alt}
+                    onChange={handleInputChange}
+                    placeholder="Hero image alt text (SEO)"
+                    className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
                 </div>
 
                 {/* Hero Video */}
@@ -714,6 +725,17 @@ const EditProject = ({ params }) => {
                                 <img src={section.image} alt={`Section ${index + 1} preview`} className="w-32 h-20 object-cover rounded" />
                               </div>
                             )}
+                            <input
+                              type="text"
+                              value={section.image_alt || ''}
+                              onChange={(e) => {
+                                const newSections = [...formData.sections];
+                                newSections[index].image_alt = e.target.value;
+                                setFormData(prev => ({ ...prev, sections: newSections }));
+                              }}
+                              placeholder="Section image alt text (SEO)"
+                              className="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
                           </div>
                         </div>
                       </div>

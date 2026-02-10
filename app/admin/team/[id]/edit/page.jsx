@@ -113,7 +113,8 @@ const EditTeamMember = ({ params }) => {
     position: '',
     bio: '',
     image_url: '',
-    sections: [{ title: '', content: '', image: '' }],
+    image_alt: '',
+    sections: [{ title: '', content: '', image: '', image_alt: '' }],
     published: false,
     featured: false,
     sort_order: 0,
@@ -153,10 +154,12 @@ const EditTeamMember = ({ params }) => {
           position: data.position || '',
           bio: data.bio || '',
           image_url: data.image_url || '',
-          sections: (data.sections || [{ title: '', content: '', image: '' }]).map(section => ({
+          image_alt: data.image_alt || '',
+          sections: (data.sections || [{ title: '', content: '', image: '', image_alt: '' }]).map(section => ({
             title: section.title || '',
             content: section.content || '',
-            image: section.image || ''
+            image: section.image || '',
+            image_alt: section.image_alt || ''
           })),
           published: data.published || false,
           featured: data.featured || false,
@@ -246,7 +249,7 @@ const EditTeamMember = ({ params }) => {
   const addSection = () => {
     setFormData(prev => ({
       ...prev,
-      sections: [...prev.sections, { title: '', content: '', image: '' }]
+      sections: [...prev.sections, { title: '', content: '', image: '', image_alt: '' }]
     }));
   };
 
@@ -496,6 +499,14 @@ const EditTeamMember = ({ params }) => {
                   />
                 </div>
               )}
+              <input
+                type="text"
+                name="image_alt"
+                value={formData.image_alt}
+                onChange={handleInputChange}
+                placeholder="Profile image alt text (SEO)"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
             </div>
           </div>
 
@@ -574,6 +585,17 @@ const EditTeamMember = ({ params }) => {
                         />
                       </div>
                     )}
+                    <input
+                      type="text"
+                      value={section.image_alt || ''}
+                      onChange={(e) => {
+                        const newSections = [...formData.sections];
+                        newSections[index].image_alt = e.target.value;
+                        setFormData(prev => ({ ...prev, sections: newSections }));
+                      }}
+                      placeholder="Section image alt text (SEO)"
+                      className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
                   </div>
                 </div>
               </div>
