@@ -6,6 +6,44 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
 import RichTextEditor from '../../../../../components/admin/RichTextEditor';
 
+/**
+ * Upload a base64 image to Supabase Storage via API route
+ * Returns the public URL of the uploaded image
+ */
+const uploadImageToStorage = async (base64Data, fileName) => {
+  if (!base64Data) return null;
+  
+  // If it's already a URL (not base64), return it as-is
+  if (!base64Data.startsWith('data:')) {
+    return base64Data;
+  }
+
+  try {
+    const response = await fetch('/api/admin/upload-image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        base64Data,
+        fileName,
+        bucket: 'images'
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to upload image');
+    }
+
+    const { url } = await response.json();
+    return url;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
+};
+
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
   // Default options
@@ -295,31 +333,61 @@ const EditBlog = ({ params }) => {
     setLoading(true);
 
     try {
-      // Auto-compress large images to prevent timeouts
-      console.log('Compressing images if needed...');
+      // Step 1: Compress images for optimal size
+      console.log('Compressing images...');
       
       const compressedHeroUrl = formData.hero_image_url ? 
         await autoCompressImage(formData.hero_image_url, { maxWidth: 1200, maxHeight: 800 }) : 
-        formData.hero_image_url;
+        null;
 
-      // Compress section images
       const compressedSections = await Promise.all(
         formData.sections.map(async (section) => ({
           ...section,
           image: section.image ? 
-            await autoCompressImage(section.image, { maxWidth: 800, maxHeight: 600 }) : 
-            section.image
+            await autoCompressImage(section.image, { maxWidth: 1000, maxHeight: 700 }) : 
+            null
         }))
       );
 
+      // Step 2: Upload images to Supabase Storage and get proper URLs
+      console.log('Uploading images to storage...');
+      
+      const uploadedHeroUrl = compressedHeroUrl ? 
+        await uploadImageToStorage(compressedHeroUrl, `blog-hero-${formData.slug}`) : 
+        null;
+
+      const uploadedSections = await Promise.all(
+        compressedSections.map(async (section, index) => ({
+          ...section,
+          image: section.image ? 
+            await uploadImageToStorage(section.image, `blog-section-${formData.slug}-${index}`) : 
+            null
+        }))
+      );
+
+      // Prepare data with proper image URLs (not base64)
+      const blogData = {
+        title: formData.title,
+        slug: formData.slug,
+        content: formData.content,
+        excerpt: formData.excerpt,
+        hero_image_url: uploadedHeroUrl,
+        hero_image_alt: formData.hero_image_alt || formData.title,
+        sections: uploadedSections.filter(section => section.title.trim() !== '' || section.content.trim() !== ''),
+        author: formData.author || 'admin',
+        published: formData.published,
+        featured: formData.featured,
+        meta_title: formData.meta_title || formData.title,
+        meta_description: formData.meta_description || formData.excerpt,
+        meta_keywords: formData.meta_keywords,
+        updated_at: new Date().toISOString()
+      };
+
+      console.log('Updating blog with proper image URLs...');
+
       const { data, error } = await supabase
         .from('blogs')
-        .update({
-          ...formData,
-          hero_image_url: compressedHeroUrl || null,
-          sections: compressedSections.filter(section => section.title.trim() !== '' || section.content.trim() !== ''),
-          updated_at: new Date().toISOString()
-        })
+        .update(blogData)
         .eq('id', resolvedParams.id)
         .select();
 

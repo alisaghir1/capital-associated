@@ -9,6 +9,11 @@ function stripHtml(html) {
   return html.replace(/<[^>]*>/g, '').trim()
 }
 
+// Format ISO date for datetime attribute
+function formatISODate(dateString) {
+  return new Date(dateString).toISOString().split('T')[0]
+}
+
 export default function BlogDetailClient({ blog, slug }) {
   const [mounted, setMounted] = useState(false)
 
@@ -34,167 +39,176 @@ export default function BlogDetailClient({ blog, slug }) {
     })
   }
 
+  // Get proper image URL (ensure it's not base64 for crawlers)
+  const heroImageUrl = blog.hero_image_url || "/main.jpg"
+  const heroImageAlt = blog.hero_image_alt || stripHtml(blog.title)
+
   return (
-    <main className="min-h-screen">
-      {/* Hero Section */}
-      <header className="relative w-full h-[60vh] lg:h-[70vh] min-h-[450px]">
-        <div className="absolute inset-0">
-          <Image
-            src={blog.hero_image_url || "/main.jpg"}
-            alt={blog.hero_image_alt || stripHtml(blog.title)}
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-        
-        {/* Hero Content */}
-        <div className="relative z-10 flex items-end h-full pb-12 lg:pb-16">
-          <div className="container mx-auto px-4 lg:px-20">
-            {/* Breadcrumb */}
-            <nav className="mb-6" aria-label="Breadcrumb">
-              <div className="flex items-center space-x-2 text-sm text-white/80">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <span>/</span>
-                <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
-                <span>/</span>
-                <span className="text-amber-400 font-medium truncate max-w-[200px]">{stripHtml(blog.title)}</span>
+    <main id="main-content" className="min-h-screen">
+      <article itemScope itemType="https://schema.org/BlogPosting">
+        {/* Hero Section with Article Header */}
+        <header className="relative w-full h-[60vh] lg:h-[70vh] min-h-[450px]">
+          <figure className="absolute inset-0">
+            <Image
+              src={heroImageUrl}
+              alt={heroImageAlt}
+              fill
+              style={{ objectFit: 'cover' }}
+              priority
+              itemProp="image"
+            />
+          </figure>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+          
+          {/* Hero Content */}
+          <div className="relative z-10 flex items-end h-full pb-12 lg:pb-16">
+            <div className="container mx-auto px-4 lg:px-20">
+              {/* Breadcrumb */}
+              <nav className="mb-6" aria-label="Breadcrumb">
+                <div className="flex items-center space-x-2 text-sm text-white/80">
+                  <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                  <span>/</span>
+                  <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+                  <span>/</span>
+                  <span className="text-amber-400 font-medium truncate max-w-[200px]">{stripHtml(blog.title)}</span>
+                </div>
+              </nav>
+
+              {/* Title */}
+              <h1 itemProp="headline" className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+                {stripHtml(blog.title)}
+              </h1>
+
+              {/* Meta Info */}
+              <div className="flex flex-wrap items-center gap-6 text-white/90">
+                {blog.author && (
+                  <span itemProp="author" itemScope itemType="https://schema.org/Person" className="flex items-center">
+                    <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/60">Written by</p>
+                      <p itemProp="name" className="font-semibold">{blog.author}</p>
+                    </div>
+                  </span>
+                )}
+                {blog.created_at && (
+                  <span className="flex items-center">
+                    <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/60">Published</p>
+                      <time itemProp="datePublished" dateTime={formatISODate(blog.created_at)} className="font-semibold">
+                        {formatDate(blog.created_at)}
+                      </time>
+                    </div>
+                  </span>
+                )}
               </div>
-            </nav>
+            </div>
+          </div>
+        </header>
 
-            {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
-              {stripHtml(blog.title)}
-            </h1>
-
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center gap-6 text-white/90">
-              {blog.author && (
-                <span className="flex items-center">
-                  <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/60">Written by</p>
-                    <p className="font-semibold">{blog.author}</p>
-                  </div>
-                </span>
+        {/* Article Body */}
+        <div itemProp="articleBody" className="bg-white">
+          <div className="container mx-auto px-4 lg:px-20 py-12 lg:py-20">
+            <div className="max-w-4xl mx-auto">
+              
+              {/* Excerpt */}
+              {blog.excerpt && (
+                <div className="mb-12 p-8 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border-l-4 border-amber-500">
+                  <p itemProp="description" className="text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
+                    {stripHtml(blog.excerpt)}
+                  </p>
+                </div>
               )}
-              {blog.created_at && (
-                <span className="flex items-center">
-                  <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mr-3">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs text-white/60">Published</p>
-                    <p className="font-semibold">{formatDate(blog.created_at)}</p>
-                  </div>
-                </span>
+
+              {/* Main Content */}
+              {blog.content && (
+                <div 
+                  className="rich-text-content prose prose-lg lg:prose-xl max-w-none mb-16"
+                  dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
+              )}
+
+              {/* Sections */}
+              {sections.length > 0 && (
+                <div className="space-y-16 mt-16">
+                  {sections.map((section, index) => (
+                    <section key={index} className="scroll-mt-20">
+                      {/* Section Header */}
+                      {section.title && (
+                        <div className="flex items-center gap-4 mb-8">
+                          <span className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            {index + 1}
+                          </span>
+                          <h2 className="text-2xl lg:text-3xl font-bold text-black">
+                            {stripHtml(section.title)}
+                          </h2>
+                        </div>
+                      )}
+                      
+                      {/* Section Image */}
+                      {section.image && (
+                        <figure className="relative w-full h-72 md:h-96 lg:h-[500px] mb-8 rounded-2xl overflow-hidden shadow-xl">
+                          <Image
+                            src={section.image}
+                            alt={section.image_alt || section.title || `Section ${index + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </figure>
+                      )}
+                      
+                      {/* Section Content */}
+                      {section.content && (
+                        <div 
+                          className="rich-text-content prose prose-lg max-w-none"
+                          dangerouslySetInnerHTML={{ __html: section.content }}
+                        />
+                      )}
+                    </section>
+                  ))}
+                </div>
               )}
             </div>
           </div>
         </div>
-      </header>
 
-      {/* Article Content */}
-      <article className="bg-white">
-        <div className="container mx-auto px-4 lg:px-20 py-12 lg:py-20">
-          <div className="max-w-4xl mx-auto">
-            
-            {/* Excerpt */}
-            {blog.excerpt && (
-              <div className="mb-12 p-8 bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl border-l-4 border-amber-500">
-                <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed italic">
-                  {stripHtml(blog.excerpt)}
-                </p>
-              </div>
-            )}
-
-            {/* Main Content */}
-            {blog.content && (
-              <div 
-                className="rich-text-content prose prose-lg lg:prose-xl max-w-none mb-16"
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-              />
-            )}
-
-            {/* Sections */}
-            {sections.length > 0 && (
-              <div className="space-y-16 mt-16">
-                {sections.map((section, index) => (
-                  <section key={index} className="scroll-mt-20">
-                    {/* Section Header */}
-                    {section.title && (
-                      <div className="flex items-center gap-4 mb-8">
-                        <span className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                          {index + 1}
-                        </span>
-                        <h2 className="text-2xl lg:text-3xl font-bold text-black">
-                          {stripHtml(section.title)}
-                        </h2>
-                      </div>
-                    )}
-                    
-                    {/* Section Image */}
-                    {section.image && (
-                      <div className="relative w-full h-72 md:h-96 lg:h-[500px] mb-8 rounded-2xl overflow-hidden shadow-xl">
-                        <Image
-                          src={section.image}
-                          alt={section.image_alt || section.title || `Section ${index + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    )}
-                    
-                    {/* Section Content */}
-                    {section.content && (
-                      <div 
-                        className="rich-text-content prose prose-lg max-w-none"
-                        dangerouslySetInnerHTML={{ __html: section.content }}
-                      />
-                    )}
-                  </section>
-                ))}
-              </div>
-            )}
+        {/* Article Footer */}
+        <footer className="bg-black py-16 lg:py-24">
+          <div className="container mx-auto px-4 lg:px-20 text-center">
+            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+              Ready to Start Your Project?
+            </h3>
+            <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
+              Let us bring your construction vision to life with our professional expertise and dedication to excellence.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact-us" 
+                className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-offwhite transition-colors"
+              >
+                Get In Touch
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link 
+                href="/services" 
+                className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
+              >
+                Explore Services
+              </Link>
+            </div>
           </div>
-        </div>
+        </footer>
       </article>
-
-      {/* CTA Section */}
-      <section className="bg-black py-16 lg:py-24">
-        <div className="container mx-auto px-4 lg:px-20 text-center">
-          <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-            Ready to Start Your Project?
-          </h3>
-          <p className="text-gray-400 mb-10 max-w-2xl mx-auto text-lg">
-            Let us bring your construction vision to life with our professional expertise and dedication to excellence.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/contact-us" 
-              className="inline-flex items-center justify-center bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-offwhite transition-colors"
-            >
-              Get In Touch
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link 
-              href="/services" 
-              className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
-            >
-              Explore Services
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Share & Navigation */}
       <section className="bg-offwhite py-12">
