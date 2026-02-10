@@ -32,16 +32,25 @@ export async function POST(request) {
       );
     }
 
-    const mimeType = matches[1];
-    const base64Content = matches[2];
+    let mimeType = matches[1];
+    let base64Content = matches[2];
 
     // Convert base64 to buffer
-    const buffer = Buffer.from(base64Content, 'base64');
+    let buffer = Buffer.from(base64Content, 'base64');
+
+    // Convert SVG to PNG since Supabase Storage doesn't allow image/svg+xml
+    if (mimeType === 'image/svg+xml') {
+      const sharp = (await import('sharp')).default;
+      buffer = await sharp(buffer)
+        .png()
+        .toBuffer();
+      mimeType = 'image/png';
+    }
 
     // Generate unique filename with timestamp
     const timestamp = Date.now();
     const randomStr = Math.random().toString(36).substring(7);
-    const extension = mimeType.split('/')[1] || 'jpg';
+    const extension = mimeType === 'image/png' ? 'png' : (mimeType.split('/')[1] || 'jpg');
     const uniqueFileName = `${timestamp}-${randomStr}-${fileName.replace(/\.[^/.]+$/, '')}.${extension}`;
 
     // Upload to Supabase Storage
