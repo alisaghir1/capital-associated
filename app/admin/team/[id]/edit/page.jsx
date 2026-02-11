@@ -6,6 +6,44 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
 import RichTextEditor from '../../../../../components/admin/RichTextEditor';
 
+/**
+ * Upload a base64 image to Supabase Storage via API route
+ * Returns the public URL of the uploaded image
+ */
+const uploadImageToStorage = async (base64Data, fileName) => {
+  if (!base64Data) return null;
+  
+  // If it's already a URL (not base64), return it as-is
+  if (!base64Data.startsWith('data:')) {
+    return base64Data;
+  }
+
+  try {
+    const response = await fetch('/api/admin/upload-image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        base64Data,
+        fileName,
+        bucket: 'images'
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to upload image');
+    }
+
+    const { url } = await response.json();
+    return url;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
+};
+
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
   // Default options
@@ -297,10 +335,24 @@ const EditTeamMember = ({ params }) => {
         }))
       );
 
+      // Upload images to Supabase Storage (convert base64 to URLs)
+      console.log('Uploading images to storage...');
+      const uploadedImageUrl = compressedImageUrl ? 
+        await uploadImageToStorage(compressedImageUrl, `team-${formData.slug}`) : null;
+
+      const uploadedSections = await Promise.all(
+        compressedSections.map(async (section, index) => ({
+          ...section,
+          image: section.image ? 
+            await uploadImageToStorage(section.image, `team-${formData.slug}-section-${index}`) : 
+            section.image
+        }))
+      );
+
       const optimizedData = {
         ...formData,
-        image_url: compressedImageUrl || null,
-        sections: compressedSections,
+        image_url: uploadedImageUrl || null,
+        sections: uploadedSections,
         updated_at: new Date().toISOString()
       };
 

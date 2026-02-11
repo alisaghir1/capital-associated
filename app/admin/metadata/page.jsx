@@ -5,6 +5,44 @@ import Link from 'next/link';
 import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
 
+/**
+ * Upload a base64 image to Supabase Storage via API route
+ * Returns the public URL of the uploaded image
+ */
+const uploadImageToStorage = async (base64Data, fileName) => {
+  if (!base64Data) return null;
+  
+  // If it's already a URL (not base64), return it as-is
+  if (!base64Data.startsWith('data:')) {
+    return base64Data;
+  }
+
+  try {
+    const response = await fetch('/api/admin/upload-image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        base64Data,
+        fileName,
+        bucket: 'images'
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to upload image');
+    }
+
+    const { url } = await response.json();
+    return url;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
+};
+
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
   // Default options
@@ -203,6 +241,14 @@ const SiteMetadata = () => {
         compressedMetadata.site_logo = await autoCompressImage(compressedMetadata.site_logo, { 
           maxWidth: 300, maxHeight: 150 
         });
+      }
+
+      // Upload any base64 images to Supabase Storage
+      console.log('Uploading metadata images to storage...');
+      for (const [key, value] of Object.entries(compressedMetadata)) {
+        if (typeof value === 'string' && value.startsWith('data:image')) {
+          compressedMetadata[key] = await uploadImageToStorage(value, `metadata-${key}`);
+        }
       }
       
       // Update all metadata entries

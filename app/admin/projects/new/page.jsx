@@ -6,6 +6,44 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../lib/supabase';
 import RichTextEditor from '../../../../components/admin/RichTextEditor';
 
+/**
+ * Upload a base64 image to Supabase Storage via API route
+ * Returns the public URL of the uploaded image
+ */
+const uploadImageToStorage = async (base64Data, fileName) => {
+  if (!base64Data) return null;
+  
+  // If it's already a URL (not base64), return it as-is
+  if (!base64Data.startsWith('data:')) {
+    return base64Data;
+  }
+
+  try {
+    const response = await fetch('/api/admin/upload-image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        base64Data,
+        fileName,
+        bucket: 'images'
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to upload image');
+    }
+
+    const { url } = await response.json();
+    return url;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
+};
+
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
   // Default options
@@ -283,12 +321,25 @@ const NewProject = () => {
         }))
       );
 
+      // Upload all images to Supabase Storage (convert base64 to URLs)
+      console.log('Uploading images to storage...');
+      const uploadedHeroUrl = compressedImageUrl ? 
+        await uploadImageToStorage(compressedImageUrl, `project-hero-${formData.slug}`) : null;
+
+      const uploadedSections = await Promise.all(
+        compressedSections.map(async (section, index) => ({
+          ...section,
+          image: section.image ? 
+            await uploadImageToStorage(section.image, `project-${formData.slug}-section-${index}`) : section.image
+        }))
+      );
+
       // Prepare the optimized data
       const optimizedData = {
         ...formData,
-        hero_image_url: compressedImageUrl || null,
+        hero_image_url: uploadedHeroUrl || null,
         completion_date: formData.completion_date || null, // Convert empty string to null
-        sections: compressedSections.filter(section => section.title.trim() !== '' || section.content.trim() !== '')
+        sections: uploadedSections.filter(section => section.title.trim() !== '' || section.content.trim() !== '')
       };
 
       console.log('Creating project with optimized data...');

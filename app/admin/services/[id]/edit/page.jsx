@@ -6,6 +6,44 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '../../../../../lib/supabase';
 import RichTextEditor from '../../../../../components/admin/RichTextEditor';
 
+/**
+ * Upload a base64 image to Supabase Storage via API route
+ * Returns the public URL of the uploaded image
+ */
+const uploadImageToStorage = async (base64Data, fileName) => {
+  if (!base64Data) return null;
+  
+  // If it's already a URL (not base64), return it as-is
+  if (!base64Data.startsWith('data:')) {
+    return base64Data;
+  }
+
+  try {
+    const response = await fetch('/api/admin/upload-image', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        base64Data,
+        fileName,
+        bucket: 'images'
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to upload image');
+    }
+
+    const { url } = await response.json();
+    return url;
+  } catch (error) {
+    console.error('Error uploading image:', error);
+    throw error;
+  }
+};
+
 // Inline image compression to avoid build issues
 const autoCompressImage = async (input, options = {}) => {
   // Default options
@@ -380,8 +418,23 @@ const EditService = ({ params }) => {
         }))
       );
 
-      // Clean and format sections data (using compressed images)
-      const cleanSections = compressedSections
+      // Upload all images to Supabase Storage (convert base64 to URLs)
+      console.log('Uploading images to storage...');
+      const uploadedIconUrl = compressedIconUrl ? 
+        await uploadImageToStorage(compressedIconUrl, `service-icon-${formData.slug}`) : null;
+      const uploadedHeroUrl = compressedHeroUrl ? 
+        await uploadImageToStorage(compressedHeroUrl, `service-hero-${formData.slug}`) : null;
+
+      const uploadedSections = await Promise.all(
+        compressedSections.map(async (section, index) => ({
+          ...section,
+          image: section.image ? 
+            await uploadImageToStorage(section.image, `service-${formData.slug}-section-${index}`) : ''
+        }))
+      );
+
+      // Clean and format sections data (using uploaded image URLs)
+      const cleanSections = uploadedSections
         .filter(section => section.title.trim() !== '' || section.content.trim() !== '')
         .map(section => ({
           title: section.title || '',
@@ -400,8 +453,8 @@ const EditService = ({ params }) => {
         slug: formData.slug,
         description: formData.description,
         short_description: formData.short_description,
-        icon_url: compressedIconUrl || null,
-        hero_image_url: compressedHeroUrl || null,
+        icon_url: uploadedIconUrl || null,
+        hero_image_url: uploadedHeroUrl || null,
         sections: cleanSections,
         features: cleanFeatures,
         published: formData.published,
