@@ -229,7 +229,7 @@ export default function BlogDetailClient({ blog, slug }) {
             <div className="flex items-center gap-4">
               <span className="text-gray-600 font-medium">Share:</span>
               <a 
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(stripHtml(blog.title))}&url=${encodeURIComponent(`https://capitalassociated.com/blog/${slug}`)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(stripHtml(blog.title))}&url=${encodeURIComponent(`https://www.capitalassociated.com/blog/${slug}`)}`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -240,7 +240,7 @@ export default function BlogDetailClient({ blog, slug }) {
                 </svg>
               </a>
               <a 
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://capitalassociated.com/blog/${slug}`)}`}
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.capitalassociated.com/blog/${slug}`)}`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -251,7 +251,7 @@ export default function BlogDetailClient({ blog, slug }) {
                 </svg>
               </a>
               <a 
-                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://capitalassociated.com/blog/${slug}`)}`}
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://www.capitalassociated.com/blog/${slug}`)}`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-black text-white rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"

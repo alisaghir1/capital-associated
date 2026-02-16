@@ -1,4 +1,4 @@
-import AboutLayout from "./AboutLayout";
+﻿import AboutLayout from "./AboutLayout";
 
 export const metadata = {
   title:
@@ -16,7 +16,7 @@ export const metadata = {
     "Project Management Dubai",
   ],
   alternates: {
-    canonical: "https://capitalassociated.com/about-us",
+    canonical: "https://www.capitalassociated.com/about-us",
   },
   robots: {
     index: true,
@@ -27,7 +27,7 @@ export const metadata = {
       "About Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Capital Associated Building Contracting LLC is a leading construction company in Dubai, UAE, dedicated to building your vision and crafting tomorrow.",
-    url: "https://capitalassociated.com/about-us",
+    url: "https://www.capitalassociated.com/about-us",
     type: "website",
     images: [
       {

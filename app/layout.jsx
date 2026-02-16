@@ -1,7 +1,7 @@
-import "./globals.css";
+﻿import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://capitalassociated.com"),
+  metadataBase: new URL("https://www.capitalassociated.com"),
   title: {
     default: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     template: "%s",
@@ -19,7 +19,7 @@ export const metadata = {
     title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions.",
-    url: "https://capitalassociated.com",
+    url: "https://www.capitalassociated.com",
     siteName: "Capital Associated Building Contracting",
     type: "website",
     images: [
@@ -43,7 +43,7 @@ export const metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://capitalassociated.com",
+    canonical: "https://www.capitalassociated.com",
   },
 };
 

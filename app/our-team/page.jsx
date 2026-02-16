@@ -1,4 +1,4 @@
-import OurTeamLayout from "./OurTeamLayout";
+﻿import OurTeamLayout from "./OurTeamLayout";
 
 export const metadata = {
   title:
@@ -13,7 +13,7 @@ export const metadata = {
     "Construction Company Dubai",
   ],
   alternates: {
-    canonical: "https://capitalassociated.com/our-team",
+    canonical: "https://www.capitalassociated.com/our-team",
   },
   robots: {
     index: true,
@@ -24,7 +24,7 @@ export const metadata = {
       "Our Team - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Meet the team behind Capital Associated Building Contracting - dedicated professionals in Dubai.",
-    url: "https://capitalassociated.com/our-team",
+    url: "https://www.capitalassociated.com/our-team",
     type: "website",
     images: [
       {

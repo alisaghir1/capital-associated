@@ -1,9 +1,11 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /api
 
 # Host
-Host: https://www.capitalassociated.com/
+Host: https://www.capitalassociated.com
 
 # Sitemaps
 Sitemap: https://www.capitalassociated.com/sitemap.xml

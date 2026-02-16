@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
 
   const title = `${stripHtmlTags(data.title)} | Capital Associated Projects`
   const description = stripHtmlTags(data.short_description) || stripHtmlTags(data.description)?.substring(0, 160) || ''
-  const url = `https://capitalassociated.com/our-work/${data.slug}`
+  const url = `https://www.capitalassociated.com/our-work/${data.slug}`
   const image = data.hero_image_url || data.cover_image || '/default-og-image.jpg'
 
   return {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }) {
 function generateProjectJsonLd(project, slug) {
   const title = stripHtmlTags(project.title)
   const description = project.short_description || stripHtmlTags(project.description)?.substring(0, 160) || ''
-  const image = project.hero_image_url || project.cover_image || 'https://capitalassociated.com/default-og-image.jpg'
+  const image = project.hero_image_url || project.cover_image || 'https://www.capitalassociated.com/default-og-image.jpg'
   
   return {
     '@context': 'https://schema.org',
@@ -66,7 +66,7 @@ function generateProjectJsonLd(project, slug) {
     name: title,
     description: description,
     image: image,
-    url: `https://capitalassociated.com/our-work/${slug}`,
+    url: `https://www.capitalassociated.com/our-work/${slug}`,
     ...(project.completion_date && { dateCreated: project.completion_date }),
     ...(project.location && {
       locationCreated: {
@@ -83,8 +83,8 @@ function generateProjectJsonLd(project, slug) {
     creator: {
       '@type': 'Organization',
       name: 'Capital Associated Building Contracting',
-      url: 'https://capitalassociated.com',
-      logo: 'https://capitalassociated.com/logoLight.svg',
+      url: 'https://www.capitalassociated.com',
+      logo: 'https://www.capitalassociated.com/logoLight.svg',
     },
     ...(project.project_type && { genre: project.project_type }),
   }

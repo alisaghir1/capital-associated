@@ -1,4 +1,4 @@
-import HomeClient from "./HomeClient";
+﻿import HomeClient from "./HomeClient";
 
 export const metadata = {
   title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
@@ -14,7 +14,7 @@ export const metadata = {
     "Commercial Construction UAE",
   ],
   alternates: {
-    canonical: "https://capitalassociated.com",
+    canonical: "https://www.capitalassociated.com",
   },
   robots: {
     index: true,
@@ -24,7 +24,7 @@ export const metadata = {
     title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions.",
-    url: "https://capitalassociated.com",
+    url: "https://www.capitalassociated.com",
     type: "website",
     images: [
       {

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
   
   const title = member.meta_title || `${stripHtmlTags(member.name)} - ${member.position} | Capital Associated Contracting`
   const description = member.meta_description || `${stripHtmlTags(member.name)} is ${member.position} at Capital Associated Contracting. ${stripHtmlTags(member.bio)?.substring(0, 100) || 'Learn more about our team member.'}`
-  const url = `https://capitalassociated.com/our-team/${slug}`
+  const url = `https://www.capitalassociated.com/our-team/${slug}`
   const image = member.image_url || '/default-og-image.jpg'
   
   return {
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }) {
 function generatePersonJsonLd(member, slug) {
   const name = stripHtmlTags(member.name)
   const description = stripHtmlTags(member.bio)?.substring(0, 160) || ''
-  const image = member.image_url || 'https://capitalassociated.com/default-og-image.jpg'
+  const image = member.image_url || 'https://www.capitalassociated.com/default-og-image.jpg'
   
   return {
     '@context': 'https://schema.org',
@@ -67,11 +67,11 @@ function generatePersonJsonLd(member, slug) {
     jobTitle: member.position,
     description: description,
     image: image,
-    url: `https://capitalassociated.com/our-team/${slug}`,
+    url: `https://www.capitalassociated.com/our-team/${slug}`,
     worksFor: {
       '@type': 'Organization',
       name: 'Capital Associated Building Contracting',
-      url: 'https://capitalassociated.com',
+      url: 'https://www.capitalassociated.com',
     },
   }
 }

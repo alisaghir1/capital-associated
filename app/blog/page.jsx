@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import NavbarMobile from '../components/NavbarMobile';
@@ -42,7 +42,7 @@ export const metadata = {
   title: 'Blog | Capital Associated Building Contracting',
   description: 'Read our latest insights, expert tips, and industry updates on construction, interior fit-out, and building projects in Dubai and UAE.',
   alternates: {
-    canonical: 'https://capitalassociated.com/blog',
+    canonical: 'https://www.capitalassociated.com/blog',
   },
   robots: {
     index: true,
@@ -51,7 +51,7 @@ export const metadata = {
   openGraph: {
     title: 'Blog | Capital Associated Building Contracting',
     description: 'Read our latest insights on construction, fit-out, and building projects in Dubai.',
-    url: 'https://capitalassociated.com/blog',
+    url: 'https://www.capitalassociated.com/blog',
     type: 'website',
   },
   twitter: {

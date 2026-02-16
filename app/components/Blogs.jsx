@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { fadeIn } from "@/variants";
@@ -10,6 +9,7 @@ import { stripHtmlTags } from "../utils/richText";
 const Blogs = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const blogsPerPage = 6;
 
   useEffect(() => {
@@ -29,6 +29,8 @@ const Blogs = () => {
       } catch (error) {
         console.warn('Blogs fetch error:', error.message);
         setBlogs([]); // Set empty array if timeout
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -320,7 +322,8 @@ const Blogs = () => {
   ];
 
   // Calculate pagination - use dynamic blogs if available, otherwise fallback to static
-  const displayBlogs = blogs.length > 0 ? blogs : blogPosts;
+  // Only use hardcoded fallback after loading completes and no blogs were fetched
+  const displayBlogs = isLoading ? [] : (blogs.length > 0 ? blogs : blogPosts);
   const totalPages = Math.ceil(displayBlogs.length / blogsPerPage);
   const startIndex = (currentPage - 1) * blogsPerPage;
   const endIndex = startIndex + blogsPerPage;

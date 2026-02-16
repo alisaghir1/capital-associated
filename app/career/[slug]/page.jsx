@@ -24,7 +24,7 @@ export async function generateMetadata({ params }) {
   
   const title = career.meta_title || `${stripHtmlTags(career.job_title)} | Careers at Capital Associated Contracting`
   const description = career.meta_description || stripHtmlTags(career.job_description)?.substring(0, 160) || `Apply for ${stripHtmlTags(career.job_title)} at Capital Associated Contracting.`
-  const url = `https://capitalassociated.com/career/${slug}`
+  const url = `https://www.capitalassociated.com/career/${slug}`
   
   return {
     title,
@@ -74,8 +74,8 @@ function generateJobPostingJsonLd(career, slug) {
     hiringOrganization: {
       '@type': 'Organization',
       name: 'Capital Associated Building Contracting',
-      sameAs: 'https://capitalassociated.com',
-      logo: 'https://capitalassociated.com/logoLight.svg',
+      sameAs: 'https://www.capitalassociated.com',
+      logo: 'https://www.capitalassociated.com/logoLight.svg',
     },
     jobLocation: {
       '@type': 'Place',

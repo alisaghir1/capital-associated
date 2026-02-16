@@ -48,7 +48,7 @@ export async function generateMetadata({ params }) {
 
   const title = service.meta_title || `${stripHtml(service.title)} | Capital Associated Services`
   const description = service.meta_description || service.short_description || stripHtml(service.description)?.substring(0, 160) || ''
-  const url = `https://capitalassociated.com/services/${slug}`
+  const url = `https://www.capitalassociated.com/services/${slug}`
   const image = service.hero_image_url || service.cover_image || '/default-og-image.jpg'
 
   return {
@@ -82,7 +82,7 @@ export async function generateMetadata({ params }) {
 function generateServiceJsonLd(service, slug) {
   const title = stripHtml(service.title)
   const description = service.short_description || stripHtml(service.description)?.substring(0, 160) || ''
-  const image = service.hero_image_url || service.cover_image || 'https://capitalassociated.com/default-og-image.jpg'
+  const image = service.hero_image_url || service.cover_image || 'https://www.capitalassociated.com/default-og-image.jpg'
   
   return {
     '@context': 'https://schema.org',
@@ -90,12 +90,12 @@ function generateServiceJsonLd(service, slug) {
     name: title,
     description: description,
     image: image,
-    url: `https://capitalassociated.com/services/${slug}`,
+    url: `https://www.capitalassociated.com/services/${slug}`,
     provider: {
       '@type': 'Organization',
       name: 'Capital Associated Building Contracting',
-      url: 'https://capitalassociated.com',
-      logo: 'https://capitalassociated.com/logoLight.svg',
+      url: 'https://www.capitalassociated.com',
+      logo: 'https://www.capitalassociated.com/logoLight.svg',
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Dubai',

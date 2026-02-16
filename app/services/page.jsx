@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../components/Navbar';
 import NavbarMobile from '../components/NavbarMobile';
@@ -50,7 +50,7 @@ export const metadata = {
   title: 'Our Services | Capital Associated Building Contracting',
   description: 'Explore our comprehensive construction services including general contracting, design-build, interior fit-out, renovation, and more in Dubai and UAE.',
   alternates: {
-    canonical: 'https://capitalassociated.com/services',
+    canonical: 'https://www.capitalassociated.com/services',
   },
   robots: {
     index: true,
@@ -59,7 +59,7 @@ export const metadata = {
   openGraph: {
     title: 'Our Services | Capital Associated Building Contracting',
     description: 'Comprehensive construction and fit-out services in Dubai and UAE.',
-    url: 'https://capitalassociated.com/services',
+    url: 'https://www.capitalassociated.com/services',
     type: 'website',
   },
   twitter: {

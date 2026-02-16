@@ -48,7 +48,7 @@ export async function generateMetadata({ params }) {
 
   const title = `${stripHtml(blog.title)} | Capital Associated Blog`
   const description = stripHtml(blog.excerpt) || stripHtml(blog.content)?.substring(0, 160) || ''
-  const url = `https://capitalassociated.com/blog/${slug}`
+  const url = `https://www.capitalassociated.com/blog/${slug}`
   const image = blog.hero_image_url || '/default-og-image.jpg'
 
   return {
@@ -84,7 +84,7 @@ export async function generateMetadata({ params }) {
 function generateArticleJsonLd(blog, slug) {
   const title = stripHtml(blog.title)
   const description = stripHtml(blog.excerpt) || stripHtml(blog.content)?.substring(0, 160) || ''
-  const image = blog.hero_image_url || 'https://capitalassociated.com/default-og-image.jpg'
+  const image = blog.hero_image_url || 'https://www.capitalassociated.com/default-og-image.jpg'
   
   return {
     '@context': 'https://schema.org',
@@ -103,12 +103,12 @@ function generateArticleJsonLd(blog, slug) {
       name: 'Capital Associated Building Contracting',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://capitalassociated.com/logoLight.svg',
+        url: 'https://www.capitalassociated.com/logoLight.svg',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://capitalassociated.com/blog/${slug}`,
+      '@id': `https://www.capitalassociated.com/blog/${slug}`,
     },
   }
 }

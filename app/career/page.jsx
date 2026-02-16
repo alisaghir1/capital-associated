@@ -1,4 +1,4 @@
-import CareerLayout from "./CareerLayout";
+﻿import CareerLayout from "./CareerLayout";
 
 export const metadata = {
   title:
@@ -13,7 +13,7 @@ export const metadata = {
     "Construction Company Dubai",
   ],
   alternates: {
-    canonical: "https://capitalassociated.com/career",
+    canonical: "https://www.capitalassociated.com/career",
   },
   robots: {
     index: true,
@@ -24,7 +24,7 @@ export const metadata = {
       "Career - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Join Capital Associated Building Contracting and explore exciting career opportunities in Dubai.",
-    url: "https://capitalassociated.com/career",
+    url: "https://www.capitalassociated.com/career",
     type: "website",
     images: [
       {

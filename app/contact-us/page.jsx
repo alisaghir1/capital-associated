@@ -1,4 +1,4 @@
-import ContactUsLayout from "./ContactUsLayout";
+﻿import ContactUsLayout from "./ContactUsLayout";
 
 export const metadata = {
   title:
@@ -12,7 +12,7 @@ export const metadata = {
     "Fit-Out Company Dubai",
   ],
   alternates: {
-    canonical: "https://capitalassociated.com/contact-us",
+    canonical: "https://www.capitalassociated.com/contact-us",
   },
   robots: {
     index: true,
@@ -23,7 +23,7 @@ export const metadata = {
       "Contact Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
     description:
       "Get in touch with Capital Associated Building Contracting. Contact us for construction, fit-out, and building project inquiries in Dubai and the UAE.",
-    url: "https://capitalassociated.com/contact-us",
+    url: "https://www.capitalassociated.com/contact-us",
     type: "website",
     images: [
       {
