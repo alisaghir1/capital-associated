@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Script from 'next/script'
 import { getTeamMemberBySlug } from '../../../lib/supabase-ssr'
 import TeamMemberDetailClient from './TeamMemberDetailClient'
 
@@ -48,6 +47,10 @@ export async function generateMetadata({ params }) {
       description,
       images: [image],
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   }
 }
 
@@ -87,11 +90,9 @@ export default async function TeamMemberPage({ params }) {
   
   return (
     <>
-      <Script
-        id="person-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        strategy="beforeInteractive"
       />
       <TeamMemberDetailClient member={member} />
     </>

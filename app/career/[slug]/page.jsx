@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Script from 'next/script'
 import { getCareerBySlug } from '../../../lib/supabase-ssr'
 import CareerDetailClient from './CareerDetailClient'
 
@@ -46,6 +45,10 @@ export async function generateMetadata({ params }) {
       title,
       description,
       images: ['/default-og-image.jpg'],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   }
 }
@@ -115,11 +118,9 @@ export default async function CareerDetailPage({ params }) {
   
   return (
     <>
-      <Script
-        id="job-posting-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        strategy="beforeInteractive"
       />
       <CareerDetailClient career={career} />
     </>

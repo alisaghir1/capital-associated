@@ -49,11 +49,23 @@ function stripHtml(html) {
 export const metadata = {
   title: 'Our Services | Capital Associated Building Contracting',
   description: 'Explore our comprehensive construction services including general contracting, design-build, interior fit-out, renovation, and more in Dubai and UAE.',
+  alternates: {
+    canonical: 'https://capitalassociated.com/services',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: 'Our Services | Capital Associated Building Contracting',
     description: 'Comprehensive construction and fit-out services in Dubai and UAE.',
     url: 'https://capitalassociated.com/services',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Services | Capital Associated Building Contracting',
+    description: 'Comprehensive construction and fit-out services in Dubai and UAE.',
   },
 };
 

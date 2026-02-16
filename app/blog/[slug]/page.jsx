@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Script from 'next/script'
 import BlogDetailClient from './BlogDetailClient'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -74,6 +73,10 @@ export async function generateMetadata({ params }) {
       description,
       images: [image],
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   }
 }
 
@@ -124,11 +127,9 @@ export default async function BlogDetailPage({ params }) {
   
   return (
     <>
-      <Script
-        id="article-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        strategy="beforeInteractive"
       />
       <BlogDetailClient blog={blog} slug={slug} />
     </>

@@ -41,11 +41,23 @@ function stripHtml(html) {
 export const metadata = {
   title: 'Blog | Capital Associated Building Contracting',
   description: 'Read our latest insights, expert tips, and industry updates on construction, interior fit-out, and building projects in Dubai and UAE.',
+  alternates: {
+    canonical: 'https://capitalassociated.com/blog',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     title: 'Blog | Capital Associated Building Contracting',
     description: 'Read our latest insights on construction, fit-out, and building projects in Dubai.',
     url: 'https://capitalassociated.com/blog',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Capital Associated Building Contracting',
+    description: 'Read our latest insights on construction, fit-out, and building projects in Dubai.',
   },
 };
 

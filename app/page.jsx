@@ -1,63 +1,49 @@
-"use client";
-import Image from "next/image";
-import About from "./components/About";
-import OurProjects from "./components/OurProjects";
-import OurServices from "./components/OurServices";
-import OurTeam from "./components/OurTeam";
-import Blogs from "./components/Blogs";
-import Navbar from "./components/Navbar";
-import NavbarMobile from "./components/NavbarMobile";
-import Consultation from "./components/Consultation";
-import Footer from "./components/Footer";
-import { fadeIn } from "@/variants";
-import { motion } from "framer-motion";
+import HomeClient from "./HomeClient";
+
+export const metadata = {
+  title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+  description:
+    "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions across residential & commercial sectors.",
+  keywords: [
+    "Construction Company Dubai",
+    "Building Contracting UAE",
+    "Interior Fit-Out Dubai",
+    "Design Build UAE",
+    "General Contractor Dubai",
+    "Residential Construction Dubai",
+    "Commercial Construction UAE",
+  ],
+  alternates: {
+    canonical: "https://capitalassociated.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    description:
+      "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions.",
+    url: "https://capitalassociated.com",
+    type: "website",
+    images: [
+      {
+        url: "/main.jpg",
+        width: 1200,
+        height: 600,
+        alt: "Capital Associated Building Contracting",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    description:
+      "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions.",
+    images: ["/main.jpg"],
+  },
+};
 
 export default function Home() {
-  return (
-    <>
-      <Navbar />
-      <NavbarMobile />
-      <div className="relative w-full h-screen overflow-x-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/main.jpg"
-            alt="Background Image"
-            layout="fill" // This will make the image cover the entire screen
-            objectFit="cover" // Ensures the image maintains its aspect ratio while filling the screen
-            priority
-          />
-        </div>
-
-        {/* Content on top of the image */}
-        <div className="relative z-10  flex flex-col justify-center items-center w-full h-full">
-          <motion.h1
-            variants={fadeIn("down", 0.8)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once:true, amount: 0.4 }}
-            className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold"
-          >
-            From Vision to Skyline
-          </motion.h1>
-          <motion.p
-            variants={fadeIn("up", 0.8)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once:true, amount: 0.4 }}
-            className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5"
-          >
-            Leading Developers in Dubai
-          </motion.p>
-        </div>
-      </div>
-      <About />
-      <OurProjects />
-      <OurServices />
-      <OurTeam />
-      <Blogs />
-      <Consultation />
-      <Footer />
-    </>
-  );
+  return <HomeClient />;
 }

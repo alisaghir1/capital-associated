@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Script from 'next/script'
 import ServiceDetailClient from './ServiceDetailClient'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -72,6 +71,10 @@ export async function generateMetadata({ params }) {
       description,
       images: [image],
     },
+    robots: {
+      index: true,
+      follow: true,
+    },
   }
 }
 
@@ -121,11 +124,9 @@ export default async function ServiceDetailPage({ params }) {
   
   return (
     <>
-      <Script
-        id="service-jsonld"
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        strategy="beforeInteractive"
       />
       <ServiceDetailClient service={service} />
     </>

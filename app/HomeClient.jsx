@@ -1,0 +1,63 @@
+"use client";
+import Image from "next/image";
+import About from "./components/About";
+import OurProjects from "./components/OurProjects";
+import OurServices from "./components/OurServices";
+import OurTeam from "./components/OurTeam";
+import Blogs from "./components/Blogs";
+import Navbar from "./components/Navbar";
+import NavbarMobile from "./components/NavbarMobile";
+import Consultation from "./components/Consultation";
+import Footer from "./components/Footer";
+import { fadeIn } from "@/variants";
+import { motion } from "framer-motion";
+
+export default function HomeClient() {
+  return (
+    <>
+      <Navbar />
+      <NavbarMobile />
+      <div className="relative w-full h-screen overflow-x-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/main.jpg"
+            alt="Capital Associated Building Contracting - Leading Construction Company in Dubai"
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
+
+        {/* Content on top of the image */}
+        <div className="relative z-10 flex flex-col justify-center items-center w-full h-full">
+          <motion.h1
+            variants={fadeIn("down", 0.8)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.4 }}
+            className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold"
+          >
+            From Vision to Skyline
+          </motion.h1>
+          <motion.p
+            variants={fadeIn("up", 0.8)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: true, amount: 0.4 }}
+            className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5"
+          >
+            Leading Developers in Dubai
+          </motion.p>
+        </div>
+      </div>
+      <About />
+      <OurProjects />
+      <OurServices />
+      <OurTeam />
+      <Blogs />
+      <Consultation />
+      <Footer />
+    </>
+  );
+}
