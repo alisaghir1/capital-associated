@@ -120,7 +120,8 @@ export default async function BlogListPage({ searchParams }) {
               alt="Blog Background"
               fill
               style={{ objectFit: 'cover' }}
-              priority
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />

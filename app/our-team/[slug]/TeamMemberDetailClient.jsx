@@ -28,7 +28,8 @@ export default function TeamMemberDetailClient({ member }) {
             alt="Background Image"
             fill
             style={{ objectFit: 'cover' }}
-            priority
+            loading="eager"
+            fetchPriority="high"
           />
         </div>
         <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">

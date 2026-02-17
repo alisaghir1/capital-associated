@@ -1,16 +1,18 @@
 "use client";
-import Image from "next/image";
-import About from "./components/About";
-import OurProjects from "./components/OurProjects";
-import OurServices from "./components/OurServices";
-import OurTeam from "./components/OurTeam";
-import Blogs from "./components/Blogs";
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import NavbarMobile from "./components/NavbarMobile";
-import Consultation from "./components/Consultation";
-import Footer from "./components/Footer";
 import { fadeIn } from "@/variants";
 import { motion } from "framer-motion";
+
+// Lazy load below-fold components with ssr:false — eliminates preload hints from head
+const About = dynamic(() => import("./components/About"), { ssr: false });
+const OurProjects = dynamic(() => import("./components/OurProjects"), { ssr: false });
+const OurServices = dynamic(() => import("./components/OurServices"), { ssr: false });
+const OurTeam = dynamic(() => import("./components/OurTeam"), { ssr: false });
+const Blogs = dynamic(() => import("./components/Blogs"), { ssr: false });
+const Consultation = dynamic(() => import("./components/Consultation"), { ssr: false });
+const Footer = dynamic(() => import("./components/Footer"), { ssr: false });
 
 export default function HomeClient() {
   return (
@@ -20,12 +22,11 @@ export default function HomeClient() {
       <div className="relative w-full h-screen overflow-x-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <Image
+          <img
             src="/main.jpg"
             alt="Capital Associated Building Contracting - Leading Construction Company in Dubai"
-            fill
-            style={{ objectFit: "cover" }}
-            priority
+            className="w-full h-full object-cover"
+            loading="eager"
           />
         </div>
 

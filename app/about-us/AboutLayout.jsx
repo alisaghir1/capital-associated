@@ -14,7 +14,8 @@ const AboutLayout = () => {
               alt="Background Image"
               layout="fill"
               objectFit="cover"
-              priority
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
 

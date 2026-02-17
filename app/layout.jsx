@@ -1,4 +1,5 @@
 ﻿import "./globals.css";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL("https://www.capitalassociated.com"),
@@ -50,24 +51,26 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-9QGK0BM0P8"
-        />
-        <script
+      <body className="antialiased">
+        {children}
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-9QGK0BM0P8');
+              (function(){
+                var s=document.createElement('script');
+                s.async=true;
+                s.src='https://www.googletagmanager.com/gtag/js?id=G-9QGK0BM0P8';
+                document.head.appendChild(s);
+                window.dataLayer=window.dataLayer||[];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js',new Date());
+                gtag('config','G-9QGK0BM0P8');
+              })();
             `,
           }}
         />
-      </head>
-      <body className="antialiased">
-        {children}
       </body>
     </html>
   );

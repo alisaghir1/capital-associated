@@ -35,7 +35,8 @@ const OurTeamLayout = () => {
             alt="Background Image"
             layout="fill"
             objectFit="cover"
-            priority
+            loading="eager"
+            fetchPriority="high"
           />
         </div>
         {/* Content on top of the image */}

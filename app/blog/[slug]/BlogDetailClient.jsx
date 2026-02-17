@@ -54,7 +54,8 @@ export default function BlogDetailClient({ blog, slug }) {
               alt={heroImageAlt}
               fill
               style={{ objectFit: 'cover' }}
-              priority
+              loading="eager"
+              fetchPriority="high"
               itemProp="image"
             />
           </figure>

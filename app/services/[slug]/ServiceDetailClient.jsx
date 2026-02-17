@@ -36,7 +36,8 @@ export default function ServiceDetailClient({ service }) {
             alt={service.hero_image_alt || stripHtml(service.title)}
             fill
             style={{ objectFit: 'cover' }}
-            priority
+            loading="eager"
+            fetchPriority="high"
             className="brightness-50"
           />
         </div>
