@@ -1,9 +1,5 @@
 ﻿import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '../components/Navbar';
-import NavbarMobile from '../components/NavbarMobile';
-import Footer from '../components/Footer';
-import Consultation from '../components/Consultation';
 
 // Force SSR
 export const dynamic = 'force-dynamic';
@@ -107,10 +103,6 @@ export default async function BlogListPage({ searchParams }) {
   };
 
   return (
-    <>
-      <Navbar />
-      <NavbarMobile />
-
       <main className="min-h-screen">
         {/* Hero Section */}
         <div className="relative w-full h-[70vh] min-h-[500px]">
@@ -302,9 +294,5 @@ export default async function BlogListPage({ searchParams }) {
           </div>
         </section>
       </main>
-
-      <Consultation />
-      <Footer />
-    </>
   );
 }
