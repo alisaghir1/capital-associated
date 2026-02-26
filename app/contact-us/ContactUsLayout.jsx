@@ -15,6 +15,7 @@ const ContacUsLayout = () => {
   const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -29,8 +30,8 @@ const ContacUsLayout = () => {
 
     try {
       await emailjs.send(
-        "service_9dw8n2b", // Replace with your EmailJS service ID
-        "template_qi1yiur", // Replace with your EmailJS template ID
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         {
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -38,7 +39,7 @@ const ContacUsLayout = () => {
           phone: formData.phone,
           message: formData.message,
         },
-        "bz-racFIdw40qpvrn" // Replace with your EmailJS user ID
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
       setFormData({
@@ -49,8 +50,7 @@ const ContacUsLayout = () => {
         message: '',
       });
 
-      setAlertMessage("Your message has been sent successfully!");
-      setShowAlert(true);
+      setSubmitted(true);
     } catch (error) {
       setAlertMessage("There was an error sending your message. Please try again.");
       setShowAlert(true);
@@ -58,6 +58,48 @@ const ContacUsLayout = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Thank You screen after successful submission
+  if (submitted) {
+    return (
+      <div className="px-6 pb-12 pt-24 sm:pb-24 sm:pt-40 lg:px-8">
+        <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-20">
+          {/* Checkmark icon */}
+          <div className="w-20 h-20 rounded-full bg-orange flex items-center justify-center mb-8">
+            <svg
+              className="w-10 h-10 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-orange">
+            Thank You!
+          </h1>
+          <p className="text-lg text-black mt-6">
+            Your message has been sent successfully. Our team will get back to you shortly.
+          </p>
+          <p className="text-md text-gray-500 mt-3">
+            We typically respond within 24–48 hours.
+          </p>
+          <button
+            onClick={() => setSubmitted(false)}
+            className="mt-10 rounded-md bg-black px-8 py-3 text-sm font-semibold text-white border border-black hover:bg-white hover:text-black transition-all duration-200 ease-in-out"
+          >
+            Send Another Message
+          </button>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -146,8 +188,14 @@ const ContacUsLayout = () => {
         </div>
       </form>
       {showAlert && (
-        <div className='mt-6 p-4 text-white text-center'>
+        <div className='mt-6 mx-auto max-w-xl p-4 rounded-md bg-red-100 text-red-700 text-center font-medium'>
           {alertMessage}
+          <button
+            onClick={() => setShowAlert(false)}
+            className="ml-4 text-red-500 hover:text-red-800 font-bold"
+          >
+            ✕
+          </button>
         </div>
       )}
     </div>
