@@ -32,11 +32,25 @@ const uploadImageToStorage = async (base64Data, fileName) => {
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to upload image');
+      let errorMessage = 'Failed to upload image';
+      try {
+        const error = await response.json();
+        errorMessage = error.error || errorMessage;
+      } catch {
+        const text = await response.text();
+        errorMessage = text || `Upload failed with status ${response.status}`;
+      }
+      throw new Error(errorMessage);
     }
 
-    const { url } = await response.json();
+    let result;
+    try {
+      result = await response.json();
+    } catch {
+      const text = await response.text();
+      throw new Error(`Server returned invalid JSON: ${text.substring(0, 100)}`);
+    }
+    const { url } = result;
     return url;
   } catch (error) {
     console.error('Error uploading image:', error);
@@ -60,10 +74,11 @@ const autoCompressImage = async (input, options = {}) => {
     return null;
   }
 
-  // If input is already a data URL string, return it as is (no compression needed for data URLs)
-  if (typeof input === 'string' && input.startsWith('data:')) {
-    console.log('Input is already a data URL, returning as is');
-    return input;
+  // If input is already a URL string (regular or data URL), return it as-is — no compression needed
+  if (typeof input === 'string') {
+    if (input.startsWith('data:') || input.startsWith('http://') || input.startsWith('https://')) {
+      return input;
+    }
   }
 
   // Validate that input is a File object

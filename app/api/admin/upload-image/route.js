@@ -1,6 +1,18 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '../../../../lib/supabase-admin';
 
+// Increase the body size limit to 50MB to handle large base64 images
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb',
+    },
+  },
+};
+
+// For App Router: set max duration and body size
+export const maxDuration = 60;
+
 /**
  * API route to upload base64 images to Supabase Storage
  * This runs on the server and bypasses RLS using service role key
