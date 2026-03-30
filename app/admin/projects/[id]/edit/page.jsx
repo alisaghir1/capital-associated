@@ -194,6 +194,19 @@ const EditProject = ({ params }) => {
         if (error) throw error;
 
         if (data) {
+          // Parse sections - handle both JSON string and already-parsed array
+          let parsedSections = data.sections;
+          if (typeof parsedSections === 'string') {
+            try {
+              parsedSections = JSON.parse(parsedSections);
+            } catch (e) {
+              parsedSections = null;
+            }
+          }
+          if (!Array.isArray(parsedSections) || parsedSections.length === 0) {
+            parsedSections = [{ title: '', content: '', image: '', image_alt: '' }];
+          }
+
           setFormData({
             title: data.title || '',
             slug: data.slug || '',
@@ -205,7 +218,7 @@ const EditProject = ({ params }) => {
             hero_image_url: data.hero_image_url || '',
             hero_image_alt: data.hero_image_alt || '',
             hero_video_url: data.hero_video_url || '',
-            sections: (data.sections || [{ title: '', content: '', image: '', image_alt: '' }]).map(section => ({
+            sections: parsedSections.map(section => ({
               title: section.title || '',
               content: section.content || '',
               image: section.image || '',
