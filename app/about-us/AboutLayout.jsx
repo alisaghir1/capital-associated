@@ -6,7 +6,7 @@ const AboutLayout = () => {
     <div className="w-full h-full mb-10">
       <div className="bg-slate-100">
         {/* Fullscreen Background Section */}
-        <div className="relative w-full h-screen">
+        <div className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px]">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -19,8 +19,9 @@ const AboutLayout = () => {
             />
           </div>
 
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
           {/* Content on top of the image */}
-          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center">
+          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-8 pt-16">
             <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
               About Us
             </h1>

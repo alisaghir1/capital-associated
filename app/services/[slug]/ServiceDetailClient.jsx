@@ -29,7 +29,7 @@ export default function ServiceDetailClient({ service }) {
   return (
     <main className="min-h-screen">
       {/* Hero Section - Full width with gradient overlay */}
-      <header className="relative w-full h-[60vh] lg:h-[70vh] min-h-[500px] overflow-hidden">
+      <header className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src={service.hero_image_url || "/main.jpg"}
@@ -57,7 +57,7 @@ export default function ServiceDetailClient({ service }) {
           </nav>
 
           {/* Title */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 max-w-4xl leading-tight">
             {stripHtml(service.title)}
           </h1>
 

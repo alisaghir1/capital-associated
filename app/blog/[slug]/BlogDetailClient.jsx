@@ -47,7 +47,7 @@ export default function BlogDetailClient({ blog, slug }) {
     <main id="main-content" className="min-h-screen">
       <article itemScope itemType="https://schema.org/BlogPosting">
         {/* Hero Section with Article Header */}
-        <header className="relative w-full h-[60vh] lg:h-[70vh] min-h-[450px]">
+        <header className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px]">
           <figure className="absolute inset-0">
             <Image
               src={heroImageUrl}
@@ -76,7 +76,7 @@ export default function BlogDetailClient({ blog, slug }) {
               </nav>
 
               {/* Title */}
-              <h1 itemProp="headline" className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 max-w-4xl leading-tight">
+              <h1 itemProp="headline" className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 max-w-4xl leading-tight">
                 {stripHtml(blog.title)}
               </h1>
 

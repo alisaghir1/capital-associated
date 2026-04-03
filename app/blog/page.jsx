@@ -105,7 +105,7 @@ export default async function BlogListPage({ searchParams }) {
   return (
       <main className="min-h-screen">
         {/* Hero Section */}
-        <div className="relative w-full h-[70vh] min-h-[500px]">
+        <div className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px]">
           <div className="absolute inset-0">
             <Image
               src="/main.jpg"
@@ -117,8 +117,8 @@ export default async function BlogListPage({ searchParams }) {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
-          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-4">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-black mb-4">
+          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-4 pt-16">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
               Insights & Stories
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-black max-w-2xl">

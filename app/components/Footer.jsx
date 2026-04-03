@@ -1,13 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useSiteSettings } from "../../hooks/useSiteSettings";
 import { supabase } from "../../lib/supabase";
 import { stripHtmlTags } from "../utils/richText";
 
-const Footer = () => {
-  const { getSetting } = useSiteSettings();
+const Footer = ({ settings = {} }) => {
   const [services, setServices] = useState([]);
+
+  const getSetting = (key, fallback = "") => settings[key] || fallback;
 
   useEffect(() => {
     fetchServices();
@@ -16,19 +16,17 @@ const Footer = () => {
   const fetchServices = async () => {
     try {
       const { data, error } = await supabase
-        .from('services')
-        .select('title, slug')
-        .eq('published', true)
-        .order('created_at', { ascending: true })
-        .limit(9); // Limit to 9 services to match the original layout
+        .from("services")
+        .select("title, slug")
+        .eq("published", true)
+        .order("created_at", { ascending: true })
+        .limit(9);
 
-      if (error) {
-        console.error('Error fetching services for footer:', error);
-      } else {
-        setServices(data || []);
+      if (!error && data) {
+        setServices(data);
       }
     } catch (error) {
-      console.error('Error fetching services:', error);
+      console.error("Error fetching services:", error);
     }
   };
 
@@ -53,11 +51,10 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Services</h3>
             <ul className="space-y-2">
               {services.length > 0 ? (
-                // Dynamic services from database
                 services.map((service) => (
                   <li key={service.slug}>
-                    <Link 
-                      href={`/services/${service.slug}`} 
+                    <Link
+                      href={`/services/${service.slug}`}
                       className="hover:text-gray-300 transition-all duration-200 ease-in-out"
                     >
                       {stripHtmlTags(service.title)}
@@ -65,7 +62,6 @@ const Footer = () => {
                   </li>
                 ))
               ) : (
-                // Fallback if no services found
                 <>
                   <li><Link href="/services/general-contracting" className="hover:text-gray-300 transition-all duration-200 ease-in-out">General Contracting</Link></li>
                   <li><Link href="/services/construction-management" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Construction Management</Link></li>
@@ -78,17 +74,17 @@ const Footer = () => {
           {/* Contact Us Section */}
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Contact Us</h3>
-            <address className="space-y-2">
-              {getSetting('contact_address') ? (
-                <div dangerouslySetInnerHTML={{ __html: getSetting('contact_address', 'Dubai. JLT. Cluster Y<br/>Office 1501').replace(/\n/g, '<br/>') }} />
+            <address className="space-y-2 not-italic">
+              {getSetting("contact_address") ? (
+                <div dangerouslySetInnerHTML={{ __html: getSetting("contact_address", "Dubai. JLT. Cluster Y<br/>Office 1501").replace(/\n/g, "<br/>") }} />
               ) : (
                 <>
                   <p>Dubai. JLT. Cluster Y</p>
                   <p>Office 1501</p>
                 </>
               )}
-              <p>Mobile: <Link href={`tel:${getSetting('contact_phone', '+971521211520')}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting('contact_phone', '+971 52 121 1520')}</Link></p>
-              <p>Email: <Link href={`mailto:${getSetting('contact_email', 'hello@capitalassociated.com')}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting('contact_email', 'hello@capitalassociated.com')}</Link></p>
+              <p>Mobile: <Link href={`tel:${getSetting("contact_phone", "+971521211520")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_phone", "+971 52 121 1520")}</Link></p>
+              <p>Email: <Link href={`mailto:${getSetting("contact_email", "hello@capitalassociated.com")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_email", "hello@capitalassociated.com")}</Link></p>
             </address>
           </div>
 
@@ -96,20 +92,20 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold mb-4 border-b-2 border-b-black pb-4 w-fit">Follow Us</h3>
             <ul className="space-y-2">
-              {getSetting('social_facebook') && (
-                <li><Link href={getSetting('social_facebook')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">Facebook</Link></li>
+              {getSetting("social_facebook") && (
+                <li><Link href={getSetting("social_facebook")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Facebook</Link></li>
               )}
-              {getSetting('social_instagram') && (
-                <li><Link href={getSetting('social_instagram')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">Instagram</Link></li>
+              {getSetting("social_instagram") && (
+                <li><Link href={getSetting("social_instagram")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">Instagram</Link></li>
               )}
-              {getSetting('social_youtube') && (
-                <li><Link href={getSetting('social_youtube')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">YouTube</Link></li>
+              {getSetting("social_youtube") && (
+                <li><Link href={getSetting("social_youtube")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">YouTube</Link></li>
               )}
-              {getSetting('social_twitter') && (
-                <li><Link href={getSetting('social_twitter')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">X</Link></li>
+              {getSetting("social_twitter") && (
+                <li><Link href={getSetting("social_twitter")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">X</Link></li>
               )}
-              {getSetting('social_linkedin') && (
-                <li><Link href={getSetting('social_linkedin')} className="hover:text-gray-300 transition-all duration-200 ease-in-out">LinkedIn</Link></li>
+              {getSetting("social_linkedin") && (
+                <li><Link href={getSetting("social_linkedin")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">LinkedIn</Link></li>
               )}
             </ul>
           </div>
@@ -118,7 +114,7 @@ const Footer = () => {
         {/* Footer Bottom */}
         <div className="text-black p-10 bg-white border-gray-700 flex justify-center items-center">
           <p className="text-sm text-center">
-            {getSetting('company_name', 'Capital Associated Building Contracting')} © 2025. All Rights Reserved
+            {getSetting("company_name", "Capital Associated Building Contracting")} &copy; {new Date().getFullYear()}. All Rights Reserved
           </p>
         </div>
       </div>

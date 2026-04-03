@@ -22,7 +22,7 @@ export default function ProjectDetailClient({ project }) {
     <main className="min-h-screen">
       {/* Hero Section */}
       <header className="relative">
-        <div className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] w-full overflow-hidden">
+        <div className="relative h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px] w-full overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image src={project.hero_image_url || "/main.jpg"} alt={project.hero_image_alt || stripHtmlTags(project.title)} fill style={{ objectFit: 'cover' }} priority />
@@ -37,7 +37,7 @@ export default function ProjectDetailClient({ project }) {
                   {project.project_type}
                 </span>
               )}
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
                 {stripHtmlTags(project.title)}
               </h1>
               {project.location && (
@@ -112,7 +112,7 @@ export default function ProjectDetailClient({ project }) {
         {(project.hero_video_url || project.hero_image_url) && (
           <div className="bg-gray-100 py-8 md:py-12">
             <div className="container mx-auto px-4 md:px-6">
-              <div className="relative w-full h-[50vh] sm:h-[60vh] lg:h-[70vh] min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] rounded-lg overflow-hidden shadow-lg">
+              <div className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px] rounded-lg overflow-hidden shadow-lg">
                 {project.hero_video_url ? (
                   <video className="w-full h-full object-cover" controls muted playsInline preload="metadata">
                     <source src={project.hero_video_url} type="video/mp4" />

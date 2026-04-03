@@ -201,60 +201,93 @@ const TeamAdmin = () => {
                   </Link>
                 </div>
               ) : (
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team Member</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Featured</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order</th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {filteredTeam.map((member) => (
-                        <tr key={member.id} className="hover:bg-gray-50">
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="flex items-center">
-                              {member.image_url && (
-                                <img className="h-10 w-10 rounded-full object-cover mr-4" src={member.image_url} alt="" />
-                              )}
-                              <div>
-                                <div className="text-sm font-medium text-gray-900">{stripHtmlTags(member.name)}</div>
-                                <div className="text-sm text-gray-500">{member.position}</div>
-                                <div className="text-xs text-gray-400">/{member.slug}</div>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                              member.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                            }`}>
-                              {member.published ? 'Published' : 'Draft'}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                              member.featured ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'
-                            }`}>
-                              {member.featured ? 'Featured' : 'Normal'}
-                            </span>
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.sort_order}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                            <Link href={`/admin/team/${member.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
-                            <button onClick={() => togglePublished(member.id, member.published)} className="text-green-600 hover:text-green-900">
-                              {member.published ? 'Unpublish' : 'Publish'}
-                            </button>
-                            <a href={`/our-team/${member.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">View</a>
-                            <button onClick={() => deleteTeamMember(member.id)} className="text-red-600 hover:text-red-900">Delete</button>
-                          </td>
+                <>
+                  {/* Mobile card view */}
+                  <div className="block lg:hidden divide-y divide-gray-200">
+                    {filteredTeam.map((member) => (
+                      <div key={member.id} className="p-4 space-y-3">
+                        <div className="flex items-center gap-3">
+                          {member.image_url && (
+                            <img className="h-10 w-10 rounded-full object-cover flex-shrink-0" src={member.image_url} alt="" />
+                          )}
+                          <div className="min-w-0">
+                            <div className="text-sm font-medium text-gray-900 truncate">{stripHtmlTags(member.name)}</div>
+                            <div className="text-xs text-gray-500">{member.position}</div>
+                            <div className="text-xs text-gray-400">/{member.slug}</div>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                          <span className={`px-2 py-0.5 font-medium rounded-full ${member.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                            {member.published ? 'Published' : 'Draft'}
+                          </span>
+                          <span className={`px-2 py-0.5 font-medium rounded-full ${member.featured ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}`}>
+                            {member.featured ? 'Featured' : 'Normal'}
+                          </span>
+                          <span>Order: {member.sort_order}</span>
+                        </div>
+                        <div className="flex flex-wrap gap-3 text-sm font-medium">
+                          <Link href={`/admin/team/${member.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
+                          <button onClick={() => togglePublished(member.id, member.published)} className="text-green-600 hover:text-green-900">
+                            {member.published ? 'Unpublish' : 'Publish'}
+                          </button>
+                          <a href={`/our-team/${member.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">View</a>
+                          <button onClick={() => deleteTeamMember(member.id)} className="text-red-600 hover:text-red-900">Delete</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Desktop table view */}
+                  <div className="hidden lg:block overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team Member</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Featured</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order</th>
+                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {filteredTeam.map((member) => (
+                          <tr key={member.id} className="hover:bg-gray-50">
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="flex items-center">
+                                {member.image_url && (
+                                  <img className="h-10 w-10 rounded-full object-cover mr-4" src={member.image_url} alt="" />
+                                )}
+                                <div>
+                                  <div className="text-sm font-medium text-gray-900">{stripHtmlTags(member.name)}</div>
+                                  <div className="text-sm text-gray-500">{member.position}</div>
+                                  <div className="text-xs text-gray-400">/{member.slug}</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={`px-2 py-1 text-xs font-medium rounded-full ${member.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                                {member.published ? 'Published' : 'Draft'}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <span className={`px-2 py-1 text-xs font-medium rounded-full ${member.featured ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}`}>
+                                {member.featured ? 'Featured' : 'Normal'}
+                              </span>
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{member.sort_order}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                              <Link href={`/admin/team/${member.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
+                              <button onClick={() => togglePublished(member.id, member.published)} className="text-green-600 hover:text-green-900">
+                                {member.published ? 'Unpublish' : 'Publish'}
+                              </button>
+                              <a href={`/our-team/${member.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-900">View</a>
+                              <button onClick={() => deleteTeamMember(member.id)} className="text-red-600 hover:text-red-900">Delete</button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
               )}
             </div>
           </div>

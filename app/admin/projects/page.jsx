@@ -189,102 +189,105 @@ const Projects = () => {
                 No projects found.
               </div>
             ) : (
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Featured</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+              <>
+                {/* Mobile card view */}
+                <div className="block lg:hidden divide-y divide-gray-200">
                   {filteredProjects.map((project) => (
-                    <tr key={project.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            {project.hero_image_url ? (
-                              <img
-                                className="h-10 w-10 rounded-lg object-cover"
-                                src={project.hero_image_url}
-                                alt={stripHtmlTags(project.title)}
-                              />
-                            ) : (
-                              <div className="h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500 text-sm font-medium">
-                                P
-                              </div>
-                            )}
-                          </div>
-                          <div className="ml-4">
-                            <div className="text-sm font-medium text-gray-900">{stripHtmlTags(project.title)}</div>
-                            <div className="text-sm text-gray-500">/{project.slug}</div>
-                          </div>
+                    <div key={project.id} className="p-4 space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex-shrink-0 h-10 w-10">
+                          {project.hero_image_url ? (
+                            <img className="h-10 w-10 rounded-lg object-cover" src={project.hero_image_url} alt={stripHtmlTags(project.title)} />
+                          ) : (
+                            <div className="h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500 text-sm font-medium">P</div>
+                          )}
                         </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {project.client_name || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {project.project_type || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {project.location || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          project.published 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-yellow-100 text-yellow-800'
-                        }`}>
+                        <div className="min-w-0">
+                          <div className="text-sm font-medium text-gray-900 truncate">{stripHtmlTags(project.title)}</div>
+                          <div className="text-xs text-gray-500">/{project.slug}</div>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                        <span className={`px-2 py-0.5 font-semibold rounded-full ${project.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                           {project.published ? 'Published' : 'Draft'}
                         </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
                         {project.featured && (
-                          <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">
-                            Featured
-                          </span>
+                          <span className="px-2 py-0.5 font-semibold rounded-full bg-blue-100 text-blue-800">Featured</span>
                         )}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                        <Link
-                          href={`/admin/projects/${project.id}/edit`}
-                          className="text-blue-600 hover:text-blue-900"
-                        >
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => togglePublished(project.id, project.published)}
-                          className={`${
-                            project.published 
-                              ? 'text-yellow-600 hover:text-yellow-900' 
-                              : 'text-green-600 hover:text-green-900'
-                          }`}
-                        >
+                        <span>{project.client_name || 'N/A'}</span>
+                        <span>{project.project_type || 'N/A'}</span>
+                        <span>{project.location || 'N/A'}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-3 text-sm font-medium">
+                        <Link href={`/admin/projects/${project.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
+                        <button onClick={() => togglePublished(project.id, project.published)} className={project.published ? 'text-yellow-600 hover:text-yellow-900' : 'text-green-600 hover:text-green-900'}>
                           {project.published ? 'Unpublish' : 'Publish'}
                         </button>
-                        <Link
-                          href={`/our-work/${project.slug}`}
-                          className="text-purple-600 hover:text-purple-900"
-                          target="_blank"
-                        >
-                          View
-                        </Link>
-                        <button
-                          onClick={() => deleteProject(project.id)}
-                          className="text-red-600 hover:text-red-900"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                        <Link href={`/our-work/${project.slug}`} className="text-purple-600 hover:text-purple-900" target="_blank">View</Link>
+                        <button onClick={() => deleteProject(project.id)} className="text-red-600 hover:text-red-900">Delete</button>
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+                {/* Desktop table view */}
+                <div className="hidden lg:block overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Featured</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {filteredProjects.map((project) => (
+                        <tr key={project.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="flex items-center">
+                              <div className="flex-shrink-0 h-10 w-10">
+                                {project.hero_image_url ? (
+                                  <img className="h-10 w-10 rounded-lg object-cover" src={project.hero_image_url} alt={stripHtmlTags(project.title)} />
+                                ) : (
+                                  <div className="h-10 w-10 rounded-lg bg-gray-200 flex items-center justify-center text-gray-500 text-sm font-medium">P</div>
+                                )}
+                              </div>
+                              <div className="ml-4">
+                                <div className="text-sm font-medium text-gray-900">{stripHtmlTags(project.title)}</div>
+                                <div className="text-sm text-gray-500">/{project.slug}</div>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{project.client_name || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{project.project_type || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{project.location || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${project.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                              {project.published ? 'Published' : 'Draft'}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {project.featured && (
+                              <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-blue-100 text-blue-800">Featured</span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                            <Link href={`/admin/projects/${project.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
+                            <button onClick={() => togglePublished(project.id, project.published)} className={project.published ? 'text-yellow-600 hover:text-yellow-900' : 'text-green-600 hover:text-green-900'}>
+                              {project.published ? 'Unpublish' : 'Publish'}
+                            </button>
+                            <Link href={`/our-work/${project.slug}`} className="text-purple-600 hover:text-purple-900" target="_blank">View</Link>
+                            <button onClick={() => deleteProject(project.id)} className="text-red-600 hover:text-red-900">Delete</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             )}
           </div>
         </main>

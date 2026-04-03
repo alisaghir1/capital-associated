@@ -21,7 +21,7 @@ export default function TeamMemberDetailClient({ member }) {
   return (
     <main className="min-h-screen border-b border-b-black pb-20">
       {/* Hero Section */}
-      <header className="relative w-full h-[30rem]">
+      <header className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px]">
         <div className="absolute inset-0">
           <Image
             src="/main.jpg"

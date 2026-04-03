@@ -183,83 +183,81 @@ const Careers = () => {
                 No job postings found.
               </div>
             ) : (
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job Title</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posted</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+              <>
+                {/* Mobile card view */}
+                <div className="block lg:hidden divide-y divide-gray-200">
                   {filteredCareers.map((career) => (
-                    <tr key={career.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div>
-                          <div className="text-sm font-medium text-gray-900">{stripHtmlTags(career.job_title)}</div>
-                          <div className="text-sm text-gray-500">/{career.slug}</div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {career.department || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {career.location || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {career.employment_type || 'N/A'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(career.created_at).toLocaleDateString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                          career.published 
-                            ? 'bg-green-100 text-green-800' 
-                            : 'bg-yellow-100 text-yellow-800'
-                        }`}>
+                    <div key={career.id} className="p-4 space-y-3">
+                      <div className="min-w-0">
+                        <div className="text-sm font-medium text-gray-900 truncate">{stripHtmlTags(career.job_title)}</div>
+                        <div className="text-xs text-gray-500">/{career.slug}</div>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
+                        <span className={`px-2 py-0.5 font-semibold rounded-full ${career.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
                           {career.published ? 'Published' : 'Draft'}
                         </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
-                        <Link
-                          href={`/admin/careers/${career.id}/edit`}
-                          className="text-blue-600 hover:text-blue-900"
-                        >
-                          Edit
-                        </Link>
-                        <button
-                          onClick={() => togglePublished(career.id, career.published)}
-                          className={`${
-                            career.published 
-                              ? 'text-yellow-600 hover:text-yellow-900' 
-                              : 'text-green-600 hover:text-green-900'
-                          }`}
-                        >
+                        <span>{career.department || 'N/A'}</span>
+                        <span>{career.location || 'N/A'}</span>
+                        <span>{career.employment_type || 'N/A'}</span>
+                        <span>{new Date(career.created_at).toLocaleDateString()}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-3 text-sm font-medium">
+                        <Link href={`/admin/careers/${career.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
+                        <button onClick={() => togglePublished(career.id, career.published)} className={career.published ? 'text-yellow-600 hover:text-yellow-900' : 'text-green-600 hover:text-green-900'}>
                           {career.published ? 'Unpublish' : 'Publish'}
                         </button>
-                        <Link
-                          href={`/career/${career.slug}`}
-                          className="text-purple-600 hover:text-purple-900"
-                          target="_blank"
-                        >
-                          View
-                        </Link>
-                        <button
-                          onClick={() => deleteCareer(career.id)}
-                          className="text-red-600 hover:text-red-900"
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                        <Link href={`/career/${career.slug}`} className="text-purple-600 hover:text-purple-900" target="_blank">View</Link>
+                        <button onClick={() => deleteCareer(career.id)} className="text-red-600 hover:text-red-900">Delete</button>
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+                {/* Desktop table view */}
+                <div className="hidden lg:block overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job Title</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Location</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Posted</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {filteredCareers.map((career) => (
+                        <tr key={career.id} className="hover:bg-gray-50">
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div>
+                              <div className="text-sm font-medium text-gray-900">{stripHtmlTags(career.job_title)}</div>
+                              <div className="text-sm text-gray-500">/{career.slug}</div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{career.department || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{career.location || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{career.employment_type || 'N/A'}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{new Date(career.created_at).toLocaleDateString()}</td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${career.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
+                              {career.published ? 'Published' : 'Draft'}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
+                            <Link href={`/admin/careers/${career.id}/edit`} className="text-blue-600 hover:text-blue-900">Edit</Link>
+                            <button onClick={() => togglePublished(career.id, career.published)} className={career.published ? 'text-yellow-600 hover:text-yellow-900' : 'text-green-600 hover:text-green-900'}>
+                              {career.published ? 'Unpublish' : 'Publish'}
+                            </button>
+                            <Link href={`/career/${career.slug}`} className="text-purple-600 hover:text-purple-900" target="_blank">View</Link>
+                            <button onClick={() => deleteCareer(career.id)} className="text-red-600 hover:text-red-900">Delete</button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             )}
           </div>
         </main>

@@ -4,6 +4,14 @@ const nextConfig = {
   serverActions: {
     bodySizeLimit: '50mb',
   },
+  async rewrites() {
+    return [
+      {
+        source: '/images/blog/:path*',
+        destination: 'https://vxhftpfqzrxulcdrzmyc.supabase.co/storage/v1/object/public/images/:path*',
+      },
+    ];
+  },
   async redirects() {
     return [
       {

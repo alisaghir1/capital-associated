@@ -1,412 +1,55 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { fadeIn } from "@/variants";
-import { motion } from "framer-motion";
-import { supabase, fetchBlogsOptimized } from "../../lib/supabase-optimized";
+import AnimatedWrapper from "./AnimatedWrapper";
 import { stripHtmlTags } from "../utils/richText";
 
-const Blogs = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [blogs, setBlogs] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const blogsPerPage = 6;
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        // Start with empty array and show loading initially for blogs
-        // (blogs don't have static fallback like projects/services)
-        
-        const { data, error } = await fetchBlogsOptimized();
-
-        if (error) {
-          console.warn('Error fetching blogs:', error);
-          setBlogs([]); // Set empty array if fetch fails
-        } else {
-          setBlogs(data || []);
-        }
-      } catch (error) {
-        console.warn('Blogs fetch error:', error.message);
-        setBlogs([]); // Set empty array if timeout
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchBlogs();
-  }, []);
-
-  // Keep the old static data as fallback (remove this after migration)
-  const blogPosts = [
-    {
-      id: 40,
-      title: "Top Interior Design Hacks for a Spacious Feel",
-      image: "/blogs/top-interior-design-hacks-for-a-spacious-feel/1.jpg",
-      path: "/blog/top-interior-design-hacks-for-a-spacious-feel",
-      date: "02 Sep",
-    },
-    {
-      id: 39,
-      title: "Using Decorative Stonework in Villa Gardens for a Luxurious Touch",
-      image: "/blogs/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch/1.jpg",
-      path: "/blog/using-decorative-stonework-in-villa-gardens-for-a-luxurious-touch",
-      date: "02 Sep",
-    },
-    {
-      id: 38,
-      title: "Effective Moisture Control in the Design of Luxury Villas by the Sea",
-      image: "/blogs/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea/1.jpg",
-      path: "/blog/effective-moisture-control-in-the-design-of-luxury-villas-by-the-sea",
-      date: "02 Sep",
-    },
-    {
-      id: 37,
-      title: "The Role of Urban Heat Island Effect on Design-Build Practices in City Centers",
-      image: "/blogs/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers/1.jpg",
-      path: "/blog/the-role-of-urban-heat-island-effect-on-design-build-practices-in-city-centers",
-      date: "02 Sep",
-    },
-    {
-      id: 36,
-      title: "Noise Pollution Mitigation in High-Density Residential Fit-Out Projects",
-      image: "/blogs/noise-pollution-mitigation-in-high-density-residential-fit-out-projects/1.jpg",
-      path: "/blog/noise-pollution-mitigation-in-high-density-residential-fit-out-projects",
-      date: "02 Sep",
-    },
-    {
-      id: 35,
-      title: "Advanced Project Management Techniques for High-Profile Construction Projects",
-      image: "/blogs/advanced-project-management-techniques-for-high-profile-construction-projects/1.jpg",
-      path: "/blog/advanced-project-management-techniques-for-high-profile-construction-projects",
-      date: "02 Sep",
-    },
-    {
-      id: 33,
-      title: "Villa Design Ideas for Your Dream Home in the City or Countryside",
-      image: "/blogs/villa-design-ideas-for-your-dream-home-in-the-city-or-countryside/1.jpg",
-      path: "/blog/villa-design-ideas-for-your-dream-home-in-the-city-or-countryside",
-      date: "02 Sep",
-    },
-    {
-      id: 34,
-      title: "The Business Case for Green Building: Why Sustainable Construction is a Smart Investment",
-      image: "/blogs/the-business-case-for-green-building-why-sustainable-construction-is-a-smart-investment/1.jpg",
-      path: "/blog/the-business-case-for-green-building-why-sustainable-construction-is-a-smart-investment",
-      date: "02 Sep",
-    },
-    {
-      id: 32,
-      title: "Top 10 Unseen Advantages of Hiring a Building Contracting Company in Dubai",
-      image: "/blogs/Top-10-Unseen-Advantages-of-Hiring-a-Building-Contracting-Company-in-Dubai/1.jpg",
-      path: "/blog/top-10-unseen-advantages-of-hiring-a-building-contracting-company-in-dubai",
-      date: "01 Sep",
-    },
-    {
-      id: 31,
-      title: "10 Tips for Interior Fit-Out Projects",
-      image: "/blogs/10-Tips-for-Interior-Fit-Out-Projects/1.jpg",
-      path: "/blog/10-Tips-for-Interior-Fit-Out-Projects",
-      date: "01 Sep",
-    },
-    {
-      id: 30,
-      title: "Specialty Construction Trends",
-      image: "/blogs/Specialty-Construction-Trends/1.jpg",
-      path: "/blog/specialty-construction-trends",
-      date: "01 Sep",
-    },
-    {
-      id: 29,
-      title: "How to Select the Right Construction Firm for Your Project",
-      image: "/blogs/How-to-Select-the-Right-Construction-Firm-for-Your-Project/1.jpg",
-      path: "/blog/how-to-select-the-right-construction-firm-for-your-project",
-      date: "01 Sep",
-    },
-    {
-      id: 28,
-      title: "The Role of BIM in Construction",
-      image: "/blogs/The-Role-of-BIM-in-Construction/1.jpg",
-      path: "/blog/the-role-of-bim-in-construction",
-      date: "01 Sep",
-    },
-    {
-      id: 27,
-      title: "The Evolution of the Design-Build Approach in Modern Construction",
-      image: "/blogs/The-Evolution-of-the-Design-Build-Approach-in-Modern-Construction/1.jpg",
-      path: "/blog/the-evolution-of-the-design-build-approach-in-modern-construction",
-      date: "01 Sep",
-    },
-    {
-      id: 26,
-      title: "Trends in Residential Construction: What Homeowners Want",
-      image: "/blogs/Trends-in-Residential-Construction-What-Homeowners-Want/1.jpg",
-      path: "/blog/trends-in-residential-construction-what-homeowners-want",
-      date: "01 Sep",
-    },
-    {
-      id: 25,
-      title: "The Role of Project Management in Construction Success",
-      image: "/blogs/The-Role-of-Project-Management-in-Construction-Success/1.jpg",
-      path: "/blog/the-role-of-project-management-in-construction-success",
-      date: "01 Sep",
-    },
-    {
-      id: 24,
-      title: "Key Considerations for Planning a Successful Commercial Development",
-  image: "/blogs/Key-Considerations-for-Planning-a-Successful-Commercial-Development/1.jpg",
-      path: "/blog/key-considerations-for-planning-a-successful-commercial-development",
-  date: "01 Sep",
-    },
-    {
-      id: 23,
-      title: "The Benefits of Design-Build Over Traditional Construction Methods",
-      image: "/blogs/The-Benefits-of-Design-Build-Over-Traditional-Construction-Methods/1.jpg",
-      path: "/blog/the-benefits-of-design-build-over-traditional-construction-methods",
-  date: "01 Sep",
-    },
-    {
-      id: 22,
-      title: "Top Trends in Commercial Construction for 2024",
-      image: "/blogs/Top-Trends-in-Commercial-Construction-for-2024/1.jpg",
-      path: "/blog/top-trends-in-commercial-construction-for-2024",
-      date: "18 Aug",
-    },
-    {
-      id: 21,
-      title: "The Comprehensive Benefits of the Design-Build Approach in Modern Construction",
-      image: "/blogs/The-Comprehensive-Benefits-of-the-Design-Build-Approach/1.jpg",
-      path: "/blog/the-comprehensive-benefits-of-the-design-build-approach-in-modern-construction",
-      date: "18 Aug",
-    },
-    {
-      id: 20,
-      title: "Maximizing Natural Light in Interior Design Projects",
-      image: "/blogs/Maximizing-Natural-Light-in-Interior-Design-Projects/1.jpg",
-      path: "/blog/maximizing-natural-light-in-interior-design-projects",
-      date: "18 Aug",
-    },
-    {
-      id: 19,
-      title: "Room Design Tips for a Comfortable Hospitality Experience",
-      image: "/blogs/Room-Design-Tips-for-a-Comfortable-Hospitality-Experience/1.jpg",
-      path: "/blog/room-design-tips-for-a-comfortable-hospitality-experience",
-      date: "18 Aug",
-    },
-    {
-      id: 18,
-      title: "Construction Trends and Insights in UAE",
-      image: "/blogs/Construction-Trends-and-Insights-in-UAE/01.jpg",
-      path: "/blog/construction-trends-and-insights-in-uae",
-      date: "18 Aug",
-    },
-    {
-      id: 17,
-      title: "Essential Tips for Successful Home Renovation and Remodeling",
-  image: "/blogs/Essential-Tips-for-Successful-Home-Renovation-and-Remodeling/01.jpg",
-      path: "/blog/essential-tips-for-successful-home-renovation-and-remodeling",
-      date: "18 Aug",
-    },
-    {
-      id: 16,
-      title: "Creating an Inviting Guest Room",
-  image: "/blogs/Creating-an-Inviting-Guest-Room/01.jpg",
-      path: "/blog/creating-an-inviting-guest-room",
-      date: "18 Aug",
-    },
-    {
-      id: 15,
-      title: "Cost-Effective Solutions in Construction and Design",
-      image: "/blogs/Cost-Effective-Solutions-in-Construction-and-Design/01.jpg",
-      path: "/blog/cost-effective-solutions-in-construction-and-design",
-      date: "18 Aug",
-    },
-    {
-      id: 14,
-      title: "Choosing the Right Materials for Your Commercial Fit-Out Project",
-      image: "/blogs/Choosing-the-Right-Materials-for-Your-ommercial-Fit-Out-roject/1.jpg",
-      path: "/blog/choosing-the-right-materials-for-your-commercial-fit-out-project",
-      date: "18 Aug",
-    },
-    {
-      id: 13,
-      title: "Bathroom Renovation Tips for Maximum Impact",
-      image: "/blogs/bathroom-renovation/01.jpg",
-      path: "/blog/bathroom-renovation-tips-for-maximum-impact",
-      date: "18 Aug",
-    },
-    {
-      id: 1,
-      title: "The Benefits of Using Reclaimed Wood in Construction",
-      image: "/about1.jpg",
-      path: "/blog/the-benefits-of-using-reclaimed-wood-in-construction",
-      date: "08 Jan",
-    },
-    {
-      id: 2,
-      title: "A Guide to Retrofitting Old Buildings",
-      image: "/about2.jpg",
-      path: "/blog/a-guide-to-retrofitting-old-buildings",
-      date: "02 Jan",
-    },
-    {
-      id: 3,
-      title: "How to Plan for Future Expansions in Building Design",
-      image: "/about3.jpg",
-      path: "/blog/how-to-plan-for-future-expansions-in-building-design",
-      date: "13 Dec",
-    },
-    {
-      id: 4,
-      title: "What is Value Engineering in Construction?",
-      image: "/about4.jpg",
-      path: "/blog/what-is-value-engineering-in-construction",
-      date: "27 Dec",
-    },
-    {
-      id: 5,
-      title: "The Role of a General Contractor in Complex Projects",
-      image: "/projects/meatmoot.jpg",
-      path: "/blog/the-role-of-a-general-contractor-in-complex-projects",
-      date: "04 Dec",
-    },
-    {
-      id: 6,
-      title: "The Importance of Geotechnical Studies in Construction",
-      image: "/projects/villa.jpg",
-      path: "/blog/the-importance-of-geotechnical-studies-in-construction",
-      date: "09 Dec",
-    },
-    {
-      id: 7,
-      title: "Understanding the Lifecycle of a Construction Project",
-  image: "/blogs/understanding-the-lifecycle-of-a-construction-project/1.jpg",
-      path: "/blog/understanding-the-lifecycle-of-a-construction-project",
-      date: "20 Nov",
-    },
-    {
-      id: 8,
-      title: "The Role of Climate Adaptation in Modern Building Design",
-      image: "/projects/residentalTower.jpg",
-      path: "/blog/the-role-of-climate-adaptation-in-modern-building-design",
-      date: "14 Nov",
-    },
-    {
-      id: 9,
-      title: "An Overview of Acoustics in Building Design",
-  image: "/blogs/an-overview-of-acoustics-in-building-design/1.jpg",
-      path: "/blog/an-overview-of-acoustics-in-building-design",
-      date: "26 Nov",
-    },
-    {
-      id: 10,
-      title: "Top Pre-Construction Services That Guarantee Project Success",
-      image: "/projects/residentalbuildingg.jpg",
-      path: "/blog/top-pre-construction-services-that-guarantee-project-success",
-      date: "21 Nov",
-    },
-    {
-      id: 11,
-      title: "The Importance of Community Engagement in Construction Projects",
-      image: "/projects/mkhm.jpg",
-      path: "/blog/the-importance-of-community-engagement-in-construction-projects",
-      date: "06 Oct",
-    },
-    {
-      id: 12,
-      title: "How to Design Flexible Workspaces",
-      image: "/projects/p1.jpg",
-      path: "/blog/how-to-design-flexible-workspaces",
-      date: "10 Nov",
-    },
-  ];
-
-  // Calculate pagination - use dynamic blogs if available, otherwise fallback to static
-  // Only use hardcoded fallback after loading completes and no blogs were fetched
-  const displayBlogs = isLoading ? [] : (blogs.length > 0 ? blogs : blogPosts);
-  const totalPages = Math.ceil(displayBlogs.length / blogsPerPage);
-  const startIndex = (currentPage - 1) * blogsPerPage;
-  const endIndex = startIndex + blogsPerPage;
-  const currentBlogs = displayBlogs.slice(startIndex, endIndex);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
+const Blogs = ({ blogs = [] }) => {
   return (
     <div className="py-20 xl:px-20 px-0 bg-slate-100 pt-10">
       <section className="flex flex-col justify-center items-center gap-5 my-20 mx-5">
-        <motion.h1
-          variants={fadeIn("down", 0.8)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.4 }}
-          className="lg:text-3xl text-2xl xl:text-4xl"
-        >
-          Blog
-        </motion.h1>
-        <motion.p
-          variants={fadeIn("up", 1)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.4 }}
-          className="lg:text-2xl text-xl xl:text-3xl mt-10"
-        >
-          Industry Insights & Innovations
-        </motion.p>
-        <motion.p
-          variants={fadeIn("up", 1.2)}
-          initial="hidden"
-          whileInView={"show"}
-          viewport={{ once: true, amount: 0.4 }}
-          className="lg:text-xl text-lg xl:text-2xl mt-10"
-        >
-          The blog explores the latest in construction, architecture, engineering, and interior design in Dubai and across the UAE. As one of the leading construction companies in Dubai, we share expert knowledge from our team of engineers, architects, interior designers, and property developers, offering valuable content that informs, educates, and inspires. Whether you&apos;re a client, investor, or design enthusiast, our blog explores the future of urban development, cutting-edge construction solutions, and the artistry behind building iconic structures. Stay connected with the region&apos;s top voices in elite construction and design — and discover how innovation continues to shape Dubai&apos;s skyline.
-        </motion.p>
+        <AnimatedWrapper direction="down" duration={0.8}>
+          <h2 className="text-2xl md:text-3xl xl:text-4xl">Blog</h2>
+        </AnimatedWrapper>
+        <AnimatedWrapper direction="up" duration={1}>
+          <p className="text-lg md:text-xl xl:text-2xl mt-10">
+            Industry Insights &amp; Innovations
+          </p>
+        </AnimatedWrapper>
+        <AnimatedWrapper direction="up" duration={1.2}>
+          <p className="text-base md:text-lg xl:text-xl mt-10">
+            The blog explores the latest in construction, architecture, engineering, and interior design in Dubai and across the UAE. As one of the leading construction companies in Dubai, we share expert knowledge from our team of engineers, architects, interior designers, and property developers, offering valuable content that informs, educates, and inspires. Whether you&apos;re a client, investor, or design enthusiast, our blog explores the future of urban development, cutting-edge construction solutions, and the artistry behind building iconic structures. Stay connected with the region&apos;s top voices in elite construction and design — and discover how innovation continues to shape Dubai&apos;s skyline.
+          </p>
+        </AnimatedWrapper>
       </section>
-      
-      {/* Page indicator */}
-      <div className="flex justify-center items-center mb-8">
-        <p className="text-lg text-gray-600">
-          Page {currentPage} of {totalPages} ({displayBlogs.length} total blogs)
-        </p>
-      </div>
 
       <section className="grid cursor-pointer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-5">
-        {currentBlogs.length > 0 ? (
-          currentBlogs.map((post) => (
-            <Link key={post.id} href={post.path || `/blog/${post.slug}`}>
-              <motion.div
-                variants={fadeIn("left", 1)}
-                initial="hidden"
-                whileInView={"show"}
-                viewport={{ once: true, amount: 0.4 }}
-                className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg"
-              >
-                <img
-                  src={post.image || post.hero_image_url}
-                  alt={stripHtmlTags(post.title)}
-                  className="w-full h-[36rem] object-cover"
-                  layout="fill"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50">
-                  {/* Date at the top-left corner */}
-                  <div className="absolute top-2 left-2 bg-white bg-opacity-80 text-black text-sm px-3 py-1 rounded">
-                    {post.date || new Date(post.created_at).toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })}
+        {blogs.length > 0 ? (
+          blogs.map((post) => (
+            <Link key={post.id} href={`/blog/${post.slug}`}>
+              <AnimatedWrapper direction="left" duration={1}>
+                <article className="group relative bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                  <img
+                    src={post.hero_image_url}
+                    alt={stripHtmlTags(post.title)}
+                    className="w-full h-[36rem] object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-50">
+                    <div className="absolute top-2 left-2 bg-white bg-opacity-80 text-black text-sm px-3 py-1 rounded">
+                      {new Date(post.created_at).toLocaleDateString("en-GB", { day: "2-digit", month: "short" })}
+                    </div>
+                    <div className="flex flex-col items-start justify-end transiton-all duration-300 ease-in-out hover:bg-offwhite hover:bg-opacity-20 gap-5 text-center p-5 h-full">
+                      <p className="text-white text-start text-xl font-bold">
+                        {stripHtmlTags(post.title)}
+                      </p>
+                      <p className="text-white transiton-all duration-300 ease-in-out text-lg group-hover:text-black text-start py-4 font-bold border-t-2 border-b-2 w-full">
+                        Continue reading
+                      </p>
+                    </div>
                   </div>
-                {/* Blog title overlay */}
-                <div className="flex flex-col items-start justify-end transiton-all duration-300 ease-in-out hover:bg-offwhite  hover:bg-opacity-20  gap-5  text-center p-5 h-full">
-                  <p className="text-white text-start text-xl  font-bold">
-                    {stripHtmlTags(post.title)}
-                  </p>
-                  <p className="text-white transiton-all duration-300 ease-in-out  text-lg group-hover:text-black text-start py-4 font-bold border-t-2 border-b-2 w-full">
-                    Continue reading
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
+                </article>
+              </AnimatedWrapper>
+            </Link>
           ))
         ) : (
           <div className="col-span-full text-center py-10">
@@ -415,60 +58,16 @@ const Blogs = () => {
         )}
       </section>
 
-      {/* Pagination Controls */}
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center mt-12 space-x-2">
-          {/* Previous Button */}
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
-              currentPage === 1
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-black text-white hover:bg-gray-800'
-            }`}
+      {blogs.length > 0 && (
+        <div className="flex justify-center items-center mt-12">
+          <Link
+            href="/blog"
+            className="px-4 mb-5 z-20 text-center py-2 text-xl md:text-2xl transition-colors duration-300 ease-in-out text-black hover:text-black border-b border-b-black"
           >
-            Previous
-          </button>
-
-          {/* Page Numbers */}
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
-              className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
-                currentPage === index + 1
-                  ? 'bg-black text-white'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
-
-          {/* Next Button */}
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
-              currentPage === totalPages
-                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                : 'bg-black text-white hover:bg-gray-800'
-            }`}
-          >
-            Next
-          </button>
+            View All Blogs
+          </Link>
         </div>
       )}
-
-      <div className="flex justify-center align-center pt-20">
-        <Link
-          className="px-4 mb-5 z-20 xl:mt-0 text-center  py-2 text-3xl transiton-colors duration-300 ease-in-out text-black hover:text-black "
-          href={"/blog"}
-        >
-          Visit Blog Page
-        </Link>
-      </div>
     </div>
   );
 };
