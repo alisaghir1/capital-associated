@@ -8,14 +8,14 @@ import { stripHtmlTags } from "../utils/richText";
 
 // Fallback static data
 const staticProjects = [
-  { id: 1, title: "Meat Moot", slug: "meatmoot", location: "City Walk, United Arab Emirates", hero_image_url: "/projects/meatmoot.jpg", published: true, sort_order: 1 },
-  { id: 2, title: "Tilal Al Ghaf Interior", slug: "Tilal-Al-Ghaf-Interior", location: "Dubai, United Arab Emirates", hero_image_url: "/services/interiorFit/s8.jpg", published: true, sort_order: 2 },
-  { id: 3, title: "Meat Moot Khawaneej", slug: "meatmoot-khawaneej", location: "Al Khawaneej, United Arab Emirates", hero_image_url: "/projects/mkhm.jpg", published: true, sort_order: 3 },
-  { id: 4, title: "Meat Moot JBR", slug: "meatmoot-jbr", location: "Jumeirah Beach Resort, United Arab Emirates", hero_image_url: "/projects/jbrm.jpg", published: true, sort_order: 4 },
-  { id: 5, title: "Tilal Al Ghaf Landscape", slug: "Tilal-Al-Ghaf-Landscape", location: "Dubai, United Arab Emirates", hero_image_url: "/projects/villa.jpg", published: true, sort_order: 5 },
-  { id: 6, title: "Elite Villa Construction", slug: "elite-villa-construction", location: "Dubai Hills, United Arab Emirates", hero_image_url: "/projects/dh1.png", published: true, sort_order: 6 },
-  { id: 7, title: "Jumeirah Villa Construction", slug: "Jumeirah-villa-construction", location: "Jumeirah, United Arab Emirates", hero_image_url: "/projects/jv1.png", published: true, sort_order: 7 },
-  { id: 8, title: "Landscape and Exterior Construction Dubai", slug: "Landscape-and-Exterior-Construction-Dubai", location: "Dubai, United Arab Emirates", hero_image_url: "/projects/hv1.png", published: true, sort_order: 8 }
+  { id: 1, title: "Meat Moot City Walk", slug: "meatmoot-city-walk-restaurant-construction", location: "City Walk, Dubai, United Arab Emirates", hero_image_url: "/projects/meatmoot.jpg", published: true, sort_order: 1 },
+  { id: 2, title: "Tilal Al Ghaf Interior Design", slug: "tilal-al-ghaf-interior-luxury-residential-fitout", location: "Tilal Al Ghaf, Dubai, United Arab Emirates", hero_image_url: "/services/interiorFit/s8.jpg", published: true, sort_order: 2 },
+  { id: 3, title: "Meat Moot Al Khawaneej", slug: "meatmoot-al-khawaneej-commercial-restaurant-development", location: "Al Khawaneej, Dubai, United Arab Emirates", hero_image_url: "/projects/mkhm.jpg", published: true, sort_order: 3 },
+  { id: 4, title: "Meat Moot JBR", slug: "meatmoot-jbr-beachfront-restaurant-construction-excellence", location: "Jumeirah Beach Resort (JBR), Dubai, United Arab Emirates", hero_image_url: "/projects/jbrm.jpg", published: true, sort_order: 4 },
+  { id: 5, title: "Tilal Al Ghaf Landscape", slug: "tilal-al-ghaf-landscape-luxury-outdoor-living-construction", location: "Tilal Al Ghaf, Dubai, United Arab Emirates", hero_image_url: "/projects/villa.jpg", published: true, sort_order: 5 },
+  { id: 6, title: "Elite Villa Construction", slug: "elite-villa-construction-dubai-hills-luxury-development", location: "Dubai Hills, Dubai, United Arab Emirates", hero_image_url: "/projects/dh1.png", published: true, sort_order: 6 },
+  { id: 7, title: "Jumeirah Villa Construction", slug: "jumeirah-villa-construction-prestigious-residential-development", location: "Jumeirah, Dubai, United Arab Emirates", hero_image_url: "/projects/jv1.png", published: true, sort_order: 7 },
+  { id: 8, title: "Landscape and Exterior Construction Dubai", slug: "landscape-exterior-construction-dubai-premium-outdoor-development", location: "Various Locations, Dubai, United Arab Emirates", hero_image_url: "/projects/hv1.png", published: true, sort_order: 8 }
 ];
 
 const OurWorkLayout = () => {
