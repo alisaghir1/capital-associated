@@ -139,13 +139,13 @@ export default async function Home() {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
-          <div className="relative z-10 px-8">
+          <div className="relative z-10 px-8 w-full flex justify-center">
             <HeroAnimation className="text-center">
-              <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black font-bold">
-                Leading Contracting Company in UAE &amp; Contractors in Dubai
+              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black font-bold">
+                Leading Contracting Company in Dubai, UAE
               </h1>
-              <p className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black mt-5">
-                Expert Building Contractors &amp; Construction Services in Dubai
+              <p className="text-sm md:text-base lg:text-lg xl:text-xl text-black mt-3">
+                Building Visions, Defining Skylines
               </p>
             </HeroAnimation>
           </div>
