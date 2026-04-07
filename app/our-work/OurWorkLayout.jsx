@@ -51,7 +51,7 @@ const OurWorkLayout = () => {
           <p className="text-yellow-700 text-sm">{error}</p>
         </div>
       )}
-      <div className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px]">
+      <div className="relative w-full h-[70vh] min-h-[400px] max-h-[700px] lg:max-h-[800px]">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -64,11 +64,11 @@ const OurWorkLayout = () => {
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
         {/* Content on top of the image */}
-        <div className="relative z-10 flex flex-col justify-center items-center w-full h-full px-8 pt-16">
-          <h1 className="xl:text-4xl text-black md:text-2xl text-xl lg:text-3xl font-bold">
+        <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-8 pt-24 xl:pt-28">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black">
             Our Projects
           </h1>
-          <p className="xl:text-4xl text-black md:text-2xl lg:text-3xl text-xl mt-5">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black mt-5">
           Designing Landmarks. Defining Skylines
           </p>
           <p className="absolute bottom-10 left-10 text-white">

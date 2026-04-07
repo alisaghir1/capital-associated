@@ -155,7 +155,7 @@ export default async function ServicesListPage() {
   return (
       <main className="min-h-screen">
         {/* Hero Section */}
-        <div className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px]">
+        <div className="relative w-full h-[70vh] min-h-[400px] max-h-[700px] lg:max-h-[800px]">
           <div className="absolute inset-0">
             <Image
               src="/main.jpg"
@@ -167,17 +167,16 @@ export default async function ServicesListPage() {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
-          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-8 pt-16">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
+          <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-8 pt-24 xl:pt-28">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black">
               Our Services
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-black max-w-2xl">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black mt-5">
               Leading Dubai&apos;s Property Evolution
             </p>
-            <div className="absolute bottom-10 left-10 text-sm">
-              <span className="text-white">Home</span>
-              <span className="text-black"> / Services</span>
-            </div>
+            <p className="absolute bottom-10 left-10 text-white">
+              Home <span className="text-black">/ Services</span>
+            </p>
           </div>
         </div>
 

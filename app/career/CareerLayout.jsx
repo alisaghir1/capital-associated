@@ -47,7 +47,7 @@ export default function CareerLayout() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v10a2 2 0 002 2h4a2 2 0 002-2V8" />
               </svg>
             </div>
-            <h1 className="text-4xl font-bold text-black mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
               Exciting Opportunities Ahead!
             </h1>
             <p className="text-gray-600 text-lg mb-6 leading-relaxed">
@@ -86,10 +86,10 @@ export default function CareerLayout() {
       {/* Hero Section */}
       <div className="bg-black text-white py-20 mb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Join Our <span className="text-gray-300">Elite Team</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Shape the future of construction in Dubai. Build your career with industry leaders 
             who value innovation, excellence, and professional growth.
           </p>

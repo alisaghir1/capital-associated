@@ -129,7 +129,7 @@ export default async function Home() {
       <NavbarMobile settings={settings} />
       <main>
         {/* Hero Section */}
-        <section className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px] overflow-x-hidden flex items-center justify-center pt-16">
+        <section className="relative w-full h-[85vh] min-h-[500px] max-h-[900px] lg:max-h-[1000px] overflow-x-hidden flex items-center justify-center pt-16">
           <div className="absolute inset-0">
             <img
               src="/main.jpg"

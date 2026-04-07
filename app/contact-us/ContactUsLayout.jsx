@@ -63,8 +63,8 @@ const ContacUsLayout = () => {
   // Thank You screen after successful submission
   if (submitted) {
     return (
-      <div className="px-6 pb-12 pt-24 sm:pb-24 sm:pt-40 lg:px-8">
-        <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-20">
+      <div className="px-6 pb-12 pt-32 sm:pb-24 sm:pt-40 lg:px-8">
+        <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-10 sm:mt-20">
           {/* Checkmark icon */}
           <div className="w-20 h-20 rounded-full bg-orange flex items-center justify-center mb-8">
             <svg
@@ -82,7 +82,7 @@ const ContacUsLayout = () => {
               />
             </svg>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-orange">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-orange">
             Thank You!
           </h1>
           <p className="text-lg text-black mt-6">
@@ -103,10 +103,10 @@ const ContacUsLayout = () => {
   };
 
   return (
-    <div className="px-6 pb-12 pt-24 sm:pb-24 sm:pt-40 lg:px-8">
-      <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-20">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-orange">Contact Us!</h1>
-        <p className="text-lg text-black mt-10">to discuss your requirements, request a quote, or schedule a consultation.</p>
+    <div className="px-6 pb-12 pt-32 sm:pb-24 sm:pt-40 lg:px-8">
+      <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-10 sm:mt-20">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-orange">Contact Us!</h1>
+        <p className="text-base sm:text-lg md:text-xl text-black mt-6">to discuss your requirements, request a quote, or schedule a consultation.</p>
       </div>
       <form onSubmit={sendEmail} className="mx-auto mt-16 max-w-xl sm:mt-20 z-10">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
