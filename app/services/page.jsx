@@ -152,7 +152,48 @@ export default async function ServicesListPage() {
     );
   };
 
+  const servicesIndexJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://www.capitalassociated.com/services#webpage",
+        "url": "https://www.capitalassociated.com/services",
+        "name": "Our Services | Capital Associated Building Contracting",
+        "isPartOf": {
+          "@id": "https://www.capitalassociated.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://www.capitalassociated.com/services#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.capitalassociated.com/services#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.capitalassociated.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": "https://www.capitalassociated.com/services"
+          }
+        ]
+      }
+    ]
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesIndexJsonLd) }}
+      />
       <main className="min-h-screen">
         {/* Hero Section */}
         <div className="relative w-full h-[70vh] min-h-[400px] max-h-[700px] lg:max-h-[800px]">
@@ -235,5 +276,6 @@ export default async function ServicesListPage() {
           )}
         </section>
       </main>
+    </>
   );
 }

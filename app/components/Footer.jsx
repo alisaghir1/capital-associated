@@ -83,7 +83,7 @@ const Footer = ({ settings = {} }) => {
                   <p>Office 1501</p>
                 </>
               )}
-              <p>Mobile: <Link href={`tel:${getSetting("contact_phone", "+971521211520")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_phone", "+971 52 121 1520")}</Link></p>
+              {getSetting("contact_phone") && <p>Mobile: <Link href={`tel:${getSetting("contact_phone")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_phone")}</Link></p>}
               <p>Email: <Link href={`mailto:${getSetting("contact_email", "hello@capitalassociated.com")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_email", "hello@capitalassociated.com")}</Link></p>
             </address>
           </div>

@@ -82,31 +82,63 @@ export async function generateMetadata({ params }) {
 function generateServiceJsonLd(service, slug) {
   const title = stripHtml(service.title)
   const description = service.short_description || stripHtml(service.description)?.substring(0, 160) || ''
-  const image = service.hero_image_url || service.cover_image || 'https://www.capitalassociated.com/default-og-image.jpg'
+  const url = `https://www.capitalassociated.com/services/${slug}`
   
   return {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: title,
-    description: description,
-    image: image,
-    url: `https://www.capitalassociated.com/services/${slug}`,
-    provider: {
-      '@type': 'Organization',
-      name: 'Capital Associated Building Contracting',
-      url: 'https://www.capitalassociated.com',
-      logo: 'https://www.capitalassociated.com/logoLight.svg',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Dubai',
-        addressCountry: 'AE',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `${url}#service`,
+        name: title,
+        description: description,
+        url: url,
+        provider: {
+          '@id': 'https://www.capitalassociated.com/#organization'
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'United Arab Emirates',
+        },
+        serviceType: title,
       },
-    },
-    areaServed: {
-      '@type': 'Country',
-      name: 'United Arab Emirates',
-    },
-    serviceType: title,
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.capitalassociated.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Services',
+            item: 'https://www.capitalassociated.com/services',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: title,
+            item: url,
+          },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url: url,
+        name: service.meta_title || `${title} | Capital Associated Services`,
+        isPartOf: {
+          '@id': 'https://www.capitalassociated.com/#website',
+        },
+        breadcrumb: {
+          '@id': `${url}#breadcrumb`,
+        },
+      },
+    ],
   }
 }
 

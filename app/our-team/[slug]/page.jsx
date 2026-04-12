@@ -54,25 +54,61 @@ export async function generateMetadata({ params }) {
   }
 }
 
-// Generate JSON-LD structured data for Person
+// Generate JSON-LD structured data for Team Member (ProfilePage)
 function generatePersonJsonLd(member, slug) {
   const name = stripHtmlTags(member.name)
-  const description = stripHtmlTags(member.bio)?.substring(0, 160) || ''
   const image = member.image_url || 'https://www.capitalassociated.com/default-og-image.jpg'
+  const url = `https://www.capitalassociated.com/our-team/${slug}`
   
   return {
     '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: name,
-    jobTitle: member.position,
-    description: description,
-    image: image,
-    url: `https://www.capitalassociated.com/our-team/${slug}`,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Capital Associated Building Contracting',
-      url: 'https://www.capitalassociated.com',
-    },
+    '@graph': [
+      {
+        '@type': 'ProfilePage',
+        '@id': `${url}#webpage`,
+        url: url,
+        name: `${name} - ${member.position} | Capital Associated`,
+        isPartOf: {
+          '@id': 'https://www.capitalassociated.com/#website',
+        },
+        mainEntity: {
+          '@type': 'Person',
+          name: name,
+          jobTitle: member.position,
+          image: image,
+          worksFor: {
+            '@id': 'https://www.capitalassociated.com/#organization',
+          },
+        },
+        breadcrumb: {
+          '@id': `${url}#breadcrumb`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.capitalassociated.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Team',
+            item: 'https://www.capitalassociated.com/our-team',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: name,
+            item: url,
+          },
+        ],
+      },
+    ],
   }
 }
 

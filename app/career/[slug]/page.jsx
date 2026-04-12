@@ -57,50 +57,77 @@ export async function generateMetadata({ params }) {
 function generateJobPostingJsonLd(career, slug) {
   const jobTitle = stripHtmlTags(career.job_title)
   const description = stripHtmlTags(career.job_description) || ''
+  const url = `https://www.capitalassociated.com/career/${slug}`
   
   return {
     '@context': 'https://schema.org',
-    '@type': 'JobPosting',
-    title: jobTitle,
-    description: description,
-    identifier: {
-      '@type': 'PropertyValue',
-      name: 'Capital Associated Contracting',
-      value: slug,
-    },
-    datePosted: career.created_at,
-    validThrough: career.application_deadline || undefined,
-    employmentType: career.employment_type || 'FULL_TIME',
-    hiringOrganization: {
-      '@type': 'Organization',
-      name: 'Capital Associated Building Contracting',
-      sameAs: 'https://www.capitalassociated.com',
-      logo: 'https://www.capitalassociated.com/logoLight.svg',
-    },
-    jobLocation: {
-      '@type': 'Place',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: career.location || 'Dubai',
-        addressCountry: 'AE',
-      },
-    },
-    ...(career.salary_range && {
-      baseSalary: {
-        '@type': 'MonetaryAmount',
-        currency: 'AED',
-        value: {
-          '@type': 'QuantitativeValue',
-          value: career.salary_range,
+    '@graph': [
+      {
+        '@type': 'JobPosting',
+        '@id': `${url}#jobposting`,
+        title: jobTitle,
+        description: description,
+        identifier: {
+          '@type': 'PropertyValue',
+          name: 'Capital Associated Contracting',
+          value: slug,
         },
+        datePosted: career.created_at,
+        validThrough: career.application_deadline || undefined,
+        employmentType: career.employment_type || 'FULL_TIME',
+        hiringOrganization: {
+          '@id': 'https://www.capitalassociated.com/#organization',
+        },
+        jobLocation: {
+          '@type': 'Place',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: career.location || 'Dubai',
+            addressCountry: 'AE',
+          },
+        },
+        ...(career.salary_range && {
+          baseSalary: {
+            '@type': 'MonetaryAmount',
+            currency: 'AED',
+            value: {
+              '@type': 'QuantitativeValue',
+              value: career.salary_range,
+            },
+          },
+        }),
+        ...(career.experience_level && {
+          experienceRequirements: career.experience_level,
+        }),
+        ...(career.department && {
+          occupationalCategory: career.department,
+        }),
       },
-    }),
-    ...(career.experience_level && {
-      experienceRequirements: career.experience_level,
-    }),
-    ...(career.department && {
-      occupationalCategory: career.department,
-    }),
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.capitalassociated.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Careers',
+            item: 'https://www.capitalassociated.com/career',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: jobTitle,
+            item: url,
+          },
+        ],
+      },
+    ],
   }
 }
 

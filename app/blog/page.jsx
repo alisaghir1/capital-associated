@@ -102,7 +102,48 @@ export default async function BlogListPage({ searchParams }) {
     return pages;
   };
 
+  const blogIndexJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://www.capitalassociated.com/blog#webpage",
+        "url": "https://www.capitalassociated.com/blog",
+        "name": "Blog | Capital Associated Building Contracting",
+        "isPartOf": {
+          "@id": "https://www.capitalassociated.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://www.capitalassociated.com/blog#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.capitalassociated.com/blog#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.capitalassociated.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.capitalassociated.com/blog"
+          }
+        ]
+      }
+    ]
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexJsonLd) }}
+      />
       <main className="min-h-screen">
         {/* Hero Section */}
         <div className="relative w-full h-[70vh] min-h-[400px] max-h-[700px] lg:max-h-[800px]">
@@ -293,5 +334,6 @@ export default async function BlogListPage({ searchParams }) {
           </div>
         </section>
       </main>
+    </>
   );
 }

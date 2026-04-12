@@ -49,5 +49,52 @@ export const metadata = {
 };
 
 export default function AboutUs() {
-  return <AboutLayout />;
+  const aboutJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://www.capitalassociated.com/about-us#webpage",
+        "url": "https://www.capitalassociated.com/about-us",
+        "name": "About Us | Capital Associated Building Contracting",
+        "isPartOf": {
+          "@id": "https://www.capitalassociated.com/#website"
+        },
+        "mainEntity": {
+          "@id": "https://www.capitalassociated.com/#organization"
+        },
+        "breadcrumb": {
+          "@id": "https://www.capitalassociated.com/about-us#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.capitalassociated.com/about-us#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.capitalassociated.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About Us",
+            "item": "https://www.capitalassociated.com/about-us"
+          }
+        ]
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
+      <AboutLayout />
+    </>
+  );
 }

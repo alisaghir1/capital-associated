@@ -46,5 +46,49 @@ export const metadata = {
 };
 
 export default function OurTeam() {
-  return <OurTeamLayout />;
+  const teamIndexJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://www.capitalassociated.com/our-team#webpage",
+        "url": "https://www.capitalassociated.com/our-team",
+        "name": "Our Team | Capital Associated Building Contracting",
+        "isPartOf": {
+          "@id": "https://www.capitalassociated.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://www.capitalassociated.com/our-team#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.capitalassociated.com/our-team#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.capitalassociated.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Team",
+            "item": "https://www.capitalassociated.com/our-team"
+          }
+        ]
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamIndexJsonLd) }}
+      />
+      <OurTeamLayout />
+    </>
+  );
 }

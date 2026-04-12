@@ -123,8 +123,61 @@ async function getHomePageData() {
 export default async function Home() {
   const { services, projects, team, blogs, settings } = await getHomePageData();
 
+  const homepageJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.capitalassociated.com/#website",
+        "url": "https://www.capitalassociated.com/",
+        "name": "Capital Associated Building Contracting",
+        "description": "Elite Construction Company & Fit-Out in Dubai",
+        "publisher": {
+          "@id": "https://www.capitalassociated.com/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.capitalassociated.com/#organization",
+        "name": "Capital Associated Building Contracting",
+        "url": "https://www.capitalassociated.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalassociated.com/logoLight.svg"
+        },
+        "email": "hello@capitalassociated.com",
+        "telephone": "+971528111106",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dubai",
+          "addressCountry": "AE"
+        },
+        "sameAs": [
+          "https://www.instagram.com/capital.associated/",
+          "https://www.facebook.com/"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.capitalassociated.com/#webpage",
+        "url": "https://www.capitalassociated.com/",
+        "name": "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+        "isPartOf": {
+          "@id": "https://www.capitalassociated.com/#website"
+        },
+        "about": {
+          "@id": "https://www.capitalassociated.com/#organization"
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+      />
       <Navbar settings={settings} />
       <NavbarMobile settings={settings} />
       <main>

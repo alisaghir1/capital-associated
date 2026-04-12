@@ -28,12 +28,12 @@ export default function NavMobile({ settings = {} }) {
         >
           {getSetting("contact_email", "hello@capitalassociated.com")}
         </Link>
-        <Link
-          href={`tel:${getSetting("contact_phone", "+971521211520")}`}
+        {getSetting("contact_phone") && <Link
+          href={`tel:${getSetting("contact_phone")}`}
           className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
         >
-          {getSetting("contact_phone", "+971 52 121 1520")}
-        </Link>
+          {getSetting("contact_phone")}
+        </Link>}
       </div>
       <Link href="/">
         <div className="absolute top-8 left-4 z-50 p-2">

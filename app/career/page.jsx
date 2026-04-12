@@ -46,5 +46,49 @@ export const metadata = {
 };
 
 export default function Career() {
-  return <CareerLayout />;
+  const careerIndexJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": "https://www.capitalassociated.com/career#webpage",
+        "url": "https://www.capitalassociated.com/career",
+        "name": "Careers | Capital Associated Building Contracting",
+        "isPartOf": {
+          "@id": "https://www.capitalassociated.com/#website"
+        },
+        "breadcrumb": {
+          "@id": "https://www.capitalassociated.com/career#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.capitalassociated.com/career#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.capitalassociated.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Careers",
+            "item": "https://www.capitalassociated.com/career"
+          }
+        ]
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(careerIndexJsonLd) }}
+      />
+      <CareerLayout />
+    </>
+  );
 }

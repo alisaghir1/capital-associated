@@ -58,35 +58,53 @@ export async function generateMetadata({ params }) {
 function generateProjectJsonLd(project, slug) {
   const title = stripHtmlTags(project.title)
   const description = project.short_description || stripHtmlTags(project.description)?.substring(0, 160) || ''
-  const image = project.hero_image_url || project.cover_image || 'https://www.capitalassociated.com/default-og-image.jpg'
+  const url = `https://www.capitalassociated.com/our-work/${slug}`
   
   return {
     '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    name: title,
-    description: description,
-    image: image,
-    url: `https://www.capitalassociated.com/our-work/${slug}`,
-    ...(project.completion_date && { dateCreated: project.completion_date }),
-    ...(project.location && {
-      locationCreated: {
-        '@type': 'Place',
-        name: project.location,
+    '@graph': [
+      {
+        '@type': 'CreativeWork',
+        '@id': `${url}#project`,
+        name: title,
+        description: description,
+        url: url,
+        author: {
+          '@id': 'https://www.capitalassociated.com/#organization'
+        },
+        ...(project.location && {
+          locationCreated: {
+            '@type': 'Place',
+            name: project.location,
+          },
+        }),
+        ...(project.completion_date && { dateCreated: project.completion_date }),
       },
-    }),
-    ...(project.client_name && {
-      sponsor: {
-        '@type': 'Organization',
-        name: project.client_name,
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.capitalassociated.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Projects',
+            item: 'https://www.capitalassociated.com/our-work',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: title,
+            item: url,
+          },
+        ],
       },
-    }),
-    creator: {
-      '@type': 'Organization',
-      name: 'Capital Associated Building Contracting',
-      url: 'https://www.capitalassociated.com',
-      logo: 'https://www.capitalassociated.com/logoLight.svg',
-    },
-    ...(project.project_type && { genre: project.project_type }),
+    ],
   }
 }
 

@@ -80,36 +80,70 @@ export async function generateMetadata({ params }) {
   }
 }
 
-// Generate JSON-LD structured data for Article
+// Generate JSON-LD structured data for BlogPosting
 function generateArticleJsonLd(blog, slug) {
   const title = stripHtml(blog.title)
   const description = stripHtml(blog.excerpt) || stripHtml(blog.content)?.substring(0, 160) || ''
   const image = blog.hero_image_url || 'https://www.capitalassociated.com/default-og-image.jpg'
+  const url = `https://www.capitalassociated.com/blog/${slug}`
   
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: title,
-    description: description,
-    image: image,
-    datePublished: blog.created_at,
-    dateModified: blog.updated_at || blog.created_at,
-    author: {
-      '@type': 'Person',
-      name: blog.author || 'Capital Associated',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Capital Associated Building Contracting',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://www.capitalassociated.com/logoLight.svg',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${url}#article`,
+        headline: title,
+        url: url,
+        datePublished: blog.created_at,
+        dateModified: blog.updated_at || blog.created_at,
+        author: {
+          '@id': 'https://www.capitalassociated.com/#organization'
+        },
+        publisher: {
+          '@id': 'https://www.capitalassociated.com/#organization'
+        },
+        image: image,
+        mainEntityOfPage: {
+          '@id': `${url}#webpage`,
+        },
       },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `https://www.capitalassociated.com/blog/${slug}`,
-    },
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url: url,
+        isPartOf: {
+          '@id': 'https://www.capitalassociated.com/#website',
+        },
+        breadcrumb: {
+          '@id': `${url}#breadcrumb`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${url}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.capitalassociated.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: 'https://www.capitalassociated.com/blog',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: title,
+            item: url,
+          },
+        ],
+      },
+    ],
   }
 }
 

@@ -73,13 +73,13 @@ export default function Navbar({ settings = {} }) {
           <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
         </Link>
         <div className="w-[0.5] h-4 bg-black"></div>
-        <Link
-          href={`tel:${getSetting("contact_phone", "+971521211520")}`}
+        {getSetting("contact_phone") && <Link
+          href={`tel:${getSetting("contact_phone")}`}
           className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
         >
-          {getSetting("contact_phone", "+971521211520")}
+          {getSetting("contact_phone")}
           <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-black transition-all duration-300 ease-in-out group-hover:w-full"></span>
-        </Link>
+        </Link>}
         <div className="w-[0.5px] h-10 bg-black"></div>
 
         {/* Social Section */}

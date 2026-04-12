@@ -91,37 +91,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "GeneralContractor",
-              "name": "Capital Associated Building Contracting",
-              "url": "https://www.capitalassociated.com",
-              "logo": "https://www.capitalassociated.com/logoLight.svg",
-              "image": "https://www.capitalassociated.com/main.jpg",
-              "description": "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions across residential & commercial sectors.",
-              "telephone": "+971521211520",
-              "email": "hello@capitalassociated.com",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "JLT, Cluster Y, Office 1501",
-                "addressLocality": "Dubai",
-                "addressCountry": "AE"
-              },
-              "areaServed": ["Dubai", "Abu Dhabi", "Sharjah", "UAE"],
-              "serviceType": [
-                "General Contracting",
-                "Interior Fit-Out",
-                "Construction Management",
-                "Design Build",
-                "Renovation & Remodeling"
-              ],
-              "sameAs": ["https://www.instagram.com/capital.associated/"]
-            })
-          }}
-        />
         {children}
       </body>
     </html>
