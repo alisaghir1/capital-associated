@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { supabase } from '../../../lib/supabase';
 import { logout } from '../../../lib/auth';
 
 /**
@@ -150,19 +149,12 @@ const SiteMetadata = () => {
 
   const fetchMetadata = async () => {
     try {
-      const { data, error } = await supabase
-        .from('site_metadata')
-        .select('*');
+      const response = await fetch('/api/admin/metadata');
+      const result = await response.json();
 
-      if (error) throw error;
+      if (!response.ok) throw new Error(result.error || 'Failed to fetch metadata');
 
-      // Convert array of key-value pairs to object
-      const metadataObj = {};
-      data.forEach(item => {
-        metadataObj[item.key] = item.value;
-      });
-      
-      setMetadata(metadataObj);
+      setMetadata(result.data || {});
     } catch (error) {
       console.error('Error fetching metadata:', error);
     } finally {
@@ -192,39 +184,7 @@ const SiteMetadata = () => {
     }
   };
 
-  const updateMetadata = async (key, value) => {
-    try {
-      console.log(`Updating metadata: ${key} = ${value?.substring ? value.substring(0, 50) + '...' : value}`);
-      
-      // First try to update existing record
-      const { data: updateResult, error: updateError } = await supabase
-        .from('site_metadata')
-        .update({ value, updated_at: new Date().toISOString() })
-        .eq('key', key)
-        .select();
 
-      // If no rows were updated, insert a new record
-      if (updateResult && updateResult.length === 0) {
-        const { error: insertError } = await supabase
-          .from('site_metadata')
-          .insert([{ key, value, updated_at: new Date().toISOString() }]);
-        
-        if (insertError) {
-          console.error(`Insert error for ${key}:`, insertError);
-          throw insertError;
-        }
-        console.log(`✅ Inserted new metadata: ${key}`);
-      } else if (updateError) {
-        console.error(`Update error for ${key}:`, updateError);
-        throw updateError;
-      } else {
-        console.log(`✅ Updated existing metadata: ${key}`);
-      }
-    } catch (error) {
-      console.error(`Error updating metadata ${key}:`, error);
-      throw error;
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -251,12 +211,16 @@ const SiteMetadata = () => {
         }
       }
       
-      // Update all metadata entries
-      const updatePromises = Object.entries(compressedMetadata).map(([key, value]) =>
-        updateMetadata(key, value)
-      );
+      // Update all metadata entries via API route (bypasses RLS)
+      const response = await fetch('/api/admin/metadata', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ metadata: compressedMetadata }),
+      });
 
-      await Promise.all(updatePromises);
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Failed to update metadata');
+
       alert('Settings updated successfully!');
     } catch (error) {
       console.error('Error updating settings:', error);
