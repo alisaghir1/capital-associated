@@ -18,7 +18,7 @@ const Consultation = () => {
       as="section"
       className="bg-white flex flex-col gap-10 py-20 xl:px-20 px-5 text-center w-[100%] justify-center items-center"
     >
-      <h2 className="text-2xl md:text-3xl xl:text-4xl">
+      <h2 className="text-xl md:text-2xl xl:text-3xl">
         Have a Vision in Mind?
       </h2>
       <p className="text-lg md:text-xl xl:text-2xl">
