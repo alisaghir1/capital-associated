@@ -1,4 +1,5 @@
 ﻿import { createServerSupabaseClient } from "@/lib/supabase-server";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 import HeroAnimation from "./components/HeroAnimation";
 import About from "./components/About";
 import OurProjects from "./components/OurProjects";
@@ -93,7 +94,9 @@ async function getHomePageData() {
       supabase.from("projects").select("id, title, slug, location, hero_image_url, featured, published, sort_order").eq("published", true).order("created_at", { ascending: false }).limit(8),
       supabase.from("team").select("*").eq("published", true).order("sort_order", { ascending: true }),
       supabase.from("blogs").select("id, title, slug, hero_image_url, excerpt, author, created_at, published, featured").eq("published", true).order("created_at", { ascending: false }).limit(6),
-      supabase.from("site_metadata").select("*"),
+      // Use service-role client so site_metadata is always readable on the
+      // server even when RLS is enabled.
+      supabaseAdmin.from("site_metadata").select("*"),
     ]);
 
     const settings = {};

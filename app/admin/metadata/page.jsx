@@ -221,10 +221,18 @@ const SiteMetadata = () => {
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || 'Failed to update metadata');
 
+      // Re-sync local state with what the server actually persisted so the
+      // user can see the saved values immediately.
+      if (result.data) {
+        setMetadata(result.data);
+      } else {
+        await fetchMetadata();
+      }
+
       alert('Settings updated successfully!');
     } catch (error) {
       console.error('Error updating settings:', error);
-      alert('Error updating settings');
+      alert('Error updating settings: ' + (error?.message || 'Unknown error'));
     } finally {
       setUpdating(false);
     }

@@ -58,10 +58,14 @@ export async function PUT(request) {
       updated_at: new Date().toISOString(),
     }));
 
-    // Upsert all records in one query (insert or update on conflict)
-    const { error } = await supabaseAdmin
+    // Upsert all records in one query (insert or update on conflict).
+    // Add .select() so PostgREST returns the affected rows; this lets us
+    // detect silent failures (e.g. RLS denial when running without the
+    // service role key) instead of falsely reporting success.
+    const { data: upserted, error } = await supabaseAdmin
       .from('site_metadata')
-      .upsert(records, { onConflict: 'key' });
+      .upsert(records, { onConflict: 'key' })
+      .select();
 
     if (error) {
       console.error('Error updating metadata:', error);
@@ -71,7 +75,27 @@ export async function PUT(request) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    if (!upserted || upserted.length !== records.length) {
+      console.error(
+        'Metadata upsert wrote unexpected row count:',
+        { expected: records.length, received: upserted?.length ?? 0 }
+      );
+      return NextResponse.json(
+        {
+          error:
+            'Metadata save did not persist. This usually means SUPABASE_SERVICE_ROLE_KEY is missing or RLS is blocking writes on site_metadata.',
+        },
+        { status: 500 }
+      );
+    }
+
+    // Convert back to object shape for the client
+    const updatedObj = {};
+    upserted.forEach(item => {
+      updatedObj[item.key] = item.value;
+    });
+
+    return NextResponse.json({ success: true, data: updatedObj });
   } catch (error) {
     console.error('Metadata update error:', error);
     return NextResponse.json(
