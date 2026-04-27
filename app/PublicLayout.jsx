@@ -4,6 +4,11 @@ import NavbarMobile from "./components/NavbarMobile";
 import Consultation from "./components/Consultation";
 import Footer from "./components/Footer";
 
+// Always render fresh so site settings updates from /admin/metadata
+// are reflected immediately on the public site (no CDN/ISR caching).
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 async function getSettings() {
   try {
     // Use the admin (service-role) client so server-side rendering reads

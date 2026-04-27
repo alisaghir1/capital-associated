@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { supabaseAdmin } from '../../../../lib/supabase-admin';
+
+export const dynamic = 'force-dynamic';
 
 /**
  * GET - Fetch all site metadata
@@ -94,6 +97,14 @@ export async function PUT(request) {
     upserted.forEach(item => {
       updatedObj[item.key] = item.value;
     });
+
+    // Invalidate every cached public page so updated site settings
+    // (logo, contact info, footer, etc.) appear immediately on Vercel.
+    try {
+      revalidatePath('/', 'layout');
+    } catch (e) {
+      console.warn('revalidatePath failed (non-fatal):', e?.message);
+    }
 
     return NextResponse.json({ success: true, data: updatedObj });
   } catch (error) {
