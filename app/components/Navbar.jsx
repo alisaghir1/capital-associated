@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
-import { RiTwitterXLine } from "react-icons/ri";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -116,15 +115,17 @@ export default function Navbar({ settings = {} }) {
             >
               <FaFacebook />
             </Link>
-            <Link
-              href={getSetting("social_twitter", "https://x.com/capitalassociated")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black transition-all duration-200 ease-in-out"
-              aria-label="X (Twitter)"
-            >
-              <RiTwitterXLine />
-            </Link>
+            {getSetting("social_linkedin") && (
+              <Link
+                href={getSetting("social_linkedin")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black transition-all duration-200 ease-in-out"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin />
+              </Link>
+            )}
           </div>
         </div>
       </div>

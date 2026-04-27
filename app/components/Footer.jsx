@@ -101,9 +101,6 @@ const Footer = ({ settings = {} }) => {
               {getSetting("social_youtube") && (
                 <li><Link href={getSetting("social_youtube")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">YouTube</Link></li>
               )}
-              {getSetting("social_twitter") && (
-                <li><Link href={getSetting("social_twitter")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">X</Link></li>
-              )}
               {getSetting("social_linkedin") && (
                 <li><Link href={getSetting("social_linkedin")} target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 transition-all duration-200 ease-in-out">LinkedIn</Link></li>
               )}

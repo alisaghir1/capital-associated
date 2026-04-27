@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { FaInstagram, FaFacebook } from "react-icons/fa";
-import { RiTwitterXLine, RiCloseFill, RiMenuFoldFill } from "react-icons/ri";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+import { RiCloseFill, RiMenuFoldFill } from "react-icons/ri";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -116,15 +116,17 @@ export default function NavMobile({ settings = {} }) {
           >
             <FaFacebook />
           </a>
-          <a
-            href={getSetting("social_twitter", "https://x.com/capitalassociated")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-2xl hover:text-black"
-            aria-label="X (Twitter)"
-          >
-            <RiTwitterXLine />
-          </a>
+          {getSetting("social_linkedin") && (
+            <a
+              href={getSetting("social_linkedin")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-2xl hover:text-black"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
+            </a>
+          )}
         </div>
       </div>
     </div>
