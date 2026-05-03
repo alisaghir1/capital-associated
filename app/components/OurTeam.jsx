@@ -15,7 +15,7 @@ const OurTeam = ({ team = [] }) => {
         </AnimatedWrapper>
         <AnimatedWrapper direction="up" duration={1}>
           <p className="text-lg md:text-xl xl:text-2xl">
-            Driven by Expertise, United for Excellence
+            Senior-Led Project Delivery
           </p>
         </AnimatedWrapper>
 
@@ -53,10 +53,10 @@ const OurTeam = ({ team = [] }) => {
         className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0"
       >
         <p className="text-lg md:text-xl xl:text-2xl text-bold">
-          Elite Team of Engineers, Architects &amp; Designers in Dubai
+          Senior-Led Project Delivery Across the UAE
         </p>
         <p className="text-base text-gray-500 mt-10 md:text-lg xl:text-xl">
-          At Capital Associated Contracting, we are recognized as an elite construction company in Dubai, with a highly skilled team of engineers, architects, interior designers, and project developers. Our multidisciplinary team brings extensive experience across commercial, residential, and high-end fit-out projects throughout the UAE. Each expert is dedicated to delivering creative, efficient, and unique solutions custom to meet our client&apos;s vision. From architectural design and engineering consultation to project execution and turnkey delivery, we uphold the great standards of quality, precision, and professionalism. As one of the trusted construction companies in Dubai, our team&apos;s collaborative approach provides seamless project delivery with a focus on original, soid, and long-term value for our clients in UAE, Dubai.
+          Our project teams are led by engineers and construction managers with direct experience across residential, commercial, and high-rise developments in the UAE. Every project is assigned a dedicated project manager who owns the programme, the budget, and the quality control process from mobilisation through handover. Unlike many contractors in Dubai who layer management between clients and site teams, we keep our structure flat &mdash; senior oversight on every project, direct communication at every stage, and accountability across concurrent sites in Dubai, Abu Dhabi, and Sharjah.
         </p>
       </AnimatedWrapper>
       <VidioComponent />

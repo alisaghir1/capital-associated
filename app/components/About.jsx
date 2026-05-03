@@ -18,13 +18,13 @@ const About = () => {
           </h2>
           <p className="mb-4 text-lg md:text-xl xl:text-2xl font-bold pt-10 text-black">
             {" "}
-            Capital Associated Building Contracting is a construction company in Dubai, UAE.
+            Capital Associated Building Contracting LLC is a licensed contracting company in Dubai, founded in 2021 and operating across Dubai, Abu Dhabi, and Sharjah. We deliver residential villas, high-rise towers, office buildings, and commercial projects from structural shell through to handover.
           </p>
           <p className="text-base leading-relaxed mt-20">
-          Our extensive experience in the construction industry has established us as an essential partner in shaping Dubai&apos;s spectacular skyline and contributing to its rapid growth.
+          Over 100 completed projects. More than 750,000 sq ft of built-up area. Our portfolio includes custom villas in Jumeirah and Dubai Hills, commercial restaurant builds across multiple locations, and luxury residential developments in Tilal Al Ghaf — each delivered on programme, within budget, and to the quality standard agreed at contract.
           </p>
           <p className="text-base leading-relaxed mt-5">
-          Capital Associated Building Contracting in Dubai focuses on providing exceptional construction solutions while maintaining the highest levels of customer service and creativity. Our diverse portfolio comprises commercial buildings, residential towers, industrial facilities, and infrastructure projects. Each project demonstrates our knowledge and experience as an elite construction company in Dubai.
+          What separates us from other contracting companies in Dubai, UAE is how we manage the details that most clients never see — procurement relationships that reduce material costs by 18 to 25 percent, permit sequencing that eliminates weeks of idle time, and structured quality control from first pour to final handover. We handle the complexity so our clients focus on decisions, not coordination.
           </p>
         </AnimatedWrapper>
 

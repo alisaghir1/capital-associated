@@ -13,7 +13,7 @@ const OurServices = ({ services = [] }) => {
         </AnimatedWrapper>
         <AnimatedWrapper direction="up" duration={1}>
           <p className="text-lg md:text-xl xl:text-2xl">
-            Leading Dubai&apos;s Property Evolution
+            General Contracting, Construction Management &amp; Specialist Delivery
           </p>
         </AnimatedWrapper>
       </section>

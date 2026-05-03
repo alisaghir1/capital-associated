@@ -13,12 +13,12 @@ const Blogs = ({ blogs = [] }) => {
         </AnimatedWrapper>
         <AnimatedWrapper direction="up" duration={1}>
           <p className="text-lg md:text-xl xl:text-2xl mt-10">
-            Industry Insights &amp; Innovations
+            Construction Insights From Our Project Experience
           </p>
         </AnimatedWrapper>
         <AnimatedWrapper direction="up" duration={1.2}>
           <p className="text-base md:text-lg xl:text-xl mt-10">
-            The blog explores the latest in construction, architecture, engineering, and interior design in Dubai and across the UAE. As one of the leading construction companies in Dubai, we share expert knowledge from our team of engineers, architects, interior designers, and property developers, offering valuable content that informs, educates, and inspires. Whether you&apos;re a client, investor, or design enthusiast, our blog explores the future of urban development, cutting-edge construction solutions, and the artistry behind building iconic structures. Stay connected with the region&apos;s top voices in elite construction and design — and discover how innovation continues to shape Dubai&apos;s skyline.
+            We publish guides, cost breakdowns, and technical articles covering villa construction, commercial fit-out budgeting, building permit processes, and contractor selection in Dubai. Our content is written by project managers and engineers who work on active construction sites across the UAE &mdash; covering the practical questions that property owners, investors, and developers ask when hiring contractors in Dubai.
           </p>
         </AnimatedWrapper>
       </section>

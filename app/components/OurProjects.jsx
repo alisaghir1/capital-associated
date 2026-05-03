@@ -29,7 +29,7 @@ const OurProjects = ({ projects = [] }) => {
         </AnimatedWrapper>
         <AnimatedWrapper direction="up" duration={1}>
           <p className="text-lg md:text-xl xl:text-2xl">
-            Designing Landmarks. Defining Skylines
+            750,000+ sq ft Built Across Dubai
           </p>
         </AnimatedWrapper>
       </section>

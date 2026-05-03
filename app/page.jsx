@@ -12,17 +12,18 @@ import Navbar from "./components/Navbar";
 import NavbarMobile from "./components/NavbarMobile";
 
 export const metadata = {
-  title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+  title: "Capital Associated | Contracting Company in Dubai, UAE",
   description:
-    "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions across residential & commercial sectors.",
+    "Capital Associated Building Contracting LLC \u2014 licensed contracting company in Dubai. Villas, towers, commercial builds & civil works across UAE. Est. 2021.",
   keywords: [
-    "Construction Company Dubai",
-    "Building Contracting UAE",
-    "Interior Fit-Out Dubai",
-    "Design Build UAE",
-    "General Contractor Dubai",
-    "Residential Construction Dubai",
-    "Commercial Construction UAE",
+    "contracting company in Dubai",
+    "contractors in Dubai",
+    "contracting companies in Dubai UAE",
+    "building contractor Dubai",
+    "general contractor UAE",
+    "villa construction Dubai",
+    "commercial contractor Dubai",
+    "Capital Associated Building Contracting",
   ],
   alternates: {
     canonical: "https://www.capitalassociated.com",
@@ -32,9 +33,9 @@ export const metadata = {
     follow: true,
   },
   openGraph: {
-    title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    title: "Capital Associated | Contracting Company in Dubai, UAE",
     description:
-      "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions.",
+      "Capital Associated Building Contracting LLC \u2014 licensed contracting company in Dubai. Villas, towers, commercial builds & civil works across UAE. Est. 2021.",
     url: "https://www.capitalassociated.com",
     type: "website",
     images: [
@@ -48,9 +49,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    title: "Capital Associated | Contracting Company in Dubai, UAE",
     description:
-      "Leading construction company in Dubai offering design-build, interior fit-out, engineering, and project management solutions.",
+      "Capital Associated Building Contracting LLC \u2014 licensed contracting company in Dubai. Villas, towers, commercial builds & civil works across UAE. Est. 2021.",
     images: ["/main.jpg"],
   },
 };
@@ -134,7 +135,8 @@ export default async function Home() {
         "@id": "https://www.capitalassociated.com/#website",
         "url": "https://www.capitalassociated.com/",
         "name": "Capital Associated Building Contracting",
-        "description": "Elite Construction Company & Fit-Out in Dubai",
+        "description": "Contracting Company in Dubai, UAE",
+
         "publisher": {
           "@id": "https://www.capitalassociated.com/#organization"
         }
@@ -164,7 +166,7 @@ export default async function Home() {
         "@type": "WebPage",
         "@id": "https://www.capitalassociated.com/#webpage",
         "url": "https://www.capitalassociated.com/",
-        "name": "Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+        "name": "Capital Associated | Contracting Company in Dubai, UAE",
         "isPartOf": {
           "@id": "https://www.capitalassociated.com/#website"
         },
@@ -201,7 +203,7 @@ export default async function Home() {
                 Leading Contracting Company in Dubai, UAE
               </h1>
               <p className="text-sm md:text-base lg:text-lg xl:text-xl text-black mt-3">
-                Building Visions, Defining Skylines
+                100+ Projects. 750,000+ sq ft Delivered.
               </p>
             </HeroAnimation>
           </div>

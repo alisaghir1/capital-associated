@@ -2,18 +2,17 @@
 
 export const metadata = {
   title:
-    "About Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    "About Capital Associated Building Contracting LLC | Dubai, Est. 2021",
   description:
-    "Capital Associated Building Contracting LLC is a leading construction company in Dubai, UAE, dedicated to building your vision and crafting tomorrow.",
+    "Capital Associated Building Contracting LLC \u2014 Dubai general contractor est. 2021. Luxury villas, commercial builds & civil works across UAE.",
   keywords: [
-    "Construction Company Dubai",
-    "Building Contracting UAE",
-    "General Contracting",
-    "Fit-Out Company Dubai",
-    "Infrastructure Development UAE",
-    "Residential Construction Dubai",
-    "Commercial Construction UAE",
-    "Project Management Dubai",
+    "Capital Associated",
+    "building contracting company Dubai",
+    "general contractor UAE",
+    "construction company Dubai",
+    "villa construction Dubai",
+    "commercial contractor Dubai",
+    "Capital Associated Building Contracting LLC",
   ],
   alternates: {
     canonical: "https://www.capitalassociated.com/about-us",
@@ -24,9 +23,9 @@ export const metadata = {
   },
   openGraph: {
     title:
-      "About Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+      "About Capital Associated Building Contracting LLC | Dubai, Est. 2021",
     description:
-      "Capital Associated Building Contracting LLC is a leading construction company in Dubai, UAE, dedicated to building your vision and crafting tomorrow.",
+      "Capital Associated Building Contracting LLC \u2014 Dubai general contractor est. 2021. Luxury villas, commercial builds & civil works across UAE.",
     url: "https://www.capitalassociated.com/about-us",
     type: "website",
     images: [
@@ -41,9 +40,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "About Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+      "About Capital Associated Building Contracting LLC | Dubai, Est. 2021",
     description:
-      "Capital Associated Building Contracting LLC is a leading construction company in Dubai, UAE.",
+      "Capital Associated Building Contracting LLC \u2014 Dubai general contractor est. 2021. Luxury villas, commercial builds & civil works across UAE.",
     images: ["/about/about1.jpg"],
   },
 };
