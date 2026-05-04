@@ -2,14 +2,17 @@
 
 export const metadata = {
   title:
-    "Contact Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    "Contact Us | Capital Associated Building Contracting \u2014 Dubai, UAE",
   description:
-    "Get in touch with Capital Associated Building Contracting. Contact us for construction, fit-out, and building project inquiries in Dubai and the UAE.",
+    "Get a free consultation for villa construction, commercial builds or general contracting in Dubai. Call +971 528111106 or fill the form.",
   keywords: [
-    "Contact Construction Company Dubai",
-    "Construction Inquiry UAE",
-    "Building Contracting UAE",
-    "Fit-Out Company Dubai",
+    "contact contractor Dubai",
+    "construction company contact Dubai",
+    "get quote contractor UAE",
+    "free consultation building contractor",
+    "Capital Associated contact",
+    "construction inquiry Dubai",
+    "contractor quote Dubai",
   ],
   alternates: {
     canonical: "https://www.capitalassociated.com/contact-us",
@@ -20,9 +23,9 @@ export const metadata = {
   },
   openGraph: {
     title:
-      "Contact Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+      "Contact Us | Capital Associated Building Contracting \u2014 Dubai, UAE",
     description:
-      "Get in touch with Capital Associated Building Contracting. Contact us for construction, fit-out, and building project inquiries in Dubai and the UAE.",
+      "Get a free consultation for villa construction, commercial builds or general contracting in Dubai. Call +971 528111106 or fill the form.",
     url: "https://www.capitalassociated.com/contact-us",
     type: "website",
     images: [
@@ -37,9 +40,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Contact Us - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+      "Contact Us | Capital Associated Building Contracting \u2014 Dubai, UAE",
     description:
-      "Get in touch with Capital Associated Building Contracting for your construction needs in Dubai.",
+      "Get a free consultation for villa construction, commercial builds or general contracting in Dubai. Call +971 528111106 or fill the form.",
     images: ["/about/about4.jpg"],
   },
 };

@@ -104,9 +104,16 @@ const ContacUsLayout = () => {
 
   return (
     <div className="px-6 pb-12 pt-32 sm:pb-24 sm:pt-40 lg:px-8">
-      <div className="mx-auto max-w-xl flex flex-col items-center justify-center text-center mt-10 sm:mt-20">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-orange">Contact Us!</h1>
-        <p className="text-base sm:text-lg md:text-xl text-black mt-6">to discuss your requirements, request a quote, or schedule a consultation.</p>
+      <div className="mx-auto max-w-3xl flex flex-col items-center justify-center text-center mt-10 sm:mt-20">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-orange">
+          Get a Free Construction Consultation
+        </h1>
+        <p className="text-base sm:text-lg md:text-xl text-black mt-6 leading-relaxed">
+          Whether you are planning a villa build, commercial fit-out, or turnkey construction project in Dubai, Abu Dhabi, or Sharjah &mdash; we provide free initial consultations covering project feasibility, preliminary cost guidance, and programme estimates.
+        </p>
+        <p className="text-base sm:text-lg md:text-xl text-black mt-4">
+          Fill in the form below or contact us directly.
+        </p>
       </div>
       <form onSubmit={sendEmail} className="mx-auto mt-16 max-w-xl sm:mt-20 z-10">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -198,6 +205,47 @@ const ContacUsLayout = () => {
           </button>
         </div>
       )}
+
+      {/* Contact Details Block */}
+      <div className="mx-auto mt-20 max-w-4xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <p className="text-sm font-semibold text-orange uppercase tracking-wide mb-2">Phone</p>
+            <a href="tel:+971528111106" className="text-base text-black hover:text-orange transition-colors">
+              +971 528111106
+            </a>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <p className="text-sm font-semibold text-orange uppercase tracking-wide mb-2">Email</p>
+            <a href="mailto:hello@capitalassociated.com" className="text-base text-black hover:text-orange transition-colors break-all">
+              hello@capitalassociated.com
+            </a>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <p className="text-sm font-semibold text-orange uppercase tracking-wide mb-2">Office</p>
+            <p className="text-base text-black">Dubai, UAE</p>
+          </div>
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <p className="text-sm font-semibold text-orange uppercase tracking-wide mb-2">Working Hours</p>
+            <p className="text-base text-black">Monday &ndash; Friday</p>
+            <p className="text-base text-black">8:30 AM &ndash; 7:00 PM</p>
+          </div>
+        </div>
+
+        {/* Google Map Embed */}
+        <div className="mt-12 rounded-lg overflow-hidden shadow-lg border border-gray-200">
+          <iframe
+            title="Capital Associated Building Contracting Office Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.7!2d55.2708!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zRHViYWksIFVBRQ!5e0!3m2!1sen!2sae!4v1700000000000"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,16 +1,17 @@
 ﻿import OurTeamLayout from "./OurTeamLayout";
 
 export const metadata = {
-  title:
-    "Our Team - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+  title: "Our Team | Capital Associated Building Contracting LLC",
   description:
-    "Meet the team behind Capital Associated Building Contracting - dedicated professionals driving excellence in the construction industry in Dubai and UAE.",
+    "Meet the engineers, project managers and site teams delivering construction projects across Dubai, Abu Dhabi and Sharjah.",
   keywords: [
-    "Construction Team Dubai",
-    "Building Contracting Professionals UAE",
-    "Project Management Dubai",
-    "Civil Engineering Dubai",
-    "Construction Company Dubai",
+    "Capital Associated team",
+    "construction team Dubai",
+    "project managers Dubai",
+    "building contractor team UAE",
+    "construction engineers Dubai",
+    "site engineers UAE",
+    "Capital Associated Building Contracting",
   ],
   alternates: {
     canonical: "https://www.capitalassociated.com/our-team",
@@ -20,10 +21,9 @@ export const metadata = {
     follow: true,
   },
   openGraph: {
-    title:
-      "Our Team - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    title: "Our Team | Capital Associated Building Contracting LLC",
     description:
-      "Meet the team behind Capital Associated Building Contracting - dedicated professionals in Dubai.",
+      "Meet the engineers, project managers and site teams delivering construction projects across Dubai, Abu Dhabi and Sharjah.",
     url: "https://www.capitalassociated.com/our-team",
     type: "website",
     images: [
@@ -37,10 +37,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Our Team - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    title: "Our Team | Capital Associated Building Contracting LLC",
     description:
-      "Meet the team behind Capital Associated Building Contracting.",
+      "Meet the engineers, project managers and site teams delivering construction projects across Dubai, Abu Dhabi and Sharjah.",
     images: ["/main.jpg"],
   },
 };

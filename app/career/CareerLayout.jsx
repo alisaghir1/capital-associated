@@ -39,29 +39,43 @@ export default function CareerLayout() {
 
   if (careers.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-100 pt-32 pb-12 flex items-center justify-center">
-        <div className="flex items-center justify-center">
-          <div className="text-center p-12 bg-white rounded-2xl shadow-lg border border-gray-200 max-w-2xl mx-4">
-            <div className="w-20 h-20 bg-black rounded-full mx-auto mb-8 flex items-center justify-center">
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6M8 8v10a2 2 0 002 2h4a2 2 0 002-2V8" />
-              </svg>
-            </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6">
-              Exciting Opportunities Ahead!
+      <div className="min-h-screen bg-slate-100 pt-32 pb-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
+              Careers at Capital Associated Building Contracting
             </h1>
-            <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              We're constantly growing and expanding our horizons. While we're not actively hiring at this moment, 
-              amazing career opportunities are just around the corner.
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium">
+              Build With Us Across the UAE
             </p>
-            <p className="text-gray-600 text-lg mb-6 leading-relaxed">
-              Our team is the cornerstone of our success, and we're always on the lookout for passionate, 
-              talented individuals to join us on our remarkable journey.
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 sm:p-12">
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-6">
+              Capital Associated Building Contracting LLC is a licensed general contractor delivering villa construction, commercial builds, and turnkey projects across Dubai, Abu Dhabi, and Sharjah. We have completed over 100 projects covering more than 750,000 sq ft of built-up area.
             </p>
-            <p className="text-black text-lg font-medium mb-8">
-              Stay connected  we can't wait to share exciting news soon!
+
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4 font-semibold">
+              We regularly hire for the following roles:
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <ul className="list-disc list-inside text-gray-700 text-base sm:text-lg leading-relaxed mb-8 space-y-2 pl-2">
+              <li>Project Managers</li>
+              <li>Site Engineers (Civil / Structural)</li>
+              <li>Quantity Surveyors</li>
+              <li>Estimation Engineers</li>
+              <li>HSE Officers</li>
+              <li>Document Controllers</li>
+              <li>Skilled Tradespeople (Formwork, Rebar, Finishing)</li>
+            </ul>
+
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
+              If you have experience in UAE construction and want to work with a contractor that delivers across residential, commercial, and mixed-use projects &mdash; send your CV.
+            </p>
+            <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-8">
+              We review all applications and reach out when a role matches your experience and qualifications.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4 border-t border-gray-100">
               <a
                 href="mailto:careers@capitalassociated.com"
                 className="inline-flex items-center justify-center bg-black text-white px-8 py-3 rounded-lg hover:bg-gray-800 transition-colors duration-200 font-medium"

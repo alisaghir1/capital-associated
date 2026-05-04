@@ -1,16 +1,17 @@
 ﻿import CareerLayout from "./CareerLayout";
 
 export const metadata = {
-  title:
-    "Career - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+  title: "Careers | Capital Associated Building Contracting LLC \u2014 Dubai",
   description:
-    "Join Capital Associated Building Contracting and explore exciting career opportunities in engineering, project management, site supervision, design, and more in Dubai.",
+    "Construction careers at Capital Associated in Dubai. We hire project managers, site engineers and skilled tradespeople across the UAE.",
   keywords: [
-    "Construction Careers Dubai",
-    "Building Contracting Jobs UAE",
-    "Engineering Jobs Dubai",
-    "Project Management Careers UAE",
-    "Construction Company Dubai",
+    "construction jobs Dubai",
+    "careers building contracting Dubai",
+    "project manager jobs UAE",
+    "site engineer jobs Dubai",
+    "construction careers UAE",
+    "Capital Associated careers",
+    "contractor jobs Dubai",
   ],
   alternates: {
     canonical: "https://www.capitalassociated.com/career",
@@ -20,10 +21,9 @@ export const metadata = {
     follow: true,
   },
   openGraph: {
-    title:
-      "Career - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    title: "Careers | Capital Associated Building Contracting LLC \u2014 Dubai",
     description:
-      "Join Capital Associated Building Contracting and explore exciting career opportunities in Dubai.",
+      "Construction careers at Capital Associated in Dubai. We hire project managers, site engineers and skilled tradespeople across the UAE.",
     url: "https://www.capitalassociated.com/career",
     type: "website",
     images: [
@@ -37,10 +37,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Career - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    title: "Careers | Capital Associated Building Contracting LLC \u2014 Dubai",
     description:
-      "Explore exciting career opportunities at Capital Associated Building Contracting.",
+      "Construction careers at Capital Associated in Dubai. We hire project managers, site engineers and skilled tradespeople across the UAE.",
     images: ["/about/about3.jpg"],
   },
 };

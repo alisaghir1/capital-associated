@@ -43,8 +43,18 @@ function stripHtml(html) {
 }
 
 export const metadata = {
-  title: 'Our Services | Capital Associated Building Contracting',
-  description: 'Explore our comprehensive construction services including general contracting, design-build, interior fit-out, renovation, and more in Dubai and UAE.',
+  title: 'Construction Services in Dubai | Capital Associated Building Contracting',
+  description: 'General contracting, interior fit-out, renovation, design-build and construction management services across Dubai, Abu Dhabi and Sharjah.',
+  keywords: [
+    'construction services Dubai',
+    'general contracting Dubai',
+    'interior fit-out Dubai',
+    'renovation company Dubai',
+    'design build UAE',
+    'construction management Dubai',
+    'building contractor services UAE',
+    'Capital Associated services',
+  ],
   alternates: {
     canonical: 'https://www.capitalassociated.com/services',
   },
@@ -53,15 +63,15 @@ export const metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'Our Services | Capital Associated Building Contracting',
-    description: 'Comprehensive construction and fit-out services in Dubai and UAE.',
+    title: 'Construction Services in Dubai | Capital Associated Building Contracting',
+    description: 'General contracting, interior fit-out, renovation, design-build and construction management services across Dubai, Abu Dhabi and Sharjah.',
     url: 'https://www.capitalassociated.com/services',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Services | Capital Associated Building Contracting',
-    description: 'Comprehensive construction and fit-out services in Dubai and UAE.',
+    title: 'Construction Services in Dubai | Capital Associated Building Contracting',
+    description: 'General contracting, interior fit-out, renovation, design-build and construction management services across Dubai, Abu Dhabi and Sharjah.',
   },
 };
 
@@ -210,16 +220,25 @@ export default async function ServicesListPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
           <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-8 pt-24 xl:pt-28">
             <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black">
-              Our Services
+              Construction Services Across Dubai, Abu Dhabi &amp; Sharjah
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black mt-5">
-              Leading Dubai&apos;s Property Evolution
+              General Contracting, Fit-Out &amp; Specialist Delivery
             </p>
             <p className="absolute bottom-10 left-10 text-white">
               Home <span className="text-black">/ Services</span>
             </p>
           </div>
         </div>
+
+        {/* Intro */}
+        <section className="bg-offwhite px-5 xl:px-20 pt-20">
+          <div className="container mx-auto">
+            <p className="text-base md:text-lg xl:text-xl text-gray-700 leading-relaxed text-center max-w-5xl mx-auto">
+              Capital Associated Building Contracting LLC provides full-scope construction and fit-out services across the UAE. From new-build general contracting and shell-and-core delivery to interior fit-out, renovation, and design-build &mdash; we manage every stage of the construction lifecycle under one contract. Our services cover residential villas, commercial buildings, high-rise towers, restaurants, and mixed-use developments. Over 100 projects completed. More than 750,000 sq ft delivered.
+            </p>
+          </div>
+        </section>
 
         {/* Services Grid */}
         <section className="bg-offwhite pb-20">
@@ -228,8 +247,8 @@ export default async function ServicesListPage() {
             <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-black">
               What We Offer
             </h2>
-            <p className="text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl text-center px-4">
-              Comprehensive construction and fit-out solutions tailored to your needs
+            <p className="text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-3xl text-center px-4">
+              General Contracting, Fit-Out, Renovation &amp; Specialist Delivery Across the UAE
             </p>
           </div>
 
@@ -272,6 +291,20 @@ export default async function ServicesListPage() {
                   ))}
                 </section>
               )}
+
+              {/* Closing summary */}
+              <div className="container mx-auto px-10 pt-16 max-w-5xl">
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-4">
+                  Our core services include general contracting for villa, commercial, and high-rise construction; construction management for clients who need professional oversight of their build programme; design-build for turnkey delivery from concept to handover; interior fit-out for residential and commercial spaces; renovation and remodeling for property upgrades across the UAE; pre-construction services including feasibility, cost planning, and permit management; value engineering to reduce costs without compromising quality; specialty construction for complex technical builds; and green building solutions for energy-efficient and sustainable construction.
+                </p>
+                <p className="text-base md:text-lg text-gray-700 leading-relaxed">
+                  Each service is available independently or as part of an integrated delivery model.{' '}
+                  <Link href="/contact-us" className="underline font-semibold text-black hover:text-gray-700">
+                    Contact us
+                  </Link>{' '}
+                  to discuss your project scope.
+                </p>
+              </div>
             </>
           )}
         </section>

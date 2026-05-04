@@ -84,19 +84,15 @@ const OurTeamLayout = () => {
         </section>
 
         <section className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0">
-          <p className="lg:text-2xl text-bold text-xl xl:text-3xl text-center">
-            Professional Project Managers, Engineers, Supervisors and Skilled Personnel and Staffs in Dubai
-          </p>
+          <h2 className="lg:text-2xl text-bold text-xl xl:text-3xl text-center">
+            Senior-Led Project Delivery Across the UAE
+          </h2>
           <p className="lg:text-1xl text-gray-500 mt-10 text-lg xl:text-2xl text-center">
-            At Capital Associated Contracting, we are recognized as a professional building and construction company in Dubai. 
-            Our dedicated team of project managers, engineers, supervisors, and skilled personnel brings decades of combined experience in executing 
-            high-quality construction works. We specialize in residential, commercial, industrial, and fit-out projects across the UAE.
+            Capital Associated was co-founded by Mohab Ayoub and Ramaz Izza in 2021. Our project teams are led by engineers and construction managers with hands-on experience across residential, commercial, and high-rise developments in Dubai, Abu Dhabi, and Sharjah.
             <br /><br />
-            Our team focuses on every aspect of construction — from planning, site execution, and quality control to timely project delivery. 
-            We emphasize technical excellence, HSE compliance, and innovative solutions tailored to meet the specific needs of our clients. 
-            Whether it's structural construction, civil engineering, or general contracting, we strive for excellence and durability in everything we build.
+            Every project is assigned a dedicated project manager who owns the programme, the budget, and the quality control process from mobilisation through handover. We keep our structure flat &mdash; senior oversight on every project, direct communication at every stage, and accountability that does not get passed down a chain.
             <br /><br />
-            As a trusted name among building contractors in Dubai, our team-driven approach ensures reliable, cost-effective, and future-ready construction outcomes for every project.
+            Our team includes estimation engineers, document controllers, site supervisors, and HSE officers &mdash; each working on active construction sites across the UAE.
           </p>
         </section>
 

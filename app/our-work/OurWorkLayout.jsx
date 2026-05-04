@@ -66,10 +66,10 @@ const OurWorkLayout = () => {
         {/* Content on top of the image */}
         <div className="relative z-10 flex flex-col justify-center items-center w-full h-full text-center px-8 pt-24 xl:pt-28">
           <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-black">
-            Our Projects
+            Our Construction Projects Across the UAE
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-black mt-5">
-          Designing Landmarks. Defining Skylines
+            100+ Projects. 750,000+ sq ft Delivered in Dubai, Abu Dhabi &amp; Sharjah
           </p>
           <p className="absolute bottom-10 left-10 text-white">
             Home <span className="text-black">/ Our Projects</span>
@@ -77,6 +77,11 @@ const OurWorkLayout = () => {
         </div>
       </div>
       <div>
+        <section className="container mx-auto px-5 xl:px-20 pt-20">
+          <p className="text-base md:text-lg xl:text-xl text-gray-700 leading-relaxed text-center max-w-5xl mx-auto">
+            Capital Associated Building Contracting has delivered over 100 construction projects covering more than 750,000 sq ft of built-up area across the UAE. Our portfolio includes custom villa construction in Jumeirah and Dubai Hills, luxury residential fit-outs in Tilal Al Ghaf, commercial restaurant builds for the Meat Moot chain across multiple Dubai locations, landscape and exterior construction, and high-end interior works. Every project below was managed from mobilisation through to handover by our in-house team &mdash; on programme, within budget, and to the quality standard agreed at contract.
+          </p>
+        </section>
         <section className="grid grid-cols-2 mt-20 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20">
           {projects.map((project, index) => {
             // Helper function to get layout variation based on index
@@ -127,6 +132,15 @@ const OurWorkLayout = () => {
               </Link>
             );
           })}
+        </section>
+        <section className="container mx-auto px-5 xl:px-20 pb-20">
+          <p className="text-base md:text-lg xl:text-xl text-gray-700 leading-relaxed text-center max-w-5xl mx-auto">
+            These are a selection of our completed projects. We work across residential, commercial, hospitality, and mixed-use developments throughout Dubai, Abu Dhabi, Sharjah, and the wider UAE. If you are planning a construction or fit-out project and want to see examples relevant to your scope,{' '}
+            <Link href="/contact-us" className="underline font-semibold text-black hover:text-gray-700">
+              contact us
+            </Link>{' '}
+            and we can share additional case studies and references.
+          </p>
         </section>
       </div>
       <VidioComponent />

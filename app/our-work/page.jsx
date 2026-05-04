@@ -2,16 +2,17 @@
 
 export const metadata = {
   title:
-    "Our Work - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+    "Our Projects | Capital Associated Building Contracting \u2014 Dubai",
   description:
-    "Discover the remarkable projects completed by Capital Associated Building Contracting. From residential buildings to large-scale commercial developments in Dubai.",
+    "100+ completed construction projects across Dubai, Abu Dhabi and Sharjah. Villas, commercial builds, restaurants and luxury fit-outs.",
   keywords: [
-    "Construction Projects Dubai",
-    "Building Contracting UAE",
-    "Commercial Construction UAE",
-    "Residential Construction Dubai",
-    "Interior Fit-Out Solutions",
-    "Infrastructure Development UAE",
+    "construction projects Dubai",
+    "completed projects Dubai",
+    "villa construction portfolio",
+    "commercial construction Dubai",
+    "restaurant construction UAE",
+    "Capital Associated projects",
+    "building contractor portfolio Dubai",
   ],
   alternates: {
     canonical: "https://www.capitalassociated.com/our-work",
@@ -22,9 +23,9 @@ export const metadata = {
   },
   openGraph: {
     title:
-      "Our Work - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+      "Our Projects | Capital Associated Building Contracting \u2014 Dubai",
     description:
-      "Discover the remarkable projects completed by Capital Associated Building Contracting in Dubai.",
+      "100+ completed construction projects across Dubai, Abu Dhabi and Sharjah. Villas, commercial builds, restaurants and luxury fit-outs.",
     url: "https://www.capitalassociated.com/our-work",
     type: "website",
     images: [
@@ -39,9 +40,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Our Work - Capital Associated | Elite Construction Company & Fit-Out in Dubai",
+      "Our Projects | Capital Associated Building Contracting \u2014 Dubai",
     description:
-      "Discover the remarkable projects completed by Capital Associated Building Contracting.",
+      "100+ completed construction projects across Dubai, Abu Dhabi and Sharjah. Villas, commercial builds, restaurants and luxury fit-outs.",
     images: ["/main.jpg"],
   },
 };
