@@ -2,27 +2,11 @@
 import React from "react";
 import Link from "next/link";
 import AnimatedWrapper from "./AnimatedWrapper";
-import { stripHtmlTags } from "../utils/richText";
+import ProjectCard from "./ProjectCard";
 
 const OurProjects = ({ projects = [] }) => {
-  const getBorderRadius = (index) => {
-    const patterns = [
-      'rounded-tl-full', 'rounded-bl-full', 'rounded-tr-full', 'rounded-tr-full',
-      'rounded-tl-full', 'rounded-br-full', 'rounded-tl-full', 'rounded-br-full',
-    ];
-    return patterns[index % patterns.length];
-  };
-
-  const getAlignment = (index) => {
-    const alignments = [
-      'items-end pb-4', 'items-start pt-4', 'items-end pb-4', 'items-end pb-4',
-      'items-end pb-4', 'items-start pt-4', 'items-end pb-4', 'items-start pt-4',
-    ];
-    return alignments[index % alignments.length];
-  };
-
   return (
-    <div>
+    <div id="our-projects" className="scroll-mt-24">
       <section className="flex flex-col justify-center items-center gap-5 my-20">
         <AnimatedWrapper direction="down" duration={0.8}>
           <h2 className="text-2xl md:text-3xl xl:text-4xl">Our Projects</h2>
@@ -35,25 +19,13 @@ const OurProjects = ({ projects = [] }) => {
       </section>
 
       <AnimatedWrapper
-        direction="down"
+        direction="up"
         duration={1}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-5 px-5 xl:mx-20 mb-20"
+        className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-5 xl:px-20 mb-16"
       >
         {projects.length > 0 ? (
-          projects.map((project, index) => (
-            <Link key={project.id} href={`/our-work/${project.slug}`} className="block">
-              <div
-                className={`relative bg-black flex transition-all duration-300 ease-in-out justify-start h-[25rem] xl:h-[36rem] bg-cover bg-center shadow-lg text-white px-4 ${getBorderRadius(index)} ${getAlignment(index)}`}
-                style={{ backgroundImage: `url('${project.hero_image_url}')` }}
-              >
-                <div className="text-white xl:p-3 rounded-lg w-full text-start">
-                  <h3 className="xl:text-lg text-md mb-2 font-semibold">
-                    {stripHtmlTags(project.title)}
-                  </h3>
-                  <p className="xl:text-sm text-xs">{project.location}</p>
-                </div>
-              </div>
-            </Link>
+          projects.slice(0, 6).map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))
         ) : (
           <div className="col-span-full text-center py-10">
@@ -62,12 +34,12 @@ const OurProjects = ({ projects = [] }) => {
         )}
       </AnimatedWrapper>
 
-      <div className="flex justify-center align-center mb-20">
+      <div className="flex justify-center mb-20">
         <Link
-          className="px-4 mb-5 z-20 xl:mt-0 text-center py-2 text-xl md:text-2xl transition-colors duration-300 ease-in-out text-black hover:text-black border-b border-b-black"
+          className="px-4 py-2 text-lg md:text-xl text-black border-b border-b-black hover:text-gray-700 transition-colors duration-200"
           href="/our-work"
         >
-          Visit Projects Page
+          View All Projects
         </Link>
       </div>
     </div>

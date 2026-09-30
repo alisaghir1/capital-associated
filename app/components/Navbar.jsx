@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { trackEvent } from "../../lib/analytics";
 
 export default function Navbar({ settings = {} }) {
   const [showSocialLinks, setShowSocialLinks] = useState(false);
@@ -74,6 +75,7 @@ export default function Navbar({ settings = {} }) {
         <div className="w-[0.5] h-4 bg-black"></div>
         {getSetting("contact_phone") && <Link
           href={`tel:${getSetting("contact_phone")}`}
+          onClick={() => trackEvent("phone_click", { location: "navbar" })}
           className="relative text-sm font-medium hover:text-black transition-all duration-200 ease-in-out group"
         >
           {getSetting("contact_phone")}

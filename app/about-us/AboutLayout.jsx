@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import LeaderCard from "../components/LeaderCard";
+import CapabilityDownload from "../components/CapabilityDownload";
 
 const AboutLayout = () => {
   return (
@@ -44,14 +46,23 @@ const AboutLayout = () => {
                 A Dubai-based general contractor delivering villas, towers, and commercial builds across the UAE since 2021.
               </h2>
               <p className="mt-4">
-                Capital Associated Building Contracting LLC is a licensed building contracting company founded in 2021 and headquartered in Dubai, UAE. We hold an active Dubai Department of Economy and Tourism trade license for building contracting and operate across Dubai, Abu Dhabi, and Sharjah.
+                Capital Associated Building Contracting LLC is a licensed Dubai general contractor, founded in 2021, delivering villas, towers, and commercial builds across the UAE. We carry contractual responsibility end-to-end &mdash; from structural shell through MEP coordination to handover.
               </p>
-              <p className="mt-4">
-                Since formation, the company has completed over 100 projects totalling more than 750,000 sq ft of built-up area &mdash; residential villas in Jumeirah and Dubai Hills, commercial builds across multiple Dubai locations, high-rise towers, office buildings, and luxury developments in Tilal Al Ghaf. Our project portfolio spans private residential clients, restaurant groups, commercial operators, and property developers &mdash; each with different requirements, budgets, and timelines, and each delivered to completion.
-              </p>
-              <p className="mt-4">
-                We are a contracting company. That means we take contractual responsibility for delivering physical construction &mdash; structural shells, high-rise towers, civil works, and MEP coordination. We manage subcontractors, procure materials, coordinate with consultants and authorities, and hand over completed buildings that are ready for occupancy and operation.
-              </p>
+              <details className="mt-4 group">
+                <summary className="cursor-pointer list-none font-semibold text-black flex items-center gap-2 w-fit">
+                  <span>Company background</span>
+                  <span className="transition-transform duration-200 group-open:rotate-180">&#9662;</span>
+                </summary>
+                <div className="mt-3 flex flex-col gap-4 text-gray-700">
+                  <p>
+                    We hold an active Dubai Department of Economy and Tourism trade license for building contracting and operate across Dubai, Abu Dhabi, and Sharjah. Since formation, the company has completed over 100 projects totalling more than 750,000 sq ft of built-up area &mdash; residential villas in Jumeirah and Dubai Hills, commercial builds across multiple Dubai locations, high-rise towers, office buildings, and luxury developments in Tilal Al Ghaf.
+                  </p>
+                  <p>
+                    Our project portfolio spans private residential clients, restaurant groups, commercial operators, and property developers. We manage subcontractors, procure materials, coordinate with consultants and authorities, and hand over completed buildings ready for occupancy and operation.
+                  </p>
+                </div>
+              </details>
+              <CapabilityDownload className="mt-2 inline-flex w-fit items-center gap-2 border border-black rounded-md px-5 py-2.5 text-sm font-semibold hover:bg-black hover:text-white transition-all duration-200 ease-in-out" />
             </div>
 
             {/* Right Image */}
@@ -81,26 +92,38 @@ const AboutLayout = () => {
 
         <div className="w-full container mx-auto flex flex-col gap-5 px-4">
           <h2 className="text-2xl font-bold text-center mt-10">Leadership</h2>
-          <p className="mt-4">
-            Capital Associated was co-founded by Mohab Ayoub and Ramaz Izza in 2021. The company was built on their combined operational experience in UAE construction and a shared focus on delivering projects through direct senior involvement rather than layered management structures.
+          <p className="mt-4 text-center max-w-2xl mx-auto">
+            Capital Associated was co-founded by Mohab Ayoub and Ramaz Izza in 2021, built on direct senior involvement rather than layered management structures.
           </p>
-          <p className="mt-4">
-            <strong>Ramaz Izza</strong> serves as Managing Director and brings over 15 years of construction industry experience to every project decision. Prior to founding Capital Associated, Ramaz managed a combined project portfolio exceeding AED 3 billion in value &mdash; including residential towers, commercial hotels, shopping malls, and luxury villa developments across the UAE. His direct involvement in project delivery &mdash; from pre-construction planning through final handover &mdash; means that project-critical decisions carry senior-level oversight at every stage.
-          </p>
-          <p className="mt-4">
-            <strong>Mohab Ayoub</strong> co-founded Capital Associated with over 18 years of experience in the UAE built environment industry. He is also the CEO of Algedra Interior Design, a firm recognised with the Luxury Lifestyle Award for Best Interior Design Company and operating across the UAE, GCC, and MENA region. Mohab received the Falcon of the Year award for Best Entrepreneur in 2022. His cross-industry experience in design, hospitality, and construction gives Capital Associated a commercial perspective that pure contracting firms typically lack &mdash; particularly on projects where brand implementation, client experience, and operational readiness matter as much as structural delivery.
-          </p>
+          <div className="flex flex-col md:flex-row justify-center items-stretch gap-6 mt-6">
+            <LeaderCard
+              image="/team/t4.jpg"
+              name="Ramaz Izza"
+              role="Managing Director & Co-Founder"
+              bio="Ramaz brings 15+ years of UAE construction experience to every project decision. He stays directly involved from pre-construction planning through final handover."
+              points={["15+ years in UAE construction", "Managed AED 3B+ in combined project value", "Delivered towers, hotels, malls & luxury villas"]}
+            />
+            <LeaderCard
+              name="Mohab Ayoub"
+              role="Co-Founder"
+              bio="Mohab co-founded Capital Associated with 18+ years in the UAE built environment. He also leads Algedra Interior Design, bringing a commercial, brand-focused perspective to construction delivery."
+              points={["18+ years in UAE built environment", "CEO, Algedra Interior Design (Luxury Lifestyle Award winner)", "Falcon of the Year \u2014 Best Entrepreneur, 2022"]}
+            />
+          </div>
 
           <h2 className="text-2xl font-bold text-center mt-10">What We Deliver</h2>
-          <p className="mt-4">
-            Our general contracting capability covers the full scope of building construction &mdash; reinforced concrete structures, masonry, facade systems, roofing, and all associated civil works. This is our core service and the foundation of every project we undertake.
+          <p className="mt-4 text-center max-w-2xl mx-auto">
+            General contracting is our core service, backed by a full range of delivery capabilities:
           </p>
-          <p className="mt-4">
-            Beyond structural delivery, our service scope includes construction management for clients who need professional programme oversight, design-build delivery for projects that benefit from integrated design and construction under a single contract, interior fit-out for residential and commercial spaces, and renovation and remodeling for existing properties requiring structural or aesthetic upgrades.
-          </p>
-          <p className="mt-4">
-            We also provide pre-construction services &mdash; buildability reviews, cost planning, and construction programme development &mdash; that reduce risk before site work begins. For clients focused on long-term operational efficiency, our green building solutions address thermal performance, energy consumption, and Al Sa&apos;fat compliance within the specific demands of the Gulf climate.
-          </p>
+          <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto w-full">
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>General Contracting</strong> &mdash; structures, masonry, facade, roofing & civil works</span></li>
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>Construction Management</strong> &mdash; programme oversight for owner-led projects</span></li>
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>Design-Build</strong> &mdash; integrated design and construction under one contract</span></li>
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>Interior Fit-Out</strong> &mdash; residential and commercial spaces</span></li>
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>Renovation & Remodeling</strong> &mdash; structural and aesthetic upgrades</span></li>
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>Pre-Construction Services</strong> &mdash; buildability review, cost planning, programme development</span></li>
+            <li className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4"><span className="text-green-600 mt-0.5">&#10003;</span><span><strong>Green Building Solutions</strong> &mdash; thermal performance, energy efficiency, Al Sa&apos;fat compliance</span></li>
+          </ul>
 
           <div className="mt-10 flex flex-col xl:flex-row justify-center items-center gap-10 xl:gap-4">
             <div className="xl:w-1/4 w-full px-5 xl:px-0 h-[300px] xl:h-[500px]">
@@ -160,18 +183,24 @@ const AboutLayout = () => {
             </p>
 
             <h2 className="text-2xl font-bold text-center mt-10">How We Operate</h2>
-            <p className="mt-4">
-              <strong>Procurement.</strong> We maintain pre-qualified supplier relationships across 14 material categories &mdash; concrete, steel, facade systems, sanitary ware, flooring, lighting, and MEP equipment among them. These relationships provide access to tier-one pricing, priority stock allocation, and product lines not available through retail channels.
-            </p>
-            <p className="mt-4">
-              <strong>Authority coordination.</strong> We manage the full regulatory approval process &mdash; DDA and Dubai Municipality building permits, Civil Defence fire and life safety certification, DEWA service connections, and final occupancy certificates. Permit sequencing is integrated into every construction programme so that authority inspections align with construction milestones rather than creating idle time.
-            </p>
-            <p className="mt-4">
-              <strong>Quality control.</strong> Material testing, workmanship inspections, and milestone sign-offs follow a structured QA/QC programme on every project. Concrete is tested at 7-day and 28-day intervals. Rebar placement is inspected and approved before every pour. Waterproofing installations are flood-tested before finishes are applied. We do not rely on final snagging to catch problems &mdash; quality is controlled at the point of installation.
-            </p>
-            <p className="mt-4 mb-10">
-              <strong>Safety.</strong> Site operations comply with NEBOSH, IOSH, and OSHA guidelines. Daily toolbox talks, PPE enforcement, and incident reporting are standard across all active sites.
-            </p>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto w-full mb-10">
+              <div className="bg-white border border-gray-200 rounded-lg p-5">
+                <p className="font-bold mb-1">Procurement</p>
+                <p className="text-sm text-gray-700">Pre-qualified suppliers across 14 material categories for tier-one pricing and priority stock.</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-lg p-5">
+                <p className="font-bold mb-1">Authority Coordination</p>
+                <p className="text-sm text-gray-700">Building permits, Civil Defence certification, DEWA connections, and occupancy certificates, sequenced into every programme.</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-lg p-5">
+                <p className="font-bold mb-1">Quality Control</p>
+                <p className="text-sm text-gray-700">7-day and 28-day concrete testing, pre-pour rebar inspection, and flood-tested waterproofing before finishes.</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-lg p-5">
+                <p className="font-bold mb-1">Safety</p>
+                <p className="text-sm text-gray-700">Site operations follow NEBOSH, IOSH, and OSHA guidelines, with daily toolbox talks and PPE enforcement.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

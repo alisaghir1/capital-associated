@@ -1,4 +1,5 @@
-﻿import ContactUsLayout from "./ContactUsLayout";
+﻿import { Suspense } from "react";
+import ContactUsLayout from "./ContactUsLayout";
 
 export const metadata = {
   title:
@@ -90,7 +91,9 @@ export default function ContactUs() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
       />
-      <ContactUsLayout />
+      <Suspense fallback={null}>
+        <ContactUsLayout />
+      </Suspense>
     </>
   );
 }

@@ -1,187 +1,159 @@
 'use client'
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-// Helper to strip HTML tags
 function stripHtmlTags(html) {
   if (!html) return ''
   return html.replace(/<[^>]*>/g, '').trim()
 }
 
 export default function ProjectDetailClient({ project }) {
-  const [mounted, setMounted] = useState(false)
+  const title = stripHtmlTags(project.title)
+  const sections = Array.isArray(project.sections) ? project.sections : []
+  const gallery = sections.filter((s) => s.image)
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
+  const status = project.completion_date
+    ? `Completed ${new Date(project.completion_date).getFullYear()}`
+    : 'In progress'
 
-  const sections = project.sections || []
+  const facts = [
+    project.client_name && { label: 'Client', value: project.client_name },
+    project.project_type && { label: 'Sector', value: project.project_type },
+    project.location && { label: 'Location', value: project.location },
+    { label: 'Status', value: status },
+    project.project_size && { label: 'Size', value: project.project_size },
+  ].filter(Boolean)
+
+  const discussHref = `/contact-us?project=${encodeURIComponent(project.project_type || title)}`
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section */}
-      <header className="relative">
-        <div className="relative h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px] w-full overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image src={project.hero_image_url || "/main.jpg"} alt={project.hero_image_alt || stripHtmlTags(project.title)} fill style={{ objectFit: 'cover' }} priority />
-          </div>
-          {/* Gradient Overlay - Darker at Bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/40 to-black/70"></div>
-          {/* Hero Content - Positioned at Bottom */}
-          <div className="relative z-10 flex items-end h-full px-4 sm:px-6 pb-8 sm:pb-12">
-            <div className="w-full max-w-4xl mx-auto text-center">
-              {project.project_type && (
-                <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-400 text-black font-semibold text-xs sm:text-sm rounded-full mb-4 sm:mb-6">
-                  {project.project_type}
-                </span>
-              )}
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
-                {stripHtmlTags(project.title)}
-              </h1>
-              {project.location && (
-                <div className="flex items-center justify-center text-white/90 text-sm sm:text-base lg:text-lg mb-4 sm:mb-6">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                  {project.location}
-                </div>
-              )}
-              {project.short_description && (
-                <p className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto px-4">
-                  {project.short_description}
-                </p>
-              )}
-            </div>
+      {/* Hero */}
+      <header className="relative w-full min-h-[520px] lg:min-h-[65vh]">
+        <div className="absolute inset-0">
+          <Image
+            src={project.hero_image_url || '/main.jpg'}
+            alt={project.hero_image_alt || title}
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/45 to-black/80" />
+        {/* Light band keeps the dark logo/nav legible over dark hero photos */}
+        <div className="absolute inset-x-0 top-0 h-44 xl:h-48 bg-gradient-to-b from-white/85 via-white/50 to-transparent" />
+        {/* Navbar is absolutely positioned over the hero: ~150px tall on mobile (topbar + logo), ~170px on xl */}
+        <div className="relative z-10 flex flex-col justify-end w-full min-h-[520px] lg:min-h-[65vh] max-w-6xl mx-auto px-6 lg:px-8 pt-44 xl:pt-48 pb-12">
+          <div>
+            <nav className="mb-4 text-sm text-white/80" aria-label="Breadcrumb">
+              <Link href="/" className="hover:text-white">Home</Link>
+              <span className="mx-2">/</span>
+              <Link href="/our-work" className="hover:text-white">Projects</Link>
+              <span className="mx-2">/</span>
+              <span className="text-white font-medium">{title}</span>
+            </nav>
+            {project.project_type && (
+              <p className="text-xs font-semibold uppercase tracking-wide text-white/80 mb-2">{project.project_type}</p>
+            )}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-3xl text-balance">
+              {title}
+            </h1>
           </div>
         </div>
       </header>
 
-      {/* Project Content */}
-      <article className="bg-white">
-          {/* Project Info Section */}
-          <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-12">
-              {project.client_name && (
-                <div className="bg-gray-50 rounded-lg p-6 text-center">
-                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-gray-800 mb-1">Client</h3>
-                  <p className="text-gray-600">{project.client_name}</p>
-                </div>
-              )}
-              {project.completion_date && (
-                <div className="bg-gray-50 rounded-lg p-6 text-center">
-                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-gray-800 mb-1">Completed</h3>
-                  <p className="text-gray-600">{new Date(project.completion_date).getFullYear()}</p>
-                </div>
-              )}
-              {project.project_size && (
-                <div className="bg-gray-50 rounded-lg p-6 text-center">
-                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-gray-800 mb-1">Size</h3>
-                  <p className="text-gray-600">{project.project_size}</p>
-                </div>
-              )}
-            </div>
-
-            {/* Project Description */}
-            {project.description && (
-              <section className="max-w-4xl mx-auto text-center mb-8 sm:mb-12 px-4">
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6">Project Overview</h2>
-                <div className="rich-text-content text-gray-600 text-base sm:text-lg leading-relaxed text-left" dangerouslySetInnerHTML={{ __html: project.description }} />
-              </section>
+      <div className="container mx-auto px-5 lg:px-8 max-w-6xl py-14 lg:py-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {/* Main column */}
+        <article className="lg:col-span-2 flex flex-col gap-12">
+          {/* Scope */}
+          <section aria-labelledby="scope">
+            <h2 id="scope" className="text-2xl font-bold text-black mb-4">Scope</h2>
+            {project.short_description && (
+              <p className="text-lg text-gray-800 leading-relaxed mb-4">{stripHtmlTags(project.short_description)}</p>
             )}
-          </div>
-        </article>
+            {project.description && (
+              <div className="rich-text-content text-gray-700" dangerouslySetInnerHTML={{ __html: project.description }} />
+            )}
+          </section>
 
-        {/* Project Media Section */}
-        {(project.hero_video_url || project.hero_image_url) && (
-          <div className="bg-gray-100 py-8 md:py-12">
-            <div className="container mx-auto px-4 md:px-6">
-              <div className="relative w-full h-[50vh] min-h-[280px] max-h-[500px] lg:max-h-[700px] rounded-lg overflow-hidden shadow-lg">
-                {project.hero_video_url ? (
-                  <video className="w-full h-full object-cover" controls muted playsInline preload="metadata">
-                    <source src={project.hero_video_url} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                ) : (
-                  <Image src={project.hero_image_url} alt={project.hero_image_alt || stripHtmlTags(project.title)} fill style={{ objectFit: 'cover' }} />
-                )}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Project Sections */}
-        {sections.length > 0 && (
-          <section className="bg-gradient-to-br from-amber-50 to-orange-50 py-16">
-            <div className="container mx-auto px-4 sm:px-6">
-              {/* Section Header */}
-              <div className="text-center mb-16">
-                <div className="inline-block">
-                  <span className="block text-amber-600 font-semibold text-sm uppercase tracking-wider mb-2">In-Depth Look</span>
-                  <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Project Details</h2>
-                  <div className="w-24 h-1 bg-gradient-to-r from-amber-400 to-orange-400 mx-auto rounded-full"></div>
-                </div>
-              </div>
-              <div className="max-w-6xl mx-auto space-y-20">
-                {sections.map((section, index) => (
-                  <div key={index} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-                    {/* Section Content */}
-                    <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      {section.title && (
-                        <div>
-                          <span className="inline-block px-4 py-2 bg-amber-100 text-amber-700 font-semibold text-sm rounded-full mb-4">Section {index + 1}</span>
-                          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">{stripHtmlTags(section.title)}</h2>
-                        </div>
-                      )}
-                      {section.content && (
-                        <div className="rich-text-content prose prose-lg text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: section.content }} />
-                      )}
-                    </div>
-                    {/* Section Image */}
-                    {section.image && (
-                      <div className={`relative ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                        <div className="relative h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10"></div>
-                          <Image src={section.image} alt={section.image_alt || section.title || `${stripHtmlTags(project.title)} - Section ${index + 1}`} fill style={{ objectFit: 'cover' }} />
-                        </div>
-                        {/* Decorative element */}
-                        <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full opacity-20 -z-10"></div>
-                      </div>
+          {/* Detail sections — kept short, text-only */}
+          {sections.filter((s) => s.title || s.content).length > 0 && (
+            <section aria-labelledby="details" className="flex flex-col gap-8">
+              <h2 id="details" className="text-2xl font-bold text-black">Project Details</h2>
+              {sections
+                .filter((s) => s.title || s.content)
+                .map((section, index) => (
+                  <div key={index}>
+                    {section.title && <h3 className="text-lg font-semibold text-black mb-2">{stripHtmlTags(section.title)}</h3>}
+                    {section.content && (
+                      <div className="rich-text-content text-gray-700 text-sm md:text-base" dangerouslySetInnerHTML={{ __html: section.content }} />
                     )}
                   </div>
                 ))}
-              </div>
-            </div>
-          </section>
-        )}
+            </section>
+          )}
 
-        {/* Call to Action */}
-        <aside className="bg-black py-12">
-          <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">Interested in Working With Us?</h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto">Let&apos;s discuss your next construction project and bring your vision to life.</p>
-            <div className="space-x-4">
-              <Link href="/our-work" className="inline-block px-6 py-3 bg-white text-black font-semibold rounded hover:bg-gray-100 transition-colors">View All Projects</Link>
-              <Link href="/contact-us" className="inline-block px-6 py-3 border-2 border-white text-white font-semibold rounded hover:bg-white hover:text-black transition-colors">Contact Us</Link>
-            </div>
+          {/* Gallery */}
+          {gallery.length > 0 && (
+            <section aria-labelledby="gallery">
+              <h2 id="gallery" className="text-2xl font-bold text-black mb-4">Gallery</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {gallery.map((section, index) => (
+                  <div key={index} className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-100">
+                    <Image
+                      src={section.image}
+                      alt={section.image_alt || stripHtmlTags(section.title) || `${title} photo ${index + 1}`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {project.hero_video_url && (
+            <section aria-label="Project video">
+              <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
+                <video className="w-full h-full object-cover" controls muted playsInline preload="metadata" poster={project.hero_image_url || undefined}>
+                  <source src={project.hero_video_url} type="video/mp4" />
+                </video>
+              </div>
+            </section>
+          )}
+        </article>
+
+        {/* Sidebar facts + CTA */}
+        <aside className="flex flex-col gap-6 lg:sticky lg:top-24 self-start">
+          <dl className="bg-slate-50 border border-gray-200 rounded-xl p-6 grid grid-cols-1 gap-4">
+            {facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">{fact.label}</dt>
+                <dd className="text-base text-black mt-0.5">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="bg-black text-white rounded-xl p-6">
+            <h2 className="text-lg font-bold mb-2">Planning something similar?</h2>
+            <p className="text-sm text-gray-300 mb-5">Tell us about your project and we&apos;ll share relevant references.</p>
+            <Link
+              href={discussHref}
+              className="block text-center bg-white text-black px-5 py-3 rounded-md font-semibold hover:bg-offwhite transition-colors"
+            >
+              Discuss a similar project
+            </Link>
           </div>
         </aside>
+      </div>
+
+      <section className="py-10 bg-offwhite">
+        <div className="container mx-auto px-5 lg:px-8 max-w-6xl">
+          <Link href="/our-work" className="inline-flex items-center font-semibold text-black hover:text-gray-700">
+            &larr; Back to all projects
+          </Link>
+        </div>
+      </section>
     </main>
   )
 }

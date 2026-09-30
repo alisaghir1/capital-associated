@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import VidioComponent from "../components/VidioComponent";
+import VideoSection from "../components/VideoSection";
 import Link from "next/link";
 
 const teamMembers = [
@@ -24,7 +24,7 @@ const teamMembers = [
   },
 ];
 
-const OurTeamLayout = () => {
+const OurTeamLayout = ({ videoUrl = "" }) => {
   return (
     <div>
       <div className="relative w-full h-[70vh] min-h-[400px] max-h-[700px] lg:max-h-[800px]">
@@ -96,7 +96,7 @@ const OurTeamLayout = () => {
           </p>
         </section>
 
-        <VidioComponent />
+        <VideoSection src={videoUrl} />
       </div>
     </div>
   );

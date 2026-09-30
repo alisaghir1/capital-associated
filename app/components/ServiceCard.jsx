@@ -1,82 +1,42 @@
-"use client";
 import Link from "next/link";
+import Image from "next/image";
 import { stripHtmlTags } from "../utils/richText";
+import { getServiceMeta } from "../utils/serviceGroups";
 
-export default function ServiceCard({ service, index }) {
-  const isFirstRow = index < 3;
-  const isSecondRow = index >= 3 && index < 6;
-  const isThirdRow = index >= 6 && index < 9;
-
-  let topLeftClass, topRightClass, bottomLeftClass, bottomRightClass;
-
-  if (isFirstRow) {
-    topLeftClass = "bg-transparent transition-all duration-500 ease-in-out text-center flex justify-center items-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer";
-    topRightClass = "bg-black border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    bottomLeftClass = "bg-black rounded-es-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    bottomRightClass = "bg-black rounded-ee-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-  } else if (isSecondRow) {
-    topLeftClass = "bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    topRightClass = "bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    bottomLeftClass = "bg-transparent border border-black flex justify-center items-center text-center group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out";
-    bottomRightClass = "bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-  } else {
-    topLeftClass = "bg-black rounded-ss-full flex justify-center text-center items-center border transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    topRightClass = "bg-black rounded-se-full transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    bottomLeftClass = "bg-black transition-all duration-500 ease-in-out opacity-100 group-hover:opacity-40 cursor-pointer";
-    bottomRightClass = "bg-transparent flex justify-center items-center text-center border border-black group-hover:bg-black group-hover:text-white cursor-pointer transition-all duration-500 ease-in-out";
-  }
+export default function ServiceCard({ service }) {
+  const { summary, sectors } = getServiceMeta(service);
+  const title = stripHtmlTags(service.title);
 
   return (
-    <Link href={`/services/${service.slug}`}>
-      <div className="relative group h-[20rem] w-full gap-1">
-        <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 gap-1">
-          <div
-            className={topLeftClass}
-            style={{
-              backgroundImage: !isFirstRow && service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
-              backgroundSize: "200% 200%",
-              backgroundPosition: "0% 0%",
-              backgroundRepeat: "no-repeat",
-              transition: "all 0.5s ease-in-out",
-            }}
-          >
-            {isFirstRow && stripHtmlTags(service.title)}
-          </div>
-          <div
-            className={topRightClass}
-            style={{
-              backgroundImage: service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
-              backgroundSize: "200% 200%",
-              backgroundPosition: "100% 0%",
-              backgroundRepeat: "no-repeat",
-              transition: "all 0.5s ease-in-out",
-            }}
-          ></div>
-          <div
-            className={bottomLeftClass}
-            style={{
-              backgroundImage: !isSecondRow && service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
-              backgroundSize: "200% 200%",
-              backgroundPosition: "0% 100%",
-              backgroundRepeat: "no-repeat",
-              transition: "all 0.5s ease-in-out",
-            }}
-          >
-            {isSecondRow && stripHtmlTags(service.title)}
-          </div>
-          <div
-            className={bottomRightClass}
-            style={{
-              backgroundImage: !isThirdRow && service.hero_image_url ? `url('${service.hero_image_url}')` : undefined,
-              backgroundSize: "200% 200%",
-              backgroundPosition: "100% 100%",
-              backgroundRepeat: "no-repeat",
-              transition: "all 0.5s ease-in-out",
-            }}
-          >
-            {isThirdRow && stripHtmlTags(service.title)}
-          </div>
-        </div>
+    <Link
+      href={`/services/${service.slug}`}
+      className="group flex flex-col h-full bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+    >
+      <div className="relative aspect-[4/3] w-full bg-gray-100">
+        <Image
+          src={service.hero_image_url || "/main.jpg"}
+          alt={title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover group-hover:scale-[1.03] transition-transform duration-300"
+        />
+      </div>
+      <div className="flex flex-col flex-1 p-5 gap-3">
+        <h3 className="text-lg font-bold text-black leading-snug">{title}</h3>
+        {summary && <p className="text-sm text-gray-700 leading-relaxed">{summary}</p>}
+        {sectors.length > 0 && (
+          <ul className="flex flex-wrap gap-1.5">
+            {sectors.map((sector) => (
+              <li key={sector} className="text-xs font-medium text-gray-700 bg-slate-100 rounded-full px-2.5 py-1">
+                {sector}
+              </li>
+            ))}
+          </ul>
+        )}
+        <span className="mt-auto pt-2 text-sm font-semibold text-black inline-flex items-center gap-1">
+          View service
+          <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+        </span>
       </div>
     </Link>
   );

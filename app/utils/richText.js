@@ -32,8 +32,22 @@ export const safeText = (text) => {
   return stripHtmlTags(text);
 };
 
+/**
+ * Get the first N sentences of plain text (HTML tags stripped first)
+ * @param {string} html - The source text, may contain HTML
+ * @param {number} count - Number of sentences to keep
+ * @returns {string} - The truncated plain text
+ */
+export const getFirstSentences = (html, count = 2) => {
+  const text = stripHtmlTags(html);
+  if (!text) return '';
+  const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+  return sentences.slice(0, count).join(' ').trim();
+};
+
 export default {
   stripHtmlTags,
   containsHtml,
-  safeText
+  safeText,
+  getFirstSentences,
 };

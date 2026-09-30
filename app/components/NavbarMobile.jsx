@@ -4,6 +4,7 @@ import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { RiCloseFill, RiMenuFoldFill } from "react-icons/ri";
 import Image from "next/image";
 import Link from "next/link";
+import { trackEvent } from "../../lib/analytics";
 
 export default function NavMobile({ settings = {} }) {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function NavMobile({ settings = {} }) {
         </Link>
         {getSetting("contact_phone") && <Link
           href={`tel:${getSetting("contact_phone")}`}
+          onClick={() => trackEvent("phone_click", { location: "mobile_topbar" })}
           className="text-sm font-medium transition-colors duration-300 ease-in-out hover:text-white"
         >
           {getSetting("contact_phone")}

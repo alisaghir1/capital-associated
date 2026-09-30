@@ -26,6 +26,27 @@ async function getService(slug) {
   }
 }
 
+// Recent published projects shown as "Related projects" on every service page
+async function getRelatedProjects() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/projects?select=id,title,slug,location,project_type,hero_image_url&published=eq.true&order=created_at.desc&limit=3`,
+      {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+        },
+        cache: 'no-store',
+      }
+    )
+    if (!res.ok) return []
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching related projects:', error)
+    return []
+  }
+}
+
 // Strip HTML tags
 function stripHtml(html) {
   if (!html) return ''
@@ -146,7 +167,7 @@ export default async function ServiceDetailPage({ params }) {
   const { slug } = await params
   
   // Fetch service data on the server
-  const service = await getService(slug)
+  const [service, relatedProjects] = await Promise.all([getService(slug), getRelatedProjects()])
   
   if (!service) {
     notFound()
@@ -160,7 +181,7 @@ export default async function ServiceDetailPage({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <ServiceDetailClient service={service} />
+      <ServiceDetailClient service={service} relatedProjects={relatedProjects} />
     </>
   )
 }

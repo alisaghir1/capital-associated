@@ -347,6 +347,16 @@ const SiteMetadata = () => {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   ></textarea>
                 </div>
+                <div className="mt-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Showreel Video URL (MP4)</label>
+                  <input
+                    type="url"
+                    value={metadata.hero_video_url || ''}
+                    onChange={(e) => handleInputChange('hero_video_url', e.target.value)}
+                    placeholder="https://.../video.mp4 — leave empty to show a still image instead"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
               </div>
 
               {/* Contact Information */}

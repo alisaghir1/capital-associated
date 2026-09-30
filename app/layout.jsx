@@ -1,5 +1,14 @@
 ﻿import "./globals.css";
 import Script from "next/script";
+import { Montserrat } from "next/font/google";
+
+// Geometric sans-serif matched to the wordmark logo, used sitewide.
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://www.capitalassociated.com"),
@@ -82,7 +91,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className={`${montserrat.variable} antialiased`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-P3DGKDLT"

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
 import { stripHtmlTags } from "../utils/richText";
+import { trackEvent } from "../../lib/analytics";
 
 const Footer = ({ settings = {} }) => {
   const [services, setServices] = useState([]);
@@ -83,7 +84,7 @@ const Footer = ({ settings = {} }) => {
                   <p>Office 1501</p>
                 </>
               )}
-              {getSetting("contact_phone") && <p>Mobile: <Link href={`tel:${getSetting("contact_phone")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_phone")}</Link></p>}
+              {getSetting("contact_phone") && <p>Mobile: <Link href={`tel:${getSetting("contact_phone")}`} onClick={() => trackEvent("phone_click", { location: "footer" })} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_phone")}</Link></p>}
               <p>Email: <Link href={`mailto:${getSetting("contact_email", "hello@capitalassociated.com")}`} className="hover:text-gray-300 transition-all duration-200 ease-in-out">{getSetting("contact_email", "hello@capitalassociated.com")}</Link></p>
             </address>
           </div>

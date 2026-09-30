@@ -1,4 +1,5 @@
 ﻿import OurTeamLayout from "./OurTeamLayout";
+import { getSiteSetting } from "@/lib/site-settings";
 
 export const metadata = {
   title: "Our Team | Capital Associated Building Contracting LLC",
@@ -44,7 +45,8 @@ export const metadata = {
   },
 };
 
-export default function OurTeam() {
+export default async function OurTeam() {
+  const videoUrl = await getSiteSetting("hero_video_url");
   const teamIndexJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -87,7 +89,7 @@ export default function OurTeam() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(teamIndexJsonLd) }}
       />
-      <OurTeamLayout />
+      <OurTeamLayout videoUrl={videoUrl} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 ﻿import OurWorkLayout from "./OurWorkLayout";
+import { getSiteSetting } from "@/lib/site-settings";
 
 export const metadata = {
   title:
@@ -47,7 +48,8 @@ export const metadata = {
   },
 };
 
-export default function OurWork() {
+export default async function OurWork() {
+  const videoUrl = await getSiteSetting("hero_video_url");
   const ourWorkJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -90,7 +92,7 @@ export default function OurWork() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ourWorkJsonLd) }}
       />
-      <OurWorkLayout />
+      <OurWorkLayout videoUrl={videoUrl} />
     </>
   );
 }

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: 'Gyahegi'; /* Name of the font */
   src: url('./fonts/Gyahegi.ttf') format('truetype');
@@ -25,12 +29,12 @@
   unicode-range: U+0041-005A, U+0061-007A, U+00C0-00FF, U+0100-017F; /* Letters only */
 }
 
-h1,h2,h3{
-  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
+h1,h2,h3,h4,h5,h6,button,input,textarea,select{
+  font-family: var(--font-sans), 'swiss', sans-serif;
 }
 
 body,p{
-  font-family: 'swiss', 'sans serif';
+  font-family: var(--font-sans), 'swiss', sans-serif;
 }
 
 /* Rich Text Content Styles */
@@ -45,7 +49,7 @@ body,p{
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #111827;
-  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
+  font-family: var(--font-sans), 'swiss', sans-serif;
 }
 
 .rich-text-content h2 {
@@ -54,7 +58,7 @@ body,p{
   margin-top: 1.75rem;
   margin-bottom: 0.875rem;
   color: #111827;
-  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
+  font-family: var(--font-sans), 'swiss', sans-serif;
 }
 
 .rich-text-content h3 {
@@ -63,7 +67,7 @@ body,p{
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
   color: #111827;
-  font-family: 'Gyahegi-Text', 'swiss', sans-serif;
+  font-family: var(--font-sans), 'swiss', sans-serif;
 }
 
 .rich-text-content h4 {
@@ -92,7 +96,7 @@ body,p{
 
 .rich-text-content p {
   margin-bottom: 1.25rem;
-  font-family: 'swiss', 'sans serif';
+  font-family: var(--font-sans), 'swiss', sans-serif;
 }
 
 .rich-text-content strong {

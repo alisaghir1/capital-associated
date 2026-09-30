@@ -1,5 +1,6 @@
 ﻿import { createServerSupabaseClient } from "@/lib/supabase-server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import Link from "next/link";
 import HeroAnimation from "./components/HeroAnimation";
 import About from "./components/About";
 import OurProjects from "./components/OurProjects";
@@ -7,9 +8,11 @@ import OurServices from "./components/OurServices";
 import OurTeam from "./components/OurTeam";
 import Blogs from "./components/Blogs";
 import Consultation from "./components/Consultation";
+import EnquiryForm from "./components/EnquiryForm";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import NavbarMobile from "./components/NavbarMobile";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 export const metadata = {
   title: "Capital Associated | Contracting Company in Dubai, UAE",
@@ -92,7 +95,7 @@ async function getHomePageData() {
 
     const [servicesRes, projectsRes, teamRes, blogsRes, settingsRes] = await Promise.all([
       supabase.from("services").select("id, title, slug, hero_image_url, published, featured, sort_order").eq("published", true).order("created_at", { ascending: false }).limit(9),
-      supabase.from("projects").select("id, title, slug, location, hero_image_url, featured, published, sort_order").eq("published", true).order("created_at", { ascending: false }).limit(8),
+      supabase.from("projects").select("id, title, slug, location, project_type, hero_image_url, featured, published, sort_order").eq("published", true).order("created_at", { ascending: false }).limit(8),
       supabase.from("team").select("*").eq("published", true).order("sort_order", { ascending: true }),
       supabase.from("blogs").select("id, title, slug, hero_image_url, excerpt, author, created_at, published, featured").eq("published", true).order("created_at", { ascending: false }).limit(6),
       // Use service-role client so site_metadata is always readable on the
@@ -187,7 +190,7 @@ export default async function Home() {
       <NavbarMobile settings={settings} />
       <main>
         {/* Hero Section */}
-        <section className="relative w-full h-[85vh] min-h-[500px] max-h-[900px] lg:max-h-[1000px] overflow-x-hidden flex items-center justify-center pt-16">
+        <section className="relative w-full h-[85vh] min-h-[560px] max-h-[900px] lg:max-h-[1000px] overflow-x-hidden flex items-center justify-center pt-16">
           <div className="absolute inset-0">
             <img
               src="/main.jpg"
@@ -197,27 +200,44 @@ export default async function Home() {
             />
           </div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
-          <div className="relative z-10 px-8 w-full flex justify-center">
-            <HeroAnimation className="text-center">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-black font-bold">
-                Leading Contracting Company in Dubai, UAE
+          <div className="relative z-10 px-5 md:px-8 w-full flex justify-center">
+            <HeroAnimation className="text-center w-full max-w-4xl mx-auto flex flex-col items-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight md:leading-tight text-black font-bold max-w-3xl text-balance">
+                Construction, Fit-Out &amp; Renovation Experts in Dubai
               </h1>
-              <p className="text-sm md:text-base lg:text-lg xl:text-xl text-black mt-3">
+              <p className="text-sm md:text-base lg:text-lg xl:text-xl text-black mt-4">
                 100+ Projects. 750,000+ sq ft Delivered.
               </p>
+              <div className="flex flex-wrap justify-center gap-4 mt-8">
+                <Link
+                  href="/contact-us"
+                  className="bg-black hover:bg-white border border-black hover:text-black transition-all duration-200 ease-in-out text-white py-3 px-8 text-sm md:text-base font-semibold rounded-md"
+                >
+                  Discuss a Project
+                </Link>
+                <a
+                  href="#our-projects"
+                  className="bg-white hover:bg-black border border-black hover:text-white transition-all duration-200 ease-in-out text-black py-3 px-8 text-sm md:text-base font-semibold rounded-md"
+                >
+                  View Projects
+                </a>
+              </div>
             </HeroAnimation>
           </div>
         </section>
+
+        <EnquiryForm />
 
         {/* Content Sections */}
         <About />
         <OurProjects projects={projects} />
         <OurServices services={services} />
-        <OurTeam team={team} />
+        <OurTeam team={team} videoUrl={settings.hero_video_url || ""} />
         <Blogs blogs={blogs} />
         <Consultation />
       </main>
       <Footer settings={settings} />
+      <WhatsAppButton settings={settings} />
     </>
   );
 }
