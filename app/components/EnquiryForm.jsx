@@ -1,19 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import Link from "next/link";
 import useRecaptcha from "../hooks/useRecaptcha";
 import { submitEnquiry, PROJECT_TYPES } from "../utils/enquiry";
 
-const EnquiryForm = () => {
+const EnquiryForm = ({ source = "homepage", overlap = true, heading = "" }) => {
+  const uid = useId();
+  const fieldId = (name) => `${uid}-${name}`;
+  const action = `${source}_enquiry`;
   const { execute, ready } = useRecaptcha();
   const [formData, setFormData] = useState({ name: "", contact: "", projectType: "" });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // { type: "success" | "error", message }
 
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -24,15 +27,15 @@ const EnquiryForm = () => {
     const isEmail = formData.contact.includes("@");
 
     try {
-      const token = await execute("homepage_enquiry");
+      const token = await execute(action);
       await submitEnquiry({
         name: formData.name,
         email: isEmail ? formData.contact : "",
         phone: isEmail ? "" : formData.contact,
         projectType: formData.projectType,
-        source: "homepage",
+        source,
         recaptchaToken: token,
-        action: "homepage_enquiry",
+        action,
       });
       setFormData({ name: "", contact: "", projectType: "" });
       setStatus({ type: "success", message: "Thanks — we'll call or email you within one working day." });
@@ -45,19 +48,23 @@ const EnquiryForm = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto -mt-10 md:-mt-14 relative z-20 px-5">
+    <div className={`w-full max-w-3xl mx-auto relative z-20 px-5 ${overlap ? "-mt-10 md:-mt-14" : ""}`}>
+      {heading && (
+        <h2 className="text-xl md:text-2xl font-bold text-center text-black mb-5">{heading}</h2>
+      )}
       <form
         onSubmit={handleSubmit}
         className="bg-white rounded-xl shadow-xl border border-gray-100 p-5 md:p-6 flex flex-col md:flex-row md:items-end gap-4"
       >
         <div className="flex-1 min-w-0 text-left">
-          <label htmlFor="name" className="block text-xs font-semibold text-black mb-1">
+          <label htmlFor={fieldId("name")} className="block text-xs font-semibold text-black mb-1">
             Name
           </label>
           <input
             required
             type="text"
-            id="name"
+            id={fieldId("name")}
+            name="name"
             autoComplete="name"
             value={formData.name}
             onChange={handleChange}
@@ -66,13 +73,14 @@ const EnquiryForm = () => {
           />
         </div>
         <div className="flex-1 min-w-0 text-left">
-          <label htmlFor="contact" className="block text-xs font-semibold text-black mb-1">
+          <label htmlFor={fieldId("contact")} className="block text-xs font-semibold text-black mb-1">
             Phone or Email
           </label>
           <input
             required
             type="text"
-            id="contact"
+            id={fieldId("contact")}
+            name="contact"
             autoComplete="tel email"
             value={formData.contact}
             onChange={handleChange}
@@ -81,11 +89,12 @@ const EnquiryForm = () => {
           />
         </div>
         <div className="flex-1 min-w-0 text-left">
-          <label htmlFor="projectType" className="block text-xs font-semibold text-black mb-1">
+          <label htmlFor={fieldId("projectType")} className="block text-xs font-semibold text-black mb-1">
             Project Type <span className="font-normal text-gray-500">(optional)</span>
           </label>
           <select
-            id="projectType"
+            id={fieldId("projectType")}
+            name="projectType"
             value={formData.projectType}
             onChange={handleChange}
             className="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-black focus:outline-none focus:ring-2 focus:ring-black bg-white"

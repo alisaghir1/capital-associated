@@ -11,17 +11,23 @@ export default function useRecaptcha() {
 
   useEffect(() => {
     if (!SITE_KEY) return;
+    const markReady = () => window.grecaptcha?.ready(() => setReady(true));
     if (window.grecaptcha) {
-      window.grecaptcha.ready(() => setReady(true));
+      markReady();
       return;
     }
-    if (document.getElementById(SCRIPT_ID)) return;
+    const existing = document.getElementById(SCRIPT_ID);
+    if (existing) {
+      // Another form instance already injected the script; wait for it to finish loading
+      existing.addEventListener("load", markReady);
+      return () => existing.removeEventListener("load", markReady);
+    }
 
     const script = document.createElement("script");
     script.id = SCRIPT_ID;
     script.src = `https://www.google.com/recaptcha/api.js?render=${SITE_KEY}`;
     script.async = true;
-    script.onload = () => window.grecaptcha?.ready(() => setReady(true));
+    script.onload = markReady;
     document.head.appendChild(script);
   }, []);
 

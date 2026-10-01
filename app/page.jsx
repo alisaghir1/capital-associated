@@ -233,6 +233,9 @@ export default async function Home() {
         <OurProjects projects={projects} />
         <OurServices services={services} />
         <OurTeam team={team} videoUrl={settings.hero_video_url || ""} />
+        <section className="py-20 bg-slate-100">
+          <EnquiryForm source="homepage_team" overlap={false} heading="Ready to start? Request a call back" />
+        </section>
         <Blogs blogs={blogs} />
         <Consultation />
       </main>

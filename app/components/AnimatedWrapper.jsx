@@ -9,6 +9,7 @@ export default function AnimatedWrapper({
   delay = 0,
   className = "",
   as = "div",
+  amount = 0.1,
 }) {
   const Component = motion[as] || motion.div;
   return (
@@ -16,7 +17,8 @@ export default function AnimatedWrapper({
       variants={fadeIn(direction, duration, delay)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
+      // Low threshold so tall single-column sections on mobile still reveal
+      viewport={{ once: true, amount }}
       className={className}
     >
       {children}

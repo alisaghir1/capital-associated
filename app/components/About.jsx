@@ -16,7 +16,7 @@ const About = () => {
           <h2 className="mb-4 text-2xl md:text-3xl xl:text-4xl font-bold border-b border-b-black pb-10 text-black">
             About Us
           </h2>
-          <p className="mb-4 text-lg md:text-xl xl:text-2xl font-bold pt-10 text-black">
+          <p className="mb-4 text-lg md:text-xl xl:text-2xl pt-10 text-black">
             {" "}
             Capital Associated Building Contracting LLC is a licensed Dubai contractor delivering villas, towers, and commercial builds across the UAE since 2021. We've completed 100+ projects covering 750,000+ sq ft of built-up area.
           </p>
@@ -61,9 +61,8 @@ const About = () => {
           <div className="col-span-1 hover:bg-[url('/about3.jpg')] bg-cover bg-center transition-all duration-300 ease-in-out text-xl bg-black text-white flex items-center justify-center rounded-lg xl:rounded-es-full">
             QUALITY
           </div>
-          <div className="col-span-1 hover:bg-[url('/about4.jpg')] bg-cover bg-center transition-all duration-300 ease-out text-xl bg-black text-white flex flex-col items-center justify-center rounded-lg xl:rounded-ee-full">
-            <p>Document Control</p>
-            <p>MESSAGE</p>
+          <div className="col-span-1 hover:bg-[url('/about4.jpg')] bg-cover bg-center transition-all duration-300 ease-out text-xl bg-black text-white flex flex-col items-center justify-center rounded-lg xl:rounded-ee-full text-center px-2">
+            <p>DOCUMENT CONTROL</p>
           </div>
           <div className="col-span-1"></div>
         </AnimatedWrapper>

@@ -73,12 +73,12 @@ const OurTeam = ({ team = [], videoUrl = "" }) => {
       <AnimatedWrapper
         direction="up"
         duration={1}
-        className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0"
+        className="container mx-auto flex flex-col justify-center items-center gap-5 py-20 px-5 xl:px-0 text-center"
       >
-        <p className="text-lg md:text-xl xl:text-2xl text-bold">
+        <p className="text-lg md:text-xl xl:text-2xl font-bold">
           Senior-Led Project Delivery Across the UAE
         </p>
-        <p className="text-base text-gray-500 mt-10 md:text-lg xl:text-xl">
+        <p className="text-base text-gray-500 mt-10 md:text-lg xl:text-xl max-w-4xl mx-auto">
           Our project teams are led by engineers and construction managers with direct experience across residential, commercial, and high-rise developments in the UAE. Every project is assigned a dedicated project manager who owns the programme, the budget, and the quality control process from mobilisation through handover. Unlike many contractors in Dubai who layer management between clients and site teams, we keep our structure flat &mdash; senior oversight on every project, direct communication at every stage, and accountability across concurrent sites in Dubai, Abu Dhabi, and Sharjah.
         </p>
       </AnimatedWrapper>
